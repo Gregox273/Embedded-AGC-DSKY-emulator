@@ -1,0 +1,9 @@
+[submodule "ChibiOS"]
+	path = ChibiOS
+	url = git@github.com:ChibiOS/ChibiOS.git
+[submodule "agg-kicad"]
+	path = agg-kicad
+	url = git@github.com:adamgreig/agg-kicad.git
+[submodule "gen-board.h"]
+	path = gen-board.h
+	url = git@github.com:HarkonenBade/gen-board.h.git
