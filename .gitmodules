@@ -7,3 +7,6 @@
 [submodule "gen-board.h"]
 	path = gen-board.h
 	url = git@github.com:HarkonenBade/gen-board.h.git
+[submodule "virtualagc"]
+	path = virtualagc
+	url = git@github.com:Gregox273/virtualagc.git

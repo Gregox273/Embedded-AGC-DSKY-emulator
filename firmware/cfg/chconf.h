@@ -131,7 +131,7 @@
  *          infinite loop.
  */
 #if !defined(CH_CFG_NO_IDLE_THREAD)
-#define CH_CFG_NO_IDLE_THREAD               FALSE
+#define CH_CFG_NO_IDLE_THREAD               TRUE
 #endif
 
 /** @} */
@@ -152,7 +152,7 @@
  * @note    The default is @p TRUE.
  */
 #if !defined(CH_CFG_OPTIMIZE_SPEED)
-#define CH_CFG_OPTIMIZE_SPEED               TRUE
+#define CH_CFG_OPTIMIZE_SPEED               FALSE
 #endif
 
 /** @} */
@@ -250,7 +250,7 @@
  * @note    Requires @p CH_CFG_USE_MUTEXES.
  */
 #if !defined(CH_CFG_USE_CONDVARS)
-#define CH_CFG_USE_CONDVARS                 TRUE
+#define CH_CFG_USE_CONDVARS                 FALSE
 #endif
 
 /**
