@@ -1,0 +1,4 @@
+EESchema-DOCLIB  Version 2.0
+$CMP STM32F072RBT6
+D STM32F072RBT6 Microcontroller (16KB RAM, 128KB program memory)
+$ENDCMP

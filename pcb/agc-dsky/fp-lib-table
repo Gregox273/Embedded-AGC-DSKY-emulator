@@ -1,0 +1,4 @@
+(fp_lib_table
+  (lib (name agc-dsky)(type KiCad)(uri ${KIPRJMOD}/../agc-dsky.pretty)(options "")(descr ""))
+  (lib (name agg)(type KiCad)(uri ${KIPRJMOD}/../../agg-kicad/agg.pretty)(options "")(descr ""))
+)
