@@ -1,0 +1,18 @@
+datasheet: https://datasheet.lcsc.com/szlcsc/Made-in-China-FJ3161BH_C10690.pdf
+description: Green 0.36" 7 segment display (common cathode LED)
+footprint: agc-dsky:LDS-3161AX
+name: LDS-3161AX
+ordercodes: 
+- [AliExpress, 'https://www.aliexpress.com/item/10pcs-Green-LED-Display-0-36inch-1-Bit-7-Segment-Display-COMMON-ANODE-Or-Common-Cathode/32399242126.html?spm=2114.search0604.3.1.41e94959APVMZd&ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_317_10548_10696_10192_10190_5728812_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_10103_5733515_5733615,searchweb201603_55,ppcSwitch_0&algo_expid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28-0&algo_pvid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28']
+pins:
+- - - [Cathode, 1, passive]
+    - [Cathode, 6, passive]
+- - - [A, 10, passive]
+    - [B, 9, passive]
+    - [C, 8, passive]
+    - [D, 5, passive]
+    - [E, 4, passive]
+    - [F, 2, passive]
+    - [G, 3, passive]
+  - - [DP, 7, passive]
+    

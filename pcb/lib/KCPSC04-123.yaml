@@ -1,0 +1,24 @@
+datasheet: http://www.farnell.com/datasheets/2046346.pdf
+description: Green alphanumeric 14 segment display (common cathode LED)
+footprint: agc-dsky:KCPSC04-123
+name: KCPSC04-123
+ordercodes: 
+- [Farnell, '2449718']
+pins:
+- - - [Cathode, 14, passive]
+- - - [A, 10, passive]
+    - [B, 11, passive]
+    - [C, 6, passive]
+    - [D, 7, passive]
+    - [E, 8, passive]
+    - [F, 16, passive]
+    - [G, 9, passive]
+    - [H, 15, passive]
+    - [J, 13, passive]
+    - [K, 12, passive]
+    - [L, 4, passive]
+    - [M, 3, passive]
+    - [N, 2, passive]
+    - [P, 1, passive]
+  - - [DP, 5, passive]
+    
