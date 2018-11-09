@@ -1,6 +1,6 @@
 datasheet: http://www.farnell.com/datasheets/12174.pdf
 description: I/O Expander, 8 bit, SPI
-footprint: agg:SOIC-18-W
+footprint: agc-dsky:SOIC-18-W
 name: MCP23S08
 ordercodes: 
 - [Farnell, '1332092']
