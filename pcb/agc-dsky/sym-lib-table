@@ -3,4 +3,5 @@
   (lib (name stm32f072rbt6)(type Legacy)(uri ${KIPRJMOD}/../lib/stm32f072rbt6.lib)(options "")(descr ""))
   (lib (name lds-3161ax)(type Legacy)(uri ${KIPRJMOD}/../lib/lds-3161ax.lib)(options "")(descr ""))
   (lib (name kcpsc04-123)(type Legacy)(uri ${KIPRJMOD}/../lib/kcpsc04-123.lib)(options "")(descr ""))
+  (lib (name mcp23s08)(type Legacy)(uri ${KIPRJMOD}/../lib/mcp23s08.lib)(options "")(descr ""))
 )

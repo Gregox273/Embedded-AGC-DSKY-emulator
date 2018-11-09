@@ -1,0 +1,4 @@
+EESchema-DOCLIB  Version 2.0
+$CMP MCP23S08
+D I/O Expander, 8 bit, SPI
+$ENDCMP

@@ -1,0 +1,27 @@
+datasheet: http://www.farnell.com/datasheets/12174.pdf
+description: I/O Expander, 8 bit, SPI
+footprint: agg:SOIC-18-W
+name: MCP23S08
+ordercodes: 
+- [Farnell, '1332092']
+pins:
+- - - [SCK, 1, in]
+    - [SI, 2, in]
+    - [SO, 3, out]
+  - - [A0, 5, in]
+    - [A1, 4, in]
+  - - [NRST, 6, in]
+    - [NCS, 7, in]
+  - - [INT, 8, out]
+- - - [VDO, 18, pwrin]
+    - [VSS, 9, pwrin]
+  - - [GP0, 10, bidi]
+    - [GP1, 11, bidi]
+    - [GP2, 12, bidi]
+    - [GP3, 13, bidi]
+    - [GP4, 14, bidi]
+    - [GP5, 15, bidi]
+    - [GP6, 16, bidi]
+    - [GP7, 17, bidi]
+
+    
