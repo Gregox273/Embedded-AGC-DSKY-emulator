@@ -1,0 +1,13 @@
+datasheet: https://www.kitronik.co.uk/pdf/WS2812B-LED-datasheet.pdf
+description: Addressable RGB LED
+footprint: agc-dsky:WS2812B
+name: WS2812B
+ordercodes: 
+- [Aliexpress, 'https://www.aliexpress.com/item/10-1000pcs-WS2812B-4pins-5050-SMD-Black-White-version-WS2812-Individually-Addressable-Digital-RGB-LED-Chip/32810203444.html?spm=2114.search0604.3.54.65db7218Hnfvt0&ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_317_10548_10696_10192_5728811_10190_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_10103_5733515_5733615,searchweb201603_55,ppcSwitch_0&algo_expid=fa88f8e5-9015-4ff5-99be-874e1b964a2c-8&algo_pvid=fa88f8e5-9015-4ff5-99be-874e1b964a2c']
+pins:
+- - - [DIN, 4, in]
+    - [DOUT, 2, out]
+- - - [VDD, 1, pwrin]
+    - [VSS, 3, pwrin]
+
+    
