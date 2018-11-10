@@ -7,7 +7,7 @@ encoding utf-8
 Sheet 2 3
 Title "AGC DSKY Emulator: 7 Segment Displays"
 Date "2018-11-10"
-Rev "v0.3"
+Rev "v0.4"
 Comp ""
 Comment1 "Gregory Brooks"
 Comment2 ""
@@ -1738,10 +1738,6 @@ Wire Wire Line
 	7100 7600 7050 7600
 Wire Wire Line
 	8600 7600 8550 7600
-Wire Wire Line
-	11000 2900 13400 2900
-Wire Wire Line
-	11100 2950 13000 2950
 $Comp
 L agg-kicad:GND #PWR054
 U 1 1 5D70C709
@@ -1814,10 +1810,6 @@ Wire Wire Line
 Wire Wire Line
 	14200 3450 14200 3350
 Wire Wire Line
-	13000 3250 13000 2950
-Wire Wire Line
-	13400 3250 13400 2900
-Wire Wire Line
 	13800 3250 13800 2850
 Wire Wire Line
 	10900 2850 13800 2850
@@ -1886,10 +1878,6 @@ Text HLabel 14050 7600 0    50   Input ~ 0
 Co8
 Wire Wire Line
 	14100 7600 14050 7600
-Wire Wire Line
-	11000 4400 13400 4400
-Wire Wire Line
-	11100 4450 13000 4450
 $Comp
 L agg-kicad:LED D2
 U 1 1 5DD477F4
@@ -1946,10 +1934,6 @@ Wire Wire Line
 	13800 4950 13800 4850
 Wire Wire Line
 	14200 4950 14200 4850
-Wire Wire Line
-	13000 4750 13000 4450
-Wire Wire Line
-	13400 4750 13400 4400
 Wire Wire Line
 	13800 4750 13800 4350
 Wire Wire Line
@@ -2022,10 +2006,6 @@ Wire Wire Line
 	13800 6450 13800 6350
 Wire Wire Line
 	14200 6450 14200 6350
-Wire Wire Line
-	13000 6250 13000 5950
-Wire Wire Line
-	13400 6250 13400 5900
 Wire Wire Line
 	13800 6250 13800 5850
 Wire Wire Line
@@ -2134,18 +2114,12 @@ Connection ~ 8000 5900
 Connection ~ 9500 5900
 Wire Wire Line
 	9500 5900 11000 5900
-Connection ~ 11000 5900
-Wire Wire Line
-	11000 5900 13400 5900
 Wire Wire Line
 	8100 5950 9600 5950
 Connection ~ 8100 5950
 Connection ~ 9600 5950
 Wire Wire Line
 	9600 5950 11100 5950
-Connection ~ 11100 5950
-Wire Wire Line
-	11100 5950 13000 5950
 Wire Wire Line
 	8200 6000 9700 6000
 Wire Wire Line
@@ -2181,13 +2155,11 @@ Wire Wire Line
 Wire Wire Line
 	8100 4450 9600 4450
 Connection ~ 8100 4450
-Connection ~ 11100 4450
 Connection ~ 9600 4450
 Wire Wire Line
 	9600 4450 11100 4450
 Wire Wire Line
 	11000 4400 9500 4400
-Connection ~ 11000 4400
 Connection ~ 8000 4400
 Connection ~ 9500 4400
 Wire Wire Line
@@ -2235,13 +2207,11 @@ Wire Wire Line
 Wire Wire Line
 	8100 2950 9600 2950
 Connection ~ 8100 2950
-Connection ~ 11100 2950
 Connection ~ 9600 2950
 Wire Wire Line
 	9600 2950 11100 2950
 Wire Wire Line
 	11000 2900 9500 2900
-Connection ~ 11000 2900
 Connection ~ 8000 2900
 Connection ~ 9500 2900
 Wire Wire Line
@@ -2389,4 +2359,34 @@ F 4 "2616742" H 14100 7600 50  0001 C CNN "Farnell"
 	1    14100 7600
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	11100 5950 13400 5950
+Wire Wire Line
+	13400 5950 13400 6250
+Connection ~ 11100 5950
+Wire Wire Line
+	13000 6000 11200 6000
+Wire Wire Line
+	13000 6000 13000 6250
+Connection ~ 11200 6000
+Wire Wire Line
+	11200 4500 13000 4500
+Wire Wire Line
+	13000 4500 13000 4750
+Connection ~ 11200 4500
+Wire Wire Line
+	13400 4450 11100 4450
+Wire Wire Line
+	13400 4450 13400 4750
+Connection ~ 11100 4450
+Wire Wire Line
+	13000 3000 11200 3000
+Wire Wire Line
+	13000 3000 13000 3250
+Connection ~ 11200 3000
+Wire Wire Line
+	11100 2950 13400 2950
+Wire Wire Line
+	13400 2950 13400 3250
+Connection ~ 11100 2950
 $EndSCHEMATC
