@@ -7,7 +7,7 @@ encoding utf-8
 Sheet 1 3
 Title "AGC DSKY Emulator"
 Date "2018-11-10"
-Rev "v0.1"
+Rev "v0.3"
 Comp ""
 Comment1 "Gregory Brooks"
 Comment2 ""
@@ -392,18 +392,6 @@ Connection ~ 5700 6500
 Wire Wire Line
 	5700 6500 5700 6000
 $Comp
-L stm32f072rbt6:STM32F072RBT6 IC2
-U 1 1 5BE360CC
-P 5750 3150
-F 0 "IC2" H 5750 5175 50  0000 C CNN
-F 1 "STM32F072RBT6" H 5750 5084 50  0000 C CNN
-F 2 "agg:LQFP-64" H 5350 1150 50  0001 L CNN
-F 3 "https://www.st.com/resource/en/datasheet/stm32f072c8.pdf" H 5350 1050 50  0001 L CNN
-F 4 "2432096" H 5350 950 50  0001 L CNN "Farnell"
-	1    5750 3150
-	1    0    0    -1  
-$EndComp
-$Comp
 L agg-kicad:MICROUSB J1
 U 1 1 5BE3627E
 P 4300 4650
@@ -422,10 +410,10 @@ Wire Wire Line
 NoConn ~ 4600 4950
 NoConn ~ 4600 4750
 $Comp
-L agg-kicad:5v #PWR0101
+L agg-kicad:5v #PWR012
 U 1 1 5BE3A234
 P 4700 4400
-F 0 "#PWR0101" H 4700 4510 50  0001 L CNN
+F 0 "#PWR012" H 4700 4510 50  0001 L CNN
 F 1 "5v" H 4700 4524 50  0000 C CNN
 F 2 "" H 4700 4400 50  0001 C CNN
 F 3 "" H 4700 4400 50  0001 C CNN
@@ -437,10 +425,10 @@ Wire Wire Line
 Wire Wire Line
 	4700 4400 4700 4450
 $Comp
-L agg-kicad:GND #PWR0102
+L agg-kicad:GND #PWR013
 U 1 1 5BE3C383
 P 4700 4900
-F 0 "#PWR0102" H 4570 4940 50  0001 L CNN
+F 0 "#PWR013" H 4570 4940 50  0001 L CNN
 F 1 "GND" H 4700 4987 50  0000 C CNN
 F 2 "" H 4700 4900 50  0001 C CNN
 F 3 "" H 4700 4900 50  0001 C CNN
@@ -452,7 +440,7 @@ Wire Wire Line
 Wire Wire Line
 	4700 4850 4700 4900
 $Sheet
-S 9750 1350 550  4800
+S 9750 1350 550  4300
 U 5BE4E3B4
 F0 "7-segs" 50
 F1 "7-segs.sch" 50
@@ -477,19 +465,14 @@ F19 "D3" I L 9750 4400 50
 F20 "E3" I L 9750 4500 50 
 F21 "F3" I L 9750 4600 50 
 F22 "G3" I L 9750 4700 50 
-F23 "A4" I L 9750 5450 50 
-F24 "B4" I L 9750 5550 50 
-F25 "C4" I L 9750 5650 50 
-F26 "D4" I L 9750 5750 50 
-F27 "E4" I L 9750 5850 50 
-F28 "F4" I L 9750 5950 50 
-F29 "G4" I L 9750 6050 50 
-F30 "Co1" I R 10300 4850 50 
-F31 "Co2" I R 10300 4950 50 
-F32 "Co3" I R 10300 5050 50 
-F33 "Co4" I R 10300 5150 50 
-F34 "Co5" I R 10300 5250 50 
-F35 "Co6" I R 10300 5350 50 
+F23 "Co1" I L 9750 4850 50 
+F24 "Co2" I L 9750 4950 50 
+F25 "Co3" I L 9750 5050 50 
+F26 "Co4" I L 9750 5150 50 
+F27 "Co5" I L 9750 5250 50 
+F28 "Co6" I L 9750 5350 50 
+F29 "Co8" I L 9750 5550 50 
+F30 "Co7" I L 9750 5450 50 
 $EndSheet
 $Comp
 L mcp23s08:MCP23S08 IC3
@@ -502,90 +485,6 @@ F 3 "http://www.farnell.com/datasheets/12174.pdf" H 8350 800 50  0001 L CNN
 F 4 "1332092" H 8350 700 50  0001 L CNN "Farnell"
 	1    8650 1600
 	1    0    0    -1  
-$EndComp
-$Comp
-L agg-kicad:R R19
-U 1 1 5BF1EDF2
-P 9700 1400
-F 0 "R19" H 9750 1578 50  0000 C CNN
-F 1 "120" H 9750 1487 50  0000 C CNN
-F 2 "agg:0402" H 9700 1400 50  0001 C CNN
-F 3 "http://www.farnell.com/datasheets/1911175.pdf" H 9700 1400 50  0001 C CNN
-F 4 "2379811" H 9700 1400 50  0001 C CNN "Farnell"
-	1    9700 1400
-	-1   0    0    -1  
-$EndComp
-$Comp
-L agg-kicad:R R11
-U 1 1 5BF1EDFA
-P 9450 1500
-F 0 "R11" H 9500 1678 50  0000 C CNN
-F 1 "120" H 9500 1587 50  0000 C CNN
-F 2 "agg:0402" H 9450 1500 50  0001 C CNN
-F 3 "http://www.farnell.com/datasheets/1911175.pdf" H 9450 1500 50  0001 C CNN
-F 4 "2379811" H 9450 1500 50  0001 C CNN "Farnell"
-	1    9450 1500
-	-1   0    0    -1  
-$EndComp
-$Comp
-L agg-kicad:R R3
-U 1 1 5BF1EE02
-P 9200 1600
-F 0 "R3" H 9250 1778 50  0000 C CNN
-F 1 "120" H 9250 1687 50  0000 C CNN
-F 2 "agg:0402" H 9200 1600 50  0001 C CNN
-F 3 "http://www.farnell.com/datasheets/1911175.pdf" H 9200 1600 50  0001 C CNN
-F 4 "2379811" H 9200 1600 50  0001 C CNN "Farnell"
-	1    9200 1600
-	-1   0    0    -1  
-$EndComp
-$Comp
-L agg-kicad:R R20
-U 1 1 5BF1EE0A
-P 9700 1700
-F 0 "R20" H 9750 1878 50  0000 C CNN
-F 1 "120" H 9750 1787 50  0000 C CNN
-F 2 "agg:0402" H 9700 1700 50  0001 C CNN
-F 3 "http://www.farnell.com/datasheets/1911175.pdf" H 9700 1700 50  0001 C CNN
-F 4 "2379811" H 9700 1700 50  0001 C CNN "Farnell"
-	1    9700 1700
-	-1   0    0    -1  
-$EndComp
-$Comp
-L agg-kicad:R R4
-U 1 1 5BF1EE12
-P 9200 1900
-F 0 "R4" H 9250 2078 50  0000 C CNN
-F 1 "120" H 9250 1987 50  0000 C CNN
-F 2 "agg:0402" H 9200 1900 50  0001 C CNN
-F 3 "http://www.farnell.com/datasheets/1911175.pdf" H 9200 1900 50  0001 C CNN
-F 4 "2379811" H 9200 1900 50  0001 C CNN "Farnell"
-	1    9200 1900
-	-1   0    0    -1  
-$EndComp
-$Comp
-L agg-kicad:R R12
-U 1 1 5BF1EE1A
-P 9450 1800
-F 0 "R12" H 9500 1978 50  0000 C CNN
-F 1 "120" H 9500 1887 50  0000 C CNN
-F 2 "agg:0402" H 9450 1800 50  0001 C CNN
-F 3 "http://www.farnell.com/datasheets/1911175.pdf" H 9450 1800 50  0001 C CNN
-F 4 "2379811" H 9450 1800 50  0001 C CNN "Farnell"
-	1    9450 1800
-	-1   0    0    -1  
-$EndComp
-$Comp
-L agg-kicad:R R21
-U 1 1 5BF1EE22
-P 9700 2000
-F 0 "R21" H 9750 2178 50  0000 C CNN
-F 1 "120" H 9750 2087 50  0000 C CNN
-F 2 "agg:0402" H 9700 2000 50  0001 C CNN
-F 3 "http://www.farnell.com/datasheets/1911175.pdf" H 9700 2000 50  0001 C CNN
-F 4 "2379811" H 9700 2000 50  0001 C CNN "Farnell"
-	1    9700 2000
-	-1   0    0    -1  
 $EndComp
 Wire Wire Line
 	9750 1500 9450 1500
@@ -604,10 +503,10 @@ Wire Wire Line
 Wire Wire Line
 	9450 1800 9750 1800
 $Comp
-L agg-kicad:GND #PWR0103
+L agg-kicad:GND #PWR022
 U 1 1 5BF2B497
 P 9150 1250
-F 0 "#PWR0103" H 9020 1290 50  0001 L CNN
+F 0 "#PWR022" H 9020 1290 50  0001 L CNN
 F 1 "GND" H 9250 1200 50  0000 C CNN
 F 2 "" H 9150 1250 50  0001 C CNN
 F 3 "" H 9150 1250 50  0001 C CNN
@@ -628,10 +527,10 @@ Wire Wire Line
 	9750 1400 9700 1400
 NoConn ~ 9050 2100
 $Comp
-L agg-kicad:3v3 #PWR0104
+L agg-kicad:3v3 #PWR021
 U 1 1 5BF3E33A
 P 9150 1050
-F 0 "#PWR0104" H 9150 1160 50  0001 L CNN
+F 0 "#PWR021" H 9150 1160 50  0001 L CNN
 F 1 "3v3" H 9150 1174 50  0000 C CNN
 F 2 "" H 9150 1050 50  0001 C CNN
 F 3 "" H 9150 1050 50  0001 C CNN
@@ -659,90 +558,6 @@ F 4 "1332092" H 8350 2050 50  0001 L CNN "Farnell"
 	1    8650 2950
 	1    0    0    -1  
 $EndComp
-$Comp
-L agg-kicad:R R22
-U 1 1 5BF4F128
-P 9700 2750
-F 0 "R22" H 9750 2928 50  0000 C CNN
-F 1 "120" H 9750 2837 50  0000 C CNN
-F 2 "agg:0402" H 9700 2750 50  0001 C CNN
-F 3 "http://www.farnell.com/datasheets/1911175.pdf" H 9700 2750 50  0001 C CNN
-F 4 "2379811" H 9700 2750 50  0001 C CNN "Farnell"
-	1    9700 2750
-	-1   0    0    -1  
-$EndComp
-$Comp
-L agg-kicad:R R13
-U 1 1 5BF4F12F
-P 9450 2850
-F 0 "R13" H 9500 3028 50  0000 C CNN
-F 1 "120" H 9500 2937 50  0000 C CNN
-F 2 "agg:0402" H 9450 2850 50  0001 C CNN
-F 3 "http://www.farnell.com/datasheets/1911175.pdf" H 9450 2850 50  0001 C CNN
-F 4 "2379811" H 9450 2850 50  0001 C CNN "Farnell"
-	1    9450 2850
-	-1   0    0    -1  
-$EndComp
-$Comp
-L agg-kicad:R R5
-U 1 1 5BF4F136
-P 9200 2950
-F 0 "R5" H 9250 3128 50  0000 C CNN
-F 1 "120" H 9250 3037 50  0000 C CNN
-F 2 "agg:0402" H 9200 2950 50  0001 C CNN
-F 3 "http://www.farnell.com/datasheets/1911175.pdf" H 9200 2950 50  0001 C CNN
-F 4 "2379811" H 9200 2950 50  0001 C CNN "Farnell"
-	1    9200 2950
-	-1   0    0    -1  
-$EndComp
-$Comp
-L agg-kicad:R R23
-U 1 1 5BF4F13D
-P 9700 3050
-F 0 "R23" H 9750 3228 50  0000 C CNN
-F 1 "120" H 9750 3137 50  0000 C CNN
-F 2 "agg:0402" H 9700 3050 50  0001 C CNN
-F 3 "http://www.farnell.com/datasheets/1911175.pdf" H 9700 3050 50  0001 C CNN
-F 4 "2379811" H 9700 3050 50  0001 C CNN "Farnell"
-	1    9700 3050
-	-1   0    0    -1  
-$EndComp
-$Comp
-L agg-kicad:R R6
-U 1 1 5BF4F144
-P 9200 3250
-F 0 "R6" H 9250 3428 50  0000 C CNN
-F 1 "120" H 9250 3337 50  0000 C CNN
-F 2 "agg:0402" H 9200 3250 50  0001 C CNN
-F 3 "http://www.farnell.com/datasheets/1911175.pdf" H 9200 3250 50  0001 C CNN
-F 4 "2379811" H 9200 3250 50  0001 C CNN "Farnell"
-	1    9200 3250
-	-1   0    0    -1  
-$EndComp
-$Comp
-L agg-kicad:R R14
-U 1 1 5BF4F14B
-P 9450 3150
-F 0 "R14" H 9500 3328 50  0000 C CNN
-F 1 "120" H 9500 3237 50  0000 C CNN
-F 2 "agg:0402" H 9450 3150 50  0001 C CNN
-F 3 "http://www.farnell.com/datasheets/1911175.pdf" H 9450 3150 50  0001 C CNN
-F 4 "2379811" H 9450 3150 50  0001 C CNN "Farnell"
-	1    9450 3150
-	-1   0    0    -1  
-$EndComp
-$Comp
-L agg-kicad:R R24
-U 1 1 5BF4F152
-P 9700 3350
-F 0 "R24" H 9750 3528 50  0000 C CNN
-F 1 "120" H 9750 3437 50  0000 C CNN
-F 2 "agg:0402" H 9700 3350 50  0001 C CNN
-F 3 "http://www.farnell.com/datasheets/1911175.pdf" H 9700 3350 50  0001 C CNN
-F 4 "2379811" H 9700 3350 50  0001 C CNN "Farnell"
-	1    9700 3350
-	-1   0    0    -1  
-$EndComp
 Wire Wire Line
 	9750 2850 9450 2850
 Wire Wire Line
@@ -760,10 +575,10 @@ Wire Wire Line
 Wire Wire Line
 	9450 3150 9750 3150
 $Comp
-L agg-kicad:GND #PWR0105
+L agg-kicad:GND #PWR024
 U 1 1 5BF4F160
 P 9150 2600
-F 0 "#PWR0105" H 9020 2640 50  0001 L CNN
+F 0 "#PWR024" H 9020 2640 50  0001 L CNN
 F 1 "GND" H 9250 2600 50  0000 C CNN
 F 2 "" H 9150 2600 50  0001 C CNN
 F 3 "" H 9150 2600 50  0001 C CNN
@@ -784,10 +599,10 @@ Wire Wire Line
 	9750 2750 9700 2750
 NoConn ~ 9050 3450
 $Comp
-L agg-kicad:3v3 #PWR0106
+L agg-kicad:3v3 #PWR023
 U 1 1 5BF4F16D
 P 9150 2400
-F 0 "#PWR0106" H 9150 2510 50  0001 L CNN
+F 0 "#PWR023" H 9150 2510 50  0001 L CNN
 F 1 "3v3" H 9150 2524 50  0000 C CNN
 F 2 "" H 9150 2400 50  0001 C CNN
 F 3 "" H 9150 2400 50  0001 C CNN
@@ -815,90 +630,6 @@ F 4 "1332092" H 8350 3400 50  0001 L CNN "Farnell"
 	1    8650 4300
 	1    0    0    -1  
 $EndComp
-$Comp
-L agg-kicad:R R25
-U 1 1 5BF518C5
-P 9700 4100
-F 0 "R25" H 9750 4278 50  0000 C CNN
-F 1 "120" H 9750 4187 50  0000 C CNN
-F 2 "agg:0402" H 9700 4100 50  0001 C CNN
-F 3 "http://www.farnell.com/datasheets/1911175.pdf" H 9700 4100 50  0001 C CNN
-F 4 "2379811" H 9700 4100 50  0001 C CNN "Farnell"
-	1    9700 4100
-	-1   0    0    -1  
-$EndComp
-$Comp
-L agg-kicad:R R15
-U 1 1 5BF518CC
-P 9450 4200
-F 0 "R15" H 9500 4378 50  0000 C CNN
-F 1 "120" H 9500 4287 50  0000 C CNN
-F 2 "agg:0402" H 9450 4200 50  0001 C CNN
-F 3 "http://www.farnell.com/datasheets/1911175.pdf" H 9450 4200 50  0001 C CNN
-F 4 "2379811" H 9450 4200 50  0001 C CNN "Farnell"
-	1    9450 4200
-	-1   0    0    -1  
-$EndComp
-$Comp
-L agg-kicad:R R7
-U 1 1 5BF518D3
-P 9200 4300
-F 0 "R7" H 9250 4478 50  0000 C CNN
-F 1 "120" H 9250 4387 50  0000 C CNN
-F 2 "agg:0402" H 9200 4300 50  0001 C CNN
-F 3 "http://www.farnell.com/datasheets/1911175.pdf" H 9200 4300 50  0001 C CNN
-F 4 "2379811" H 9200 4300 50  0001 C CNN "Farnell"
-	1    9200 4300
-	-1   0    0    -1  
-$EndComp
-$Comp
-L agg-kicad:R R26
-U 1 1 5BF518DA
-P 9700 4400
-F 0 "R26" H 9750 4578 50  0000 C CNN
-F 1 "120" H 9750 4487 50  0000 C CNN
-F 2 "agg:0402" H 9700 4400 50  0001 C CNN
-F 3 "http://www.farnell.com/datasheets/1911175.pdf" H 9700 4400 50  0001 C CNN
-F 4 "2379811" H 9700 4400 50  0001 C CNN "Farnell"
-	1    9700 4400
-	-1   0    0    -1  
-$EndComp
-$Comp
-L agg-kicad:R R8
-U 1 1 5BF518E1
-P 9200 4600
-F 0 "R8" H 9250 4778 50  0000 C CNN
-F 1 "120" H 9250 4687 50  0000 C CNN
-F 2 "agg:0402" H 9200 4600 50  0001 C CNN
-F 3 "http://www.farnell.com/datasheets/1911175.pdf" H 9200 4600 50  0001 C CNN
-F 4 "2379811" H 9200 4600 50  0001 C CNN "Farnell"
-	1    9200 4600
-	-1   0    0    -1  
-$EndComp
-$Comp
-L agg-kicad:R R16
-U 1 1 5BF518E8
-P 9450 4500
-F 0 "R16" H 9500 4678 50  0000 C CNN
-F 1 "120" H 9500 4587 50  0000 C CNN
-F 2 "agg:0402" H 9450 4500 50  0001 C CNN
-F 3 "http://www.farnell.com/datasheets/1911175.pdf" H 9450 4500 50  0001 C CNN
-F 4 "2379811" H 9450 4500 50  0001 C CNN "Farnell"
-	1    9450 4500
-	-1   0    0    -1  
-$EndComp
-$Comp
-L agg-kicad:R R27
-U 1 1 5BF518EF
-P 9700 4700
-F 0 "R27" H 9750 4878 50  0000 C CNN
-F 1 "120" H 9750 4787 50  0000 C CNN
-F 2 "agg:0402" H 9700 4700 50  0001 C CNN
-F 3 "http://www.farnell.com/datasheets/1911175.pdf" H 9700 4700 50  0001 C CNN
-F 4 "2379811" H 9700 4700 50  0001 C CNN "Farnell"
-	1    9700 4700
-	-1   0    0    -1  
-$EndComp
 Wire Wire Line
 	9750 4200 9450 4200
 Wire Wire Line
@@ -916,10 +647,10 @@ Wire Wire Line
 Wire Wire Line
 	9450 4500 9750 4500
 $Comp
-L agg-kicad:GND #PWR0107
+L agg-kicad:GND #PWR026
 U 1 1 5BF518FD
 P 9150 3950
-F 0 "#PWR0107" H 9020 3990 50  0001 L CNN
+F 0 "#PWR026" H 9020 3990 50  0001 L CNN
 F 1 "GND" H 9250 3950 50  0000 C CNN
 F 2 "" H 9150 3950 50  0001 C CNN
 F 3 "" H 9150 3950 50  0001 C CNN
@@ -940,10 +671,10 @@ Wire Wire Line
 	9750 4100 9700 4100
 NoConn ~ 9050 4800
 $Comp
-L agg-kicad:3v3 #PWR0108
+L agg-kicad:3v3 #PWR025
 U 1 1 5BF5190A
 P 9150 3750
-F 0 "#PWR0108" H 9150 3860 50  0001 L CNN
+F 0 "#PWR025" H 9150 3860 50  0001 L CNN
 F 1 "3v3" H 9150 3874 50  0000 C CNN
 F 2 "" H 9150 3750 50  0001 C CNN
 F 3 "" H 9150 3750 50  0001 C CNN
@@ -960,166 +691,10 @@ Wire Wire Line
 Wire Wire Line
 	9150 3800 9150 3750
 $Comp
-L mcp23s08:MCP23S08 IC6
-U 1 1 5BF51916
-P 8650 5650
-F 0 "IC6" H 8650 6375 50  0000 C CNN
-F 1 "MCP23S08" H 8650 6284 50  0000 C CNN
-F 2 "agc-dsky:SOIC-18-W" H 8350 4950 50  0001 L CNN
-F 3 "http://www.farnell.com/datasheets/12174.pdf" H 8350 4850 50  0001 L CNN
-F 4 "1332092" H 8350 4750 50  0001 L CNN "Farnell"
-	1    8650 5650
-	1    0    0    -1  
-$EndComp
-$Comp
-L agg-kicad:R R28
-U 1 1 5BF5191D
-P 9700 5450
-F 0 "R28" H 9750 5628 50  0000 C CNN
-F 1 "120" H 9750 5537 50  0000 C CNN
-F 2 "agg:0402" H 9700 5450 50  0001 C CNN
-F 3 "http://www.farnell.com/datasheets/1911175.pdf" H 9700 5450 50  0001 C CNN
-F 4 "2379811" H 9700 5450 50  0001 C CNN "Farnell"
-	1    9700 5450
-	-1   0    0    -1  
-$EndComp
-$Comp
-L agg-kicad:R R17
-U 1 1 5BF51924
-P 9450 5550
-F 0 "R17" H 9500 5728 50  0000 C CNN
-F 1 "120" H 9500 5637 50  0000 C CNN
-F 2 "agg:0402" H 9450 5550 50  0001 C CNN
-F 3 "http://www.farnell.com/datasheets/1911175.pdf" H 9450 5550 50  0001 C CNN
-F 4 "2379811" H 9450 5550 50  0001 C CNN "Farnell"
-	1    9450 5550
-	-1   0    0    -1  
-$EndComp
-$Comp
-L agg-kicad:R R9
-U 1 1 5BF5192B
-P 9200 5650
-F 0 "R9" H 9250 5828 50  0000 C CNN
-F 1 "120" H 9250 5737 50  0000 C CNN
-F 2 "agg:0402" H 9200 5650 50  0001 C CNN
-F 3 "http://www.farnell.com/datasheets/1911175.pdf" H 9200 5650 50  0001 C CNN
-F 4 "2379811" H 9200 5650 50  0001 C CNN "Farnell"
-	1    9200 5650
-	-1   0    0    -1  
-$EndComp
-$Comp
-L agg-kicad:R R29
-U 1 1 5BF51932
-P 9700 5750
-F 0 "R29" H 9750 5928 50  0000 C CNN
-F 1 "120" H 9750 5837 50  0000 C CNN
-F 2 "agg:0402" H 9700 5750 50  0001 C CNN
-F 3 "http://www.farnell.com/datasheets/1911175.pdf" H 9700 5750 50  0001 C CNN
-F 4 "2379811" H 9700 5750 50  0001 C CNN "Farnell"
-	1    9700 5750
-	-1   0    0    -1  
-$EndComp
-$Comp
-L agg-kicad:R R10
-U 1 1 5BF51939
-P 9200 5950
-F 0 "R10" H 9250 6128 50  0000 C CNN
-F 1 "120" H 9250 6037 50  0000 C CNN
-F 2 "agg:0402" H 9200 5950 50  0001 C CNN
-F 3 "http://www.farnell.com/datasheets/1911175.pdf" H 9200 5950 50  0001 C CNN
-F 4 "2379811" H 9200 5950 50  0001 C CNN "Farnell"
-	1    9200 5950
-	-1   0    0    -1  
-$EndComp
-$Comp
-L agg-kicad:R R18
-U 1 1 5BF51940
-P 9450 5850
-F 0 "R18" H 9500 6028 50  0000 C CNN
-F 1 "120" H 9500 5937 50  0000 C CNN
-F 2 "agg:0402" H 9450 5850 50  0001 C CNN
-F 3 "http://www.farnell.com/datasheets/1911175.pdf" H 9450 5850 50  0001 C CNN
-F 4 "2379811" H 9450 5850 50  0001 C CNN "Farnell"
-	1    9450 5850
-	-1   0    0    -1  
-$EndComp
-$Comp
-L agg-kicad:R R30
-U 1 1 5BF51947
-P 9700 6050
-F 0 "R30" H 9750 6228 50  0000 C CNN
-F 1 "120" H 9750 6137 50  0000 C CNN
-F 2 "agg:0402" H 9700 6050 50  0001 C CNN
-F 3 "http://www.farnell.com/datasheets/1911175.pdf" H 9700 6050 50  0001 C CNN
-F 4 "2379811" H 9700 6050 50  0001 C CNN "Farnell"
-	1    9700 6050
-	-1   0    0    -1  
-$EndComp
-Wire Wire Line
-	9750 5550 9450 5550
-Wire Wire Line
-	9350 5550 9050 5550
-Wire Wire Line
-	9050 5650 9100 5650
-Wire Wire Line
-	9750 5650 9200 5650
-Wire Wire Line
-	9350 5850 9050 5850
-Wire Wire Line
-	9100 5950 9050 5950
-Wire Wire Line
-	9750 5950 9200 5950
-Wire Wire Line
-	9450 5850 9750 5850
-$Comp
-L agg-kicad:GND #PWR0109
-U 1 1 5BF51955
-P 9150 5300
-F 0 "#PWR0109" H 9020 5340 50  0001 L CNN
-F 1 "GND" H 9250 5300 50  0000 C CNN
-F 2 "" H 9150 5300 50  0001 C CNN
-F 3 "" H 9150 5300 50  0001 C CNN
-	1    9150 5300
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	9050 6050 9600 6050
-Wire Wire Line
-	9750 6050 9700 6050
-Wire Wire Line
-	9600 5750 9050 5750
-Wire Wire Line
-	9750 5750 9700 5750
-Wire Wire Line
-	9050 5450 9600 5450
-Wire Wire Line
-	9750 5450 9700 5450
-NoConn ~ 9050 6150
-$Comp
-L agg-kicad:3v3 #PWR0110
-U 1 1 5BF51962
-P 9150 5100
-F 0 "#PWR0110" H 9150 5210 50  0001 L CNN
-F 1 "3v3" H 9150 5224 50  0000 C CNN
-F 2 "" H 9150 5100 50  0001 C CNN
-F 3 "" H 9150 5100 50  0001 C CNN
-	1    9150 5100
-	1    0    0    -1  
-$EndComp
-NoConn ~ 8250 6150
-Wire Wire Line
-	9050 5250 9150 5250
-Wire Wire Line
-	9150 5250 9150 5300
-Wire Wire Line
-	9050 5150 9150 5150
-Wire Wire Line
-	9150 5150 9150 5100
-$Comp
-L agg-kicad:GND #PWR0111
+L agg-kicad:GND #PWR017
 U 1 1 5BF760A7
 P 8150 1650
-F 0 "#PWR0111" H 8020 1690 50  0001 L CNN
+F 0 "#PWR017" H 8020 1690 50  0001 L CNN
 F 1 "GND" H 8250 1650 50  0000 C CNN
 F 2 "" H 8150 1650 50  0001 C CNN
 F 3 "" H 8150 1650 50  0001 C CNN
@@ -1136,10 +711,10 @@ Connection ~ 8150 1600
 Wire Wire Line
 	8150 1600 8150 1650
 $Comp
-L agg-kicad:3v3 #PWR0112
+L agg-kicad:3v3 #PWR018
 U 1 1 5BF7FC7E
 P 8150 2850
-F 0 "#PWR0112" H 8150 2960 50  0001 L CNN
+F 0 "#PWR018" H 8150 2960 50  0001 L CNN
 F 1 "3v3" H 8150 2974 50  0000 C CNN
 F 2 "" H 8150 2850 50  0001 C CNN
 F 3 "" H 8150 2850 50  0001 C CNN
@@ -1147,10 +722,10 @@ F 3 "" H 8150 2850 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L agg-kicad:GND #PWR0113
+L agg-kicad:GND #PWR019
 U 1 1 5BF7FDFC
 P 8150 3000
-F 0 "#PWR0113" H 8020 3040 50  0001 L CNN
+F 0 "#PWR019" H 8020 3040 50  0001 L CNN
 F 1 "GND" H 8250 3000 50  0000 C CNN
 F 2 "" H 8150 3000 50  0001 C CNN
 F 3 "" H 8150 3000 50  0001 C CNN
@@ -1164,51 +739,16 @@ Wire Wire Line
 Wire Wire Line
 	8150 2950 8150 3000
 $Comp
-L agg-kicad:GND #PWR0114
-U 1 1 5BF8A2B8
-P 8150 4200
-F 0 "#PWR0114" H 8020 4240 50  0001 L CNN
-F 1 "GND" H 8050 4200 50  0000 C CNN
-F 2 "" H 8150 4200 50  0001 C CNN
-F 3 "" H 8150 4200 50  0001 C CNN
-	1    8150 4200
-	1    0    0    -1  
-$EndComp
-$Comp
-L agg-kicad:3v3 #PWR0115
+L agg-kicad:3v3 #PWR020
 U 1 1 5BF8FC78
-P 7900 4300
-F 0 "#PWR0115" H 7900 4410 50  0001 L CNN
-F 1 "3v3" H 7900 4424 50  0000 C CNN
-F 2 "" H 7900 4300 50  0001 C CNN
-F 3 "" H 7900 4300 50  0001 C CNN
-	1    7900 4300
+P 8150 4150
+F 0 "#PWR020" H 8150 4260 50  0001 L CNN
+F 1 "3v3" H 8150 4274 50  0000 C CNN
+F 2 "" H 8150 4150 50  0001 C CNN
+F 3 "" H 8150 4150 50  0001 C CNN
+	1    8150 4150
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	8150 4200 8250 4200
-Wire Wire Line
-	7900 4300 8250 4300
-$Comp
-L agg-kicad:3v3 #PWR0116
-U 1 1 5BF9AD22
-P 8150 5500
-F 0 "#PWR0116" H 8150 5610 50  0001 L CNN
-F 1 "3v3" H 8150 5624 50  0000 C CNN
-F 2 "" H 8150 5500 50  0001 C CNN
-F 3 "" H 8150 5500 50  0001 C CNN
-	1    8150 5500
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	8250 5550 8150 5550
-Wire Wire Line
-	8150 5550 8150 5500
-Wire Wire Line
-	8250 5650 8150 5650
-Wire Wire Line
-	8150 5650 8150 5550
-Connection ~ 8150 5550
 Wire Wire Line
 	8250 2450 7800 2450
 Wire Wire Line
@@ -1227,24 +767,6 @@ Wire Wire Line
 	7600 1300 7600 2650
 Wire Wire Line
 	7600 2650 8250 2650
-Wire Wire Line
-	8250 5150 7800 5150
-Wire Wire Line
-	7800 5150 7800 3800
-Wire Wire Line
-	7800 3800 8250 3800
-Wire Wire Line
-	8250 5250 7700 5250
-Wire Wire Line
-	7700 5250 7700 3900
-Wire Wire Line
-	7700 3900 8250 3900
-Wire Wire Line
-	8250 4000 7600 4000
-Wire Wire Line
-	7600 4000 7600 5350
-Wire Wire Line
-	7600 5350 8250 5350
 Text Label 7150 1100 0    50   ~ 0
 SPI1_SCK
 Text Label 7150 1200 0    50   ~ 0
@@ -1266,25 +788,12 @@ Text Label 7150 3900 0    50   ~ 0
 SPI2_SI
 Text Label 7150 4000 0    50   ~ 0
 SPI2_SO
-Wire Wire Line
-	7150 3800 7800 3800
-Wire Wire Line
-	7700 3900 7150 3900
-Wire Wire Line
-	7150 4000 7600 4000
-Connection ~ 7600 4000
-Connection ~ 7700 3900
-Connection ~ 7800 3800
 Text Label 6600 3450 2    50   ~ 0
 NRST_1
 Text Label 7950 3150 0    50   ~ 0
 NRST_2
 Text Label 7950 4500 0    50   ~ 0
 NRST_3
-Text Label 7950 5850 0    50   ~ 0
-NRST_4
-Text Label 7950 5950 0    50   ~ 0
-NCS_4
 Text Label 7950 4600 0    50   ~ 0
 NCS_3
 Text Label 7950 3250 0    50   ~ 0
@@ -1295,10 +804,6 @@ Wire Wire Line
 	7950 4500 8250 4500
 Wire Wire Line
 	8250 4600 7950 4600
-Wire Wire Line
-	7950 5850 8250 5850
-Wire Wire Line
-	7950 5950 8250 5950
 $Comp
 L agg-kicad:C C15
 U 1 1 5C0188B3
@@ -1341,20 +846,6 @@ F 4 "2810260" H 9150 3800 50  0001 C CNN "Farnell"
 $EndComp
 Connection ~ 9150 3800
 Connection ~ 9150 3900
-$Comp
-L agg-kicad:C C18
-U 1 1 5C018F23
-P 9150 5150
-F 0 "C18" V 9154 5208 50  0000 L CNN
-F 1 "100nF" V 9245 5208 50  0000 L CNN
-F 2 "agg:0402" H 9150 5150 50  0001 C CNN
-F 3 "http://www.farnell.com/datasheets/2373808.pdf" H 9150 5150 50  0001 C CNN
-F 4 "2810260" H 9150 5150 50  0001 C CNN "Farnell"
-	1    9150 5150
-	0    1    1    0   
-$EndComp
-Connection ~ 9150 5150
-Connection ~ 9150 5250
 Wire Wire Line
 	5250 2050 5200 2050
 Wire Wire Line
@@ -1380,10 +871,10 @@ Connection ~ 5200 2150
 Wire Wire Line
 	5200 2150 5200 2250
 $Comp
-L agg-kicad:GND #PWR0117
+L agg-kicad:GND #PWR016
 U 1 1 5C09F7D6
 P 5200 2500
-F 0 "#PWR0117" H 5070 2540 50  0001 L CNN
+F 0 "#PWR016" H 5070 2540 50  0001 L CNN
 F 1 "GND" H 5100 2500 50  0000 C CNN
 F 2 "" H 5200 2500 50  0001 C CNN
 F 3 "" H 5200 2500 50  0001 C CNN
@@ -1459,10 +950,10 @@ Wire Wire Line
 Wire Wire Line
 	4900 1650 5200 1650
 $Comp
-L agg-kicad:3v3 #PWR0118
+L agg-kicad:3v3 #PWR015
 U 1 1 5C19997B
 P 5200 1300
-F 0 "#PWR0118" H 5200 1410 50  0001 L CNN
+F 0 "#PWR015" H 5200 1410 50  0001 L CNN
 F 1 "3v3" H 5200 1424 50  0000 C CNN
 F 2 "" H 5200 1300 50  0001 C CNN
 F 3 "" H 5200 1300 50  0001 C CNN
@@ -1645,10 +1136,10 @@ F 4 "2810260" H 4950 3250 50  0001 C CNN "Farnell"
 	0    1    1    0   
 $EndComp
 $Comp
-L agg-kicad:GND #PWR0119
+L agg-kicad:GND #PWR014
 U 1 1 5C304CCF
 P 4950 3400
-F 0 "#PWR0119" H 4820 3440 50  0001 L CNN
+F 0 "#PWR014" H 4820 3440 50  0001 L CNN
 F 1 "GND" H 4850 3400 50  0000 C CNN
 F 2 "" H 4950 3400 50  0001 C CNN
 F 3 "" H 4950 3400 50  0001 C CNN
@@ -1656,10 +1147,10 @@ F 3 "" H 4950 3400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L agg-kicad:GND #PWR0120
+L agg-kicad:GND #PWR011
 U 1 1 5C304D64
 P 4350 3400
-F 0 "#PWR0120" H 4220 3440 50  0001 L CNN
+F 0 "#PWR011" H 4220 3440 50  0001 L CNN
 F 1 "GND" H 4250 3400 50  0000 C CNN
 F 2 "" H 4350 3400 50  0001 C CNN
 F 3 "" H 4350 3400 50  0001 C CNN
@@ -1689,10 +1180,10 @@ Connection ~ 4950 3250
 Wire Wire Line
 	4350 3150 5250 3150
 $Comp
-L agg-kicad:3v3 #PWR0121
+L agg-kicad:3v3 #PWR010
 U 1 1 5C3B1D26
 P 3800 3050
-F 0 "#PWR0121" H 3800 3160 50  0001 L CNN
+F 0 "#PWR010" H 3800 3160 50  0001 L CNN
 F 1 "3v3" H 3800 3174 50  0000 C CNN
 F 2 "" H 3800 3050 50  0001 C CNN
 F 3 "" H 3800 3050 50  0001 C CNN
@@ -1722,10 +1213,10 @@ SWDCLK
 Text Label 2450 3900 0    50   ~ 0
 NRST
 $Comp
-L agg-kicad:3v3 #PWR0122
+L agg-kicad:3v3 #PWR06
 U 1 1 5C3C5B9E
 P 2750 3750
-F 0 "#PWR0122" H 2750 3860 50  0001 L CNN
+F 0 "#PWR06" H 2750 3860 50  0001 L CNN
 F 1 "3v3" H 2750 3874 50  0000 C CNN
 F 2 "" H 2750 3750 50  0001 C CNN
 F 3 "" H 2750 3750 50  0001 C CNN
@@ -1733,10 +1224,10 @@ F 3 "" H 2750 3750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L agg-kicad:GND #PWR0123
+L agg-kicad:GND #PWR07
 U 1 1 5C3C5D4D
 P 2750 4050
-F 0 "#PWR0123" H 2620 4090 50  0001 L CNN
+F 0 "#PWR07" H 2620 4090 50  0001 L CNN
 F 1 "GND" H 2650 4050 50  0000 C CNN
 F 2 "" H 2750 4050 50  0001 C CNN
 F 3 "" H 2750 4050 50  0001 C CNN
@@ -1824,14 +1315,6 @@ Text Label 6700 1350 2    50   ~ 0
 NRST_2
 Text Label 6700 1450 2    50   ~ 0
 NCS_2
-Text Label 6600 3650 2    50   ~ 0
-NRST_4
-Text Label 6600 3750 2    50   ~ 0
-NCS_4
-Wire Wire Line
-	6600 3750 6250 3750
-Wire Wire Line
-	6250 3650 6600 3650
 Text Label 6700 2450 2    50   ~ 0
 NRST_3
 Text Label 6700 2550 2    50   ~ 0
@@ -1848,30 +1331,30 @@ Wire Wire Line
 	6250 2550 6700 2550
 Wire Wire Line
 	6250 2450 6700 2450
-Text Label 10550 4850 2    50   ~ 0
+Text Label 9500 4850 0    50   ~ 0
 Co1
-Text Label 10550 4950 2    50   ~ 0
+Text Label 9500 4950 0    50   ~ 0
 Co2
-Text Label 10550 5050 2    50   ~ 0
+Text Label 9500 5050 0    50   ~ 0
 Co3
-Text Label 10550 5150 2    50   ~ 0
+Text Label 9500 5150 0    50   ~ 0
 Co4
-Text Label 10550 5250 2    50   ~ 0
+Text Label 9500 5250 0    50   ~ 0
 Co5
-Text Label 10550 5350 2    50   ~ 0
+Text Label 9500 5350 0    50   ~ 0
 Co6
 Wire Wire Line
-	10300 4850 10550 4850
+	9750 4850 9500 4850
 Wire Wire Line
-	10550 4950 10300 4950
+	9500 4950 9750 4950
 Wire Wire Line
-	10300 5050 10550 5050
+	9750 5050 9500 5050
 Wire Wire Line
-	10550 5150 10300 5150
+	9500 5150 9750 5150
 Wire Wire Line
-	10300 5250 10550 5250
+	9750 5250 9500 5250
 Wire Wire Line
-	10550 5350 10300 5350
+	9500 5350 9750 5350
 Text Label 6650 1650 2    50   ~ 0
 Co1
 Text Label 6650 1750 2    50   ~ 0
@@ -1960,8 +1443,6 @@ NoConn ~ 6250 3050
 NoConn ~ 6250 3150
 NoConn ~ 6250 3350
 NoConn ~ 6250 3250
-NoConn ~ 6250 2250
-NoConn ~ 6250 2350
 NoConn ~ 6250 1550
 NoConn ~ 5250 3450
 NoConn ~ 5250 3550
@@ -1998,12 +1479,6 @@ Text Notes 5300 7650 0    100  ~ 0
 Keypad
 Wire Notes Line
 	7100 550  7100 6300
-Wire Notes Line
-	7100 6300 10600 6300
-Wire Notes Line
-	10600 6300 10600 550 
-Wire Notes Line
-	10600 550  7100 550 
 Text Notes 2750 2100 0    100  ~ 0
 Power
 $Comp
@@ -2051,10 +1526,10 @@ F 4 "1759476" H 750 850 50  0001 C CNN "Farnell"
 	0    1    1    0   
 $EndComp
 $Comp
-L agg-kicad:5v #PWR0124
+L agg-kicad:5v #PWR01
 U 1 1 5D08F337
 P 750 750
-F 0 "#PWR0124" H 750 860 50  0001 L CNN
+F 0 "#PWR01" H 750 860 50  0001 L CNN
 F 1 "5v" H 750 874 50  0000 C CNN
 F 2 "" H 750 750 50  0001 C CNN
 F 3 "" H 750 750 50  0001 C CNN
@@ -2062,10 +1537,10 @@ F 3 "" H 750 750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L agg-kicad:GND #PWR0125
+L agg-kicad:GND #PWR02
 U 1 1 5D0CA21E
 P 750 1000
-F 0 "#PWR0125" H 620 1040 50  0001 L CNN
+F 0 "#PWR02" H 620 1040 50  0001 L CNN
 F 1 "GND" H 650 1000 50  0000 C CNN
 F 2 "" H 750 1000 50  0001 C CNN
 F 3 "" H 750 1000 50  0001 C CNN
@@ -2108,10 +1583,10 @@ Wire Wire Line
 Wire Wire Line
 	1300 1300 1350 1300
 $Comp
-L agg-kicad:GND #PWR0126
+L agg-kicad:GND #PWR03
 U 1 1 5D2A359B
 P 1100 1250
-F 0 "#PWR0126" H 970 1290 50  0001 L CNN
+F 0 "#PWR03" H 970 1290 50  0001 L CNN
 F 1 "GND" H 1000 1250 50  0000 C CNN
 F 2 "" H 1100 1250 50  0001 C CNN
 F 3 "" H 1100 1250 50  0001 C CNN
@@ -2119,10 +1594,10 @@ F 3 "" H 1100 1250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L agg-kicad:GND #PWR0127
+L agg-kicad:GND #PWR04
 U 1 1 5D2A363A
 P 1300 2050
-F 0 "#PWR0127" H 1170 2090 50  0001 L CNN
+F 0 "#PWR04" H 1170 2090 50  0001 L CNN
 F 1 "GND" H 1200 2050 50  0000 C CNN
 F 2 "" H 1300 2050 50  0001 C CNN
 F 3 "" H 1300 2050 50  0001 C CNN
@@ -2187,10 +1662,10 @@ F 4 "1469649" H 2550 1000 50  0001 C CNN "Farnell"
 	0    1    1    0   
 $EndComp
 $Comp
-L agg-kicad:GND #PWR0128
+L agg-kicad:GND #PWR05
 U 1 1 5D3F3410
 P 2200 1200
-F 0 "#PWR0128" H 2070 1240 50  0001 L CNN
+F 0 "#PWR05" H 2070 1240 50  0001 L CNN
 F 1 "GND" H 2200 1100 50  0000 C CNN
 F 2 "" H 2200 1200 50  0001 C CNN
 F 3 "" H 2200 1200 50  0001 C CNN
@@ -2207,10 +1682,10 @@ Wire Wire Line
 Wire Wire Line
 	2950 800  2950 700 
 $Comp
-L agg-kicad:3v3 #PWR0129
+L agg-kicad:3v3 #PWR08
 U 1 1 5D45DBB3
 P 2950 700
-F 0 "#PWR0129" H 2950 810 50  0001 L CNN
+F 0 "#PWR08" H 2950 810 50  0001 L CNN
 F 1 "3v3" H 2950 824 50  0000 C CNN
 F 2 "" H 2950 700 50  0001 C CNN
 F 3 "" H 2950 700 50  0001 C CNN
@@ -2243,10 +1718,10 @@ F 4 "2494232RL" H 2950 1000 50  0001 C CNN "Farnell"
 	0    1    1    0   
 $EndComp
 $Comp
-L agg-kicad:GND #PWR0130
+L agg-kicad:GND #PWR09
 U 1 1 5D4F1F94
 P 2950 1250
-F 0 "#PWR0130" H 2820 1290 50  0001 L CNN
+F 0 "#PWR09" H 2820 1290 50  0001 L CNN
 F 1 "GND" H 2850 1250 50  0000 C CNN
 F 2 "" H 2950 1250 50  0001 C CNN
 F 3 "" H 2950 1250 50  0001 C CNN
@@ -2287,13 +1762,13 @@ F 4 "1469649" H 4350 3200 50  0001 C CNN "Farnell"
 	1    4350 3200
 	0    1    1    0   
 $EndComp
-Text Notes 7200 750  0    100  ~ 0
+Text Notes 7200 6200 0    100  ~ 0
 Lamps
 $Comp
-L agg-kicad:PWR #FLG0102
+L agg-kicad:PWR #FLG02
 U 1 1 5D6E4A2E
 P 2750 800
-F 0 "#FLG0102" H 2750 960 50  0001 C CNN
+F 0 "#FLG02" H 2750 960 50  0001 C CNN
 F 1 "PWR" H 2750 934 50  0000 C CNN
 F 2 "" H 2750 800 50  0001 C CNN
 F 3 "" H 2750 800 50  0001 C CNN
@@ -2304,10 +1779,10 @@ Connection ~ 2750 800
 Wire Wire Line
 	2750 800  2950 800 
 $Comp
-L agg-kicad:PWR #FLG0101
+L agg-kicad:PWR #FLG01
 U 1 1 5D6E54B0
 P 1150 1750
-F 0 "#FLG0101" H 1150 1910 50  0001 C CNN
+F 0 "#FLG01" H 1150 1910 50  0001 C CNN
 F 1 "PWR" H 1150 1884 50  0000 C CNN
 F 2 "" H 1150 1750 50  0001 C CNN
 F 3 "" H 1150 1750 50  0001 C CNN
@@ -2318,4 +1793,349 @@ Wire Wire Line
 	1150 1750 1150 1800
 Wire Wire Line
 	1150 1800 1300 1800
+Text Label 9500 5450 0    50   ~ 0
+Co7
+Wire Notes Line
+	10600 6300 10600 550 
+Wire Notes Line
+	10600 550  7100 550 
+Wire Notes Line
+	7100 6300 10600 6300
+Wire Wire Line
+	9750 5450 9500 5450
+Text Label 6650 2250 2    50   ~ 0
+Co7
+Wire Wire Line
+	6250 2250 6650 2250
+Wire Wire Line
+	7150 3900 8250 3900
+Wire Wire Line
+	7150 4000 8250 4000
+Wire Wire Line
+	7150 3800 8250 3800
+NoConn ~ 6250 3750
+NoConn ~ 6250 3650
+Text Label 9500 5550 0    50   ~ 0
+Co8
+Wire Wire Line
+	9500 5550 9750 5550
+Wire Wire Line
+	8150 4150 8150 4200
+Wire Wire Line
+	8150 4300 8250 4300
+Wire Wire Line
+	8250 4200 8150 4200
+Connection ~ 8150 4200
+Wire Wire Line
+	8150 4200 8150 4300
+$Comp
+L agg-kicad:R R21
+U 1 1 5EDC5E11
+P 9600 4100
+AR Path="/5EDC5E11" Ref="R21"  Part="1" 
+AR Path="/5BE4E3B4/5EDC5E11" Ref="R?"  Part="1" 
+F 0 "R21" H 9650 4278 50  0000 C CNN
+F 1 "100" H 9650 4187 50  0000 C CNN
+F 2 "agg:0603" H 9600 4100 50  0001 C CNN
+F 3 "http://www.farnell.com/datasheets/2310790.pdf" H 9600 4100 50  0001 C CNN
+F 4 "2616742" H 9600 4100 50  0001 C CNN "Farnell"
+	1    9600 4100
+	1    0    0    -1  
+$EndComp
+$Comp
+L agg-kicad:R R13
+U 1 1 5EDE49CA
+P 9350 4200
+AR Path="/5EDE49CA" Ref="R13"  Part="1" 
+AR Path="/5BE4E3B4/5EDE49CA" Ref="R?"  Part="1" 
+F 0 "R13" H 9400 4378 50  0000 C CNN
+F 1 "100" H 9400 4287 50  0000 C CNN
+F 2 "agg:0603" H 9350 4200 50  0001 C CNN
+F 3 "http://www.farnell.com/datasheets/2310790.pdf" H 9350 4200 50  0001 C CNN
+F 4 "2616742" H 9350 4200 50  0001 C CNN "Farnell"
+	1    9350 4200
+	1    0    0    -1  
+$EndComp
+$Comp
+L agg-kicad:R R7
+U 1 1 5EE03590
+P 9100 4300
+AR Path="/5EE03590" Ref="R7"  Part="1" 
+AR Path="/5BE4E3B4/5EE03590" Ref="R?"  Part="1" 
+F 0 "R7" H 9150 4478 50  0000 C CNN
+F 1 "100" H 9150 4387 50  0000 C CNN
+F 2 "agg:0603" H 9100 4300 50  0001 C CNN
+F 3 "http://www.farnell.com/datasheets/2310790.pdf" H 9100 4300 50  0001 C CNN
+F 4 "2616742" H 9100 4300 50  0001 C CNN "Farnell"
+	1    9100 4300
+	1    0    0    -1  
+$EndComp
+$Comp
+L agg-kicad:R R22
+U 1 1 5EE22149
+P 9600 4400
+AR Path="/5EE22149" Ref="R22"  Part="1" 
+AR Path="/5BE4E3B4/5EE22149" Ref="R?"  Part="1" 
+F 0 "R22" H 9650 4578 50  0000 C CNN
+F 1 "100" H 9650 4487 50  0000 C CNN
+F 2 "agg:0603" H 9600 4400 50  0001 C CNN
+F 3 "http://www.farnell.com/datasheets/2310790.pdf" H 9600 4400 50  0001 C CNN
+F 4 "2616742" H 9600 4400 50  0001 C CNN "Farnell"
+	1    9600 4400
+	1    0    0    -1  
+$EndComp
+$Comp
+L agg-kicad:R R14
+U 1 1 5EE40D03
+P 9350 4500
+AR Path="/5EE40D03" Ref="R14"  Part="1" 
+AR Path="/5BE4E3B4/5EE40D03" Ref="R?"  Part="1" 
+F 0 "R14" H 9400 4678 50  0000 C CNN
+F 1 "100" H 9400 4587 50  0000 C CNN
+F 2 "agg:0603" H 9350 4500 50  0001 C CNN
+F 3 "http://www.farnell.com/datasheets/2310790.pdf" H 9350 4500 50  0001 C CNN
+F 4 "2616742" H 9350 4500 50  0001 C CNN "Farnell"
+	1    9350 4500
+	1    0    0    -1  
+$EndComp
+$Comp
+L agg-kicad:R R8
+U 1 1 5EE5F8C0
+P 9100 4600
+AR Path="/5EE5F8C0" Ref="R8"  Part="1" 
+AR Path="/5BE4E3B4/5EE5F8C0" Ref="R?"  Part="1" 
+F 0 "R8" H 9150 4778 50  0000 C CNN
+F 1 "100" H 9150 4687 50  0000 C CNN
+F 2 "agg:0603" H 9100 4600 50  0001 C CNN
+F 3 "http://www.farnell.com/datasheets/2310790.pdf" H 9100 4600 50  0001 C CNN
+F 4 "2616742" H 9100 4600 50  0001 C CNN "Farnell"
+	1    9100 4600
+	1    0    0    -1  
+$EndComp
+$Comp
+L agg-kicad:R R23
+U 1 1 5EE7E47C
+P 9600 4700
+AR Path="/5EE7E47C" Ref="R23"  Part="1" 
+AR Path="/5BE4E3B4/5EE7E47C" Ref="R?"  Part="1" 
+F 0 "R23" H 9650 4878 50  0000 C CNN
+F 1 "100" H 9650 4787 50  0000 C CNN
+F 2 "agg:0603" H 9600 4700 50  0001 C CNN
+F 3 "http://www.farnell.com/datasheets/2310790.pdf" H 9600 4700 50  0001 C CNN
+F 4 "2616742" H 9600 4700 50  0001 C CNN "Farnell"
+	1    9600 4700
+	1    0    0    -1  
+$EndComp
+$Comp
+L agg-kicad:R R11
+U 1 1 5EE9D354
+P 9350 2850
+AR Path="/5EE9D354" Ref="R11"  Part="1" 
+AR Path="/5BE4E3B4/5EE9D354" Ref="R?"  Part="1" 
+F 0 "R11" H 9400 3028 50  0000 C CNN
+F 1 "100" H 9400 2937 50  0000 C CNN
+F 2 "agg:0603" H 9350 2850 50  0001 C CNN
+F 3 "http://www.farnell.com/datasheets/2310790.pdf" H 9350 2850 50  0001 C CNN
+F 4 "2616742" H 9350 2850 50  0001 C CNN "Farnell"
+	1    9350 2850
+	1    0    0    -1  
+$EndComp
+$Comp
+L agg-kicad:R R18
+U 1 1 5EEBBF0B
+P 9600 2750
+AR Path="/5EEBBF0B" Ref="R18"  Part="1" 
+AR Path="/5BE4E3B4/5EEBBF0B" Ref="R?"  Part="1" 
+F 0 "R18" H 9650 2928 50  0000 C CNN
+F 1 "100" H 9650 2837 50  0000 C CNN
+F 2 "agg:0603" H 9600 2750 50  0001 C CNN
+F 3 "http://www.farnell.com/datasheets/2310790.pdf" H 9600 2750 50  0001 C CNN
+F 4 "2616742" H 9600 2750 50  0001 C CNN "Farnell"
+	1    9600 2750
+	1    0    0    -1  
+$EndComp
+$Comp
+L agg-kicad:R R5
+U 1 1 5EEDAACD
+P 9100 2950
+AR Path="/5EEDAACD" Ref="R5"  Part="1" 
+AR Path="/5BE4E3B4/5EEDAACD" Ref="R?"  Part="1" 
+F 0 "R5" H 9150 3128 50  0000 C CNN
+F 1 "100" H 9150 3037 50  0000 C CNN
+F 2 "agg:0603" H 9100 2950 50  0001 C CNN
+F 3 "http://www.farnell.com/datasheets/2310790.pdf" H 9100 2950 50  0001 C CNN
+F 4 "2616742" H 9100 2950 50  0001 C CNN "Farnell"
+	1    9100 2950
+	1    0    0    -1  
+$EndComp
+$Comp
+L agg-kicad:R R19
+U 1 1 5EEF968E
+P 9600 3050
+AR Path="/5EEF968E" Ref="R19"  Part="1" 
+AR Path="/5BE4E3B4/5EEF968E" Ref="R?"  Part="1" 
+F 0 "R19" H 9650 3228 50  0000 C CNN
+F 1 "100" H 9650 3137 50  0000 C CNN
+F 2 "agg:0603" H 9600 3050 50  0001 C CNN
+F 3 "http://www.farnell.com/datasheets/2310790.pdf" H 9600 3050 50  0001 C CNN
+F 4 "2616742" H 9600 3050 50  0001 C CNN "Farnell"
+	1    9600 3050
+	1    0    0    -1  
+$EndComp
+$Comp
+L agg-kicad:R R12
+U 1 1 5EF1824A
+P 9350 3150
+AR Path="/5EF1824A" Ref="R12"  Part="1" 
+AR Path="/5BE4E3B4/5EF1824A" Ref="R?"  Part="1" 
+F 0 "R12" H 9400 3328 50  0000 C CNN
+F 1 "100" H 9400 3237 50  0000 C CNN
+F 2 "agg:0603" H 9350 3150 50  0001 C CNN
+F 3 "http://www.farnell.com/datasheets/2310790.pdf" H 9350 3150 50  0001 C CNN
+F 4 "2616742" H 9350 3150 50  0001 C CNN "Farnell"
+	1    9350 3150
+	1    0    0    -1  
+$EndComp
+$Comp
+L agg-kicad:R R6
+U 1 1 5EF36E07
+P 9100 3250
+AR Path="/5EF36E07" Ref="R6"  Part="1" 
+AR Path="/5BE4E3B4/5EF36E07" Ref="R?"  Part="1" 
+F 0 "R6" H 9150 3428 50  0000 C CNN
+F 1 "100" H 9150 3337 50  0000 C CNN
+F 2 "agg:0603" H 9100 3250 50  0001 C CNN
+F 3 "http://www.farnell.com/datasheets/2310790.pdf" H 9100 3250 50  0001 C CNN
+F 4 "2616742" H 9100 3250 50  0001 C CNN "Farnell"
+	1    9100 3250
+	1    0    0    -1  
+$EndComp
+$Comp
+L agg-kicad:R R20
+U 1 1 5EF559C5
+P 9600 3350
+AR Path="/5EF559C5" Ref="R20"  Part="1" 
+AR Path="/5BE4E3B4/5EF559C5" Ref="R?"  Part="1" 
+F 0 "R20" H 9650 3528 50  0000 C CNN
+F 1 "100" H 9650 3437 50  0000 C CNN
+F 2 "agg:0603" H 9600 3350 50  0001 C CNN
+F 3 "http://www.farnell.com/datasheets/2310790.pdf" H 9600 3350 50  0001 C CNN
+F 4 "2616742" H 9600 3350 50  0001 C CNN "Farnell"
+	1    9600 3350
+	1    0    0    -1  
+$EndComp
+$Comp
+L agg-kicad:R R15
+U 1 1 5EF749B3
+P 9600 1400
+AR Path="/5EF749B3" Ref="R15"  Part="1" 
+AR Path="/5BE4E3B4/5EF749B3" Ref="R?"  Part="1" 
+F 0 "R15" H 9650 1578 50  0000 C CNN
+F 1 "100" H 9650 1487 50  0000 C CNN
+F 2 "agg:0603" H 9600 1400 50  0001 C CNN
+F 3 "http://www.farnell.com/datasheets/2310790.pdf" H 9600 1400 50  0001 C CNN
+F 4 "2616742" H 9600 1400 50  0001 C CNN "Farnell"
+	1    9600 1400
+	1    0    0    -1  
+$EndComp
+$Comp
+L agg-kicad:R R9
+U 1 1 5EF9356D
+P 9350 1500
+AR Path="/5EF9356D" Ref="R9"  Part="1" 
+AR Path="/5BE4E3B4/5EF9356D" Ref="R?"  Part="1" 
+F 0 "R9" H 9400 1678 50  0000 C CNN
+F 1 "100" H 9400 1587 50  0000 C CNN
+F 2 "agg:0603" H 9350 1500 50  0001 C CNN
+F 3 "http://www.farnell.com/datasheets/2310790.pdf" H 9350 1500 50  0001 C CNN
+F 4 "2616742" H 9350 1500 50  0001 C CNN "Farnell"
+	1    9350 1500
+	1    0    0    -1  
+$EndComp
+$Comp
+L agg-kicad:R R3
+U 1 1 5EFB212C
+P 9100 1600
+AR Path="/5EFB212C" Ref="R3"  Part="1" 
+AR Path="/5BE4E3B4/5EFB212C" Ref="R?"  Part="1" 
+F 0 "R3" H 9150 1778 50  0000 C CNN
+F 1 "100" H 9150 1687 50  0000 C CNN
+F 2 "agg:0603" H 9100 1600 50  0001 C CNN
+F 3 "http://www.farnell.com/datasheets/2310790.pdf" H 9100 1600 50  0001 C CNN
+F 4 "2616742" H 9100 1600 50  0001 C CNN "Farnell"
+	1    9100 1600
+	1    0    0    -1  
+$EndComp
+$Comp
+L agg-kicad:R R16
+U 1 1 5EFD0CEA
+P 9600 1700
+AR Path="/5EFD0CEA" Ref="R16"  Part="1" 
+AR Path="/5BE4E3B4/5EFD0CEA" Ref="R?"  Part="1" 
+F 0 "R16" H 9650 1878 50  0000 C CNN
+F 1 "100" H 9650 1787 50  0000 C CNN
+F 2 "agg:0603" H 9600 1700 50  0001 C CNN
+F 3 "http://www.farnell.com/datasheets/2310790.pdf" H 9600 1700 50  0001 C CNN
+F 4 "2616742" H 9600 1700 50  0001 C CNN "Farnell"
+	1    9600 1700
+	1    0    0    -1  
+$EndComp
+$Comp
+L agg-kicad:R R10
+U 1 1 5EFEF8A9
+P 9350 1800
+AR Path="/5EFEF8A9" Ref="R10"  Part="1" 
+AR Path="/5BE4E3B4/5EFEF8A9" Ref="R?"  Part="1" 
+F 0 "R10" H 9400 1978 50  0000 C CNN
+F 1 "100" H 9400 1887 50  0000 C CNN
+F 2 "agg:0603" H 9350 1800 50  0001 C CNN
+F 3 "http://www.farnell.com/datasheets/2310790.pdf" H 9350 1800 50  0001 C CNN
+F 4 "2616742" H 9350 1800 50  0001 C CNN "Farnell"
+	1    9350 1800
+	1    0    0    -1  
+$EndComp
+$Comp
+L agg-kicad:R R4
+U 1 1 5F00E469
+P 9100 1900
+AR Path="/5F00E469" Ref="R4"  Part="1" 
+AR Path="/5BE4E3B4/5F00E469" Ref="R?"  Part="1" 
+F 0 "R4" H 9150 2078 50  0000 C CNN
+F 1 "100" H 9150 1987 50  0000 C CNN
+F 2 "agg:0603" H 9100 1900 50  0001 C CNN
+F 3 "http://www.farnell.com/datasheets/2310790.pdf" H 9100 1900 50  0001 C CNN
+F 4 "2616742" H 9100 1900 50  0001 C CNN "Farnell"
+	1    9100 1900
+	1    0    0    -1  
+$EndComp
+$Comp
+L agg-kicad:R R17
+U 1 1 5F02D06A
+P 9600 2000
+AR Path="/5F02D06A" Ref="R17"  Part="1" 
+AR Path="/5BE4E3B4/5F02D06A" Ref="R?"  Part="1" 
+F 0 "R17" H 9650 2178 50  0000 C CNN
+F 1 "100" H 9650 2087 50  0000 C CNN
+F 2 "agg:0603" H 9600 2000 50  0001 C CNN
+F 3 "http://www.farnell.com/datasheets/2310790.pdf" H 9600 2000 50  0001 C CNN
+F 4 "2616742" H 9600 2000 50  0001 C CNN "Farnell"
+	1    9600 2000
+	1    0    0    -1  
+$EndComp
+$Comp
+L stm32f072rbt6:STM32F072RBT6 IC2
+U 1 1 5BE360CC
+P 5750 3150
+F 0 "IC2" H 5750 5175 50  0000 C CNN
+F 1 "STM32F072RBT6" H 5750 5084 50  0000 C CNN
+F 2 "agg:LQFP-64" H 5350 1150 50  0001 L CNN
+F 3 "https://www.st.com/resource/en/datasheet/stm32f072c8.pdf" H 5350 1050 50  0001 L CNN
+F 4 "2432096" H 5350 950 50  0001 L CNN "Farnell"
+	1    5750 3150
+	1    0    0    -1  
+$EndComp
+Text Label 6650 2350 2    50   ~ 0
+Co8
+Wire Wire Line
+	6250 2350 6650 2350
 $EndSCHEMATC
