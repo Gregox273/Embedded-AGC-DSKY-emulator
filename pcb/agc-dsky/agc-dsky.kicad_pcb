@@ -2,8 +2,8 @@
 
   (general
     (thickness 1.6)
-    (drawings 51)
-    (tracks 2258)
+    (drawings 52)
+    (tracks 2259)
     (zones 0)
     (modules 152)
     (nets 114)
@@ -41,7 +41,7 @@
   )
 
   (setup
-    (last_trace_width 0.25)
+    (last_trace_width 0.3)
     (user_trace_width 0.2)
     (user_trace_width 0.25)
     (user_trace_width 0.3)
@@ -5973,6 +5973,9 @@
     )
   )
 
+  (gr_text "Gregory Brooks 2018" (at 134.75 33.25) (layer F.SilkS)
+    (effects (font (size 1.5 1.5) (thickness 0.3)))
+  )
   (gr_line (start 110.5 110.25) (end 146 110.25) (layer B.SilkS) (width 0.2))
   (gr_line (start 110.5 31.5) (end 146 31.5) (layer B.SilkS) (width 0.2))
   (gr_arc (start 146 107.75) (end 148.5 107.75) (angle 90) (layer B.SilkS) (width 0.2) (tstamp 5BEC44EB))
@@ -6057,6 +6060,7 @@
   (gr_line (start 58.75 35) (end 58.75 145) (layer Edge.Cuts) (width 0.2) (tstamp 5BE75F84))
   (gr_line (start 144.75 30) (end 63.75 30) (layer Edge.Cuts) (width 0.2) (tstamp 5BE7DC6A))
 
+  (segment (start 114.5 93.5) (end 118 93.5) (width 0.3) (layer B.Cu) (net 2))
   (segment (start 146.75 107.5) (end 147.25 107) (width 0.3) (layer F.Cu) (net 1))
   (segment (start 146.75 113.230002) (end 146.75 107.5) (width 0.3) (layer F.Cu) (net 1))
   (segment (start 145.575 113.55) (end 146.430002 113.55) (width 0.3) (layer F.Cu) (net 1) (status 10))
