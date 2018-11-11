@@ -1,0 +1,2930 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="D">
+  <design>
+    <source>C:\Users\grego\Embedded-AGC-DSKY-emulator\pcb\agc-dsky\agc-dsky.sch</source>
+    <date>11/11/2018 20:48:56</date>
+    <tool>Eeschema (5.0.0-rc3-dev)</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title>AGC DSKY Emulator</title>
+        <company/>
+        <rev>v0.5</rev>
+        <date>2018-11-10</date>
+        <source>agc-dsky.sch</source>
+        <comment number="1" value="Gregory Brooks"/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="2" name="/7-segs/" tstamps="/5BE4E3B4/">
+      <title_block>
+        <title>AGC DSKY Emulator: 7 Segment Displays</title>
+        <company/>
+        <rev>v0.4</rev>
+        <date>2018-11-10</date>
+        <source>7-segs.sch</source>
+        <comment number="1" value="Gregory Brooks"/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="3" name="/LEDs/" tstamps="/5CAD9882/">
+      <title_block>
+        <title>AGC DSKY Emulator: Indicator Lamps</title>
+        <company/>
+        <rev>v0.1</rev>
+        <date>2018-11-10</date>
+        <source>LEDs.sch</source>
+        <comment number="1" value="Gregory Brooks"/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="SW1">
+      <value>SKPMAME010</value>
+      <footprint>agc-dsky:SKPM</footprint>
+      <datasheet>http://www.farnell.com/datasheets/1582292.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2056804</field>
+      </fields>
+      <libsource lib="agg-kicad" part="SWITCH_SPST" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BE239EA</tstamp>
+    </comp>
+    <comp ref="SW2">
+      <value>SKPMAME010</value>
+      <footprint>agc-dsky:SKPM</footprint>
+      <datasheet>http://www.farnell.com/datasheets/1582292.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2056804</field>
+      </fields>
+      <libsource lib="agg-kicad" part="SWITCH_SPST" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BE239F0</tstamp>
+    </comp>
+    <comp ref="SW3">
+      <value>SKPMAME010</value>
+      <footprint>agc-dsky:SKPM</footprint>
+      <datasheet>http://www.farnell.com/datasheets/1582292.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2056804</field>
+      </fields>
+      <libsource lib="agg-kicad" part="SWITCH_SPST" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BE239F6</tstamp>
+    </comp>
+    <comp ref="SW5">
+      <value>SKPMAME010</value>
+      <footprint>agc-dsky:SKPM</footprint>
+      <datasheet>http://www.farnell.com/datasheets/1582292.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2056804</field>
+      </fields>
+      <libsource lib="agg-kicad" part="SWITCH_SPST" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BE23AB6</tstamp>
+    </comp>
+    <comp ref="SW6">
+      <value>SKPMAME010</value>
+      <footprint>agc-dsky:SKPM</footprint>
+      <datasheet>http://www.farnell.com/datasheets/1582292.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2056804</field>
+      </fields>
+      <libsource lib="agg-kicad" part="SWITCH_SPST" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BE23ABC</tstamp>
+    </comp>
+    <comp ref="SW7">
+      <value>SKPMAME010</value>
+      <footprint>agc-dsky:SKPM</footprint>
+      <datasheet>http://www.farnell.com/datasheets/1582292.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2056804</field>
+      </fields>
+      <libsource lib="agg-kicad" part="SWITCH_SPST" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BE23AC2</tstamp>
+    </comp>
+    <comp ref="SW10">
+      <value>SKPMAME010</value>
+      <footprint>agc-dsky:SKPM</footprint>
+      <datasheet>http://www.farnell.com/datasheets/1582292.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2056804</field>
+      </fields>
+      <libsource lib="agg-kicad" part="SWITCH_SPST" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BE23AC8</tstamp>
+    </comp>
+    <comp ref="SW11">
+      <value>SKPMAME010</value>
+      <footprint>agc-dsky:SKPM</footprint>
+      <datasheet>http://www.farnell.com/datasheets/1582292.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2056804</field>
+      </fields>
+      <libsource lib="agg-kicad" part="SWITCH_SPST" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BE23ACE</tstamp>
+    </comp>
+    <comp ref="SW12">
+      <value>SKPMAME010</value>
+      <footprint>agc-dsky:SKPM</footprint>
+      <datasheet>http://www.farnell.com/datasheets/1582292.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2056804</field>
+      </fields>
+      <libsource lib="agg-kicad" part="SWITCH_SPST" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BE23AD4</tstamp>
+    </comp>
+    <comp ref="SW14">
+      <value>SKPMAME010</value>
+      <footprint>agc-dsky:SKPM</footprint>
+      <datasheet>http://www.farnell.com/datasheets/1582292.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2056804</field>
+      </fields>
+      <libsource lib="agg-kicad" part="SWITCH_SPST" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BE2468C</tstamp>
+    </comp>
+    <comp ref="SW15">
+      <value>SKPMAME010</value>
+      <footprint>agc-dsky:SKPM</footprint>
+      <datasheet>http://www.farnell.com/datasheets/1582292.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2056804</field>
+      </fields>
+      <libsource lib="agg-kicad" part="SWITCH_SPST" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BE24692</tstamp>
+    </comp>
+    <comp ref="SW16">
+      <value>SKPMAME010</value>
+      <footprint>agc-dsky:SKPM</footprint>
+      <datasheet>http://www.farnell.com/datasheets/1582292.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2056804</field>
+      </fields>
+      <libsource lib="agg-kicad" part="SWITCH_SPST" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BE24698</tstamp>
+    </comp>
+    <comp ref="SW18">
+      <value>SKPMAME010</value>
+      <footprint>agc-dsky:SKPM</footprint>
+      <datasheet>http://www.farnell.com/datasheets/1582292.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2056804</field>
+      </fields>
+      <libsource lib="agg-kicad" part="SWITCH_SPST" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BE2469E</tstamp>
+    </comp>
+    <comp ref="SW19">
+      <value>SKPMAME010</value>
+      <footprint>agc-dsky:SKPM</footprint>
+      <datasheet>http://www.farnell.com/datasheets/1582292.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2056804</field>
+      </fields>
+      <libsource lib="agg-kicad" part="SWITCH_SPST" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BE246A4</tstamp>
+    </comp>
+    <comp ref="SW20">
+      <value>SKPMAME010</value>
+      <footprint>agc-dsky:SKPM</footprint>
+      <datasheet>http://www.farnell.com/datasheets/1582292.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2056804</field>
+      </fields>
+      <libsource lib="agg-kicad" part="SWITCH_SPST" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BE246AA</tstamp>
+    </comp>
+    <comp ref="SW4">
+      <value>SKPMAME010</value>
+      <footprint>agc-dsky:SKPM</footprint>
+      <datasheet>http://www.farnell.com/datasheets/1582292.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2056804</field>
+      </fields>
+      <libsource lib="agg-kicad" part="SWITCH_SPST" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BE26FD9</tstamp>
+    </comp>
+    <comp ref="SW8">
+      <value>SKPMAME010</value>
+      <footprint>agc-dsky:SKPM</footprint>
+      <datasheet>http://www.farnell.com/datasheets/1582292.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2056804</field>
+      </fields>
+      <libsource lib="agg-kicad" part="SWITCH_SPST" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BE26FDF</tstamp>
+    </comp>
+    <comp ref="SW13">
+      <value>SKPMAME010</value>
+      <footprint>agc-dsky:SKPM</footprint>
+      <datasheet>http://www.farnell.com/datasheets/1582292.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2056804</field>
+      </fields>
+      <libsource lib="agg-kicad" part="SWITCH_SPST" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BE26FE5</tstamp>
+    </comp>
+    <comp ref="SW17">
+      <value>SKPMAME010</value>
+      <footprint>agc-dsky:SKPM</footprint>
+      <datasheet>http://www.farnell.com/datasheets/1582292.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2056804</field>
+      </fields>
+      <libsource lib="agg-kicad" part="SWITCH_SPST" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BE26FEB</tstamp>
+    </comp>
+    <comp ref="J1">
+      <value>MICROUSB</value>
+      <footprint>agg:MICROUSB_MOLEX_47589-0001</footprint>
+      <fields>
+        <field name="Mouser">538-47589-0001</field>
+      </fields>
+      <libsource lib="agg-kicad" part="MICROUSB" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BE3627E</tstamp>
+    </comp>
+    <comp ref="IC3">
+      <value>MCP23S08</value>
+      <footprint>agc-dsky:SOIC-18-W</footprint>
+      <datasheet>http://www.farnell.com/datasheets/12174.pdf</datasheet>
+      <fields>
+        <field name="Farnell">1332092</field>
+      </fields>
+      <libsource lib="mcp23s08" part="MCP23S08" description="I/O Expander, 8 bit, SPI"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BEF6439</tstamp>
+    </comp>
+    <comp ref="IC4">
+      <value>MCP23S08</value>
+      <footprint>agc-dsky:SOIC-18-W</footprint>
+      <datasheet>http://www.farnell.com/datasheets/12174.pdf</datasheet>
+      <fields>
+        <field name="Farnell">1332092</field>
+      </fields>
+      <libsource lib="mcp23s08" part="MCP23S08" description="I/O Expander, 8 bit, SPI"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BF4F121</tstamp>
+    </comp>
+    <comp ref="IC5">
+      <value>MCP23S08</value>
+      <footprint>agc-dsky:SOIC-18-W</footprint>
+      <datasheet>http://www.farnell.com/datasheets/12174.pdf</datasheet>
+      <fields>
+        <field name="Farnell">1332092</field>
+      </fields>
+      <libsource lib="mcp23s08" part="MCP23S08" description="I/O Expander, 8 bit, SPI"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BF518BE</tstamp>
+    </comp>
+    <comp ref="C15">
+      <value>100nF</value>
+      <footprint>agg:0402</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2373808.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2810260</field>
+      </fields>
+      <libsource lib="agg-kicad" part="C" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5C0188B3</tstamp>
+    </comp>
+    <comp ref="C16">
+      <value>100nF</value>
+      <footprint>agg:0402</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2373808.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2810260</field>
+      </fields>
+      <libsource lib="agg-kicad" part="C" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5C018B98</tstamp>
+    </comp>
+    <comp ref="C17">
+      <value>100nF</value>
+      <footprint>agg:0402</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2373808.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2810260</field>
+      </fields>
+      <libsource lib="agg-kicad" part="C" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5C018DCF</tstamp>
+    </comp>
+    <comp ref="C8">
+      <value>4.7uF</value>
+      <footprint>agg:0805</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2291921.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2309036</field>
+      </fields>
+      <libsource lib="agg-kicad" part="C" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5C12FD22</tstamp>
+    </comp>
+    <comp ref="C9">
+      <value>1uF</value>
+      <footprint>agg:0603</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2031757.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2533941</field>
+      </fields>
+      <libsource lib="agg-kicad" part="C" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5C12FFA9</tstamp>
+    </comp>
+    <comp ref="C7">
+      <value>100nF</value>
+      <footprint>agg:0402</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2373808.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2810260</field>
+      </fields>
+      <libsource lib="agg-kicad" part="C" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5C2CDC08</tstamp>
+    </comp>
+    <comp ref="C13">
+      <value>100nF</value>
+      <footprint>agg:0402</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2373808.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2810260</field>
+      </fields>
+      <libsource lib="agg-kicad" part="C" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5C2CE145</tstamp>
+    </comp>
+    <comp ref="C10">
+      <value>100nF</value>
+      <footprint>agg:0402</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2373808.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2810260</field>
+      </fields>
+      <libsource lib="agg-kicad" part="C" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5C2CE1DF</tstamp>
+    </comp>
+    <comp ref="C11">
+      <value>100nF</value>
+      <footprint>agg:0402</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2373808.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2810260</field>
+      </fields>
+      <libsource lib="agg-kicad" part="C" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5C2CE41B</tstamp>
+    </comp>
+    <comp ref="C12">
+      <value>10nF</value>
+      <footprint>agg:0603</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2340522.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2496825</field>
+      </fields>
+      <libsource lib="agg-kicad" part="C" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5C130136</tstamp>
+    </comp>
+    <comp ref="C6">
+      <value>4.7uF</value>
+      <footprint>agg:0805</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2291921.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2309036</field>
+      </fields>
+      <libsource lib="agg-kicad" part="C" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5C2E0B11</tstamp>
+    </comp>
+    <comp ref="SW9">
+      <value>SKHHALA010</value>
+      <footprint>agc-dsky:MOM_SWITCH</footprint>
+      <datasheet>http://www.farnell.com/datasheets/1582297.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2056809</field>
+      </fields>
+      <libsource lib="agg-kicad" part="SWITCH_SPST" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5C2F30FF</tstamp>
+    </comp>
+    <comp ref="P1">
+      <value>SWD_TC</value>
+      <footprint>agg:TC2030-NL</footprint>
+      <libsource lib="agg-kicad" part="SWD_TC" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5C304762</tstamp>
+    </comp>
+    <comp ref="C14">
+      <value>100nF</value>
+      <footprint>agg:0402</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2373808.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2810260</field>
+      </fields>
+      <libsource lib="agg-kicad" part="C" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5C3048ED</tstamp>
+    </comp>
+    <comp ref="IC1">
+      <value>TPS62132</value>
+      <footprint>agg:QFN-16-EP-TI</footprint>
+      <datasheet>http://www.ti.com/lit/ds/symlink/tps62132.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2492468</field>
+      </fields>
+      <libsource lib="agg-kicad" part="TPS62132" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5C3C4BD2</tstamp>
+    </comp>
+    <comp ref="C4">
+      <value>100nF</value>
+      <footprint>agg:0402</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2373808.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2810260</field>
+      </fields>
+      <libsource lib="agg-kicad" part="C" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5C45DBDB</tstamp>
+    </comp>
+    <comp ref="C2">
+      <value>100nF</value>
+      <footprint>agg:0402</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2373808.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2810260</field>
+      </fields>
+      <libsource lib="agg-kicad" part="C" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D01C8B5</tstamp>
+    </comp>
+    <comp ref="C3">
+      <value>3.3nF</value>
+      <footprint>agg:0402</footprint>
+      <datasheet>http://www.farnell.com/datasheets/1901289.pdf</datasheet>
+      <fields>
+        <field name="Farnell">1758997</field>
+      </fields>
+      <libsource lib="agg-kicad" part="C" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D0551D8</tstamp>
+    </comp>
+    <comp ref="C1">
+      <value>10uF</value>
+      <footprint>agg:0805</footprint>
+      <datasheet>http://www.farnell.com/datasheets/1870458.pdf</datasheet>
+      <fields>
+        <field name="Farnell">1759476</field>
+      </fields>
+      <libsource lib="agg-kicad" part="C" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D071E6A</tstamp>
+    </comp>
+    <comp ref="L1">
+      <value>2.2uH</value>
+      <footprint>agg:XFL4020</footprint>
+      <datasheet>https://www.mouser.co.uk/datasheet/2/597/xfl4020-270756.pdf</datasheet>
+      <fields>
+        <field name="Mouser">994-XFL4020-222MEB</field>
+      </fields>
+      <libsource lib="agg-kicad" part="L" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D3F2724</tstamp>
+    </comp>
+    <comp ref="R1">
+      <value>100k</value>
+      <footprint>agg:0603</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2310790.pdf</datasheet>
+      <fields>
+        <field name="Farnell">1469649</field>
+      </fields>
+      <libsource lib="agg-kicad" part="R" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D3F2E14</tstamp>
+    </comp>
+    <comp ref="C5">
+      <value>22uF</value>
+      <footprint>agg:0603</footprint>
+      <datasheet>http://www.farnell.com/datasheets/1955681.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2494232RL</field>
+      </fields>
+      <libsource lib="agg-kicad" part="C" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D4F1F8D</tstamp>
+    </comp>
+    <comp ref="R2">
+      <value>100k</value>
+      <footprint>agg:0603</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2310790.pdf</datasheet>
+      <fields>
+        <field name="Farnell">1469649</field>
+      </fields>
+      <libsource lib="agg-kicad" part="R" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5D6E37F7</tstamp>
+    </comp>
+    <comp ref="R21">
+      <value>100</value>
+      <footprint>agg:0603</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2310790.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2616742</field>
+      </fields>
+      <libsource lib="agg-kicad" part="R" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EDC5E11</tstamp>
+    </comp>
+    <comp ref="R13">
+      <value>100</value>
+      <footprint>agg:0603</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2310790.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2616742</field>
+      </fields>
+      <libsource lib="agg-kicad" part="R" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EDE49CA</tstamp>
+    </comp>
+    <comp ref="R7">
+      <value>100</value>
+      <footprint>agg:0603</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2310790.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2616742</field>
+      </fields>
+      <libsource lib="agg-kicad" part="R" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EE03590</tstamp>
+    </comp>
+    <comp ref="R22">
+      <value>100</value>
+      <footprint>agg:0603</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2310790.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2616742</field>
+      </fields>
+      <libsource lib="agg-kicad" part="R" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EE22149</tstamp>
+    </comp>
+    <comp ref="R14">
+      <value>100</value>
+      <footprint>agg:0603</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2310790.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2616742</field>
+      </fields>
+      <libsource lib="agg-kicad" part="R" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EE40D03</tstamp>
+    </comp>
+    <comp ref="R8">
+      <value>100</value>
+      <footprint>agg:0603</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2310790.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2616742</field>
+      </fields>
+      <libsource lib="agg-kicad" part="R" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EE5F8C0</tstamp>
+    </comp>
+    <comp ref="R23">
+      <value>100</value>
+      <footprint>agg:0603</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2310790.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2616742</field>
+      </fields>
+      <libsource lib="agg-kicad" part="R" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EE7E47C</tstamp>
+    </comp>
+    <comp ref="R11">
+      <value>100</value>
+      <footprint>agg:0603</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2310790.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2616742</field>
+      </fields>
+      <libsource lib="agg-kicad" part="R" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EE9D354</tstamp>
+    </comp>
+    <comp ref="R18">
+      <value>100</value>
+      <footprint>agg:0603</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2310790.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2616742</field>
+      </fields>
+      <libsource lib="agg-kicad" part="R" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EEBBF0B</tstamp>
+    </comp>
+    <comp ref="R5">
+      <value>100</value>
+      <footprint>agg:0603</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2310790.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2616742</field>
+      </fields>
+      <libsource lib="agg-kicad" part="R" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EEDAACD</tstamp>
+    </comp>
+    <comp ref="R19">
+      <value>100</value>
+      <footprint>agg:0603</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2310790.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2616742</field>
+      </fields>
+      <libsource lib="agg-kicad" part="R" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EEF968E</tstamp>
+    </comp>
+    <comp ref="R12">
+      <value>100</value>
+      <footprint>agg:0603</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2310790.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2616742</field>
+      </fields>
+      <libsource lib="agg-kicad" part="R" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EF1824A</tstamp>
+    </comp>
+    <comp ref="R6">
+      <value>100</value>
+      <footprint>agg:0603</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2310790.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2616742</field>
+      </fields>
+      <libsource lib="agg-kicad" part="R" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EF36E07</tstamp>
+    </comp>
+    <comp ref="R20">
+      <value>100</value>
+      <footprint>agg:0603</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2310790.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2616742</field>
+      </fields>
+      <libsource lib="agg-kicad" part="R" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EF559C5</tstamp>
+    </comp>
+    <comp ref="R15">
+      <value>100</value>
+      <footprint>agg:0603</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2310790.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2616742</field>
+      </fields>
+      <libsource lib="agg-kicad" part="R" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EF749B3</tstamp>
+    </comp>
+    <comp ref="R9">
+      <value>100</value>
+      <footprint>agg:0603</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2310790.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2616742</field>
+      </fields>
+      <libsource lib="agg-kicad" part="R" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EF9356D</tstamp>
+    </comp>
+    <comp ref="R3">
+      <value>100</value>
+      <footprint>agg:0603</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2310790.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2616742</field>
+      </fields>
+      <libsource lib="agg-kicad" part="R" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EFB212C</tstamp>
+    </comp>
+    <comp ref="R16">
+      <value>100</value>
+      <footprint>agg:0603</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2310790.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2616742</field>
+      </fields>
+      <libsource lib="agg-kicad" part="R" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EFD0CEA</tstamp>
+    </comp>
+    <comp ref="R10">
+      <value>100</value>
+      <footprint>agg:0603</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2310790.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2616742</field>
+      </fields>
+      <libsource lib="agg-kicad" part="R" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5EFEF8A9</tstamp>
+    </comp>
+    <comp ref="R4">
+      <value>100</value>
+      <footprint>agg:0603</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2310790.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2616742</field>
+      </fields>
+      <libsource lib="agg-kicad" part="R" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F00E469</tstamp>
+    </comp>
+    <comp ref="R17">
+      <value>100</value>
+      <footprint>agg:0603</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2310790.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2616742</field>
+      </fields>
+      <libsource lib="agg-kicad" part="R" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5F02D06A</tstamp>
+    </comp>
+    <comp ref="IC2">
+      <value>STM32F072RBT6</value>
+      <footprint>agg:LQFP-64</footprint>
+      <datasheet>https://www.st.com/resource/en/datasheet/stm32f072c8.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2432096</field>
+      </fields>
+      <libsource lib="stm32f072rbt6" part="STM32F072RBT6" description="STM32F072RBT6 Microcontroller (16KB RAM, 128KB program memory)"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BE360CC</tstamp>
+    </comp>
+    <comp ref="IC9">
+      <value>LDS-3161AX</value>
+      <footprint>agc-dsky:LDS-3161AX</footprint>
+      <datasheet>https://datasheet.lcsc.com/szlcsc/Made-in-China-FJ3161BH_C10690.pdf</datasheet>
+      <fields>
+        <field name="AliExpress">https://www.aliexpress.com/item/10pcs-Green-LED-Display-0-36inch-1-Bit-7-Segment-Display-COMMON-ANODE-Or-Common-Cathode/32399242126.html?spm=2114.search0604.3.1.41e94959APVMZd&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_317_10548_10696_10192_10190_5728812_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_10103_5733515_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28-0&amp;algo_pvid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28</field>
+      </fields>
+      <libsource lib="lds-3161ax" part="LDS-3161AX" description="Green 0.36&quot; 7 segment display (common cathode LED)"/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5BE4E5C5</tstamp>
+    </comp>
+    <comp ref="IC12">
+      <value>LDS-3161AX</value>
+      <footprint>agc-dsky:LDS-3161AX</footprint>
+      <datasheet>https://datasheet.lcsc.com/szlcsc/Made-in-China-FJ3161BH_C10690.pdf</datasheet>
+      <fields>
+        <field name="AliExpress">https://www.aliexpress.com/item/10pcs-Green-LED-Display-0-36inch-1-Bit-7-Segment-Display-COMMON-ANODE-Or-Common-Cathode/32399242126.html?spm=2114.search0604.3.1.41e94959APVMZd&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_317_10548_10696_10192_10190_5728812_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_10103_5733515_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28-0&amp;algo_pvid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28</field>
+      </fields>
+      <libsource lib="lds-3161ax" part="LDS-3161AX" description="Green 0.36&quot; 7 segment display (common cathode LED)"/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5BE4E9C2</tstamp>
+    </comp>
+    <comp ref="IC15">
+      <value>LDS-3161AX</value>
+      <footprint>agc-dsky:LDS-3161AX</footprint>
+      <datasheet>https://datasheet.lcsc.com/szlcsc/Made-in-China-FJ3161BH_C10690.pdf</datasheet>
+      <fields>
+        <field name="AliExpress">https://www.aliexpress.com/item/10pcs-Green-LED-Display-0-36inch-1-Bit-7-Segment-Display-COMMON-ANODE-Or-Common-Cathode/32399242126.html?spm=2114.search0604.3.1.41e94959APVMZd&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_317_10548_10696_10192_10190_5728812_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_10103_5733515_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28-0&amp;algo_pvid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28</field>
+      </fields>
+      <libsource lib="lds-3161ax" part="LDS-3161AX" description="Green 0.36&quot; 7 segment display (common cathode LED)"/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5BE4E9C9</tstamp>
+    </comp>
+    <comp ref="IC18">
+      <value>LDS-3161AX</value>
+      <footprint>agc-dsky:LDS-3161AX</footprint>
+      <datasheet>https://datasheet.lcsc.com/szlcsc/Made-in-China-FJ3161BH_C10690.pdf</datasheet>
+      <fields>
+        <field name="AliExpress">https://www.aliexpress.com/item/10pcs-Green-LED-Display-0-36inch-1-Bit-7-Segment-Display-COMMON-ANODE-Or-Common-Cathode/32399242126.html?spm=2114.search0604.3.1.41e94959APVMZd&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_317_10548_10696_10192_10190_5728812_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_10103_5733515_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28-0&amp;algo_pvid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28</field>
+      </fields>
+      <libsource lib="lds-3161ax" part="LDS-3161AX" description="Green 0.36&quot; 7 segment display (common cathode LED)"/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5BE4EAA8</tstamp>
+    </comp>
+    <comp ref="IC26">
+      <value>LDS-3161AX</value>
+      <footprint>agc-dsky:LDS-3161AX</footprint>
+      <datasheet>https://datasheet.lcsc.com/szlcsc/Made-in-China-FJ3161BH_C10690.pdf</datasheet>
+      <fields>
+        <field name="AliExpress">https://www.aliexpress.com/item/10pcs-Green-LED-Display-0-36inch-1-Bit-7-Segment-Display-COMMON-ANODE-Or-Common-Cathode/32399242126.html?spm=2114.search0604.3.1.41e94959APVMZd&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_317_10548_10696_10192_10190_5728812_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_10103_5733515_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28-0&amp;algo_pvid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28</field>
+      </fields>
+      <libsource lib="lds-3161ax" part="LDS-3161AX" description="Green 0.36&quot; 7 segment display (common cathode LED)"/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5BE4FA7E</tstamp>
+    </comp>
+    <comp ref="IC6">
+      <value>LDS-3161AX</value>
+      <footprint>agc-dsky:LDS-3161AX</footprint>
+      <datasheet>https://datasheet.lcsc.com/szlcsc/Made-in-China-FJ3161BH_C10690.pdf</datasheet>
+      <fields>
+        <field name="AliExpress">https://www.aliexpress.com/item/10pcs-Green-LED-Display-0-36inch-1-Bit-7-Segment-Display-COMMON-ANODE-Or-Common-Cathode/32399242126.html?spm=2114.search0604.3.1.41e94959APVMZd&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_317_10548_10696_10192_10190_5728812_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_10103_5733515_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28-0&amp;algo_pvid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28</field>
+      </fields>
+      <libsource lib="lds-3161ax" part="LDS-3161AX" description="Green 0.36&quot; 7 segment display (common cathode LED)"/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5BE4E4B0</tstamp>
+    </comp>
+    <comp ref="IC22">
+      <value>LDS-3161AX</value>
+      <footprint>agc-dsky:LDS-3161AX</footprint>
+      <datasheet>https://datasheet.lcsc.com/szlcsc/Made-in-China-FJ3161BH_C10690.pdf</datasheet>
+      <fields>
+        <field name="AliExpress">https://www.aliexpress.com/item/10pcs-Green-LED-Display-0-36inch-1-Bit-7-Segment-Display-COMMON-ANODE-Or-Common-Cathode/32399242126.html?spm=2114.search0604.3.1.41e94959APVMZd&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_317_10548_10696_10192_10190_5728812_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_10103_5733515_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28-0&amp;algo_pvid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28</field>
+      </fields>
+      <libsource lib="lds-3161ax" part="LDS-3161AX" description="Green 0.36&quot; 7 segment display (common cathode LED)"/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5BE68139</tstamp>
+    </comp>
+    <comp ref="IC23">
+      <value>LDS-3161AX</value>
+      <footprint>agc-dsky:LDS-3161AX</footprint>
+      <datasheet>https://datasheet.lcsc.com/szlcsc/Made-in-China-FJ3161BH_C10690.pdf</datasheet>
+      <fields>
+        <field name="AliExpress">https://www.aliexpress.com/item/10pcs-Green-LED-Display-0-36inch-1-Bit-7-Segment-Display-COMMON-ANODE-Or-Common-Cathode/32399242126.html?spm=2114.search0604.3.1.41e94959APVMZd&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_317_10548_10696_10192_10190_5728812_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_10103_5733515_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28-0&amp;algo_pvid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28</field>
+      </fields>
+      <libsource lib="lds-3161ax" part="LDS-3161AX" description="Green 0.36&quot; 7 segment display (common cathode LED)"/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5BE68140</tstamp>
+    </comp>
+    <comp ref="IC24">
+      <value>LDS-3161AX</value>
+      <footprint>agc-dsky:LDS-3161AX</footprint>
+      <datasheet>https://datasheet.lcsc.com/szlcsc/Made-in-China-FJ3161BH_C10690.pdf</datasheet>
+      <fields>
+        <field name="AliExpress">https://www.aliexpress.com/item/10pcs-Green-LED-Display-0-36inch-1-Bit-7-Segment-Display-COMMON-ANODE-Or-Common-Cathode/32399242126.html?spm=2114.search0604.3.1.41e94959APVMZd&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_317_10548_10696_10192_10190_5728812_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_10103_5733515_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28-0&amp;algo_pvid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28</field>
+      </fields>
+      <libsource lib="lds-3161ax" part="LDS-3161AX" description="Green 0.36&quot; 7 segment display (common cathode LED)"/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5BE68147</tstamp>
+    </comp>
+    <comp ref="IC25">
+      <value>LDS-3161AX</value>
+      <footprint>agc-dsky:LDS-3161AX</footprint>
+      <datasheet>https://datasheet.lcsc.com/szlcsc/Made-in-China-FJ3161BH_C10690.pdf</datasheet>
+      <fields>
+        <field name="AliExpress">https://www.aliexpress.com/item/10pcs-Green-LED-Display-0-36inch-1-Bit-7-Segment-Display-COMMON-ANODE-Or-Common-Cathode/32399242126.html?spm=2114.search0604.3.1.41e94959APVMZd&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_317_10548_10696_10192_10190_5728812_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_10103_5733515_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28-0&amp;algo_pvid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28</field>
+      </fields>
+      <libsource lib="lds-3161ax" part="LDS-3161AX" description="Green 0.36&quot; 7 segment display (common cathode LED)"/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5BE6814E</tstamp>
+    </comp>
+    <comp ref="IC21">
+      <value>LDS-3161AX</value>
+      <footprint>agc-dsky:LDS-3161AX</footprint>
+      <datasheet>https://datasheet.lcsc.com/szlcsc/Made-in-China-FJ3161BH_C10690.pdf</datasheet>
+      <fields>
+        <field name="AliExpress">https://www.aliexpress.com/item/10pcs-Green-LED-Display-0-36inch-1-Bit-7-Segment-Display-COMMON-ANODE-Or-Common-Cathode/32399242126.html?spm=2114.search0604.3.1.41e94959APVMZd&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_317_10548_10696_10192_10190_5728812_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_10103_5733515_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28-0&amp;algo_pvid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28</field>
+      </fields>
+      <libsource lib="lds-3161ax" part="LDS-3161AX" description="Green 0.36&quot; 7 segment display (common cathode LED)"/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5BE68187</tstamp>
+    </comp>
+    <comp ref="IC10">
+      <value>LDS-3161AX</value>
+      <footprint>agc-dsky:LDS-3161AX</footprint>
+      <datasheet>https://datasheet.lcsc.com/szlcsc/Made-in-China-FJ3161BH_C10690.pdf</datasheet>
+      <fields>
+        <field name="AliExpress">https://www.aliexpress.com/item/10pcs-Green-LED-Display-0-36inch-1-Bit-7-Segment-Display-COMMON-ANODE-Or-Common-Cathode/32399242126.html?spm=2114.search0604.3.1.41e94959APVMZd&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_317_10548_10696_10192_10190_5728812_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_10103_5733515_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28-0&amp;algo_pvid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28</field>
+      </fields>
+      <libsource lib="lds-3161ax" part="LDS-3161AX" description="Green 0.36&quot; 7 segment display (common cathode LED)"/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5BE74524</tstamp>
+    </comp>
+    <comp ref="IC13">
+      <value>LDS-3161AX</value>
+      <footprint>agc-dsky:LDS-3161AX</footprint>
+      <datasheet>https://datasheet.lcsc.com/szlcsc/Made-in-China-FJ3161BH_C10690.pdf</datasheet>
+      <fields>
+        <field name="AliExpress">https://www.aliexpress.com/item/10pcs-Green-LED-Display-0-36inch-1-Bit-7-Segment-Display-COMMON-ANODE-Or-Common-Cathode/32399242126.html?spm=2114.search0604.3.1.41e94959APVMZd&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_317_10548_10696_10192_10190_5728812_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_10103_5733515_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28-0&amp;algo_pvid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28</field>
+      </fields>
+      <libsource lib="lds-3161ax" part="LDS-3161AX" description="Green 0.36&quot; 7 segment display (common cathode LED)"/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5BE7452B</tstamp>
+    </comp>
+    <comp ref="IC16">
+      <value>LDS-3161AX</value>
+      <footprint>agc-dsky:LDS-3161AX</footprint>
+      <datasheet>https://datasheet.lcsc.com/szlcsc/Made-in-China-FJ3161BH_C10690.pdf</datasheet>
+      <fields>
+        <field name="AliExpress">https://www.aliexpress.com/item/10pcs-Green-LED-Display-0-36inch-1-Bit-7-Segment-Display-COMMON-ANODE-Or-Common-Cathode/32399242126.html?spm=2114.search0604.3.1.41e94959APVMZd&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_317_10548_10696_10192_10190_5728812_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_10103_5733515_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28-0&amp;algo_pvid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28</field>
+      </fields>
+      <libsource lib="lds-3161ax" part="LDS-3161AX" description="Green 0.36&quot; 7 segment display (common cathode LED)"/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5BE74532</tstamp>
+    </comp>
+    <comp ref="IC19">
+      <value>LDS-3161AX</value>
+      <footprint>agc-dsky:LDS-3161AX</footprint>
+      <datasheet>https://datasheet.lcsc.com/szlcsc/Made-in-China-FJ3161BH_C10690.pdf</datasheet>
+      <fields>
+        <field name="AliExpress">https://www.aliexpress.com/item/10pcs-Green-LED-Display-0-36inch-1-Bit-7-Segment-Display-COMMON-ANODE-Or-Common-Cathode/32399242126.html?spm=2114.search0604.3.1.41e94959APVMZd&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_317_10548_10696_10192_10190_5728812_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_10103_5733515_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28-0&amp;algo_pvid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28</field>
+      </fields>
+      <libsource lib="lds-3161ax" part="LDS-3161AX" description="Green 0.36&quot; 7 segment display (common cathode LED)"/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5BE74539</tstamp>
+    </comp>
+    <comp ref="IC7">
+      <value>LDS-3161AX</value>
+      <footprint>agc-dsky:LDS-3161AX</footprint>
+      <datasheet>https://datasheet.lcsc.com/szlcsc/Made-in-China-FJ3161BH_C10690.pdf</datasheet>
+      <fields>
+        <field name="AliExpress">https://www.aliexpress.com/item/10pcs-Green-LED-Display-0-36inch-1-Bit-7-Segment-Display-COMMON-ANODE-Or-Common-Cathode/32399242126.html?spm=2114.search0604.3.1.41e94959APVMZd&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_317_10548_10696_10192_10190_5728812_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_10103_5733515_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28-0&amp;algo_pvid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28</field>
+      </fields>
+      <libsource lib="lds-3161ax" part="LDS-3161AX" description="Green 0.36&quot; 7 segment display (common cathode LED)"/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5BE74572</tstamp>
+    </comp>
+    <comp ref="IC11">
+      <value>LDS-3161AX</value>
+      <footprint>agc-dsky:LDS-3161AX</footprint>
+      <datasheet>https://datasheet.lcsc.com/szlcsc/Made-in-China-FJ3161BH_C10690.pdf</datasheet>
+      <fields>
+        <field name="AliExpress">https://www.aliexpress.com/item/10pcs-Green-LED-Display-0-36inch-1-Bit-7-Segment-Display-COMMON-ANODE-Or-Common-Cathode/32399242126.html?spm=2114.search0604.3.1.41e94959APVMZd&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_317_10548_10696_10192_10190_5728812_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_10103_5733515_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28-0&amp;algo_pvid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28</field>
+      </fields>
+      <libsource lib="lds-3161ax" part="LDS-3161AX" description="Green 0.36&quot; 7 segment display (common cathode LED)"/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5BE82F72</tstamp>
+    </comp>
+    <comp ref="IC14">
+      <value>LDS-3161AX</value>
+      <footprint>agc-dsky:LDS-3161AX</footprint>
+      <datasheet>https://datasheet.lcsc.com/szlcsc/Made-in-China-FJ3161BH_C10690.pdf</datasheet>
+      <fields>
+        <field name="AliExpress">https://www.aliexpress.com/item/10pcs-Green-LED-Display-0-36inch-1-Bit-7-Segment-Display-COMMON-ANODE-Or-Common-Cathode/32399242126.html?spm=2114.search0604.3.1.41e94959APVMZd&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_317_10548_10696_10192_10190_5728812_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_10103_5733515_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28-0&amp;algo_pvid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28</field>
+      </fields>
+      <libsource lib="lds-3161ax" part="LDS-3161AX" description="Green 0.36&quot; 7 segment display (common cathode LED)"/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5BE82F79</tstamp>
+    </comp>
+    <comp ref="IC17">
+      <value>LDS-3161AX</value>
+      <footprint>agc-dsky:LDS-3161AX</footprint>
+      <datasheet>https://datasheet.lcsc.com/szlcsc/Made-in-China-FJ3161BH_C10690.pdf</datasheet>
+      <fields>
+        <field name="AliExpress">https://www.aliexpress.com/item/10pcs-Green-LED-Display-0-36inch-1-Bit-7-Segment-Display-COMMON-ANODE-Or-Common-Cathode/32399242126.html?spm=2114.search0604.3.1.41e94959APVMZd&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_317_10548_10696_10192_10190_5728812_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_10103_5733515_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28-0&amp;algo_pvid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28</field>
+      </fields>
+      <libsource lib="lds-3161ax" part="LDS-3161AX" description="Green 0.36&quot; 7 segment display (common cathode LED)"/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5BE82F80</tstamp>
+    </comp>
+    <comp ref="IC20">
+      <value>LDS-3161AX</value>
+      <footprint>agc-dsky:LDS-3161AX</footprint>
+      <datasheet>https://datasheet.lcsc.com/szlcsc/Made-in-China-FJ3161BH_C10690.pdf</datasheet>
+      <fields>
+        <field name="AliExpress">https://www.aliexpress.com/item/10pcs-Green-LED-Display-0-36inch-1-Bit-7-Segment-Display-COMMON-ANODE-Or-Common-Cathode/32399242126.html?spm=2114.search0604.3.1.41e94959APVMZd&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_317_10548_10696_10192_10190_5728812_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_10103_5733515_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28-0&amp;algo_pvid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28</field>
+      </fields>
+      <libsource lib="lds-3161ax" part="LDS-3161AX" description="Green 0.36&quot; 7 segment display (common cathode LED)"/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5BE82F87</tstamp>
+    </comp>
+    <comp ref="IC8">
+      <value>LDS-3161AX</value>
+      <footprint>agc-dsky:LDS-3161AX</footprint>
+      <datasheet>https://datasheet.lcsc.com/szlcsc/Made-in-China-FJ3161BH_C10690.pdf</datasheet>
+      <fields>
+        <field name="AliExpress">https://www.aliexpress.com/item/10pcs-Green-LED-Display-0-36inch-1-Bit-7-Segment-Display-COMMON-ANODE-Or-Common-Cathode/32399242126.html?spm=2114.search0604.3.1.41e94959APVMZd&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_317_10548_10696_10192_10190_5728812_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_10103_5733515_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28-0&amp;algo_pvid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28</field>
+      </fields>
+      <libsource lib="lds-3161ax" part="LDS-3161AX" description="Green 0.36&quot; 7 segment display (common cathode LED)"/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5BE82FC0</tstamp>
+    </comp>
+    <comp ref="R24">
+      <value>100</value>
+      <footprint>agg:0603</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2310790.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2616742</field>
+      </fields>
+      <libsource lib="agg-kicad" part="R" description=""/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5C1ABFAA</tstamp>
+    </comp>
+    <comp ref="R25">
+      <value>1M</value>
+      <footprint>agg:0603</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2310790.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2616746</field>
+      </fields>
+      <libsource lib="agg-kicad" part="R" description=""/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5C1D3B16</tstamp>
+    </comp>
+    <comp ref="Q1">
+      <value>FDN327N </value>
+      <footprint>agc-dsky:supersot-3</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2304103.pdf?_ga=2.267729166.1278097200.1541684874-824848872.1541684874</datasheet>
+      <fields>
+        <field name="Farnell">1471048 </field>
+      </fields>
+      <libsource lib="agg-kicad" part="NFET_GDS" description=""/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5CA7A07A</tstamp>
+    </comp>
+    <comp ref="R27">
+      <value>1M</value>
+      <footprint>agg:0603</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2310790.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2616746</field>
+      </fields>
+      <libsource lib="agg-kicad" part="R" description=""/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5CA7A652</tstamp>
+    </comp>
+    <comp ref="Q2">
+      <value>FDN327N </value>
+      <footprint>agc-dsky:supersot-3</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2304103.pdf?_ga=2.267729166.1278097200.1541684874-824848872.1541684874</datasheet>
+      <fields>
+        <field name="Farnell">1471048 </field>
+      </fields>
+      <libsource lib="agg-kicad" part="NFET_GDS" description=""/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5CA7A669</tstamp>
+    </comp>
+    <comp ref="R29">
+      <value>1M</value>
+      <footprint>agg:0603</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2310790.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2616746</field>
+      </fields>
+      <libsource lib="agg-kicad" part="R" description=""/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5CAB3142</tstamp>
+    </comp>
+    <comp ref="Q3">
+      <value>FDN327N </value>
+      <footprint>agc-dsky:supersot-3</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2304103.pdf?_ga=2.267729166.1278097200.1541684874-824848872.1541684874</datasheet>
+      <fields>
+        <field name="Farnell">1471048 </field>
+      </fields>
+      <libsource lib="agg-kicad" part="NFET_GDS" description=""/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5CAB3159</tstamp>
+    </comp>
+    <comp ref="R31">
+      <value>1M</value>
+      <footprint>agg:0603</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2310790.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2616746</field>
+      </fields>
+      <libsource lib="agg-kicad" part="R" description=""/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5CAED831</tstamp>
+    </comp>
+    <comp ref="Q4">
+      <value>FDN327N </value>
+      <footprint>agc-dsky:supersot-3</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2304103.pdf?_ga=2.267729166.1278097200.1541684874-824848872.1541684874</datasheet>
+      <fields>
+        <field name="Farnell">1471048 </field>
+      </fields>
+      <libsource lib="agg-kicad" part="NFET_GDS" description=""/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5CAED848</tstamp>
+    </comp>
+    <comp ref="R33">
+      <value>1M</value>
+      <footprint>agg:0603</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2310790.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2616746</field>
+      </fields>
+      <libsource lib="agg-kicad" part="R" description=""/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5CB28E87</tstamp>
+    </comp>
+    <comp ref="Q5">
+      <value>FDN327N </value>
+      <footprint>agc-dsky:supersot-3</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2304103.pdf?_ga=2.267729166.1278097200.1541684874-824848872.1541684874</datasheet>
+      <fields>
+        <field name="Farnell">1471048 </field>
+      </fields>
+      <libsource lib="agg-kicad" part="NFET_GDS" description=""/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5CB28E9E</tstamp>
+    </comp>
+    <comp ref="R35">
+      <value>1M</value>
+      <footprint>agg:0603</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2310790.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2616746</field>
+      </fields>
+      <libsource lib="agg-kicad" part="R" description=""/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5CB65A43</tstamp>
+    </comp>
+    <comp ref="Q6">
+      <value>FDN327N </value>
+      <footprint>agc-dsky:supersot-3</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2304103.pdf?_ga=2.267729166.1278097200.1541684874-824848872.1541684874</datasheet>
+      <fields>
+        <field name="Farnell">1471048 </field>
+      </fields>
+      <libsource lib="agg-kicad" part="NFET_GDS" description=""/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5CB65A5A</tstamp>
+    </comp>
+    <comp ref="D1">
+      <value>LED</value>
+      <footprint>agg:0805-LED</footprint>
+      <datasheet>https://www.aliexpress.com/item/0805-smd-led-bright-red-thioindigo-red-light-emitting-diode/1206476683.html?spm=2114.search0604.3.37.22117559r9H1tw&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_10548_317_10696_10192_5728811_10190_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_5730015_10103_5733515_5729015_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf-5&amp;algo_pvid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf</datasheet>
+      <fields>
+        <field name="Aliexpress">https://www.aliexpress.com/item/0805-smd-led-bright-red-thioindigo-red-light-emitting-diode/1206476683.html?spm=2114.search0604.3.37.22117559r9H1tw&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_10548_317_10696_10192_5728811_10190_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_5730015_10103_5733515_5729015_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf-5&amp;algo_pvid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf</field>
+      </fields>
+      <libsource lib="agg-kicad" part="LED" description=""/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5D8E08E7</tstamp>
+    </comp>
+    <comp ref="D4">
+      <value>LED</value>
+      <footprint>agg:0805-LED</footprint>
+      <datasheet>https://www.aliexpress.com/item/0805-smd-led-bright-red-thioindigo-red-light-emitting-diode/1206476683.html?spm=2114.search0604.3.37.22117559r9H1tw&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_10548_317_10696_10192_5728811_10190_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_5730015_10103_5733515_5729015_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf-5&amp;algo_pvid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf</datasheet>
+      <fields>
+        <field name="Aliexpress">https://www.aliexpress.com/item/0805-smd-led-bright-red-thioindigo-red-light-emitting-diode/1206476683.html?spm=2114.search0604.3.37.22117559r9H1tw&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_10548_317_10696_10192_5728811_10190_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_5730015_10103_5733515_5729015_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf-5&amp;algo_pvid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf</field>
+      </fields>
+      <libsource lib="agg-kicad" part="LED" description=""/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5D8E0B07</tstamp>
+    </comp>
+    <comp ref="D7">
+      <value>LED</value>
+      <footprint>agg:0805-LED</footprint>
+      <datasheet>https://www.aliexpress.com/item/0805-smd-led-bright-red-thioindigo-red-light-emitting-diode/1206476683.html?spm=2114.search0604.3.37.22117559r9H1tw&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_10548_317_10696_10192_5728811_10190_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_5730015_10103_5733515_5729015_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf-5&amp;algo_pvid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf</datasheet>
+      <fields>
+        <field name="Aliexpress">https://www.aliexpress.com/item/0805-smd-led-bright-red-thioindigo-red-light-emitting-diode/1206476683.html?spm=2114.search0604.3.37.22117559r9H1tw&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_10548_317_10696_10192_5728811_10190_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_5730015_10103_5733515_5729015_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf-5&amp;algo_pvid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf</field>
+      </fields>
+      <libsource lib="agg-kicad" part="LED" description=""/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5D8E0CC2</tstamp>
+    </comp>
+    <comp ref="D10">
+      <value>LED</value>
+      <footprint>agg:0805-LED</footprint>
+      <datasheet>https://www.aliexpress.com/item/0805-smd-led-bright-red-thioindigo-red-light-emitting-diode/1206476683.html?spm=2114.search0604.3.37.22117559r9H1tw&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_10548_317_10696_10192_5728811_10190_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_5730015_10103_5733515_5729015_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf-5&amp;algo_pvid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf</datasheet>
+      <fields>
+        <field name="Aliexpress">https://www.aliexpress.com/item/0805-smd-led-bright-red-thioindigo-red-light-emitting-diode/1206476683.html?spm=2114.search0604.3.37.22117559r9H1tw&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_10548_317_10696_10192_5728811_10190_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_5730015_10103_5733515_5729015_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf-5&amp;algo_pvid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf</field>
+      </fields>
+      <libsource lib="agg-kicad" part="LED" description=""/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5D8E0CCA</tstamp>
+    </comp>
+    <comp ref="R39">
+      <value>1M</value>
+      <footprint>agg:0603</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2310790.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2616746</field>
+      </fields>
+      <libsource lib="agg-kicad" part="R" description=""/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5DB92792</tstamp>
+    </comp>
+    <comp ref="Q8">
+      <value>FDN327N </value>
+      <footprint>agc-dsky:supersot-3</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2304103.pdf?_ga=2.267729166.1278097200.1541684874-824848872.1541684874</datasheet>
+      <fields>
+        <field name="Farnell">1471048 </field>
+      </fields>
+      <libsource lib="agg-kicad" part="NFET_GDS" description=""/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5DB927A8</tstamp>
+    </comp>
+    <comp ref="D2">
+      <value>LED</value>
+      <footprint>agg:0805-LED</footprint>
+      <datasheet>https://www.aliexpress.com/item/0805-smd-led-bright-red-thioindigo-red-light-emitting-diode/1206476683.html?spm=2114.search0604.3.37.22117559r9H1tw&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_10548_317_10696_10192_5728811_10190_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_5730015_10103_5733515_5729015_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf-5&amp;algo_pvid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf</datasheet>
+      <fields>
+        <field name="Aliexpress">https://www.aliexpress.com/item/0805-smd-led-bright-red-thioindigo-red-light-emitting-diode/1206476683.html?spm=2114.search0604.3.37.22117559r9H1tw&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_10548_317_10696_10192_5728811_10190_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_5730015_10103_5733515_5729015_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf-5&amp;algo_pvid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf</field>
+      </fields>
+      <libsource lib="agg-kicad" part="LED" description=""/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5DD477F4</tstamp>
+    </comp>
+    <comp ref="D5">
+      <value>LED</value>
+      <footprint>agg:0805-LED</footprint>
+      <datasheet>https://www.aliexpress.com/item/0805-smd-led-bright-red-thioindigo-red-light-emitting-diode/1206476683.html?spm=2114.search0604.3.37.22117559r9H1tw&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_10548_317_10696_10192_5728811_10190_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_5730015_10103_5733515_5729015_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf-5&amp;algo_pvid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf</datasheet>
+      <fields>
+        <field name="Aliexpress">https://www.aliexpress.com/item/0805-smd-led-bright-red-thioindigo-red-light-emitting-diode/1206476683.html?spm=2114.search0604.3.37.22117559r9H1tw&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_10548_317_10696_10192_5728811_10190_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_5730015_10103_5733515_5729015_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf-5&amp;algo_pvid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf</field>
+      </fields>
+      <libsource lib="agg-kicad" part="LED" description=""/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5DD477FC</tstamp>
+    </comp>
+    <comp ref="D8">
+      <value>LED</value>
+      <footprint>agg:0805-LED</footprint>
+      <datasheet>https://www.aliexpress.com/item/0805-smd-led-bright-red-thioindigo-red-light-emitting-diode/1206476683.html?spm=2114.search0604.3.37.22117559r9H1tw&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_10548_317_10696_10192_5728811_10190_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_5730015_10103_5733515_5729015_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf-5&amp;algo_pvid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf</datasheet>
+      <fields>
+        <field name="Aliexpress">https://www.aliexpress.com/item/0805-smd-led-bright-red-thioindigo-red-light-emitting-diode/1206476683.html?spm=2114.search0604.3.37.22117559r9H1tw&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_10548_317_10696_10192_5728811_10190_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_5730015_10103_5733515_5729015_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf-5&amp;algo_pvid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf</field>
+      </fields>
+      <libsource lib="agg-kicad" part="LED" description=""/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5DD47804</tstamp>
+    </comp>
+    <comp ref="D11">
+      <value>LED</value>
+      <footprint>agg:0805-LED</footprint>
+      <datasheet>https://www.aliexpress.com/item/0805-smd-led-bright-red-thioindigo-red-light-emitting-diode/1206476683.html?spm=2114.search0604.3.37.22117559r9H1tw&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_10548_317_10696_10192_5728811_10190_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_5730015_10103_5733515_5729015_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf-5&amp;algo_pvid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf</datasheet>
+      <fields>
+        <field name="Aliexpress">https://www.aliexpress.com/item/0805-smd-led-bright-red-thioindigo-red-light-emitting-diode/1206476683.html?spm=2114.search0604.3.37.22117559r9H1tw&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_10548_317_10696_10192_5728811_10190_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_5730015_10103_5733515_5729015_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf-5&amp;algo_pvid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf</field>
+      </fields>
+      <libsource lib="agg-kicad" part="LED" description=""/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5DD4780C</tstamp>
+    </comp>
+    <comp ref="D3">
+      <value>LED</value>
+      <footprint>agg:0805-LED</footprint>
+      <datasheet>https://www.aliexpress.com/item/0805-smd-led-bright-red-thioindigo-red-light-emitting-diode/1206476683.html?spm=2114.search0604.3.37.22117559r9H1tw&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_10548_317_10696_10192_5728811_10190_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_5730015_10103_5733515_5729015_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf-5&amp;algo_pvid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf</datasheet>
+      <fields>
+        <field name="Aliexpress">https://www.aliexpress.com/item/0805-smd-led-bright-red-thioindigo-red-light-emitting-diode/1206476683.html?spm=2114.search0604.3.37.22117559r9H1tw&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_10548_317_10696_10192_5728811_10190_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_5730015_10103_5733515_5729015_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf-5&amp;algo_pvid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf</field>
+      </fields>
+      <libsource lib="agg-kicad" part="LED" description=""/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5DDD77A5</tstamp>
+    </comp>
+    <comp ref="D6">
+      <value>LED</value>
+      <footprint>agg:0805-LED</footprint>
+      <datasheet>https://www.aliexpress.com/item/0805-smd-led-bright-red-thioindigo-red-light-emitting-diode/1206476683.html?spm=2114.search0604.3.37.22117559r9H1tw&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_10548_317_10696_10192_5728811_10190_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_5730015_10103_5733515_5729015_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf-5&amp;algo_pvid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf</datasheet>
+      <fields>
+        <field name="Aliexpress">https://www.aliexpress.com/item/0805-smd-led-bright-red-thioindigo-red-light-emitting-diode/1206476683.html?spm=2114.search0604.3.37.22117559r9H1tw&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_10548_317_10696_10192_5728811_10190_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_5730015_10103_5733515_5729015_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf-5&amp;algo_pvid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf</field>
+      </fields>
+      <libsource lib="agg-kicad" part="LED" description=""/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5DDD77AD</tstamp>
+    </comp>
+    <comp ref="D9">
+      <value>LED</value>
+      <footprint>agg:0805-LED</footprint>
+      <datasheet>https://www.aliexpress.com/item/0805-smd-led-bright-red-thioindigo-red-light-emitting-diode/1206476683.html?spm=2114.search0604.3.37.22117559r9H1tw&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_10548_317_10696_10192_5728811_10190_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_5730015_10103_5733515_5729015_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf-5&amp;algo_pvid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf</datasheet>
+      <fields>
+        <field name="Aliexpress">https://www.aliexpress.com/item/0805-smd-led-bright-red-thioindigo-red-light-emitting-diode/1206476683.html?spm=2114.search0604.3.37.22117559r9H1tw&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_10548_317_10696_10192_5728811_10190_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_5730015_10103_5733515_5729015_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf-5&amp;algo_pvid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf</field>
+      </fields>
+      <libsource lib="agg-kicad" part="LED" description=""/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5DDD77B5</tstamp>
+    </comp>
+    <comp ref="D12">
+      <value>LED</value>
+      <footprint>agg:0805-LED</footprint>
+      <datasheet>https://www.aliexpress.com/item/0805-smd-led-bright-red-thioindigo-red-light-emitting-diode/1206476683.html?spm=2114.search0604.3.37.22117559r9H1tw&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_10548_317_10696_10192_5728811_10190_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_5730015_10103_5733515_5729015_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf-5&amp;algo_pvid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf</datasheet>
+      <fields>
+        <field name="Aliexpress">https://www.aliexpress.com/item/0805-smd-led-bright-red-thioindigo-red-light-emitting-diode/1206476683.html?spm=2114.search0604.3.37.22117559r9H1tw&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_10548_317_10696_10192_5728811_10190_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_5730015_10103_5733515_5729015_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf-5&amp;algo_pvid=656b2b70-cbbd-4321-abff-7fd6d3be9bcf</field>
+      </fields>
+      <libsource lib="agg-kicad" part="LED" description=""/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5DDD77BD</tstamp>
+    </comp>
+    <comp ref="R37">
+      <value>1M</value>
+      <footprint>agg:0603</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2310790.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2616746</field>
+      </fields>
+      <libsource lib="agg-kicad" part="R" description=""/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5E1FC636</tstamp>
+    </comp>
+    <comp ref="Q7">
+      <value>FDN327N </value>
+      <footprint>agc-dsky:supersot-3</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2304103.pdf?_ga=2.267729166.1278097200.1541684874-824848872.1541684874</datasheet>
+      <fields>
+        <field name="Farnell">1471048 </field>
+      </fields>
+      <libsource lib="agg-kicad" part="NFET_GDS" description=""/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5E1FC64B</tstamp>
+    </comp>
+    <comp ref="R26">
+      <value>100</value>
+      <footprint>agg:0603</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2310790.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2616742</field>
+      </fields>
+      <libsource lib="agg-kicad" part="R" description=""/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5EC1C422</tstamp>
+    </comp>
+    <comp ref="R28">
+      <value>100</value>
+      <footprint>agg:0603</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2310790.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2616742</field>
+      </fields>
+      <libsource lib="agg-kicad" part="R" description=""/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5EC1C63E</tstamp>
+    </comp>
+    <comp ref="R30">
+      <value>100</value>
+      <footprint>agg:0603</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2310790.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2616742</field>
+      </fields>
+      <libsource lib="agg-kicad" part="R" description=""/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5EC1C86D</tstamp>
+    </comp>
+    <comp ref="R32">
+      <value>100</value>
+      <footprint>agg:0603</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2310790.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2616742</field>
+      </fields>
+      <libsource lib="agg-kicad" part="R" description=""/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5EC1CA21</tstamp>
+    </comp>
+    <comp ref="R34">
+      <value>100</value>
+      <footprint>agg:0603</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2310790.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2616742</field>
+      </fields>
+      <libsource lib="agg-kicad" part="R" description=""/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5EC1CC93</tstamp>
+    </comp>
+    <comp ref="R36">
+      <value>100</value>
+      <footprint>agg:0603</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2310790.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2616742</field>
+      </fields>
+      <libsource lib="agg-kicad" part="R" description=""/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5EC1CF79</tstamp>
+    </comp>
+    <comp ref="R38">
+      <value>100</value>
+      <footprint>agg:0603</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2310790.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2616742</field>
+      </fields>
+      <libsource lib="agg-kicad" part="R" description=""/>
+      <sheetpath names="/7-segs/" tstamps="/5BE4E3B4/"/>
+      <tstamp>5EC1D3C5</tstamp>
+    </comp>
+    <comp ref="IC27">
+      <value>WS2812B</value>
+      <footprint>agc-dsky:WS2812B</footprint>
+      <datasheet>https://www.kitronik.co.uk/pdf/WS2812B-LED-datasheet.pdf</datasheet>
+      <fields>
+        <field name="Aliexpress">https://www.aliexpress.com/item/10-1000pcs-WS2812B-4pins-5050-SMD-Black-White-version-WS2812-Individually-Addressable-Digital-RGB-LED-Chip/32810203444.html?spm=2114.search0604.3.54.65db7218Hnfvt0&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_317_10548_10696_10192_5728811_10190_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_10103_5733515_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=fa88f8e5-9015-4ff5-99be-874e1b964a2c-8&amp;algo_pvid=fa88f8e5-9015-4ff5-99be-874e1b964a2c</field>
+      </fields>
+      <libsource lib="ws2812b" part="WS2812B" description="Addressable RGB LED"/>
+      <sheetpath names="/LEDs/" tstamps="/5CAD9882/"/>
+      <tstamp>5CAF38ED</tstamp>
+    </comp>
+    <comp ref="IC28">
+      <value>WS2812B</value>
+      <footprint>agc-dsky:WS2812B</footprint>
+      <datasheet>https://www.kitronik.co.uk/pdf/WS2812B-LED-datasheet.pdf</datasheet>
+      <fields>
+        <field name="Aliexpress">https://www.aliexpress.com/item/10-1000pcs-WS2812B-4pins-5050-SMD-Black-White-version-WS2812-Individually-Addressable-Digital-RGB-LED-Chip/32810203444.html?spm=2114.search0604.3.54.65db7218Hnfvt0&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_317_10548_10696_10192_5728811_10190_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_10103_5733515_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=fa88f8e5-9015-4ff5-99be-874e1b964a2c-8&amp;algo_pvid=fa88f8e5-9015-4ff5-99be-874e1b964a2c</field>
+      </fields>
+      <libsource lib="ws2812b" part="WS2812B" description="Addressable RGB LED"/>
+      <sheetpath names="/LEDs/" tstamps="/5CAD9882/"/>
+      <tstamp>5CAF38FB</tstamp>
+    </comp>
+    <comp ref="D13">
+      <value>MMSD4148T1G</value>
+      <footprint>agg:SOD-123</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2140498.pdf</datasheet>
+      <fields>
+        <field name="Farnell">9556079</field>
+      </fields>
+      <libsource lib="agg-kicad" part="D" description=""/>
+      <sheetpath names="/LEDs/" tstamps="/5CAD9882/"/>
+      <tstamp>5CAF3903</tstamp>
+    </comp>
+    <comp ref="C23">
+      <value>100nF</value>
+      <footprint>agg:0402</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2373808.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2810260</field>
+      </fields>
+      <libsource lib="agg-kicad" part="C" description=""/>
+      <sheetpath names="/LEDs/" tstamps="/5CAD9882/"/>
+      <tstamp>5CB0E050</tstamp>
+    </comp>
+    <comp ref="C18">
+      <value>100nF</value>
+      <footprint>agg:0402</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2373808.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2810260</field>
+      </fields>
+      <libsource lib="agg-kicad" part="C" description=""/>
+      <sheetpath names="/LEDs/" tstamps="/5CAD9882/"/>
+      <tstamp>5CB0E14A</tstamp>
+    </comp>
+    <comp ref="IC29">
+      <value>WS2812B</value>
+      <footprint>agc-dsky:WS2812B</footprint>
+      <datasheet>https://www.kitronik.co.uk/pdf/WS2812B-LED-datasheet.pdf</datasheet>
+      <fields>
+        <field name="Aliexpress">https://www.aliexpress.com/item/10-1000pcs-WS2812B-4pins-5050-SMD-Black-White-version-WS2812-Individually-Addressable-Digital-RGB-LED-Chip/32810203444.html?spm=2114.search0604.3.54.65db7218Hnfvt0&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_317_10548_10696_10192_5728811_10190_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_10103_5733515_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=fa88f8e5-9015-4ff5-99be-874e1b964a2c-8&amp;algo_pvid=fa88f8e5-9015-4ff5-99be-874e1b964a2c</field>
+      </fields>
+      <libsource lib="ws2812b" part="WS2812B" description="Addressable RGB LED"/>
+      <sheetpath names="/LEDs/" tstamps="/5CAD9882/"/>
+      <tstamp>5CB0E2EF</tstamp>
+    </comp>
+    <comp ref="C19">
+      <value>100nF</value>
+      <footprint>agg:0402</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2373808.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2810260</field>
+      </fields>
+      <libsource lib="agg-kicad" part="C" description=""/>
+      <sheetpath names="/LEDs/" tstamps="/5CAD9882/"/>
+      <tstamp>5CB0E301</tstamp>
+    </comp>
+    <comp ref="IC30">
+      <value>WS2812B</value>
+      <footprint>agc-dsky:WS2812B</footprint>
+      <datasheet>https://www.kitronik.co.uk/pdf/WS2812B-LED-datasheet.pdf</datasheet>
+      <fields>
+        <field name="Aliexpress">https://www.aliexpress.com/item/10-1000pcs-WS2812B-4pins-5050-SMD-Black-White-version-WS2812-Individually-Addressable-Digital-RGB-LED-Chip/32810203444.html?spm=2114.search0604.3.54.65db7218Hnfvt0&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_317_10548_10696_10192_5728811_10190_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_10103_5733515_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=fa88f8e5-9015-4ff5-99be-874e1b964a2c-8&amp;algo_pvid=fa88f8e5-9015-4ff5-99be-874e1b964a2c</field>
+      </fields>
+      <libsource lib="ws2812b" part="WS2812B" description="Addressable RGB LED"/>
+      <sheetpath names="/LEDs/" tstamps="/5CAD9882/"/>
+      <tstamp>5CB0EAB5</tstamp>
+    </comp>
+    <comp ref="C20">
+      <value>100nF</value>
+      <footprint>agg:0402</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2373808.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2810260</field>
+      </fields>
+      <libsource lib="agg-kicad" part="C" description=""/>
+      <sheetpath names="/LEDs/" tstamps="/5CAD9882/"/>
+      <tstamp>5CB0EAC7</tstamp>
+    </comp>
+    <comp ref="IC31">
+      <value>WS2812B</value>
+      <footprint>agc-dsky:WS2812B</footprint>
+      <datasheet>https://www.kitronik.co.uk/pdf/WS2812B-LED-datasheet.pdf</datasheet>
+      <fields>
+        <field name="Aliexpress">https://www.aliexpress.com/item/10-1000pcs-WS2812B-4pins-5050-SMD-Black-White-version-WS2812-Individually-Addressable-Digital-RGB-LED-Chip/32810203444.html?spm=2114.search0604.3.54.65db7218Hnfvt0&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_317_10548_10696_10192_5728811_10190_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_10103_5733515_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=fa88f8e5-9015-4ff5-99be-874e1b964a2c-8&amp;algo_pvid=fa88f8e5-9015-4ff5-99be-874e1b964a2c</field>
+      </fields>
+      <libsource lib="ws2812b" part="WS2812B" description="Addressable RGB LED"/>
+      <sheetpath names="/LEDs/" tstamps="/5CAD9882/"/>
+      <tstamp>5CB0EE18</tstamp>
+    </comp>
+    <comp ref="C21">
+      <value>100nF</value>
+      <footprint>agg:0402</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2373808.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2810260</field>
+      </fields>
+      <libsource lib="agg-kicad" part="C" description=""/>
+      <sheetpath names="/LEDs/" tstamps="/5CAD9882/"/>
+      <tstamp>5CB0EE2A</tstamp>
+    </comp>
+    <comp ref="IC32">
+      <value>WS2812B</value>
+      <footprint>agc-dsky:WS2812B</footprint>
+      <datasheet>https://www.kitronik.co.uk/pdf/WS2812B-LED-datasheet.pdf</datasheet>
+      <fields>
+        <field name="Aliexpress">https://www.aliexpress.com/item/10-1000pcs-WS2812B-4pins-5050-SMD-Black-White-version-WS2812-Individually-Addressable-Digital-RGB-LED-Chip/32810203444.html?spm=2114.search0604.3.54.65db7218Hnfvt0&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_317_10548_10696_10192_5728811_10190_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_10103_5733515_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=fa88f8e5-9015-4ff5-99be-874e1b964a2c-8&amp;algo_pvid=fa88f8e5-9015-4ff5-99be-874e1b964a2c</field>
+      </fields>
+      <libsource lib="ws2812b" part="WS2812B" description="Addressable RGB LED"/>
+      <sheetpath names="/LEDs/" tstamps="/5CAD9882/"/>
+      <tstamp>5CB0EE3C</tstamp>
+    </comp>
+    <comp ref="C22">
+      <value>100nF</value>
+      <footprint>agg:0402</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2373808.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2810260</field>
+      </fields>
+      <libsource lib="agg-kicad" part="C" description=""/>
+      <sheetpath names="/LEDs/" tstamps="/5CAD9882/"/>
+      <tstamp>5CB0EE4E</tstamp>
+    </comp>
+    <comp ref="IC33">
+      <value>WS2812B</value>
+      <footprint>agc-dsky:WS2812B</footprint>
+      <datasheet>https://www.kitronik.co.uk/pdf/WS2812B-LED-datasheet.pdf</datasheet>
+      <fields>
+        <field name="Aliexpress">https://www.aliexpress.com/item/10-1000pcs-WS2812B-4pins-5050-SMD-Black-White-version-WS2812-Individually-Addressable-Digital-RGB-LED-Chip/32810203444.html?spm=2114.search0604.3.54.65db7218Hnfvt0&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_317_10548_10696_10192_5728811_10190_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_10103_5733515_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=fa88f8e5-9015-4ff5-99be-874e1b964a2c-8&amp;algo_pvid=fa88f8e5-9015-4ff5-99be-874e1b964a2c</field>
+      </fields>
+      <libsource lib="ws2812b" part="WS2812B" description="Addressable RGB LED"/>
+      <sheetpath names="/LEDs/" tstamps="/5CAD9882/"/>
+      <tstamp>5CB0F53D</tstamp>
+    </comp>
+    <comp ref="C24">
+      <value>100nF</value>
+      <footprint>agg:0402</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2373808.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2810260</field>
+      </fields>
+      <libsource lib="agg-kicad" part="C" description=""/>
+      <sheetpath names="/LEDs/" tstamps="/5CAD9882/"/>
+      <tstamp>5CB0F551</tstamp>
+    </comp>
+    <comp ref="IC34">
+      <value>WS2812B</value>
+      <footprint>agc-dsky:WS2812B</footprint>
+      <datasheet>https://www.kitronik.co.uk/pdf/WS2812B-LED-datasheet.pdf</datasheet>
+      <fields>
+        <field name="Aliexpress">https://www.aliexpress.com/item/10-1000pcs-WS2812B-4pins-5050-SMD-Black-White-version-WS2812-Individually-Addressable-Digital-RGB-LED-Chip/32810203444.html?spm=2114.search0604.3.54.65db7218Hnfvt0&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_317_10548_10696_10192_5728811_10190_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_10103_5733515_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=fa88f8e5-9015-4ff5-99be-874e1b964a2c-8&amp;algo_pvid=fa88f8e5-9015-4ff5-99be-874e1b964a2c</field>
+      </fields>
+      <libsource lib="ws2812b" part="WS2812B" description="Addressable RGB LED"/>
+      <sheetpath names="/LEDs/" tstamps="/5CAD9882/"/>
+      <tstamp>5CB0F55F</tstamp>
+    </comp>
+    <comp ref="C25">
+      <value>100nF</value>
+      <footprint>agg:0402</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2373808.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2810260</field>
+      </fields>
+      <libsource lib="agg-kicad" part="C" description=""/>
+      <sheetpath names="/LEDs/" tstamps="/5CAD9882/"/>
+      <tstamp>5CB0F571</tstamp>
+    </comp>
+    <comp ref="IC35">
+      <value>WS2812B</value>
+      <footprint>agc-dsky:WS2812B</footprint>
+      <datasheet>https://www.kitronik.co.uk/pdf/WS2812B-LED-datasheet.pdf</datasheet>
+      <fields>
+        <field name="Aliexpress">https://www.aliexpress.com/item/10-1000pcs-WS2812B-4pins-5050-SMD-Black-White-version-WS2812-Individually-Addressable-Digital-RGB-LED-Chip/32810203444.html?spm=2114.search0604.3.54.65db7218Hnfvt0&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_317_10548_10696_10192_5728811_10190_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_10103_5733515_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=fa88f8e5-9015-4ff5-99be-874e1b964a2c-8&amp;algo_pvid=fa88f8e5-9015-4ff5-99be-874e1b964a2c</field>
+      </fields>
+      <libsource lib="ws2812b" part="WS2812B" description="Addressable RGB LED"/>
+      <sheetpath names="/LEDs/" tstamps="/5CAD9882/"/>
+      <tstamp>5CB0F586</tstamp>
+    </comp>
+    <comp ref="C26">
+      <value>100nF</value>
+      <footprint>agg:0402</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2373808.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2810260</field>
+      </fields>
+      <libsource lib="agg-kicad" part="C" description=""/>
+      <sheetpath names="/LEDs/" tstamps="/5CAD9882/"/>
+      <tstamp>5CB0F598</tstamp>
+    </comp>
+    <comp ref="IC36">
+      <value>WS2812B</value>
+      <footprint>agc-dsky:WS2812B</footprint>
+      <datasheet>https://www.kitronik.co.uk/pdf/WS2812B-LED-datasheet.pdf</datasheet>
+      <fields>
+        <field name="Aliexpress">https://www.aliexpress.com/item/10-1000pcs-WS2812B-4pins-5050-SMD-Black-White-version-WS2812-Individually-Addressable-Digital-RGB-LED-Chip/32810203444.html?spm=2114.search0604.3.54.65db7218Hnfvt0&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_317_10548_10696_10192_5728811_10190_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_10103_5733515_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=fa88f8e5-9015-4ff5-99be-874e1b964a2c-8&amp;algo_pvid=fa88f8e5-9015-4ff5-99be-874e1b964a2c</field>
+      </fields>
+      <libsource lib="ws2812b" part="WS2812B" description="Addressable RGB LED"/>
+      <sheetpath names="/LEDs/" tstamps="/5CAD9882/"/>
+      <tstamp>5CB0F5AA</tstamp>
+    </comp>
+    <comp ref="C27">
+      <value>100nF</value>
+      <footprint>agg:0402</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2373808.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2810260</field>
+      </fields>
+      <libsource lib="agg-kicad" part="C" description=""/>
+      <sheetpath names="/LEDs/" tstamps="/5CAD9882/"/>
+      <tstamp>5CB0F5BC</tstamp>
+    </comp>
+    <comp ref="IC37">
+      <value>WS2812B</value>
+      <footprint>agc-dsky:WS2812B</footprint>
+      <datasheet>https://www.kitronik.co.uk/pdf/WS2812B-LED-datasheet.pdf</datasheet>
+      <fields>
+        <field name="Aliexpress">https://www.aliexpress.com/item/10-1000pcs-WS2812B-4pins-5050-SMD-Black-White-version-WS2812-Individually-Addressable-Digital-RGB-LED-Chip/32810203444.html?spm=2114.search0604.3.54.65db7218Hnfvt0&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_317_10548_10696_10192_5728811_10190_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_10103_5733515_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=fa88f8e5-9015-4ff5-99be-874e1b964a2c-8&amp;algo_pvid=fa88f8e5-9015-4ff5-99be-874e1b964a2c</field>
+      </fields>
+      <libsource lib="ws2812b" part="WS2812B" description="Addressable RGB LED"/>
+      <sheetpath names="/LEDs/" tstamps="/5CAD9882/"/>
+      <tstamp>5CB0F5CE</tstamp>
+    </comp>
+    <comp ref="C28">
+      <value>100nF</value>
+      <footprint>agg:0402</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2373808.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2810260</field>
+      </fields>
+      <libsource lib="agg-kicad" part="C" description=""/>
+      <sheetpath names="/LEDs/" tstamps="/5CAD9882/"/>
+      <tstamp>5CB0F5E0</tstamp>
+    </comp>
+    <comp ref="IC38">
+      <value>WS2812B</value>
+      <footprint>agc-dsky:WS2812B</footprint>
+      <datasheet>https://www.kitronik.co.uk/pdf/WS2812B-LED-datasheet.pdf</datasheet>
+      <fields>
+        <field name="Aliexpress">https://www.aliexpress.com/item/10-1000pcs-WS2812B-4pins-5050-SMD-Black-White-version-WS2812-Individually-Addressable-Digital-RGB-LED-Chip/32810203444.html?spm=2114.search0604.3.54.65db7218Hnfvt0&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_317_10548_10696_10192_5728811_10190_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_10103_5733515_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=fa88f8e5-9015-4ff5-99be-874e1b964a2c-8&amp;algo_pvid=fa88f8e5-9015-4ff5-99be-874e1b964a2c</field>
+      </fields>
+      <libsource lib="ws2812b" part="WS2812B" description="Addressable RGB LED"/>
+      <sheetpath names="/LEDs/" tstamps="/5CAD9882/"/>
+      <tstamp>5CB10684</tstamp>
+    </comp>
+    <comp ref="C29">
+      <value>100nF</value>
+      <footprint>agg:0402</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2373808.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2810260</field>
+      </fields>
+      <libsource lib="agg-kicad" part="C" description=""/>
+      <sheetpath names="/LEDs/" tstamps="/5CAD9882/"/>
+      <tstamp>5CB10696</tstamp>
+    </comp>
+    <comp ref="IC39">
+      <value>WS2812B</value>
+      <footprint>agc-dsky:WS2812B</footprint>
+      <datasheet>https://www.kitronik.co.uk/pdf/WS2812B-LED-datasheet.pdf</datasheet>
+      <fields>
+        <field name="Aliexpress">https://www.aliexpress.com/item/10-1000pcs-WS2812B-4pins-5050-SMD-Black-White-version-WS2812-Individually-Addressable-Digital-RGB-LED-Chip/32810203444.html?spm=2114.search0604.3.54.65db7218Hnfvt0&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_317_10548_10696_10192_5728811_10190_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_10103_5733515_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=fa88f8e5-9015-4ff5-99be-874e1b964a2c-8&amp;algo_pvid=fa88f8e5-9015-4ff5-99be-874e1b964a2c</field>
+      </fields>
+      <libsource lib="ws2812b" part="WS2812B" description="Addressable RGB LED"/>
+      <sheetpath names="/LEDs/" tstamps="/5CAD9882/"/>
+      <tstamp>5CB106A8</tstamp>
+    </comp>
+    <comp ref="C30">
+      <value>100nF</value>
+      <footprint>agg:0402</footprint>
+      <datasheet>http://www.farnell.com/datasheets/2373808.pdf</datasheet>
+      <fields>
+        <field name="Farnell">2810260</field>
+      </fields>
+      <libsource lib="agg-kicad" part="C" description=""/>
+      <sheetpath names="/LEDs/" tstamps="/5CAD9882/"/>
+      <tstamp>5CB106BA</tstamp>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="agg-kicad" part="C">
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="agg-kicad" part="D">
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">D</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="agg-kicad" part="L">
+      <fields>
+        <field name="Reference">L</field>
+        <field name="Value">L</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="agg-kicad" part="LED">
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">LED</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="agg-kicad" part="MICROUSB">
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">MICROUSB</field>
+        <field name="Footprint">agg:MICROUSB_MOLEX_47589-0001</field>
+        <field name="Farnell">1568023</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VCC" type="power_out"/>
+        <pin num="2" name="D-" type="BiDi"/>
+        <pin num="3" name="D+" type="BiDi"/>
+        <pin num="4" name="ID" type="passive"/>
+        <pin num="5" name="GND" type="power_in"/>
+        <pin num="S" name="SHIELD" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="agg-kicad" part="NFET_GDS">
+      <fields>
+        <field name="Reference">Q</field>
+        <field name="Value">NFET_GDS</field>
+      </fields>
+      <pins>
+        <pin num="D" name="D" type="passive"/>
+        <pin num="G" name="G" type="passive"/>
+        <pin num="S" name="S" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="agg-kicad" part="R">
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="agg-kicad" part="SWD_TC">
+      <fields>
+        <field name="Reference">P</field>
+        <field name="Value">SWD_TC</field>
+        <field name="Footprint">agg:TC2030-NL</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VDD" type="power_in"/>
+        <pin num="2" name="SWDIO" type="BiDi"/>
+        <pin num="3" name="~RST" type="openCol"/>
+        <pin num="4" name="SWDCLK" type="output"/>
+        <pin num="5" name="GND" type="power_in"/>
+        <pin num="6" name="SWO" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="agg-kicad" part="SWITCH_SPST">
+      <fields>
+        <field name="Reference">SW</field>
+        <field name="Value">SWITCH_SPST</field>
+      </fields>
+      <pins>
+        <pin num="1" name="&quot;~&quot;" type="passive"/>
+        <pin num="2" name="&quot;~&quot;" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="agg-kicad" part="TPS62132">
+      <fields>
+        <field name="Reference">IC</field>
+        <field name="Value">TPS62132</field>
+        <field name="Footprint">agg:QFN-16-EP-TI</field>
+        <field name="Datasheet">http://www.ti.com/lit/ds/symlink/tps62132.pdf</field>
+        <field name="Farnell">2492468</field>
+      </fields>
+      <pins>
+        <pin num="1" name="SW" type="passive"/>
+        <pin num="2" name="SW" type="passive"/>
+        <pin num="3" name="SW" type="passive"/>
+        <pin num="4" name="PG" type="openCol"/>
+        <pin num="5" name="FB" type="input"/>
+        <pin num="6" name="AGND" type="power_in"/>
+        <pin num="7" name="FSW" type="input"/>
+        <pin num="8" name="DEF" type="input"/>
+        <pin num="9" name="SS/TR" type="input"/>
+        <pin num="10" name="AVIN" type="power_in"/>
+        <pin num="11" name="PVIN" type="power_in"/>
+        <pin num="12" name="PVIN" type="power_in"/>
+        <pin num="13" name="EN" type="input"/>
+        <pin num="14" name="VOS" type="input"/>
+        <pin num="15" name="PGND" type="power_in"/>
+        <pin num="16" name="PGND" type="power_in"/>
+        <pin num="EP" name="EP" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="lds-3161ax" part="LDS-3161AX">
+      <description>Green 0.36" 7 segment display (common cathode LED)</description>
+      <fields>
+        <field name="Reference">IC</field>
+        <field name="Value">LDS-3161AX</field>
+        <field name="Footprint">agc-dsky:LDS-3161AX</field>
+        <field name="Datasheet">https://datasheet.lcsc.com/szlcsc/Made-in-China-FJ3161BH_C10690.pdf</field>
+        <field name="AliExpress">https://www.aliexpress.com/item/10pcs-Green-LED-Display-0-36inch-1-Bit-7-Segment-Display-COMMON-ANODE-Or-Common-Cathode/32399242126.html?spm=2114.search0604.3.1.41e94959APVMZd&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_317_10548_10696_10192_10190_5728812_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_10103_5733515_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28-0&amp;algo_pvid=f4089cd5-f9bd-40f4-8a95-1cc26306ee28</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Cathode" type="passive"/>
+        <pin num="2" name="F" type="passive"/>
+        <pin num="3" name="G" type="passive"/>
+        <pin num="4" name="E" type="passive"/>
+        <pin num="5" name="D" type="passive"/>
+        <pin num="6" name="Cathode" type="passive"/>
+        <pin num="7" name="DP" type="passive"/>
+        <pin num="8" name="C" type="passive"/>
+        <pin num="9" name="B" type="passive"/>
+        <pin num="10" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="mcp23s08" part="MCP23S08">
+      <description>I/O Expander, 8 bit, SPI</description>
+      <fields>
+        <field name="Reference">IC</field>
+        <field name="Value">MCP23S08</field>
+        <field name="Footprint">agc-dsky:SOIC-18-W</field>
+        <field name="Datasheet">http://www.farnell.com/datasheets/12174.pdf</field>
+        <field name="Farnell">1332092</field>
+      </fields>
+      <pins>
+        <pin num="1" name="SCK" type="input"/>
+        <pin num="2" name="SI" type="input"/>
+        <pin num="3" name="SO" type="output"/>
+        <pin num="4" name="A1" type="input"/>
+        <pin num="5" name="A0" type="input"/>
+        <pin num="6" name="NRST" type="input"/>
+        <pin num="7" name="NCS" type="input"/>
+        <pin num="8" name="INT" type="output"/>
+        <pin num="9" name="VSS" type="power_in"/>
+        <pin num="10" name="GP0" type="BiDi"/>
+        <pin num="11" name="GP1" type="BiDi"/>
+        <pin num="12" name="GP2" type="BiDi"/>
+        <pin num="13" name="GP3" type="BiDi"/>
+        <pin num="14" name="GP4" type="BiDi"/>
+        <pin num="15" name="GP5" type="BiDi"/>
+        <pin num="16" name="GP6" type="BiDi"/>
+        <pin num="17" name="GP7" type="BiDi"/>
+        <pin num="18" name="VDO" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="stm32f072rbt6" part="STM32F072RBT6">
+      <description>STM32F072RBT6 Microcontroller (16KB RAM, 128KB program memory)</description>
+      <fields>
+        <field name="Reference">IC</field>
+        <field name="Value">STM32F072RBT6</field>
+        <field name="Footprint">agg:LQFP-64</field>
+        <field name="Datasheet">https://www.st.com/resource/en/datasheet/stm32f072c8.pdf</field>
+        <field name="Farnell">2432096</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VBAT" type="power_in"/>
+        <pin num="2" name="PC13" type="BiDi"/>
+        <pin num="3" name="PC14" type="BiDi"/>
+        <pin num="4" name="PC15" type="BiDi"/>
+        <pin num="5" name="PF0" type="BiDi"/>
+        <pin num="6" name="PF1" type="BiDi"/>
+        <pin num="7" name="NRST" type="input"/>
+        <pin num="8" name="PC0" type="BiDi"/>
+        <pin num="9" name="PC1" type="BiDi"/>
+        <pin num="10" name="PC2" type="BiDi"/>
+        <pin num="11" name="PC3" type="BiDi"/>
+        <pin num="12" name="VSSA" type="power_in"/>
+        <pin num="13" name="VDDA" type="power_in"/>
+        <pin num="14" name="PA0" type="BiDi"/>
+        <pin num="15" name="PA1" type="BiDi"/>
+        <pin num="16" name="PA2" type="BiDi"/>
+        <pin num="17" name="PA3" type="BiDi"/>
+        <pin num="18" name="VSS" type="power_in"/>
+        <pin num="19" name="VDD" type="power_in"/>
+        <pin num="20" name="PA4" type="BiDi"/>
+        <pin num="21" name="PA5" type="BiDi"/>
+        <pin num="22" name="PA6" type="BiDi"/>
+        <pin num="23" name="PA7" type="BiDi"/>
+        <pin num="24" name="PC4" type="BiDi"/>
+        <pin num="25" name="PC5" type="BiDi"/>
+        <pin num="26" name="PB0" type="BiDi"/>
+        <pin num="27" name="PB1" type="BiDi"/>
+        <pin num="28" name="PB2" type="BiDi"/>
+        <pin num="29" name="PB10" type="BiDi"/>
+        <pin num="30" name="PB11" type="BiDi"/>
+        <pin num="31" name="VSS" type="power_in"/>
+        <pin num="32" name="VDD" type="power_in"/>
+        <pin num="33" name="PB12" type="BiDi"/>
+        <pin num="34" name="PB13" type="BiDi"/>
+        <pin num="35" name="PB14" type="BiDi"/>
+        <pin num="36" name="PB15" type="BiDi"/>
+        <pin num="37" name="PC6" type="BiDi"/>
+        <pin num="38" name="PC7" type="BiDi"/>
+        <pin num="39" name="PC8" type="BiDi"/>
+        <pin num="40" name="PC9" type="BiDi"/>
+        <pin num="41" name="PA8" type="BiDi"/>
+        <pin num="42" name="PA9" type="BiDi"/>
+        <pin num="43" name="PA10" type="BiDi"/>
+        <pin num="44" name="PA11" type="BiDi"/>
+        <pin num="45" name="PA12" type="BiDi"/>
+        <pin num="46" name="PA13" type="BiDi"/>
+        <pin num="47" name="VSS" type="power_in"/>
+        <pin num="48" name="VDDIO2" type="power_in"/>
+        <pin num="49" name="PA14" type="BiDi"/>
+        <pin num="50" name="PA15" type="BiDi"/>
+        <pin num="51" name="PC10" type="BiDi"/>
+        <pin num="52" name="PC11" type="BiDi"/>
+        <pin num="53" name="PC12" type="BiDi"/>
+        <pin num="54" name="PD2" type="BiDi"/>
+        <pin num="55" name="PB3" type="BiDi"/>
+        <pin num="56" name="PB4" type="BiDi"/>
+        <pin num="57" name="PB5" type="BiDi"/>
+        <pin num="58" name="PB6" type="BiDi"/>
+        <pin num="59" name="PB7" type="BiDi"/>
+        <pin num="60" name="BOOT0" type="input"/>
+        <pin num="61" name="PB8" type="BiDi"/>
+        <pin num="62" name="PB9" type="BiDi"/>
+        <pin num="63" name="VSS" type="power_in"/>
+        <pin num="64" name="VDD" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="ws2812b" part="WS2812B">
+      <description>Addressable RGB LED</description>
+      <fields>
+        <field name="Reference">IC</field>
+        <field name="Value">WS2812B</field>
+        <field name="Footprint">agc-dsky:WS2812B</field>
+        <field name="Datasheet">https://www.kitronik.co.uk/pdf/WS2812B-LED-datasheet.pdf</field>
+        <field name="Aliexpress">https://www.aliexpress.com/item/10-1000pcs-WS2812B-4pins-5050-SMD-Black-White-version-WS2812-Individually-Addressable-Digital-RGB-LED-Chip/32810203444.html?spm=2114.search0604.3.54.65db7218Hnfvt0&amp;ws_ab_test=searchweb0_0,searchweb201602_2_10065_10068_10130_10547_319_317_10548_10696_10192_5728811_10190_453_10084_454_10083_10618_10307_10820_10301_10821_10303_537_536_5733215_5733315_328_10059_10884_5731015_5733115_10887_100031_5733415_321_322_10103_5733515_5733615,searchweb201603_55,ppcSwitch_0&amp;algo_expid=fa88f8e5-9015-4ff5-99be-874e1b964a2c-8&amp;algo_pvid=fa88f8e5-9015-4ff5-99be-874e1b964a2c</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VDD" type="power_in"/>
+        <pin num="2" name="DOUT" type="output"/>
+        <pin num="3" name="VSS" type="power_in"/>
+        <pin num="4" name="DIN" type="input"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="agg-kicad">
+      <uri>C:\Users\grego\Embedded-AGC-DSKY-emulator\pcb\agc-dsky/../../agg-kicad/agg-kicad.lib</uri>
+    </library>
+    <library logical="lds-3161ax">
+      <uri>C:\Users\grego\Embedded-AGC-DSKY-emulator\pcb\agc-dsky/../lib/lds-3161ax.lib</uri>
+    </library>
+    <library logical="mcp23s08">
+      <uri>C:\Users\grego\Embedded-AGC-DSKY-emulator\pcb\agc-dsky/../lib/mcp23s08.lib</uri>
+    </library>
+    <library logical="stm32f072rbt6">
+      <uri>C:\Users\grego\Embedded-AGC-DSKY-emulator\pcb\agc-dsky/../lib/stm32f072rbt6.lib</uri>
+    </library>
+    <library logical="ws2812b">
+      <uri>C:\Users\grego\Embedded-AGC-DSKY-emulator\pcb\agc-dsky/../lib/ws2812b.lib</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="/LED_DIN">
+      <node ref="IC2" pin="2"/>
+      <node ref="IC27" pin="4"/>
+    </net>
+    <net code="2" name="Net-(IC2-Pad54)">
+      <node ref="IC2" pin="54"/>
+    </net>
+    <net code="3" name="Net-(IC2-Pad5)">
+      <node ref="IC2" pin="5"/>
+    </net>
+    <net code="4" name="Net-(IC2-Pad6)">
+      <node ref="IC2" pin="6"/>
+    </net>
+    <net code="5" name="Net-(IC2-Pad25)">
+      <node ref="IC2" pin="25"/>
+    </net>
+    <net code="6" name="Net-(IC2-Pad24)">
+      <node ref="IC2" pin="24"/>
+    </net>
+    <net code="7" name="Net-(IC2-Pad11)">
+      <node ref="IC2" pin="11"/>
+    </net>
+    <net code="8" name="Net-(IC2-Pad10)">
+      <node ref="IC2" pin="10"/>
+    </net>
+    <net code="9" name="Net-(IC2-Pad27)">
+      <node ref="IC2" pin="27"/>
+    </net>
+    <net code="10" name="Net-(IC2-Pad26)">
+      <node ref="IC2" pin="26"/>
+    </net>
+    <net code="11" name="Net-(IC2-Pad14)">
+      <node ref="IC2" pin="14"/>
+    </net>
+    <net code="12" name="/Co3">
+      <node ref="IC2" pin="39"/>
+      <node ref="R28" pin="1"/>
+    </net>
+    <net code="13" name="/Co5">
+      <node ref="IC2" pin="41"/>
+      <node ref="R32" pin="1"/>
+    </net>
+    <net code="14" name="/Co6">
+      <node ref="IC2" pin="4"/>
+      <node ref="R34" pin="1"/>
+    </net>
+    <net code="15" name="Net-(IC2-Pad17)">
+      <node ref="IC2" pin="17"/>
+    </net>
+    <net code="16" name="GND">
+      <node ref="IC3" pin="4"/>
+      <node ref="J1" pin="5"/>
+      <node ref="IC7" pin="7"/>
+      <node ref="IC36" pin="3"/>
+      <node ref="IC37" pin="3"/>
+      <node ref="R25" pin="2"/>
+      <node ref="C28" pin="2"/>
+      <node ref="Q6" pin="S"/>
+      <node ref="IC4" pin="4"/>
+      <node ref="IC4" pin="9"/>
+      <node ref="C27" pin="2"/>
+      <node ref="IC3" pin="9"/>
+      <node ref="IC25" pin="7"/>
+      <node ref="IC24" pin="7"/>
+      <node ref="IC22" pin="7"/>
+      <node ref="IC23" pin="7"/>
+      <node ref="C20" pin="2"/>
+      <node ref="C22" pin="2"/>
+      <node ref="Q8" pin="S"/>
+      <node ref="R39" pin="2"/>
+      <node ref="IC13" pin="7"/>
+      <node ref="IC10" pin="7"/>
+      <node ref="IC19" pin="7"/>
+      <node ref="IC8" pin="7"/>
+      <node ref="Q7" pin="S"/>
+      <node ref="R37" pin="2"/>
+      <node ref="IC16" pin="7"/>
+      <node ref="IC29" pin="3"/>
+      <node ref="IC30" pin="3"/>
+      <node ref="C19" pin="2"/>
+      <node ref="C26" pin="2"/>
+      <node ref="Q1" pin="S"/>
+      <node ref="R27" pin="2"/>
+      <node ref="C29" pin="2"/>
+      <node ref="IC39" pin="3"/>
+      <node ref="R31" pin="2"/>
+      <node ref="Q4" pin="S"/>
+      <node ref="R33" pin="2"/>
+      <node ref="Q3" pin="S"/>
+      <node ref="IC38" pin="3"/>
+      <node ref="Q5" pin="S"/>
+      <node ref="C18" pin="2"/>
+      <node ref="C30" pin="2"/>
+      <node ref="R35" pin="2"/>
+      <node ref="IC28" pin="3"/>
+      <node ref="C23" pin="2"/>
+      <node ref="C13" pin="2"/>
+      <node ref="IC34" pin="3"/>
+      <node ref="Q2" pin="S"/>
+      <node ref="C24" pin="2"/>
+      <node ref="IC33" pin="3"/>
+      <node ref="R29" pin="2"/>
+      <node ref="IC3" pin="5"/>
+      <node ref="IC35" pin="3"/>
+      <node ref="C7" pin="2"/>
+      <node ref="IC27" pin="3"/>
+      <node ref="C8" pin="2"/>
+      <node ref="C9" pin="2"/>
+      <node ref="IC5" pin="9"/>
+      <node ref="C25" pin="2"/>
+      <node ref="C15" pin="2"/>
+      <node ref="C16" pin="2"/>
+      <node ref="C17" pin="2"/>
+      <node ref="C21" pin="2"/>
+      <node ref="C4" pin="2"/>
+      <node ref="IC12" pin="7"/>
+      <node ref="IC2" pin="63"/>
+      <node ref="IC2" pin="47"/>
+      <node ref="IC2" pin="31"/>
+      <node ref="IC2" pin="18"/>
+      <node ref="IC2" pin="12"/>
+      <node ref="IC1" pin="8"/>
+      <node ref="C14" pin="2"/>
+      <node ref="P1" pin="5"/>
+      <node ref="C6" pin="2"/>
+      <node ref="C12" pin="2"/>
+      <node ref="C11" pin="2"/>
+      <node ref="C10" pin="2"/>
+      <node ref="IC1" pin="5"/>
+      <node ref="IC1" pin="6"/>
+      <node ref="IC1" pin="15"/>
+      <node ref="IC1" pin="7"/>
+      <node ref="IC1" pin="16"/>
+      <node ref="IC1" pin="EP"/>
+      <node ref="C3" pin="1"/>
+      <node ref="C1" pin="2"/>
+      <node ref="C2" pin="2"/>
+      <node ref="IC6" pin="7"/>
+      <node ref="IC21" pin="7"/>
+      <node ref="IC26" pin="7"/>
+      <node ref="IC18" pin="7"/>
+      <node ref="IC9" pin="7"/>
+      <node ref="IC14" pin="7"/>
+      <node ref="R2" pin="2"/>
+      <node ref="IC32" pin="3"/>
+      <node ref="C5" pin="2"/>
+      <node ref="IC11" pin="7"/>
+      <node ref="IC17" pin="7"/>
+      <node ref="IC20" pin="7"/>
+      <node ref="IC15" pin="7"/>
+      <node ref="IC31" pin="3"/>
+    </net>
+    <net code="17" name="Net-(C3-Pad2)">
+      <node ref="C3" pin="2"/>
+      <node ref="IC1" pin="9"/>
+    </net>
+    <net code="18" name="Net-(IC2-Pad20)">
+      <node ref="IC2" pin="20"/>
+    </net>
+    <net code="19" name="Net-(IC2-Pad53)">
+      <node ref="IC2" pin="53"/>
+    </net>
+    <net code="20" name="Net-(IC2-Pad52)">
+      <node ref="IC2" pin="52"/>
+    </net>
+    <net code="21" name="5v">
+      <node ref="IC30" pin="1"/>
+      <node ref="IC39" pin="1"/>
+      <node ref="IC35" pin="1"/>
+      <node ref="C22" pin="1"/>
+      <node ref="IC1" pin="10"/>
+      <node ref="IC33" pin="1"/>
+      <node ref="C20" pin="1"/>
+      <node ref="C18" pin="1"/>
+      <node ref="C19" pin="1"/>
+      <node ref="C24" pin="1"/>
+      <node ref="IC34" pin="1"/>
+      <node ref="IC1" pin="13"/>
+      <node ref="IC32" pin="1"/>
+      <node ref="IC31" pin="1"/>
+      <node ref="IC1" pin="11"/>
+      <node ref="IC1" pin="12"/>
+      <node ref="IC36" pin="1"/>
+      <node ref="C29" pin="1"/>
+      <node ref="D13" pin="2"/>
+      <node ref="IC28" pin="1"/>
+      <node ref="C27" pin="1"/>
+      <node ref="IC29" pin="1"/>
+      <node ref="C2" pin="1"/>
+      <node ref="C1" pin="1"/>
+      <node ref="J1" pin="1"/>
+      <node ref="C21" pin="1"/>
+      <node ref="C30" pin="1"/>
+      <node ref="IC37" pin="1"/>
+      <node ref="IC38" pin="1"/>
+      <node ref="C28" pin="1"/>
+      <node ref="C25" pin="1"/>
+      <node ref="C26" pin="1"/>
+    </net>
+    <net code="22" name="/NRST">
+      <node ref="IC2" pin="7"/>
+      <node ref="P1" pin="3"/>
+      <node ref="C14" pin="1"/>
+    </net>
+    <net code="23" name="3v3">
+      <node ref="IC5" pin="4"/>
+      <node ref="C8" pin="1"/>
+      <node ref="C17" pin="1"/>
+      <node ref="IC5" pin="18"/>
+      <node ref="IC5" pin="5"/>
+      <node ref="C9" pin="1"/>
+      <node ref="C7" pin="1"/>
+      <node ref="IC4" pin="5"/>
+      <node ref="IC2" pin="64"/>
+      <node ref="IC2" pin="32"/>
+      <node ref="IC2" pin="19"/>
+      <node ref="IC2" pin="48"/>
+      <node ref="IC2" pin="13"/>
+      <node ref="IC2" pin="1"/>
+      <node ref="IC4" pin="18"/>
+      <node ref="IC3" pin="18"/>
+      <node ref="C4" pin="1"/>
+      <node ref="L1" pin="2"/>
+      <node ref="R1" pin="1"/>
+      <node ref="C5" pin="1"/>
+      <node ref="C16" pin="1"/>
+      <node ref="C13" pin="1"/>
+      <node ref="IC1" pin="14"/>
+      <node ref="P1" pin="1"/>
+      <node ref="SW9" pin="2"/>
+      <node ref="C6" pin="1"/>
+      <node ref="C12" pin="1"/>
+      <node ref="C11" pin="1"/>
+      <node ref="C10" pin="1"/>
+      <node ref="C15" pin="1"/>
+    </net>
+    <net code="24" name="Net-(IC2-Pad60)">
+      <node ref="R2" pin="1"/>
+      <node ref="SW9" pin="1"/>
+      <node ref="IC2" pin="60"/>
+    </net>
+    <net code="25" name="Net-(P1-Pad6)">
+      <node ref="P1" pin="6"/>
+    </net>
+    <net code="26" name="/SWDCLK">
+      <node ref="P1" pin="4"/>
+      <node ref="IC2" pin="49"/>
+    </net>
+    <net code="27" name="/SPI1_SI">
+      <node ref="IC3" pin="2"/>
+      <node ref="IC2" pin="23"/>
+      <node ref="IC4" pin="2"/>
+    </net>
+    <net code="28" name="/SPI1_SO">
+      <node ref="IC3" pin="3"/>
+      <node ref="IC4" pin="3"/>
+      <node ref="IC2" pin="22"/>
+    </net>
+    <net code="29" name="/SPI1_SCK">
+      <node ref="IC2" pin="21"/>
+      <node ref="IC3" pin="1"/>
+      <node ref="IC4" pin="1"/>
+    </net>
+    <net code="30" name="/SPI2_SCK">
+      <node ref="IC2" pin="34"/>
+      <node ref="IC5" pin="1"/>
+    </net>
+    <net code="31" name="/SPI2_SI">
+      <node ref="IC2" pin="36"/>
+      <node ref="IC5" pin="2"/>
+    </net>
+    <net code="32" name="/SPI2_SO">
+      <node ref="IC5" pin="3"/>
+      <node ref="IC2" pin="35"/>
+    </net>
+    <net code="33" name="/SWDIO">
+      <node ref="P1" pin="2"/>
+      <node ref="IC2" pin="46"/>
+    </net>
+    <net code="34" name="/NRST_1">
+      <node ref="IC3" pin="6"/>
+      <node ref="IC2" pin="9"/>
+    </net>
+    <net code="35" name="/NCS_1">
+      <node ref="IC3" pin="7"/>
+      <node ref="IC2" pin="8"/>
+    </net>
+    <net code="36" name="/NRST_3">
+      <node ref="IC5" pin="6"/>
+      <node ref="IC2" pin="29"/>
+    </net>
+    <net code="37" name="Net-(IC1-Pad4)">
+      <node ref="IC1" pin="4"/>
+      <node ref="R1" pin="2"/>
+    </net>
+    <net code="38" name="Net-(IC2-Pad61)">
+      <node ref="IC2" pin="61"/>
+    </net>
+    <net code="39" name="Net-(IC2-Pad44)">
+      <node ref="J1" pin="2"/>
+      <node ref="IC2" pin="44"/>
+    </net>
+    <net code="40" name="/NCS_3">
+      <node ref="IC5" pin="7"/>
+      <node ref="IC2" pin="28"/>
+    </net>
+    <net code="41" name="/BC3">
+      <node ref="SW11" pin="1"/>
+      <node ref="IC2" pin="55"/>
+      <node ref="SW10" pin="1"/>
+      <node ref="SW12" pin="1"/>
+    </net>
+    <net code="42" name="/BC1">
+      <node ref="IC2" pin="56"/>
+      <node ref="SW2" pin="1"/>
+      <node ref="SW3" pin="1"/>
+      <node ref="SW4" pin="1"/>
+      <node ref="SW1" pin="1"/>
+    </net>
+    <net code="43" name="/BC2">
+      <node ref="SW5" pin="1"/>
+      <node ref="SW6" pin="1"/>
+      <node ref="SW7" pin="1"/>
+      <node ref="SW8" pin="1"/>
+      <node ref="IC2" pin="57"/>
+    </net>
+    <net code="44" name="/BC4">
+      <node ref="IC2" pin="58"/>
+      <node ref="SW14" pin="1"/>
+      <node ref="SW16" pin="1"/>
+      <node ref="SW15" pin="1"/>
+      <node ref="SW17" pin="1"/>
+    </net>
+    <net code="45" name="/BC5">
+      <node ref="SW19" pin="1"/>
+      <node ref="SW20" pin="1"/>
+      <node ref="SW18" pin="1"/>
+      <node ref="SW13" pin="1"/>
+      <node ref="IC2" pin="59"/>
+    </net>
+    <net code="46" name="Net-(IC2-Pad62)">
+      <node ref="IC2" pin="62"/>
+    </net>
+    <net code="47" name="/Co8">
+      <node ref="IC2" pin="30"/>
+      <node ref="R38" pin="1"/>
+    </net>
+    <net code="48" name="Net-(IC2-Pad33)">
+      <node ref="IC2" pin="33"/>
+    </net>
+    <net code="49" name="/NCS_2">
+      <node ref="IC4" pin="7"/>
+      <node ref="IC2" pin="15"/>
+    </net>
+    <net code="50" name="/NRST_2">
+      <node ref="IC4" pin="6"/>
+      <node ref="IC2" pin="16"/>
+    </net>
+    <net code="51" name="/Co1">
+      <node ref="IC2" pin="37"/>
+      <node ref="R24" pin="1"/>
+    </net>
+    <net code="52" name="/Co2">
+      <node ref="IC2" pin="38"/>
+      <node ref="R26" pin="1"/>
+    </net>
+    <net code="53" name="/Co4">
+      <node ref="R30" pin="1"/>
+      <node ref="IC2" pin="40"/>
+    </net>
+    <net code="54" name="/Co7">
+      <node ref="R36" pin="1"/>
+      <node ref="IC2" pin="3"/>
+    </net>
+    <net code="55" name="Net-(IC1-Pad1)">
+      <node ref="IC1" pin="2"/>
+      <node ref="IC1" pin="1"/>
+      <node ref="IC1" pin="3"/>
+      <node ref="L1" pin="1"/>
+    </net>
+    <net code="56" name="Net-(IC3-Pad10)">
+      <node ref="IC3" pin="10"/>
+      <node ref="R15" pin="1"/>
+    </net>
+    <net code="57" name="Net-(IC3-Pad13)">
+      <node ref="IC3" pin="13"/>
+      <node ref="R16" pin="1"/>
+    </net>
+    <net code="58" name="/7-segs/G3">
+      <node ref="IC8" pin="3"/>
+      <node ref="R14" pin="2"/>
+      <node ref="IC14" pin="3"/>
+      <node ref="IC23" pin="3"/>
+      <node ref="IC26" pin="3"/>
+      <node ref="IC20" pin="3"/>
+      <node ref="IC17" pin="3"/>
+      <node ref="IC11" pin="3"/>
+    </net>
+    <net code="59" name="/7-segs/A2">
+      <node ref="IC19" pin="10"/>
+      <node ref="IC7" pin="10"/>
+      <node ref="IC13" pin="10"/>
+      <node ref="IC16" pin="10"/>
+      <node ref="IC25" pin="10"/>
+      <node ref="IC10" pin="10"/>
+      <node ref="D11" pin="2"/>
+      <node ref="R18" pin="2"/>
+      <node ref="IC22" pin="10"/>
+    </net>
+    <net code="60" name="/7-segs/B2">
+      <node ref="IC19" pin="9"/>
+      <node ref="R11" pin="2"/>
+      <node ref="IC16" pin="9"/>
+      <node ref="IC10" pin="9"/>
+      <node ref="IC22" pin="9"/>
+      <node ref="D8" pin="2"/>
+      <node ref="IC13" pin="9"/>
+      <node ref="IC25" pin="9"/>
+      <node ref="IC7" pin="9"/>
+    </net>
+    <net code="61" name="/7-segs/C2">
+      <node ref="IC7" pin="8"/>
+      <node ref="IC22" pin="8"/>
+      <node ref="IC13" pin="8"/>
+      <node ref="R5" pin="2"/>
+      <node ref="IC10" pin="8"/>
+      <node ref="IC25" pin="8"/>
+      <node ref="IC16" pin="8"/>
+      <node ref="IC19" pin="8"/>
+    </net>
+    <net code="62" name="/7-segs/D2">
+      <node ref="IC16" pin="5"/>
+      <node ref="IC13" pin="5"/>
+      <node ref="IC19" pin="5"/>
+      <node ref="R20" pin="2"/>
+      <node ref="D5" pin="2"/>
+      <node ref="IC25" pin="5"/>
+      <node ref="IC22" pin="5"/>
+      <node ref="IC7" pin="5"/>
+      <node ref="IC10" pin="5"/>
+    </net>
+    <net code="63" name="/7-segs/E2">
+      <node ref="IC19" pin="4"/>
+      <node ref="IC10" pin="4"/>
+      <node ref="R6" pin="2"/>
+      <node ref="IC25" pin="4"/>
+      <node ref="IC22" pin="4"/>
+      <node ref="D2" pin="2"/>
+      <node ref="IC16" pin="4"/>
+      <node ref="IC13" pin="4"/>
+      <node ref="IC7" pin="4"/>
+    </net>
+    <net code="64" name="/7-segs/F2">
+      <node ref="IC19" pin="2"/>
+      <node ref="IC10" pin="2"/>
+      <node ref="IC22" pin="2"/>
+      <node ref="IC25" pin="2"/>
+      <node ref="R19" pin="2"/>
+      <node ref="IC13" pin="2"/>
+      <node ref="IC7" pin="2"/>
+      <node ref="IC16" pin="2"/>
+    </net>
+    <net code="65" name="/7-segs/G2">
+      <node ref="IC10" pin="3"/>
+      <node ref="IC22" pin="3"/>
+      <node ref="IC25" pin="3"/>
+      <node ref="IC13" pin="3"/>
+      <node ref="IC7" pin="3"/>
+      <node ref="R12" pin="2"/>
+      <node ref="IC16" pin="3"/>
+      <node ref="IC19" pin="3"/>
+    </net>
+    <net code="66" name="/7-segs/A3">
+      <node ref="IC14" pin="10"/>
+      <node ref="IC17" pin="10"/>
+      <node ref="D12" pin="2"/>
+      <node ref="IC11" pin="10"/>
+      <node ref="IC20" pin="10"/>
+      <node ref="R21" pin="2"/>
+      <node ref="IC8" pin="10"/>
+      <node ref="IC26" pin="10"/>
+      <node ref="IC23" pin="10"/>
+    </net>
+    <net code="67" name="/7-segs/B3">
+      <node ref="IC8" pin="9"/>
+      <node ref="R13" pin="2"/>
+      <node ref="IC23" pin="9"/>
+      <node ref="IC14" pin="9"/>
+      <node ref="IC20" pin="9"/>
+      <node ref="IC26" pin="9"/>
+      <node ref="IC11" pin="9"/>
+      <node ref="D9" pin="2"/>
+      <node ref="IC17" pin="9"/>
+    </net>
+    <net code="68" name="/7-segs/C3">
+      <node ref="IC11" pin="8"/>
+      <node ref="IC26" pin="8"/>
+      <node ref="IC20" pin="8"/>
+      <node ref="IC17" pin="8"/>
+      <node ref="IC8" pin="8"/>
+      <node ref="IC23" pin="8"/>
+      <node ref="IC14" pin="8"/>
+      <node ref="R7" pin="2"/>
+    </net>
+    <net code="69" name="/7-segs/D3">
+      <node ref="IC26" pin="5"/>
+      <node ref="IC23" pin="5"/>
+      <node ref="D6" pin="2"/>
+      <node ref="IC11" pin="5"/>
+      <node ref="IC17" pin="5"/>
+      <node ref="R23" pin="2"/>
+      <node ref="IC20" pin="5"/>
+      <node ref="IC8" pin="5"/>
+      <node ref="IC14" pin="5"/>
+    </net>
+    <net code="70" name="/7-segs/E3">
+      <node ref="IC11" pin="4"/>
+      <node ref="IC26" pin="4"/>
+      <node ref="IC23" pin="4"/>
+      <node ref="R8" pin="2"/>
+      <node ref="IC14" pin="4"/>
+      <node ref="IC8" pin="4"/>
+      <node ref="IC20" pin="4"/>
+      <node ref="IC17" pin="4"/>
+      <node ref="D3" pin="2"/>
+    </net>
+    <net code="71" name="/7-segs/F3">
+      <node ref="IC20" pin="2"/>
+      <node ref="R22" pin="2"/>
+      <node ref="IC14" pin="2"/>
+      <node ref="IC17" pin="2"/>
+      <node ref="IC8" pin="2"/>
+      <node ref="IC23" pin="2"/>
+      <node ref="IC11" pin="2"/>
+      <node ref="IC26" pin="2"/>
+    </net>
+    <net code="72" name="/7-segs/G1">
+      <node ref="IC12" pin="3"/>
+      <node ref="IC24" pin="3"/>
+      <node ref="IC9" pin="3"/>
+      <node ref="IC15" pin="3"/>
+      <node ref="R10" pin="2"/>
+      <node ref="IC6" pin="3"/>
+      <node ref="IC18" pin="3"/>
+      <node ref="IC21" pin="3"/>
+    </net>
+    <net code="73" name="Net-(IC2-Pad45)">
+      <node ref="IC2" pin="45"/>
+      <node ref="J1" pin="3"/>
+    </net>
+    <net code="74" name="Net-(J1-Pad4)">
+      <node ref="J1" pin="4"/>
+    </net>
+    <net code="75" name="Net-(J1-PadS)">
+      <node ref="J1" pin="S"/>
+    </net>
+    <net code="76" name="/7-segs/A1">
+      <node ref="R15" pin="2"/>
+      <node ref="D10" pin="2"/>
+      <node ref="IC24" pin="10"/>
+      <node ref="IC21" pin="10"/>
+      <node ref="IC12" pin="10"/>
+      <node ref="IC9" pin="10"/>
+      <node ref="IC15" pin="10"/>
+      <node ref="IC18" pin="10"/>
+      <node ref="IC6" pin="10"/>
+    </net>
+    <net code="77" name="/7-segs/B1">
+      <node ref="IC12" pin="9"/>
+      <node ref="IC24" pin="9"/>
+      <node ref="IC6" pin="9"/>
+      <node ref="D7" pin="2"/>
+      <node ref="R9" pin="2"/>
+      <node ref="IC18" pin="9"/>
+      <node ref="IC15" pin="9"/>
+      <node ref="IC9" pin="9"/>
+      <node ref="IC21" pin="9"/>
+    </net>
+    <net code="78" name="/7-segs/C1">
+      <node ref="IC15" pin="8"/>
+      <node ref="R3" pin="2"/>
+      <node ref="IC9" pin="8"/>
+      <node ref="IC12" pin="8"/>
+      <node ref="IC6" pin="8"/>
+      <node ref="IC21" pin="8"/>
+      <node ref="IC18" pin="8"/>
+      <node ref="IC24" pin="8"/>
+    </net>
+    <net code="79" name="/7-segs/D1">
+      <node ref="IC6" pin="5"/>
+      <node ref="D4" pin="2"/>
+      <node ref="R17" pin="2"/>
+      <node ref="IC21" pin="5"/>
+      <node ref="IC18" pin="5"/>
+      <node ref="IC15" pin="5"/>
+      <node ref="IC24" pin="5"/>
+      <node ref="IC12" pin="5"/>
+      <node ref="IC9" pin="5"/>
+    </net>
+    <net code="80" name="/7-segs/E1">
+      <node ref="IC15" pin="4"/>
+      <node ref="IC6" pin="4"/>
+      <node ref="R4" pin="2"/>
+      <node ref="D1" pin="2"/>
+      <node ref="IC24" pin="4"/>
+      <node ref="IC21" pin="4"/>
+      <node ref="IC18" pin="4"/>
+      <node ref="IC12" pin="4"/>
+      <node ref="IC9" pin="4"/>
+    </net>
+    <net code="81" name="/7-segs/F1">
+      <node ref="IC18" pin="2"/>
+      <node ref="IC24" pin="2"/>
+      <node ref="IC12" pin="2"/>
+      <node ref="R16" pin="2"/>
+      <node ref="IC9" pin="2"/>
+      <node ref="IC15" pin="2"/>
+      <node ref="IC6" pin="2"/>
+      <node ref="IC21" pin="2"/>
+    </net>
+    <net code="82" name="Net-(IC3-Pad17)">
+      <node ref="IC3" pin="17"/>
+    </net>
+    <net code="83" name="Net-(IC3-Pad8)">
+      <node ref="IC3" pin="8"/>
+    </net>
+    <net code="84" name="Net-(IC4-Pad8)">
+      <node ref="IC4" pin="8"/>
+    </net>
+    <net code="85" name="Net-(IC4-Pad10)">
+      <node ref="R18" pin="1"/>
+      <node ref="IC4" pin="10"/>
+    </net>
+    <net code="86" name="Net-(IC4-Pad11)">
+      <node ref="IC4" pin="11"/>
+      <node ref="R11" pin="1"/>
+    </net>
+    <net code="87" name="Net-(IC4-Pad12)">
+      <node ref="R5" pin="1"/>
+      <node ref="IC4" pin="12"/>
+    </net>
+    <net code="88" name="Net-(IC4-Pad13)">
+      <node ref="R19" pin="1"/>
+      <node ref="IC4" pin="13"/>
+    </net>
+    <net code="89" name="Net-(IC4-Pad14)">
+      <node ref="R12" pin="1"/>
+      <node ref="IC4" pin="14"/>
+    </net>
+    <net code="90" name="Net-(IC3-Pad11)">
+      <node ref="R9" pin="1"/>
+      <node ref="IC3" pin="11"/>
+    </net>
+    <net code="91" name="Net-(IC3-Pad12)">
+      <node ref="R3" pin="1"/>
+      <node ref="IC3" pin="12"/>
+    </net>
+    <net code="92" name="Net-(IC3-Pad14)">
+      <node ref="R10" pin="1"/>
+      <node ref="IC3" pin="14"/>
+    </net>
+    <net code="93" name="Net-(IC3-Pad15)">
+      <node ref="R4" pin="1"/>
+      <node ref="IC3" pin="15"/>
+    </net>
+    <net code="94" name="Net-(IC3-Pad16)">
+      <node ref="R17" pin="1"/>
+      <node ref="IC3" pin="16"/>
+    </net>
+    <net code="95" name="/BR1">
+      <node ref="SW1" pin="2"/>
+      <node ref="SW18" pin="2"/>
+      <node ref="SW14" pin="2"/>
+      <node ref="SW10" pin="2"/>
+      <node ref="IC2" pin="51"/>
+      <node ref="SW5" pin="2"/>
+    </net>
+    <net code="96" name="/BR2">
+      <node ref="SW19" pin="2"/>
+      <node ref="SW2" pin="2"/>
+      <node ref="SW6" pin="2"/>
+      <node ref="SW11" pin="2"/>
+      <node ref="SW15" pin="2"/>
+      <node ref="IC2" pin="42"/>
+    </net>
+    <net code="97" name="/BR3">
+      <node ref="SW20" pin="2"/>
+      <node ref="IC2" pin="50"/>
+      <node ref="SW16" pin="2"/>
+      <node ref="SW12" pin="2"/>
+      <node ref="SW7" pin="2"/>
+      <node ref="SW3" pin="2"/>
+    </net>
+    <net code="98" name="/BR4">
+      <node ref="SW17" pin="2"/>
+      <node ref="SW4" pin="2"/>
+      <node ref="SW13" pin="2"/>
+      <node ref="SW8" pin="2"/>
+      <node ref="IC2" pin="43"/>
+    </net>
+    <net code="99" name="Net-(IC4-Pad15)">
+      <node ref="R6" pin="1"/>
+      <node ref="IC4" pin="15"/>
+    </net>
+    <net code="100" name="Net-(IC4-Pad16)">
+      <node ref="IC4" pin="16"/>
+      <node ref="R20" pin="1"/>
+    </net>
+    <net code="101" name="Net-(IC5-Pad13)">
+      <node ref="IC5" pin="13"/>
+      <node ref="R22" pin="1"/>
+    </net>
+    <net code="102" name="Net-(IC5-Pad8)">
+      <node ref="IC5" pin="8"/>
+    </net>
+    <net code="103" name="Net-(IC5-Pad10)">
+      <node ref="IC5" pin="10"/>
+      <node ref="R21" pin="1"/>
+    </net>
+    <net code="104" name="Net-(IC5-Pad11)">
+      <node ref="R13" pin="1"/>
+      <node ref="IC5" pin="11"/>
+    </net>
+    <net code="105" name="Net-(IC5-Pad12)">
+      <node ref="R7" pin="1"/>
+      <node ref="IC5" pin="12"/>
+    </net>
+    <net code="106" name="Net-(IC5-Pad14)">
+      <node ref="R14" pin="1"/>
+      <node ref="IC5" pin="14"/>
+    </net>
+    <net code="107" name="Net-(IC5-Pad15)">
+      <node ref="IC5" pin="15"/>
+      <node ref="R8" pin="1"/>
+    </net>
+    <net code="108" name="Net-(IC5-Pad16)">
+      <node ref="R23" pin="1"/>
+      <node ref="IC5" pin="16"/>
+    </net>
+    <net code="109" name="Net-(IC5-Pad17)">
+      <node ref="IC5" pin="17"/>
+    </net>
+    <net code="110" name="Net-(IC4-Pad17)">
+      <node ref="IC4" pin="17"/>
+    </net>
+    <net code="111" name="Net-(Q4-PadG)">
+      <node ref="R31" pin="1"/>
+      <node ref="R30" pin="2"/>
+      <node ref="Q4" pin="G"/>
+    </net>
+    <net code="112" name="Net-(Q5-PadG)">
+      <node ref="Q5" pin="G"/>
+      <node ref="R32" pin="2"/>
+      <node ref="R33" pin="1"/>
+    </net>
+    <net code="113" name="Net-(Q2-PadG)">
+      <node ref="R27" pin="1"/>
+      <node ref="R26" pin="2"/>
+      <node ref="Q2" pin="G"/>
+    </net>
+    <net code="114" name="Net-(Q3-PadG)">
+      <node ref="R28" pin="2"/>
+      <node ref="R29" pin="1"/>
+      <node ref="Q3" pin="G"/>
+    </net>
+    <net code="115" name="Net-(IC10-Pad1)">
+      <node ref="Q2" pin="D"/>
+      <node ref="IC11" pin="1"/>
+      <node ref="IC11" pin="6"/>
+      <node ref="IC9" pin="1"/>
+      <node ref="IC9" pin="6"/>
+      <node ref="IC10" pin="6"/>
+      <node ref="IC10" pin="1"/>
+    </net>
+    <net code="116" name="Net-(Q1-PadG)">
+      <node ref="Q1" pin="G"/>
+      <node ref="R24" pin="2"/>
+      <node ref="R25" pin="1"/>
+    </net>
+    <net code="117" name="Net-(IC18-Pad1)">
+      <node ref="IC19" pin="1"/>
+      <node ref="IC18" pin="1"/>
+      <node ref="IC18" pin="6"/>
+      <node ref="Q5" pin="D"/>
+      <node ref="IC20" pin="6"/>
+      <node ref="IC20" pin="1"/>
+      <node ref="IC19" pin="6"/>
+    </net>
+    <net code="118" name="Net-(IC12-Pad1)">
+      <node ref="Q3" pin="D"/>
+      <node ref="IC13" pin="6"/>
+      <node ref="IC13" pin="1"/>
+      <node ref="IC12" pin="1"/>
+      <node ref="IC12" pin="6"/>
+      <node ref="IC14" pin="6"/>
+      <node ref="IC14" pin="1"/>
+    </net>
+    <net code="119" name="Net-(IC15-Pad1)">
+      <node ref="Q4" pin="D"/>
+      <node ref="IC17" pin="1"/>
+      <node ref="IC17" pin="6"/>
+      <node ref="IC15" pin="1"/>
+      <node ref="IC15" pin="6"/>
+      <node ref="IC16" pin="6"/>
+      <node ref="IC16" pin="1"/>
+    </net>
+    <net code="120" name="Net-(IC24-Pad1)">
+      <node ref="Q7" pin="D"/>
+      <node ref="IC25" pin="1"/>
+      <node ref="IC25" pin="6"/>
+      <node ref="IC24" pin="1"/>
+      <node ref="IC24" pin="6"/>
+      <node ref="IC26" pin="6"/>
+      <node ref="IC26" pin="1"/>
+    </net>
+    <net code="121" name="Net-(Q8-PadG)">
+      <node ref="R39" pin="1"/>
+      <node ref="Q8" pin="G"/>
+      <node ref="R38" pin="2"/>
+    </net>
+    <net code="122" name="Net-(Q6-PadG)">
+      <node ref="R35" pin="1"/>
+      <node ref="Q6" pin="G"/>
+      <node ref="R34" pin="2"/>
+    </net>
+    <net code="123" name="Net-(Q7-PadG)">
+      <node ref="Q7" pin="G"/>
+      <node ref="R37" pin="1"/>
+      <node ref="R36" pin="2"/>
+    </net>
+    <net code="124" name="Net-(D1-Pad1)">
+      <node ref="D9" pin="1"/>
+      <node ref="D8" pin="1"/>
+      <node ref="D11" pin="1"/>
+      <node ref="D12" pin="1"/>
+      <node ref="D6" pin="1"/>
+      <node ref="Q8" pin="D"/>
+      <node ref="D2" pin="1"/>
+      <node ref="D5" pin="1"/>
+      <node ref="D10" pin="1"/>
+      <node ref="D3" pin="1"/>
+      <node ref="D7" pin="1"/>
+      <node ref="D4" pin="1"/>
+      <node ref="D1" pin="1"/>
+    </net>
+    <net code="125" name="Net-(IC21-Pad1)">
+      <node ref="Q6" pin="D"/>
+      <node ref="IC21" pin="1"/>
+      <node ref="IC21" pin="6"/>
+      <node ref="IC22" pin="6"/>
+      <node ref="IC22" pin="1"/>
+      <node ref="IC23" pin="1"/>
+      <node ref="IC23" pin="6"/>
+    </net>
+    <net code="126" name="Net-(IC6-Pad1)">
+      <node ref="IC7" pin="6"/>
+      <node ref="IC8" pin="6"/>
+      <node ref="Q1" pin="D"/>
+      <node ref="IC8" pin="1"/>
+      <node ref="IC6" pin="6"/>
+      <node ref="IC6" pin="1"/>
+      <node ref="IC7" pin="1"/>
+    </net>
+    <net code="127" name="Net-(IC33-Pad2)">
+      <node ref="IC33" pin="2"/>
+      <node ref="IC34" pin="4"/>
+    </net>
+    <net code="128" name="Net-(IC35-Pad2)">
+      <node ref="IC35" pin="2"/>
+      <node ref="IC36" pin="4"/>
+    </net>
+    <net code="129" name="Net-(IC34-Pad2)">
+      <node ref="IC34" pin="2"/>
+      <node ref="IC35" pin="4"/>
+    </net>
+    <net code="130" name="Net-(IC36-Pad2)">
+      <node ref="IC37" pin="4"/>
+      <node ref="IC36" pin="2"/>
+    </net>
+    <net code="131" name="Net-(IC38-Pad2)">
+      <node ref="IC38" pin="2"/>
+      <node ref="IC39" pin="4"/>
+    </net>
+    <net code="132" name="Net-(IC32-Pad2)">
+      <node ref="IC32" pin="2"/>
+      <node ref="IC33" pin="4"/>
+    </net>
+    <net code="133" name="Net-(IC39-Pad2)">
+      <node ref="IC39" pin="2"/>
+    </net>
+    <net code="134" name="Net-(IC31-Pad2)">
+      <node ref="IC31" pin="2"/>
+      <node ref="IC32" pin="4"/>
+    </net>
+    <net code="135" name="Net-(IC37-Pad2)">
+      <node ref="IC38" pin="4"/>
+      <node ref="IC37" pin="2"/>
+    </net>
+    <net code="136" name="Net-(IC28-Pad2)">
+      <node ref="IC28" pin="2"/>
+      <node ref="IC29" pin="4"/>
+    </net>
+    <net code="137" name="Net-(IC29-Pad2)">
+      <node ref="IC29" pin="2"/>
+      <node ref="IC30" pin="4"/>
+    </net>
+    <net code="138" name="Net-(IC27-Pad2)">
+      <node ref="IC28" pin="4"/>
+      <node ref="IC27" pin="2"/>
+    </net>
+    <net code="139" name="Net-(C23-Pad1)">
+      <node ref="C23" pin="1"/>
+      <node ref="D13" pin="1"/>
+      <node ref="IC27" pin="1"/>
+    </net>
+    <net code="140" name="Net-(IC30-Pad2)">
+      <node ref="IC30" pin="2"/>
+      <node ref="IC31" pin="4"/>
+    </net>
+  </nets>
+</export>
