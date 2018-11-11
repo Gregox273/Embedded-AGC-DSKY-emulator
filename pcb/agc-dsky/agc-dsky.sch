@@ -300,14 +300,14 @@ $EndComp
 $Comp
 L agg-kicad:SWITCH_SPST SW13
 U 1 1 5BE26FE5
-P 4100 7500
-F 0 "SW13" H 4100 7755 50  0000 C CNN
-F 1 "SKPMAME010" H 4100 7664 50  0000 C CNN
-F 2 "agc-dsky:SKPM" H 4100 7500 50  0001 C CNN
-F 3 "http://www.farnell.com/datasheets/1582292.pdf" H 4100 7500 50  0001 C CNN
-F 4 "" H -1900 2500 50  0001 C CNN "Mouser"
-F 5 "2056804" H -1900 2500 50  0001 C CNN "Farnell"
-	1    4100 7500
+P 5600 7500
+F 0 "SW13" H 5600 7755 50  0000 C CNN
+F 1 "SKPMAME010" H 5600 7664 50  0000 C CNN
+F 2 "agc-dsky:SKPM" H 5600 7500 50  0001 C CNN
+F 3 "http://www.farnell.com/datasheets/1582292.pdf" H 5600 7500 50  0001 C CNN
+F 4 "" H -400 2500 50  0001 C CNN "Mouser"
+F 5 "2056804" H -400 2500 50  0001 C CNN "Farnell"
+	1    5600 7500
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -326,19 +326,12 @@ $EndComp
 Wire Wire Line
 	4750 7500 4750 7600
 Wire Wire Line
-	4000 7500 4000 7600
-Wire Wire Line
 	3250 7500 3250 7600
 Wire Wire Line
 	2500 7500 2500 7600
 Connection ~ 3250 7600
 Wire Wire Line
 	3250 7600 2500 7600
-Connection ~ 4000 7600
-Wire Wire Line
-	4000 7600 3250 7600
-Wire Wire Line
-	4750 7600 4000 7600
 Wire Wire Line
 	2700 7500 2700 7000
 Connection ~ 2700 6000
@@ -361,15 +354,12 @@ Wire Wire Line
 Connection ~ 3450 7000
 Wire Wire Line
 	3450 7000 3450 6500
-Wire Wire Line
-	4200 7500 4200 7000
 Connection ~ 4200 6000
 Wire Wire Line
 	4200 6000 4200 5600
 Connection ~ 4200 6500
 Wire Wire Line
 	4200 6500 4200 6000
-Connection ~ 4200 7000
 Wire Wire Line
 	4200 7000 4200 6500
 Wire Wire Line
@@ -1357,7 +1347,7 @@ Text Label 6600 3950 2    50   ~ 0
 Co4
 Text Label 4850 4250 0    50   ~ 0
 Co5
-Text Label 4850 4350 0    50   ~ 0
+Text Label 6600 4450 2    50   ~ 0
 Co6
 Text Label 2700 5600 0    50   ~ 0
 BC1
@@ -1400,22 +1390,16 @@ Text Label 9400 800  0    50   ~ 0
 LED_DIN
 Wire Wire Line
 	9400 800  9750 800 
-Text Label 6500 2050 2    50   ~ 0
+Text Label 6700 1750 2    50   ~ 0
 BC1
-Text Label 6500 1950 2    50   ~ 0
+Text Label 6700 1850 2    50   ~ 0
 BC2
-Text Label 6500 1850 2    50   ~ 0
+Text Label 6700 1650 2    50   ~ 0
 BC3
-Text Label 6500 1750 2    50   ~ 0
+Text Label 6700 1950 2    50   ~ 0
 BC4
-Text Label 6500 1650 2    50   ~ 0
+Text Label 6700 2050 2    50   ~ 0
 BC5
-Wire Wire Line
-	6500 2050 6250 2050
-Wire Wire Line
-	6500 1850 6250 1850
-Wire Wire Line
-	6500 1950 6250 1950
 Text Notes 2400 5500 0    50   ~ 0
 Inputs\nUse mcu internal pulldowns
 Text Notes 2050 5900 0    50   ~ 0
@@ -1431,21 +1415,15 @@ NoConn ~ 6250 3550
 NoConn ~ 6250 3450
 NoConn ~ 6250 3350
 NoConn ~ 6250 3250
-NoConn ~ 5250 4950
 NoConn ~ 6250 1450
 NoConn ~ 6250 1350
 NoConn ~ 5250 3450
 NoConn ~ 5250 3750
 NoConn ~ 5250 3850
-NoConn ~ 6250 4550
-NoConn ~ 6250 4450
 NoConn ~ 6250 4250
 NoConn ~ 6250 4150
-NoConn ~ 6250 4050
 Wire Wire Line
 	5250 4250 4850 4250
-Wire Wire Line
-	5250 4350 4850 4350
 Wire Notes Line
 	5900 7700 5900 5300
 Wire Notes Line
@@ -1454,7 +1432,7 @@ Wire Notes Line
 	2000 5300 2000 7700
 Wire Notes Line
 	2000 7700 5900 7700
-Text Notes 5300 7650 0    100  ~ 0
+Text Notes 5350 5450 0    100  ~ 0
 Keypad
 Wire Notes Line
 	7100 550  7100 6300
@@ -1782,10 +1760,8 @@ Wire Notes Line
 	7100 6300 10600 6300
 Wire Wire Line
 	9750 5450 9500 5450
-Text Label 4850 4450 0    50   ~ 0
+Text Label 6600 4550 2    50   ~ 0
 Co7
-Wire Wire Line
-	5250 4450 4850 4450
 Wire Wire Line
 	7150 3900 8250 3900
 Wire Wire Line
@@ -2162,10 +2138,6 @@ Wire Wire Line
 Wire Wire Line
 	4600 4550 5250 4550
 Wire Wire Line
-	6250 1750 6500 1750
-Wire Wire Line
-	6500 1650 6250 1650
-Wire Wire Line
 	6700 1550 6250 1550
 Wire Wire Line
 	6700 2450 6250 2450
@@ -2174,4 +2146,44 @@ Wire Wire Line
 	4850 3550 5250 3550
 Wire Wire Line
 	5250 3650 4850 3650
+Wire Wire Line
+	6600 4550 6250 4550
+Wire Wire Line
+	6250 4450 6600 4450
+Text Label 4850 4350 0    50   ~ 0
+BR2
+Text Label 4850 4450 0    50   ~ 0
+BR4
+Wire Wire Line
+	4850 4350 5250 4350
+Wire Wire Line
+	5250 4450 4850 4450
+Text Label 6600 4050 2    50   ~ 0
+BR1
+Text Label 4850 4950 0    50   ~ 0
+BR3
+Wire Wire Line
+	4850 4950 5250 4950
+Wire Wire Line
+	6600 4050 6250 4050
+Wire Wire Line
+	4750 7600 5500 7600
+Wire Wire Line
+	5500 7600 5500 7500
+Connection ~ 4750 7600
+Wire Wire Line
+	5700 7500 5700 7000
+Connection ~ 5700 7000
+Wire Wire Line
+	3250 7600 4750 7600
+Wire Wire Line
+	6250 1950 6700 1950
+Wire Wire Line
+	6250 2050 6700 2050
+Wire Wire Line
+	6700 1850 6250 1850
+Wire Wire Line
+	6250 1750 6700 1750
+Wire Wire Line
+	6700 1650 6250 1650
 $EndSCHEMATC
