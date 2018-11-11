@@ -229,8 +229,6 @@ Connection ~ 2700 3700
 Wire Wire Line
 	1850 3150 1800 3150
 Wire Wire Line
-	1800 3150 1800 3600
-Wire Wire Line
 	1800 3600 1850 3600
 $Comp
 L agg-kicad:5v #PWR?
@@ -296,8 +294,6 @@ F 4 "2810260" H 2700 4150 50  0001 C CNN "Farnell"
 $EndComp
 Connection ~ 2700 4150
 Connection ~ 2700 4250
-Wire Wire Line
-	1800 3700 1800 4150
 Wire Wire Line
 	1800 4150 1850 4150
 $Comp
@@ -365,8 +361,6 @@ $EndComp
 Connection ~ 2700 4700
 Connection ~ 2700 4800
 Wire Wire Line
-	1800 4250 1800 4700
-Wire Wire Line
 	1800 4700 1850 4700
 $Comp
 L agg-kicad:5v #PWR?
@@ -432,8 +426,6 @@ F 4 "2810260" H 2700 5250 50  0001 C CNN "Farnell"
 $EndComp
 Connection ~ 2700 5250
 Connection ~ 2700 5350
-Wire Wire Line
-	1800 4800 1800 5250
 Wire Wire Line
 	1800 5250 1850 5250
 $Comp
@@ -899,18 +891,10 @@ Wire Wire Line
 	3200 6350 3250 6350
 Connection ~ 2850 1900
 Connection ~ 2850 2000
-Text Notes 2150 2350 0    50   ~ 0
-COMP\nACTY
 Wire Wire Line
 	1850 5350 1800 5350
 Wire Wire Line
 	1800 5350 1800 5550
-Wire Wire Line
-	1800 5550 3050 5550
-Wire Wire Line
-	3050 5550 3050 3050
-Wire Wire Line
-	3050 3050 3250 3050
 Wire Wire Line
 	3200 3700 3250 3700
 Wire Wire Line
@@ -922,8 +906,6 @@ Wire Wire Line
 Wire Wire Line
 	3200 5900 3250 5900
 NoConn ~ 3250 6450
-Wire Wire Line
-	1800 2000 1800 3050
 $Comp
 L agg-kicad:5v #PWR?
 U 1 1 5CB25685
@@ -961,6 +943,24 @@ Wire Wire Line
 	2700 1900 2850 1900
 Wire Wire Line
 	2650 2000 2850 2000
+Wire Wire Line
+	3050 3050 3250 3050
+Text Notes 2150 2350 0    50   ~ 0
+COMP\nACTY
+Wire Wire Line
+	1800 4800 1800 5250
+Wire Wire Line
+	1800 4250 1800 4700
+Wire Wire Line
+	1800 3700 1800 4150
+Wire Wire Line
+	1800 3150 1800 3600
+Wire Wire Line
+	1800 2000 1800 3050
+Wire Wire Line
+	1800 5550 3050 5550
+Wire Wire Line
+	3050 5550 3050 3050
 Text Notes 4500 2800 0    50   ~ 0
 Note that LEDs cannot be driven at 100% without exceeding power supply current limit
 $EndSCHEMATC

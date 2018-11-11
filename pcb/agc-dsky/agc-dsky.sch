@@ -1347,7 +1347,7 @@ Text Label 6600 3950 2    50   ~ 0
 Co4
 Text Label 4850 4250 0    50   ~ 0
 Co5
-Text Label 6600 4450 2    50   ~ 0
+Text Label 6600 4550 2    50   ~ 0
 Co6
 Text Label 2700 5600 0    50   ~ 0
 BC1
@@ -1760,7 +1760,7 @@ Wire Notes Line
 	7100 6300 10600 6300
 Wire Wire Line
 	9750 5450 9500 5450
-Text Label 6600 4550 2    50   ~ 0
+Text Label 6600 4450 2    50   ~ 0
 Co7
 Wire Wire Line
 	7150 3900 8250 3900
