@@ -7,7 +7,7 @@ encoding utf-8
 Sheet 1 3
 Title "AGC DSKY Emulator"
 Date "2018-11-10"
-Rev "v0.3"
+Rev "v0.5"
 Comp ""
 Comment1 "Gregory Brooks"
 Comment2 ""
@@ -404,8 +404,6 @@ F 4 "538-47589-0001" H 4300 4650 50  0001 C CNN "Mouser"
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	5250 4550 4600 4550
-Wire Wire Line
 	4600 4650 5250 4650
 NoConn ~ 4600 4950
 NoConn ~ 4600 4750
@@ -788,7 +786,7 @@ Text Label 7150 3900 0    50   ~ 0
 SPI2_SI
 Text Label 7150 4000 0    50   ~ 0
 SPI2_SO
-Text Label 6600 3450 2    50   ~ 0
+Text Label 6600 3150 2    50   ~ 0
 NRST_1
 Text Label 7950 3150 0    50   ~ 0
 NRST_2
@@ -798,7 +796,7 @@ Text Label 7950 4600 0    50   ~ 0
 NCS_3
 Text Label 7950 3250 0    50   ~ 0
 NCS_2
-Text Label 6600 3550 2    50   ~ 0
+Text Label 6600 3050 2    50   ~ 0
 NCS_1
 Wire Wire Line
 	7950 4500 8250 4500
@@ -1311,26 +1309,20 @@ Wire Wire Line
 	7950 1800 8250 1800
 Wire Wire Line
 	7950 1900 8250 1900
-Text Label 6700 1350 2    50   ~ 0
+Text Label 4850 3650 0    50   ~ 0
 NRST_2
-Text Label 6700 1450 2    50   ~ 0
+Text Label 4850 3550 0    50   ~ 0
 NCS_2
-Text Label 6700 2450 2    50   ~ 0
+Text Label 6700 2350 2    50   ~ 0
 NRST_3
-Text Label 6700 2550 2    50   ~ 0
+Text Label 6700 1550 2    50   ~ 0
 NCS_3
 Wire Wire Line
-	6700 1450 6250 1450
+	6250 3150 6600 3150
 Wire Wire Line
-	6250 1350 6700 1350
+	6250 3050 6600 3050
 Wire Wire Line
-	6250 3450 6600 3450
-Wire Wire Line
-	6250 3550 6600 3550
-Wire Wire Line
-	6250 2550 6700 2550
-Wire Wire Line
-	6250 2450 6700 2450
+	6250 2350 6700 2350
 Text Label 9500 4850 0    50   ~ 0
 Co1
 Text Label 9500 4950 0    50   ~ 0
@@ -1355,17 +1347,17 @@ Wire Wire Line
 	9750 5250 9500 5250
 Wire Wire Line
 	9500 5350 9750 5350
-Text Label 6650 1650 2    50   ~ 0
+Text Label 6600 3650 2    50   ~ 0
 Co1
-Text Label 6650 1750 2    50   ~ 0
+Text Label 6600 3750 2    50   ~ 0
 Co2
-Text Label 6650 1850 2    50   ~ 0
+Text Label 6600 3850 2    50   ~ 0
 Co3
-Text Label 6650 1950 2    50   ~ 0
+Text Label 6600 3950 2    50   ~ 0
 Co4
-Text Label 6650 2050 2    50   ~ 0
+Text Label 4850 4250 0    50   ~ 0
 Co5
-Text Label 6650 2150 2    50   ~ 0
+Text Label 4850 4350 0    50   ~ 0
 Co6
 Text Label 2700 5600 0    50   ~ 0
 BC1
@@ -1408,26 +1400,22 @@ Text Label 9400 800  0    50   ~ 0
 LED_DIN
 Wire Wire Line
 	9400 800  9750 800 
-Text Label 6600 3850 2    50   ~ 0
+Text Label 6500 2050 2    50   ~ 0
 BC1
-Text Label 6600 3950 2    50   ~ 0
+Text Label 6500 1950 2    50   ~ 0
 BC2
-Text Label 5000 4250 0    50   ~ 0
+Text Label 6500 1850 2    50   ~ 0
 BC3
-Text Label 5000 4350 0    50   ~ 0
+Text Label 6500 1750 2    50   ~ 0
 BC4
-Text Label 5000 4450 0    50   ~ 0
+Text Label 6500 1650 2    50   ~ 0
 BC5
 Wire Wire Line
-	6600 3850 6250 3850
+	6500 2050 6250 2050
 Wire Wire Line
-	6250 3950 6600 3950
+	6500 1850 6250 1850
 Wire Wire Line
-	5000 4450 5250 4450
-Wire Wire Line
-	5000 4250 5250 4250
-Wire Wire Line
-	5000 4350 5250 4350
+	6500 1950 6250 1950
 Text Notes 2400 5500 0    50   ~ 0
 Inputs\nUse mcu internal pulldowns
 Text Notes 2050 5900 0    50   ~ 0
@@ -1439,34 +1427,25 @@ Wire Wire Line
 NoConn ~ 5250 2650
 NoConn ~ 5250 2850
 NoConn ~ 5250 2950
-NoConn ~ 6250 3050
-NoConn ~ 6250 3150
+NoConn ~ 6250 3550
+NoConn ~ 6250 3450
 NoConn ~ 6250 3350
 NoConn ~ 6250 3250
-NoConn ~ 6250 1550
+NoConn ~ 5250 4950
+NoConn ~ 6250 1450
+NoConn ~ 6250 1350
 NoConn ~ 5250 3450
-NoConn ~ 5250 3550
-NoConn ~ 5250 3650
 NoConn ~ 5250 3750
 NoConn ~ 5250 3850
-NoConn ~ 5250 4950
 NoConn ~ 6250 4550
 NoConn ~ 6250 4450
 NoConn ~ 6250 4250
 NoConn ~ 6250 4150
 NoConn ~ 6250 4050
 Wire Wire Line
-	6250 1650 6650 1650
+	5250 4250 4850 4250
 Wire Wire Line
-	6250 1750 6650 1750
-Wire Wire Line
-	6250 1850 6650 1850
-Wire Wire Line
-	6250 1950 6650 1950
-Wire Wire Line
-	6250 2050 6650 2050
-Wire Wire Line
-	6250 2150 6650 2150
+	5250 4350 4850 4350
 Wire Notes Line
 	5900 7700 5900 5300
 Wire Notes Line
@@ -1803,18 +1782,18 @@ Wire Notes Line
 	7100 6300 10600 6300
 Wire Wire Line
 	9750 5450 9500 5450
-Text Label 6650 2250 2    50   ~ 0
+Text Label 4850 4450 0    50   ~ 0
 Co7
 Wire Wire Line
-	6250 2250 6650 2250
+	5250 4450 4850 4450
 Wire Wire Line
 	7150 3900 8250 3900
 Wire Wire Line
 	7150 4000 8250 4000
 Wire Wire Line
 	7150 3800 8250 3800
-NoConn ~ 6250 3750
-NoConn ~ 6250 3650
+NoConn ~ 6250 2250
+NoConn ~ 6250 2150
 Text Label 9500 5550 0    50   ~ 0
 Co8
 Wire Wire Line
@@ -2134,8 +2113,65 @@ F 4 "2432096" H 5350 950 50  0001 L CNN "Farnell"
 	1    5750 3150
 	1    0    0    -1  
 $EndComp
-Text Label 6650 2350 2    50   ~ 0
+Text Label 6700 2450 2    50   ~ 0
 Co8
+$Comp
+L agg-kicad:GND #PWR0101
+U 1 1 5F3FDE8C
+P 4150 1400
+F 0 "#PWR0101" H 4020 1440 50  0001 L CNN
+F 1 "GND" H 4050 1400 50  0000 C CNN
+F 2 "" H 4150 1400 50  0001 C CNN
+F 3 "" H 4150 1400 50  0001 C CNN
+	1    4150 1400
+	1    0    0    -1  
+$EndComp
+Connection ~ 4150 1400
+$Comp
+L agg-kicad:GND #PWR0102
+U 1 1 5F3FDFA7
+P 4100 1750
+F 0 "#PWR0102" H 3970 1790 50  0001 L CNN
+F 1 "GND" H 4000 1750 50  0000 C CNN
+F 2 "" H 4100 1750 50  0001 C CNN
+F 3 "" H 4100 1750 50  0001 C CNN
+	1    4100 1750
+	1    0    0    -1  
+$EndComp
+Connection ~ 4100 1750
+$Comp
+L agg-kicad:GND #PWR0103
+U 1 1 5F3FE03A
+P 3700 2100
+F 0 "#PWR0103" H 3570 2140 50  0001 L CNN
+F 1 "GND" H 3600 2100 50  0000 C CNN
+F 2 "" H 3700 2100 50  0001 C CNN
+F 3 "" H 3700 2100 50  0001 C CNN
+	1    3700 2100
+	1    0    0    -1  
+$EndComp
+Connection ~ 3700 2100
 Wire Wire Line
-	6250 2350 6650 2350
+	6600 3650 6250 3650
+Wire Wire Line
+	6250 3750 6600 3750
+Wire Wire Line
+	6600 3850 6250 3850
+Wire Wire Line
+	6250 3950 6600 3950
+Wire Wire Line
+	4600 4550 5250 4550
+Wire Wire Line
+	6250 1750 6500 1750
+Wire Wire Line
+	6500 1650 6250 1650
+Wire Wire Line
+	6700 1550 6250 1550
+Wire Wire Line
+	6700 2450 6250 2450
+NoConn ~ 6250 2550
+Wire Wire Line
+	4850 3550 5250 3550
+Wire Wire Line
+	5250 3650 4850 3650
 $EndSCHEMATC
