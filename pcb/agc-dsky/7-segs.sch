@@ -1172,8 +1172,8 @@ AR Path="/5BE4E3B4/5C1ABFAA" Ref="R24"  Part="1"
 F 0 "R24" H 1150 7778 50  0000 C CNN
 F 1 "100" H 1150 7687 50  0000 C CNN
 F 2 "agg:0603" H 1100 7600 50  0001 C CNN
-F 3 "http://www.farnell.com/datasheets/2310790.pdf" H 1100 7600 50  0001 C CNN
-F 4 "2616742" H 1100 7600 50  0001 C CNN "Farnell"
+F 3 "http://www.farnell.com/datasheets/2059623.pdf" H 1100 7600 50  0001 C CNN
+F 4 "2059574" H 1100 7600 50  0001 C CNN "Farnell"
 	1    1100 7600
 	1    0    0    -1  
 $EndComp
@@ -2270,8 +2270,8 @@ AR Path="/5BE4E3B4/5EC1C422" Ref="R26"  Part="1"
 F 0 "R26" H 2650 7778 50  0000 C CNN
 F 1 "100" H 2650 7687 50  0000 C CNN
 F 2 "agg:0603" H 2600 7600 50  0001 C CNN
-F 3 "http://www.farnell.com/datasheets/2310790.pdf" H 2600 7600 50  0001 C CNN
-F 4 "2616742" H 2600 7600 50  0001 C CNN "Farnell"
+F 3 "http://www.farnell.com/datasheets/2059623.pdf" H 2600 7600 50  0001 C CNN
+F 4 "2059574" H 2600 7600 50  0001 C CNN "Farnell"
 	1    2600 7600
 	1    0    0    -1  
 $EndComp
@@ -2284,8 +2284,8 @@ AR Path="/5BE4E3B4/5EC1C63E" Ref="R28"  Part="1"
 F 0 "R28" H 4150 7778 50  0000 C CNN
 F 1 "100" H 4150 7687 50  0000 C CNN
 F 2 "agg:0603" H 4100 7600 50  0001 C CNN
-F 3 "http://www.farnell.com/datasheets/2310790.pdf" H 4100 7600 50  0001 C CNN
-F 4 "2616742" H 4100 7600 50  0001 C CNN "Farnell"
+F 3 "http://www.farnell.com/datasheets/2059623.pdf" H 4100 7600 50  0001 C CNN
+F 4 "2059574" H 4100 7600 50  0001 C CNN "Farnell"
 	1    4100 7600
 	1    0    0    -1  
 $EndComp
@@ -2298,8 +2298,8 @@ AR Path="/5BE4E3B4/5EC1C86D" Ref="R30"  Part="1"
 F 0 "R30" H 5650 7778 50  0000 C CNN
 F 1 "100" H 5650 7687 50  0000 C CNN
 F 2 "agg:0603" H 5600 7600 50  0001 C CNN
-F 3 "http://www.farnell.com/datasheets/2310790.pdf" H 5600 7600 50  0001 C CNN
-F 4 "2616742" H 5600 7600 50  0001 C CNN "Farnell"
+F 3 "http://www.farnell.com/datasheets/2059623.pdf" H 5600 7600 50  0001 C CNN
+F 4 "2059574" H 5600 7600 50  0001 C CNN "Farnell"
 	1    5600 7600
 	1    0    0    -1  
 $EndComp
@@ -2312,8 +2312,8 @@ AR Path="/5BE4E3B4/5EC1CA21" Ref="R32"  Part="1"
 F 0 "R32" H 7150 7778 50  0000 C CNN
 F 1 "100" H 7150 7687 50  0000 C CNN
 F 2 "agg:0603" H 7100 7600 50  0001 C CNN
-F 3 "http://www.farnell.com/datasheets/2310790.pdf" H 7100 7600 50  0001 C CNN
-F 4 "2616742" H 7100 7600 50  0001 C CNN "Farnell"
+F 3 "http://www.farnell.com/datasheets/2059623.pdf" H 7100 7600 50  0001 C CNN
+F 4 "2059574" H 7100 7600 50  0001 C CNN "Farnell"
 	1    7100 7600
 	1    0    0    -1  
 $EndComp
@@ -2326,8 +2326,8 @@ AR Path="/5BE4E3B4/5EC1CC93" Ref="R34"  Part="1"
 F 0 "R34" H 8650 7778 50  0000 C CNN
 F 1 "100" H 8650 7687 50  0000 C CNN
 F 2 "agg:0603" H 8600 7600 50  0001 C CNN
-F 3 "http://www.farnell.com/datasheets/2310790.pdf" H 8600 7600 50  0001 C CNN
-F 4 "2616742" H 8600 7600 50  0001 C CNN "Farnell"
+F 3 "http://www.farnell.com/datasheets/2059623.pdf" H 8600 7600 50  0001 C CNN
+F 4 "2059574" H 8600 7600 50  0001 C CNN "Farnell"
 	1    8600 7600
 	1    0    0    -1  
 $EndComp
@@ -2340,8 +2340,8 @@ AR Path="/5BE4E3B4/5EC1CF79" Ref="R36"  Part="1"
 F 0 "R36" H 10150 7778 50  0000 C CNN
 F 1 "100" H 10150 7687 50  0000 C CNN
 F 2 "agg:0603" H 10100 7600 50  0001 C CNN
-F 3 "http://www.farnell.com/datasheets/2310790.pdf" H 10100 7600 50  0001 C CNN
-F 4 "2616742" H 10100 7600 50  0001 C CNN "Farnell"
+F 3 "http://www.farnell.com/datasheets/2059623.pdf" H 10100 7600 50  0001 C CNN
+F 4 "2059574" H 10100 7600 50  0001 C CNN "Farnell"
 	1    10100 7600
 	1    0    0    -1  
 $EndComp
@@ -2354,8 +2354,8 @@ AR Path="/5BE4E3B4/5EC1D3C5" Ref="R38"  Part="1"
 F 0 "R38" H 14150 7778 50  0000 C CNN
 F 1 "100" H 14150 7687 50  0000 C CNN
 F 2 "agg:0603" H 14100 7600 50  0001 C CNN
-F 3 "http://www.farnell.com/datasheets/2310790.pdf" H 14100 7600 50  0001 C CNN
-F 4 "2616742" H 14100 7600 50  0001 C CNN "Farnell"
+F 3 "http://www.farnell.com/datasheets/2059623.pdf" H 14100 7600 50  0001 C CNN
+F 4 "2059574" H 14100 7600 50  0001 C CNN "Farnell"
 	1    14100 7600
 	1    0    0    -1  
 $EndComp
