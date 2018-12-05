@@ -83,7 +83,7 @@ endif
 #
 
 # Define project name here
-PROJECT = ch
+PROJECT = agc-dsky
 
 # Target settings.
 MCU  = cortex-m0
@@ -101,7 +101,7 @@ include $(CHIBIOS)/os/common/startup/ARMCMx/compilers/GCC/mk/startup_stm32f0xx.m
 # HAL-OSAL files (optional).
 include $(CHIBIOS)/os/hal/hal.mk
 include $(CHIBIOS)/os/hal/ports/STM32/STM32F0xx/platform.mk
-include $(CHIBIOS)/os/hal/boards/ST_NUCLEO64_F072RB/board.mk
+include $(CONFDIR)/board.mk
 include $(CHIBIOS)/os/hal/osal/rt/osal.mk
 # RTOS files (optional).
 include $(CHIBIOS)/os/rt/rt.mk
@@ -120,7 +120,8 @@ LDSCRIPT= $(STARTUPLD)/STM32F072xB.ld
 # setting.
 CSRC = $(ALLCSRC) \
        $(TESTSRC) \
-       main.c
+       main.c \
+       agc_engine.c
 
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global
 # setting.
@@ -183,6 +184,39 @@ include $(RULESPATH)/rules.mk
 ##############################################################################
 # Custom rules
 #
+
+##############################################################################		
+# M3Debug flashing via GDB		
+#		
+GDB_PORT ?= /dev/ttyACM0	
+flash: build/$(PROJECT).elf
+	arm-none-eabi-gdb --batch \
+		              -ex 'target extended-remote $(GDB_PORT)' \
+					  -ex 'monitor version' \
+					  -ex 'monitor swdp_scan' \
+					  -ex 'attach 1' \
+					  -ex 'load' build/$(PROJECT).elf \
+
+debug: build/$(PROJECT).elf
+	arm-none-eabi-gdb -ex 'target extended-remote $(GDB_PORT)' \
+		              -ex 'monitor swdp_scan' \
+					  -ex 'attach 1' \
+					  -ex "file build/$(PROJECT).elf"
+					  
+power:
+	arm-none-eabi-gdb --batch \
+	                  -ex 'target extended-remote $(GDB_PORT)' \
+		              -ex 'monitor tpwr enable'
+
+unpower:
+	arm-none-eabi-gdb --batch \
+		              -ex 'target extended-remote $(GDB_PORT)' \
+		              -ex 'monitor tpwr disable'		
+#		
+# End BMP flashing		
+##############################################################################
+dfu: $(PROJECT).bin
+	dfu-util -d '0483:df11' -a 0 -s 0x08000000 -D $(PROJECT).bin
 
 #
 # Custom rules

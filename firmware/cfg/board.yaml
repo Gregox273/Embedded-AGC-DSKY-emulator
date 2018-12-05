@@ -1,0 +1,54 @@
+name: AGC/DSKY Emulator
+lsefreq: 0
+hsefreq: 0
+voltage: 3.3
+mcutype: STM32F072xB
+other:
+    STM32_HSE_BYPASS: ~
+    STM32_LSEDRV: (3U << 3U) 
+default: input, pushpull, starthigh, pullup, highspeed
+pins:
+    usb_dm : pa11, af0
+    usb_dp : pa12, af0
+    swdio  : pa13, af0
+    swclk  : pa14, af0, pulldown
+    led_din: pc13, output, floating
+    
+    ncs_1: pc0, output, floating
+    ncs_2: pa0, output, floating
+    ncs_3: pb2, output, floating
+    
+    nrst_1: pc1, output, floating
+    nrst_2: pa1, output, floating
+    nrst_3: pb10, output, floating
+    
+    usart_tx: pa2, af1, floating
+    usart_rx: pa3, af1, floating
+    
+    spi1_sck : pa5, af0, floating
+    spi1_miso: pa6, af0, floating
+    spi1_mosi: pa7, af0, floating
+    ncs_mpu  : pb12, af0, floating
+    spi2_sck : pb13, af0, floating
+    spi2_miso: pb14, af0, floating
+    spi2_mosi: pb15, af0, floating
+    
+    co1: pc6, output, startlow, floating
+    co2: pc7, output, startlow, floating
+    co3: pc8, output, startlow, floating
+    co4: pc9, output, startlow, floating
+    co5: pa8, output, startlow, floating
+    co6: pc15, output, startlow, floating
+    co7: pc14, output, startlow, floating
+    co8: pb11, output, startlow, floating
+    
+    br1: pc10, output, startlow, floating
+    br2: pa9, output, startlow, floating
+    br3: pa14, output, startlow, floating
+    br4: pa10, output, startlow, floating
+    
+    bc1: pb4, pulldown
+    bc2: pb5, pulldown
+    bc3: pb3, pulldown
+    bc4: pb6, pulldown
+    bc5: pb7, pulldown
