@@ -19,14 +19,19 @@
 
 #include "ch.h"
 #include "hal.h"
-#include "agc_engine.h"
+//#include "agc_engine.h"
+#include "buttons.h"
 
+//void test_hardware(void)
+//{
+//
+//}
 
 /*
  * Application entry point.
  */
-int main(void) {
-
+int main(void)
+{
   /*
    * System initializations.
    * - HAL initialization, this also initializes the configured device drivers
@@ -37,7 +42,23 @@ int main(void) {
   halInit();
   chSysInit();
 
+  /*
+   * Setup
+   */
+  mailbox_t button_mbox;
+  msg_t button_mbox_buffer[10];
+  chMBObjectInit(&button_mbox, button_mbox_buffer, sizeof(button_mbox_buffer)/sizeof(msg_t));
+  chThdCreateStatic(waButtons, sizeof(waButtons), NORMALPRIO, button_thd_func, (void *)&button_mbox);
 
+
+  /*
+   * Test
+   */
+  //test_hardware();
+
+  /*
+   * Main loop
+   */
   while (true) {
     chThdSleepSeconds(1);
   }

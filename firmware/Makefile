@@ -121,7 +121,8 @@ LDSCRIPT= $(STARTUPLD)/STM32F072xB.ld
 CSRC = $(ALLCSRC) \
        $(TESTSRC) \
        main.c \
-       agc_engine.c
+       buttons.c \
+       #agc_engine.c
 
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global
 # setting.
