@@ -21,6 +21,7 @@
 #include "hal.h"
 //#include "agc_engine.h"
 #include "buttons.h"
+#include "displays.h"
 
 //void test_hardware(void)
 //{
@@ -46,14 +47,21 @@ int main(void)
    * Setup
    */
   mailbox_t button_mbox;
-  msg_t button_mbox_buffer[10];
+  msg_t button_mbox_buffer[20];
   chMBObjectInit(&button_mbox, button_mbox_buffer, sizeof(button_mbox_buffer)/sizeof(msg_t));
-  chThdCreateStatic(waButtons, sizeof(waButtons), NORMALPRIO, button_thd_func, (void *)&button_mbox);
+  buttons_init((void *)&button_mbox);
 
+  displays_init();
 
   /*
    * Test
    */
+  displays_set_row(0, 01234);
+  displays_set_row(1, -98765);
+  displays_set_row(1, 13579);
+  displays_set_verb(45);
+  displays_set_noun(23);
+  displays_set_prog(01);
   //test_hardware();
 
   /*

@@ -123,7 +123,10 @@ CSRC = $(ALLCSRC) \
        main.c \
        buttons.c \
        mpu9250.c \
-       #agc_engine.c
+       lamps.c \
+       displays.c \
+       mcp23s08.c \
+       #agc_engine.c \
 
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global
 # setting.
