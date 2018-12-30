@@ -126,6 +126,7 @@ CSRC = $(ALLCSRC) \
        lamps.c \
        displays.c \
        mcp23s08.c \
+       ws2812.c \
        #agc_engine.c \
 
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global
