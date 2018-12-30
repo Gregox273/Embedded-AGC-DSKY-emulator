@@ -14,6 +14,12 @@
 static mutex_t buttons_state_mtx;
 static bool buttons_state[BUTTON_NUM_ROWS][BUTTON_NUM_COLS];
 
+/*
+ * Convert row number to row line
+ *
+ * row -- row number
+ * returns -- line (pin) assigned to row
+ */
 static ioline_t row_lookup(uint8_t row)
 {
   switch (row)
@@ -32,6 +38,12 @@ static ioline_t row_lookup(uint8_t row)
   }
 }
 
+/*
+ * Convert column number to column line
+ *
+ * col -- column number
+ * returns -- line (pin) assigned to column
+ */
 static ioline_t col_lookup(uint8_t col)
 {
   switch (col)
@@ -53,12 +65,39 @@ static ioline_t col_lookup(uint8_t col)
   }
 }
 
-static inline uint8_t button_id(uint8_t row, uint8_t col)
+/*
+ * Set button state (after reading from relevant pin)
+ *
+ * row -- row number
+ * col -- column number
+ * state -- button state (true if pressed i.e. closed circuit)
+ */
+static void button_set_state_rc(uint8_t row, uint8_t col, bool state)
+{
+  chMtxLock(&buttons_state_mtx);
+  buttons_state[row][col] = state;
+  chMtxUnlock(&buttons_state_mtx);
+}
+
+/*
+ * Set button state (after reading from relevant pin)
+ *
+ * id -- button id
+ * state -- button state (true if pressed i.e. closed circuit)
+ */
+static void button_set_state_id(uint8_t id, bool state)
+{
+  uint8_t row, col;
+  button_row_col(id, &row, &col);
+  button_set_state_rc(row, col, state);
+}
+
+inline uint8_t button_id(uint8_t row, uint8_t col)
 {
   return row * BUTTON_NUM_COLS + col;
 }
 
-static inline void button_row_col(uint8_t id, uint8_t *row, uint8_t *col)
+inline void button_row_col(uint8_t id, uint8_t *row, uint8_t *col)
 {
   *row = id / BUTTON_NUM_COLS;
   *col = id % BUTTON_NUM_COLS;
@@ -77,20 +116,6 @@ bool buttons_get_state_id(uint8_t id)
   uint8_t row, col;
   button_row_col(id, &row, &col);
   return buttons_get_state_rc(row, col);
-}
-
-static void button_set_state_rc(uint8_t row, uint8_t col, bool state)
-{
-  chMtxLock(&buttons_state_mtx);
-  buttons_state[row][col] = state;
-  chMtxUnlock(&buttons_state_mtx);
-}
-
-static void button_set_state_id(uint8_t id, bool state)
-{
-  uint8_t row, col;
-  button_row_col(id, &row, &col);
-  button_set_state_rc(row, col, state);
 }
 
 static THD_WORKING_AREA(waButtons, 256);

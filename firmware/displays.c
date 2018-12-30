@@ -24,20 +24,6 @@
 //#define N_ERR 0b0000001
 ////              abcdefg
 
-//              degfcba
-#define N_0   0b1101111
-#define N_1   0b0000110
-#define N_2   0b1110011
-#define N_3   0b1010111
-#define N_4   0b0011110
-#define N_5   0b1011101
-#define N_6   0b1111101
-#define N_7   0b0000111
-#define N_8   0b1111111
-#define N_9   0b1011111
-#define N_ERR 0b0010000
-//              degfcba
-
 /*
  * Static parameters should only be used by the displays thread
  */
@@ -74,6 +60,12 @@ static uint8_t spi_addr[DISPLAYS_NUM_ROWS];
 static mutex_t displays_state_mtx;
 static uint8_t displays_state[DISPLAYS_NUM_ROWS][DISPLAYS_NUM_COLS];
 
+/*
+ * Convert column number to column line
+ *
+ * col -- column number
+ * returns -- line (pin) assigned to column
+ */
 static ioline_t col_lookup(uint8_t col)
 {
   switch (col)
@@ -104,18 +96,38 @@ static ioline_t col_lookup(uint8_t col)
   }
 }
 
+/*
+ * Convert row & column number to display id
+ *
+ * row    -- row no.
+ * col    -- column no.
+ * return -- display id
+ */
 static inline uint8_t displays_id(uint8_t row, uint8_t col)
 {
   return row * DISPLAYS_NUM_COLS + col;
 }
 
+/*
+ * Convert display id to row & column number
+ *
+ * id  -- id number
+ * row -- row no. storage location
+ * col -- column no. storage location
+ */
 static inline void displays_row_col(uint8_t id, uint8_t *row, uint8_t *col)
 {
   *row = id / DISPLAYS_NUM_COLS;
   *col = id % DISPLAYS_NUM_COLS;
 }
 
-static uint8_t digit_to_7_seg(uint8_t digit)
+/*
+ * Convert digit 0-9 (255 to blank display) to 7 seg display state
+ *
+ * digit   -- digit 0-9 (255 to blank display)
+ * returns -- state byte for 7 seg display
+ */
+static DisplayState digit_to_7_seg(uint8_t digit)
 {
   switch(digit)
   {
@@ -139,11 +151,21 @@ static uint8_t digit_to_7_seg(uint8_t digit)
       return N_8;
     case(9):
       return N_9;
+    case(255):
+      return N_B;
     default:
       return N_ERR;
   }
 }
 
+/*
+ * Set one digit and the next, with val 0-99
+ *
+ * row    -- digit row number
+ * col    -- column number of first digit (sets col and col+1 position)
+ * val    -- numerical value to set (0-99)
+ * return -- true if valid input
+ */
 static bool displays_set_2_digits(uint8_t row, uint8_t col, uint8_t val)
 {
   uint8_t val_s = val % 100;  // Sanitise input
@@ -152,6 +174,12 @@ static bool displays_set_2_digits(uint8_t row, uint8_t col, uint8_t val)
   return (val_s == val);
 }
 
+/*
+ * Quick 10^n function
+ *
+ * n       -- exponent
+ * returns -- 10^n
+ */
 static int32_t quick_pow10(uint8_t n)
 {
   static int32_t pow10[10] = {
@@ -161,7 +189,7 @@ static int32_t quick_pow10(uint8_t n)
   return pow10[n];
 }
 
-uint8_t displays_get_state_rc(uint8_t row, uint8_t col)
+DisplayState displays_get_state_rc(uint8_t row, uint8_t col)
 {
   chMtxLock(&displays_state_mtx);
   uint8_t ret = displays_state[row][col];
@@ -169,21 +197,21 @@ uint8_t displays_get_state_rc(uint8_t row, uint8_t col)
   return ret;
 }
 
-uint8_t displays_get_state_id(uint8_t id)
+DisplayState displays_get_state_id(uint8_t id)
 {
   uint8_t row, col;
   displays_row_col(id, &row, &col);
   return displays_get_state_rc(row, col);
 }
 
-void displays_set_state_rc(uint8_t row, uint8_t col, uint8_t state)
+void displays_set_state_rc(uint8_t row, uint8_t col, DisplayState state)
 {
   chMtxLock(&displays_state_mtx);
   displays_state[row][col] = state;
   chMtxUnlock(&displays_state_mtx);
 }
 
-void displays_set_state_id(uint8_t id, uint8_t state)
+void displays_set_state_id(uint8_t id, DisplayState state)
 {
   uint8_t row, col;
   displays_row_col(id, &row, &col);
@@ -251,6 +279,29 @@ static THD_FUNCTION(displays_thd_func, arg)
       chThdSleepMicroseconds(1000);
       palClearLine(line_col);
     }
+  }
+}
+
+void displays_test(void)
+{
+  displays_set_row(0, 88888);
+  displays_set_row(1, -88888);
+  displays_set_row(1, 88888);
+  displays_set_verb(88);
+  displays_set_noun(88);
+  displays_set_prog(88);
+  chThdSleepSeconds(2);
+  int8_t plus = 1;
+  for(uint8_t i = 0; i < 10; i++)
+  {
+    displays_set_row(0, plus*11111*i);
+    displays_set_row(1, plus*11111*i);
+    displays_set_row(2, plus*11111*i);
+    displays_set_verb(11*i);
+    displays_set_noun(11*i);
+    displays_set_prog(11*i);
+    plus = -plus;
+    chThdSleepMilliseconds(500);
   }
 }
 

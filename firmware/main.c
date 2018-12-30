@@ -23,10 +23,30 @@
 #include "buttons.h"
 #include "displays.h"
 
-//void test_hardware(void)
-//{
-//
-//}
+void test_buttons(mailbox_t *button_mbox)
+{
+  while(true)
+  {
+    msg_t button;
+    chMBFetchTimeout(button_mbox, &button, TIME_INFINITE);
+    if(button==BUTTON_ENTR) break;
+    if(buttons_get_state_id((uint8_t)button))
+    {
+      uint8_t row, col;
+      button_row_col((uint8_t)button, &row, &col);
+      displays_set_row(0, row);
+      displays_set_row(1, col);
+    }
+  }
+}
+
+void test_hardware(mailbox_t *button_mbox)
+{
+  displays_test();
+  chThdSleepSeconds(5);
+  test_buttons(button_mbox);
+  // TODO: test mpu9250
+}
 
 /*
  * Application entry point.
@@ -56,19 +76,7 @@ int main(void)
   /*
    * Test
    */
-//  displays_set_row(0, 01234);
-//  displays_set_row(1, -98765);
-//  displays_set_row(1, 13579);
-//  displays_set_verb(45);
-//  displays_set_noun(23);
-//  displays_set_prog(01);
-    displays_set_row(0, 88888);
-    displays_set_row(1, -88888);
-    displays_set_row(1, 88888);
-    displays_set_verb(88);
-    displays_set_noun(88);
-    displays_set_prog(88);
-  //test_hardware();
+  test_hardware(&button_mbox);
 
   /*
    * Main loop
