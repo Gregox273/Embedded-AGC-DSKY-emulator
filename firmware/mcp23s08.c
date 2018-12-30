@@ -27,7 +27,7 @@ void mcp23s08_write_reg(SPIDriver *spidrv, SPIConfig *spicfg, uint8_t device_add
   const uint8_t buflen = 3;
   uint8_t buf[buflen];
   // Opcode
-  buf[0] = MCP23S08_FIXED_ADDR | (device_addr<<1 & 0b110) | MCP23S08_WRITE;
+  buf[0] = MCP23S08_FIXED_ADDR | ((device_addr<<1) & 0b110) | MCP23S08_WRITE;
   // Register address
   buf[1] = reg_addr;
   // Data
@@ -61,6 +61,6 @@ void mcp23s08_init(SPIDriver **spidrv, SPIConfig **spicfg, uint8_t *addr,
   for(uint16_t i = 0; i < num_devices; i++)
   {
     // Set all pins to outputs
-    mcp23s08_write_reg(spidrv[i], spicfg[i], addr[i], MCP23S08_IODIR_ADDR, 0xFF);
+    mcp23s08_write_reg(spidrv[i], spicfg[i], addr[i], MCP23S08_IODIR_ADDR, 0x00);
   }
 }

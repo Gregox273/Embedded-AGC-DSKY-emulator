@@ -198,6 +198,7 @@ flash: build/$(PROJECT).elf
 	arm-none-eabi-gdb --batch \
 		              -ex 'target extended-remote $(GDB_PORT)' \
 					  -ex 'monitor version' \
+					  #-ex 'monitor tpwr enable' \
 					  -ex 'monitor swdp_scan' \
 					  -ex 'attach 1' \
 					  -ex 'load' build/$(PROJECT).elf \
@@ -220,8 +221,8 @@ unpower:
 #		
 # End BMP flashing		
 ##############################################################################
-dfu: $(PROJECT).bin
-	dfu-util -d '0483:df11' -a 0 -s 0x08000000 -D $(PROJECT).bin
+dfu: build/$(PROJECT).bin
+	dfu-util -d '0483:df11' -a 0 -s 0x08000000 -D build/$(PROJECT).bin
 
 #
 # Custom rules

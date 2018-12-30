@@ -49,21 +49,21 @@ static SPIConfig d1_spi_cfg = {
   .end_cb = NULL,
   .ssline = LINE_NCS_1,
   //.cr1    = SPI_CR1_BR_1| SPI_CR1_BR_0 | SPI_CR1_CPOL | SPI_CR1_CPHA
-  .cr1    = SPI_CR1_BR_2 | SPI_CR1_CPOL | SPI_CR1_CPHA
+  .cr1    = SPI_CR1_BR_2
 };
 
 static SPIConfig d2_spi_cfg = {
   .end_cb = NULL,
   .ssline = LINE_NCS_2,
   //.cr1    = SPI_CR1_BR_1| SPI_CR1_BR_0 | SPI_CR1_CPOL | SPI_CR1_CPHA
-  .cr1    = SPI_CR1_BR_2 | SPI_CR1_CPOL | SPI_CR1_CPHA
+  .cr1    = SPI_CR1_BR_2
 };
 
 static SPIConfig d3_spi_cfg = {
   .end_cb = NULL,
   .ssline = LINE_NCS_3,
   //.cr1    = SPI_CR1_BR_1| SPI_CR1_BR_0 | SPI_CR1_CPOL | SPI_CR1_CPHA
-  .cr1    = SPI_CR1_BR_2 | SPI_CR1_CPOL | SPI_CR1_CPHA
+  .cr1    = SPI_CR1_BR_2
 };
 static SPIConfig *spi_cfgs[DISPLAYS_NUM_ROWS];
 static uint8_t spi_addr[DISPLAYS_NUM_ROWS];
@@ -233,7 +233,7 @@ bool displays_set_row(uint8_t row, int32_t val)
   return true;
 }
 
-static THD_WORKING_AREA(waDisplays, 128);
+static THD_WORKING_AREA(waDisplays, 256);
 static THD_FUNCTION(displays_thd_func, arg)
 {
   (void)arg;
@@ -256,6 +256,8 @@ static THD_FUNCTION(displays_thd_func, arg)
 
 void displays_init(void)
 {
+  chMtxObjectInit(&displays_state_mtx);
+
   display_spid[0] = spid_0_1;
   display_spid[1] = spid_0_1;
   display_spid[2] = spid_2;

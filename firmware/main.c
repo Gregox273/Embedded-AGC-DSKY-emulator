@@ -56,12 +56,18 @@ int main(void)
   /*
    * Test
    */
-  displays_set_row(0, 01234);
-  displays_set_row(1, -98765);
-  displays_set_row(1, 13579);
-  displays_set_verb(45);
-  displays_set_noun(23);
-  displays_set_prog(01);
+//  displays_set_row(0, 01234);
+//  displays_set_row(1, -98765);
+//  displays_set_row(1, 13579);
+//  displays_set_verb(45);
+//  displays_set_noun(23);
+//  displays_set_prog(01);
+    displays_set_row(0, 88888);
+    displays_set_row(1, -88888);
+    displays_set_row(1, 88888);
+    displays_set_verb(88);
+    displays_set_noun(88);
+    displays_set_prog(88);
   //test_hardware();
 
   /*
@@ -70,4 +76,5 @@ int main(void)
   while (true) {
     chThdSleepSeconds(1);
   }
+  return 0;
 }

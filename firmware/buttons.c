@@ -93,7 +93,7 @@ static void button_set_state_id(uint8_t id, bool state)
   button_set_state_rc(row, col, state);
 }
 
-static THD_WORKING_AREA(waButtons, 128);
+static THD_WORKING_AREA(waButtons, 256);
 static THD_FUNCTION(buttons_thd_func, arg)
 {
   mailbox_t* mbox = (mailbox_t*)arg;
@@ -141,6 +141,7 @@ static THD_FUNCTION(buttons_thd_func, arg)
 
 void buttons_init(void *button_mbox)
 {
+  chMtxObjectInit(&buttons_state_mtx);
   chThdCreateStatic(waButtons, sizeof(waButtons), NORMALPRIO, buttons_thd_func,
                     button_mbox);
 }
