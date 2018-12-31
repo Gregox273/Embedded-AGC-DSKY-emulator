@@ -40,6 +40,7 @@ void ws2812_sendarray(uint8_t *data,int datlen)
     uint32_t i;
     uint32_t curbyte;
 
+    chSysLock();
     while (datlen--) {
         curbyte=*data++;
 
@@ -107,4 +108,5 @@ void ws2812_sendarray(uint8_t *data,int datlen)
             :   [dat] "r" (curbyte), [set] "r" (set), [clr] "r" (clr), [masklo] "r" (masklo), [maskhi] "r" (maskhi)
             );
     }
+    chSysUnlock();
 }
