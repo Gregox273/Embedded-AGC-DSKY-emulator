@@ -22,6 +22,7 @@
 //#include "agc_engine.h"
 #include "buttons.h"
 #include "displays.h"
+#include "lamps.h"
 
 void test_buttons(mailbox_t *button_mbox)
 {
@@ -29,7 +30,7 @@ void test_buttons(mailbox_t *button_mbox)
   {
     msg_t button;
     chMBFetchTimeout(button_mbox, &button, TIME_INFINITE);
-    if(button==BUTTON_ENTR) break;
+    if(button==BUTTON_ENTR) break;  // Move on to next test
     if(buttons_get_state_id((uint8_t)button))
     {
       uint8_t row, col;
@@ -43,7 +44,7 @@ void test_buttons(mailbox_t *button_mbox)
 void test_hardware(mailbox_t *button_mbox)
 {
   displays_test();
-  chThdSleepSeconds(5);
+  lamps_test();
   test_buttons(button_mbox);
   // TODO: test mpu9250
 }
@@ -72,6 +73,7 @@ int main(void)
   buttons_init((void *)&button_mbox);
 
   displays_init();
+  lamps_init();
 
   /*
    * Test

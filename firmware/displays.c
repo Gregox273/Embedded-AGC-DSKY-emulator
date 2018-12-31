@@ -6,24 +6,6 @@
 #include "hal.h"
 #include "mcp23s08.h"
 
-/* State of each 7 segment display represented by a byte
- * Bit 6 (2nd MSB) represents state of segment A
- * Bit 0 (LSB) represents state of segment G
- */
-////              abcdefg
-//#define N_0   0b1111110
-//#define N_1   0b0110000
-//#define N_2   0b1101101
-//#define N_3   0b1111001
-//#define N_4   0b0110011
-//#define N_5   0b1011011
-//#define N_6   0b1011111
-//#define N_7   0b1110000
-//#define N_8   0b1111111
-//#define N_9   0b1111011
-//#define N_ERR 0b0000001
-////              abcdefg
-
 /*
  * Static parameters should only be used by the displays thread
  */
@@ -243,13 +225,16 @@ bool displays_set_row(uint8_t row, int32_t val)
 {
   //TODO: handle sign
   if(row > 2) return false;
+  DisplayState plus_minus;
   uint32_t val_s;
   if(val<0)
   {
+    plus_minus = N_M;
     val_s = -val % 1000000;
   }
   else
   {
+    plus_minus = N_P;
     val_s = val % 1000000;
   }
 
@@ -258,6 +243,8 @@ bool displays_set_row(uint8_t row, int32_t val)
     uint8_t digit = (val_s%quick_pow10(5-i)) / quick_pow10(4-i);
     displays_set_state_rc(row, i, digit_to_7_seg(digit));
   }
+
+  displays_set_state_rc(row, 7, plus_minus);
   return true;
 }
 
@@ -303,6 +290,12 @@ void displays_test(void)
     plus = -plus;
     chThdSleepMilliseconds(500);
   }
+  displays_set_row(0, 88888);
+  displays_set_row(1, -88888);
+  displays_set_row(1, 88888);
+  displays_set_verb(88);
+  displays_set_noun(88);
+  displays_set_prog(88);
 }
 
 void displays_init(void)

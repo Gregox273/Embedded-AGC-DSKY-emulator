@@ -9,10 +9,13 @@
 #include "ch.h"
 #include "hal.h"
 
-#define MCP23S08_IODIR_ADDR 0x00
-//#define MCP23S08_IOCON_ADDR 0x05
-#define MCP23S08_GPIO_ADDR 0x09
-#define MCP23S08_OLAT_ADDR 0x0A
+typedef enum mcp23s08_regaddr
+{
+  MCP23S08_IODIR_ADDR = 0x00,
+  MCP23S08_IOCON_ADDR = 0x05,
+  MCP23S08_GPIO_ADDR = 0x09,
+  MCP23S08_OLAT_ADDR = 0x0A
+}MCP23S08RegAddr;
 
 //typedef struct iocon_cfg
 //{
@@ -44,7 +47,7 @@ void mcp23s08_send(SPIDriver *spidrv, SPIConfig *spicfg, void *txbuf,
  * reg         -- byte to write to register
  */
 void mcp23s08_write_reg(SPIDriver *spidrv, SPIConfig *spicfg, uint8_t device_addr,
-                          uint8_t reg_addr, uint8_t reg);
+                        MCP23S08RegAddr reg_addr, uint8_t reg);
 
 /*
  * Initialise mcp23s08 driver

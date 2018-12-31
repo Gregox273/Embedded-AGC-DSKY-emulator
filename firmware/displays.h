@@ -7,7 +7,7 @@
 #include "ch.h"
 
 #define DISPLAYS_NUM_ROWS        3
-#define DISPLAYS_NUM_COLS        7
+#define DISPLAYS_NUM_COLS        8
 
 typedef enum display_state
 {
@@ -23,6 +23,9 @@ typedef enum display_state
   N_8   = 0b1111111,
   N_9   = 0b1011111,
   N_B   = 0b0000000,  // Blank
+  // plus-minus symbols
+  N_P   = 0b1100011,
+  N_M   = 0b1000010,
   N_ERR = 0b0010000   // Invalid digit
   //        degfcba
 }DisplayState;

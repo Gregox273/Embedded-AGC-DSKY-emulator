@@ -22,7 +22,7 @@ void mcp23s08_send(SPIDriver *spidrv, SPIConfig *spicfg, void *txbuf,
 }
 
 void mcp23s08_write_reg(SPIDriver *spidrv, SPIConfig *spicfg, uint8_t device_addr,
-                          uint8_t reg_addr, uint8_t reg)
+                        MCP23S08RegAddr reg_addr, uint8_t reg)
 {
   const uint8_t buflen = 3;
   uint8_t buf[buflen];

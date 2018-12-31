@@ -46,6 +46,11 @@ bool lamps_set_single(LampId id, uint8_t g, uint8_t r, uint8_t b);
 bool lamps_set_bulk(uint8_t *buf, uint8_t len, uint8_t offset);
 
 /*
+ * Test lamps
+ */
+void lamps_test(void);
+
+/*
  * Initialise lamps driver
  */
 void lamps_init(void);
