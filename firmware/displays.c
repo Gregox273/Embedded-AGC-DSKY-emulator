@@ -50,6 +50,7 @@ static uint8_t displays_state[DISPLAYS_NUM_ROWS][DISPLAYS_NUM_COLS];
  */
 static ioline_t col_lookup(uint8_t col)
 {
+  chDbgAssert(col < DISPLAYS_NUM_COLS, "Invalid display column number");
   switch (col)
   {
     case 0:
@@ -87,6 +88,8 @@ static ioline_t col_lookup(uint8_t col)
  */
 static inline uint8_t displays_id(uint8_t row, uint8_t col)
 {
+  chDbgAssert(row < DISPLAYS_NUM_ROWS, "Invalid display row number");
+  chDbgAssert(col < DISPLAYS_NUM_COLS, "Invalid display column number");
   return row * DISPLAYS_NUM_COLS + col;
 }
 
@@ -99,6 +102,7 @@ static inline uint8_t displays_id(uint8_t row, uint8_t col)
  */
 static inline void displays_row_col(uint8_t id, uint8_t *row, uint8_t *col)
 {
+  chDbgAssert(id < DISPLAYS_NUM_COLS*DISPLAYS_NUM_ROWS, "Invalid display ID");
   *row = id / DISPLAYS_NUM_COLS;
   *col = id % DISPLAYS_NUM_COLS;
 }
@@ -146,14 +150,14 @@ static DisplayState digit_to_7_seg(uint8_t digit)
  * row    -- digit row number
  * col    -- column number of first digit (sets col and col+1 position)
  * val    -- numerical value to set (0-99)
- * return -- true if valid input
  */
-static bool displays_set_2_digits(uint8_t row, uint8_t col, uint8_t val)
+static void displays_set_2_digits(uint8_t row, uint8_t col, uint8_t val)
 {
-  uint8_t val_s = val % 100;  // Sanitise input
-  displays_set_state_rc(row, col, digit_to_7_seg(val_s/10));
-  displays_set_state_rc(row, col+1, digit_to_7_seg(val_s%10));
-  return (val_s == val);
+  chDbgAssert(row < DISPLAYS_NUM_ROWS, "Invalid display row number");
+  chDbgAssert(col < DISPLAYS_NUM_COLS, "Invalid display column number");
+  chDbgAssert(val < 100, "Invalid input (0-99 required)");
+  displays_set_state_rc(row, col, digit_to_7_seg(val/10));
+  displays_set_state_rc(row, col+1, digit_to_7_seg(val%10));
 }
 
 /*
@@ -164,6 +168,7 @@ static bool displays_set_2_digits(uint8_t row, uint8_t col, uint8_t val)
  */
 static int32_t quick_pow10(uint8_t n)
 {
+  chDbgAssert(n < 10, "Invalid exponent (0-9 required)");
   static int32_t pow10[10] = {
     1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000
   };
@@ -173,6 +178,8 @@ static int32_t quick_pow10(uint8_t n)
 
 DisplayState displays_get_state_rc(uint8_t row, uint8_t col)
 {
+  chDbgAssert(row < DISPLAYS_NUM_ROWS, "Invalid display row number");
+  chDbgAssert(col < DISPLAYS_NUM_COLS, "Invalid display column number");
   chMtxLock(&displays_state_mtx);
   uint8_t ret = displays_state[row][col];
   chMtxUnlock(&displays_state_mtx);
@@ -181,6 +188,7 @@ DisplayState displays_get_state_rc(uint8_t row, uint8_t col)
 
 DisplayState displays_get_state_id(uint8_t id)
 {
+  chDbgAssert(id < DISPLAYS_NUM_COLS*DISPLAYS_NUM_ROWS, "Invalid display ID");
   uint8_t row, col;
   displays_row_col(id, &row, &col);
   return displays_get_state_rc(row, col);
@@ -188,6 +196,8 @@ DisplayState displays_get_state_id(uint8_t id)
 
 void displays_set_state_rc(uint8_t row, uint8_t col, DisplayState state)
 {
+  chDbgAssert(row < DISPLAYS_NUM_ROWS, "Invalid display row number");
+  chDbgAssert(col < DISPLAYS_NUM_COLS, "Invalid display column number");
   chMtxLock(&displays_state_mtx);
   displays_state[row][col] = state;
   chMtxUnlock(&displays_state_mtx);
@@ -195,57 +205,61 @@ void displays_set_state_rc(uint8_t row, uint8_t col, DisplayState state)
 
 void displays_set_state_id(uint8_t id, DisplayState state)
 {
+  chDbgAssert(id < DISPLAYS_NUM_COLS*DISPLAYS_NUM_ROWS, "Invalid display ID");
   uint8_t row, col;
   displays_row_col(id, &row, &col);
   displays_set_state_rc(row, col, state);
 }
 
-bool displays_set_verb(uint8_t val)
+void displays_set_verb(uint8_t val)
 {
+  chDbgAssert(val < 100, "Invalid input (0-99 required)");
   const uint8_t row = 1;
   const uint8_t col = 5;
-  return displays_set_2_digits(row, col, val);
+  displays_set_2_digits(row, col, val);
 }
 
-bool displays_set_noun(uint8_t val)
+void displays_set_noun(uint8_t val)
 {
+  chDbgAssert(val < 100, "Invalid input (0-99 required)");
   const uint8_t row = 2;
   const uint8_t col = 5;
-  return displays_set_2_digits(row, col, val);
+  displays_set_2_digits(row, col, val);
 }
 
-bool displays_set_prog(uint8_t val)
+void displays_set_prog(uint8_t val)
 {
+  chDbgAssert(val < 100, "Invalid input (0-99 required)");
   const uint8_t row = 0;
   const uint8_t col = 5;
-  return displays_set_2_digits(row, col, val);
+  displays_set_2_digits(row, col, val);
 }
 
-bool displays_set_row(uint8_t row, int32_t val)
+void displays_set_line(uint8_t line, int32_t val)
 {
-  //TODO: handle sign
-  if(row > 2) return false;
+  chDbgAssert(line < 3, "Invalid line number (0-2 required)");
+  chDbgAssert(val < 99999 && val > -99999, "val contains too many digits");
   DisplayState plus_minus;
-  uint32_t val_s;
+  uint32_t val_abs;
   if(val<0)
   {
     plus_minus = N_M;
-    val_s = -val % 1000000;
+    val_abs = -val;
   }
   else
   {
     plus_minus = N_P;
-    val_s = val % 1000000;
+    val_abs = val;
   }
 
   for(uint8_t i = 0; i < 5; i++)
   {
-    uint8_t digit = (val_s%quick_pow10(5-i)) / quick_pow10(4-i);
-    displays_set_state_rc(row, i, digit_to_7_seg(digit));
+    uint8_t digit = (val_abs%quick_pow10(5-i)) / quick_pow10(4-i);
+    displays_set_state_rc(line, i, digit_to_7_seg(digit));
   }
 
-  displays_set_state_rc(row, 7, plus_minus);
-  return true;
+  displays_set_state_rc(line, 7, plus_minus);
+  //return true;
 }
 
 static THD_WORKING_AREA(waDisplays, 256);
@@ -271,9 +285,9 @@ static THD_FUNCTION(displays_thd_func, arg)
 
 void displays_test(void)
 {
-  displays_set_row(0, 88888);
-  displays_set_row(1, -88888);
-  displays_set_row(1, 88888);
+  displays_set_line(0, 88888);
+  displays_set_line(1, -88888);
+  displays_set_line(1, 88888);
   displays_set_verb(88);
   displays_set_noun(88);
   displays_set_prog(88);
@@ -281,18 +295,18 @@ void displays_test(void)
   int8_t plus = 1;
   for(uint8_t i = 0; i < 10; i++)
   {
-    displays_set_row(0, plus*11111*i);
-    displays_set_row(1, plus*11111*i);
-    displays_set_row(2, plus*11111*i);
+    displays_set_line(0, plus*11111*i);
+    displays_set_line(1, plus*11111*i);
+    displays_set_line(2, plus*11111*i);
     displays_set_verb(11*i);
     displays_set_noun(11*i);
     displays_set_prog(11*i);
     plus = -plus;
     chThdSleepMilliseconds(500);
   }
-  displays_set_row(0, 88888);
-  displays_set_row(1, -88888);
-  displays_set_row(1, 88888);
+  displays_set_line(0, 88888);
+  displays_set_line(1, -88888);
+  displays_set_line(1, 88888);
   displays_set_verb(88);
   displays_set_noun(88);
   displays_set_prog(88);

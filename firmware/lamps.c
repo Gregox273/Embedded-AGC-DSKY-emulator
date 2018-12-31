@@ -20,10 +20,9 @@
 static mutex_t lamps_state_mtx;
 static uint8_t lamps_state[NUM_LAMPS * NUM_COLOURS];
 
-bool lamps_set_single(LampId id, uint8_t g, uint8_t r, uint8_t b)
+void lamps_set_single(LampId id, uint8_t g, uint8_t r, uint8_t b)
 {
-  if(id==NUM_LAMPS) return false;  // Invalid input
-
+  chDbgAssert(id!=NUM_LAMPS, "Invalid lamp ID");
   chMtxLock(&lamps_state_mtx);
 
   lamps_state[id * NUM_COLOURS] = g & MASK;
@@ -33,21 +32,18 @@ bool lamps_set_single(LampId id, uint8_t g, uint8_t r, uint8_t b)
   ws2812_sendarray(lamps_state, NUM_COLOURS*(id+1));
 
   chMtxUnlock(&lamps_state_mtx);
-
-  return true;
 }
 
 
-bool lamps_set_bulk(uint8_t *buf, uint8_t len, uint8_t offset)
+void lamps_set_bulk(uint8_t *buf, uint8_t len, uint8_t offset)
 {
-  // Check inputs
-  if(offset + len > NUM_LAMPS * NUM_COLOURS) return false;
-
+  chDbgAssert(offset + len <= NUM_LAMPS * NUM_COLOURS,
+              "offset + len too large to fit inside lamp state array");
   chMtxLock(&lamps_state_mtx);
 
   memcpy(lamps_state + offset, buf, len);
 
-  // Apply mask
+  // Apply mask to limit current per colour channel per lamp
   for(size_t i = offset; i < offset + len; i++)
   {
     lamps_state[i] &= MASK;
@@ -56,8 +52,6 @@ bool lamps_set_bulk(uint8_t *buf, uint8_t len, uint8_t offset)
   ws2812_sendarray(lamps_state, offset + len);
 
   chMtxUnlock(&lamps_state_mtx);
-
-  return true;
 }
 
 void lamps_test(void)

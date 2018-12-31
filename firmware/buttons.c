@@ -22,6 +22,7 @@ static bool buttons_state[BUTTON_NUM_ROWS][BUTTON_NUM_COLS];
  */
 static ioline_t row_lookup(uint8_t row)
 {
+  chDbgAssert(row < BUTTON_NUM_ROWS, "Invalid button row number");
   switch (row)
   {
     case 0:
@@ -46,6 +47,7 @@ static ioline_t row_lookup(uint8_t row)
  */
 static ioline_t col_lookup(uint8_t col)
 {
+  chDbgAssert(col < BUTTON_NUM_COLS, "Invalid button column number");
   switch (col)
   {
     case 0:
@@ -74,6 +76,8 @@ static ioline_t col_lookup(uint8_t col)
  */
 static void button_set_state_rc(uint8_t row, uint8_t col, bool state)
 {
+  chDbgAssert(row < BUTTON_NUM_ROWS, "Invalid button row number");
+  chDbgAssert(col < BUTTON_NUM_COLS, "Invalid button column number");
   chMtxLock(&buttons_state_mtx);
   buttons_state[row][col] = state;
   chMtxUnlock(&buttons_state_mtx);
@@ -87,6 +91,7 @@ static void button_set_state_rc(uint8_t row, uint8_t col, bool state)
  */
 static void button_set_state_id(uint8_t id, bool state)
 {
+  chDbgAssert(id < NUM_BUTTONS, "Invalid button ID");
   uint8_t row, col;
   button_row_col(id, &row, &col);
   button_set_state_rc(row, col, state);
@@ -94,17 +99,22 @@ static void button_set_state_id(uint8_t id, bool state)
 
 inline uint8_t button_id(uint8_t row, uint8_t col)
 {
+  chDbgAssert(row < BUTTON_NUM_ROWS, "Invalid button row number");
+  chDbgAssert(col < BUTTON_NUM_COLS, "Invalid button column number");
   return row * BUTTON_NUM_COLS + col;
 }
 
 inline void button_row_col(uint8_t id, uint8_t *row, uint8_t *col)
 {
+  chDbgAssert(id < NUM_BUTTONS, "Invalid button ID");
   *row = id / BUTTON_NUM_COLS;
   *col = id % BUTTON_NUM_COLS;
 }
 
 bool buttons_get_state_rc(uint8_t row, uint8_t col)
 {
+  chDbgAssert(row < BUTTON_NUM_ROWS, "Invalid button row number");
+  chDbgAssert(col < BUTTON_NUM_COLS, "Invalid button column number");
   chMtxLock(&buttons_state_mtx);
   bool ret = buttons_state[row][col];
   chMtxUnlock(&buttons_state_mtx);
@@ -113,6 +123,7 @@ bool buttons_get_state_rc(uint8_t row, uint8_t col)
 
 bool buttons_get_state_id(uint8_t id)
 {
+  chDbgAssert(id < NUM_BUTTONS, "Invalid button ID");
   uint8_t row, col;
   button_row_col(id, &row, &col);
   return buttons_get_state_rc(row, col);

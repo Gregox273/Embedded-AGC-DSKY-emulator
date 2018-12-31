@@ -35,8 +35,8 @@ void test_buttons(mailbox_t *button_mbox)
     {
       uint8_t row, col;
       button_row_col((uint8_t)button, &row, &col);
-      displays_set_row(0, row);
-      displays_set_row(1, col);
+      displays_set_line(0, row);
+      displays_set_line(1, col);
     }
   }
 }
