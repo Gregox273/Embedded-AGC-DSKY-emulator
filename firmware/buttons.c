@@ -6,7 +6,7 @@
 #include "buttons.h"
 
 #define DEBOUNCE_CYCLES 3  // Number of row passes used to debounce button
-#define ROW_PERIOD      5  // ms
+#define ROW_PERIOD      20  // ms
 
 /* Global state - do not access directly
  * Use getter/setter functions
@@ -129,48 +129,50 @@ bool buttons_get_state_id(uint8_t id)
   return buttons_get_state_rc(row, col);
 }
 
-static THD_WORKING_AREA(waButtons, 256);
+static THD_WORKING_AREA(waButtons, 512);
 static THD_FUNCTION(buttons_thd_func, arg)
 {
   mailbox_t* mbox = (mailbox_t*)arg;
-  uint8_t button_status[BUTTON_NUM_ROWS][BUTTON_NUM_COLS];
-
+  uint8_t button_count[BUTTON_NUM_ROWS][BUTTON_NUM_COLS] = {0};
   while (true)
   {
     for(uint8_t row = 0; row < BUTTON_NUM_ROWS; row++)
     {
       palSetLine(row_lookup(row));
+      chThdSleepMilliseconds(ROW_PERIOD);
 
       for(uint8_t col = 0; col < BUTTON_NUM_COLS; col++)
       {
-        bool pinstate = palReadLine(col);
+        bool pinstate = palReadLine(col_lookup(col));
+        chThdYield();
         if(pinstate != buttons_get_state_rc(row, col))
         {
           // Button state changed
-          if (button_status[row][col] < DEBOUNCE_CYCLES)
+          if (button_count[row][col] < DEBOUNCE_CYCLES)
           {
-            button_status[row][col]++;
+            button_count[row][col]++;
           }
           else
           {
             // Pin state has remained constant for DEBOUNCE_CYCLES cycles
             // Assume finished bouncing
-            button_status[row][col] = 0;
+            button_count[row][col] = 0;
             button_set_state_rc(row, col, pinstate);
-            msg_t pressed_button = button_id(row, col);
-            // Indicate button changed state
-            chMBPostTimeout(mbox, pressed_button, TIME_INFINITE);
+			chThdYield();
+			msg_t pressed_button = pinstate << 8 | button_id(row, col);  // Button on/off and ID in 16 bits
+			// Indicate button changed state
+			chMBPostTimeout(mbox, pressed_button, TIME_INFINITE);
           }
         }
         else
         {
           // Button state has not changed
-          button_status[row][col] = 0;  // Reset counter
+          button_count[row][col] = 0;  // Reset counter
         }
+        chThdYield();
       }
-
       palClearLine(row_lookup(row));
-      chThdSleepMilliseconds(ROW_PERIOD);
+      chThdYield();
     }
   }
 }
@@ -178,6 +180,6 @@ static THD_FUNCTION(buttons_thd_func, arg)
 void buttons_init(void *button_mbox)
 {
   chMtxObjectInit(&buttons_state_mtx);
-  chThdCreateStatic(waButtons, sizeof(waButtons), NORMALPRIO, buttons_thd_func,
+  chThdCreateStatic(waButtons, sizeof(waButtons), LOWPRIO, buttons_thd_func,
                     button_mbox);
 }

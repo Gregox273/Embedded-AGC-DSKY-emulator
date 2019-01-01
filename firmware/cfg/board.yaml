@@ -44,7 +44,7 @@ pins:
     
     br1: pc10, output, startlow, floating
     br2: pa9, output, startlow, floating
-    br3: pa14, output, startlow, floating
+    br3: pa15, output, startlow, floating
     br4: pa10, output, startlow, floating
     
     bc1: pb4, pulldown

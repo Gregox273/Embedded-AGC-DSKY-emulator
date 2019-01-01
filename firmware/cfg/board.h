@@ -75,7 +75,7 @@
 #define GPIOA_USB_DP                   12U
 #define GPIOA_SWDIO                    13U
 #define GPIOA_SWCLK                    14U
-#define GPIOA_PIN15                    15U
+#define GPIOA_BR3                      15U
 
 #define GPIOB_PIN0                     0U
 #define GPIOB_PIN1                     1U
@@ -172,7 +172,7 @@
 #define LINE_BC5                       PAL_LINE(GPIOB, 7U)
 #define LINE_BR1                       PAL_LINE(GPIOC, 10U)
 #define LINE_BR2                       PAL_LINE(GPIOA, 9U)
-#define LINE_BR3                       PAL_LINE(GPIOA, 14U)
+#define LINE_BR3                       PAL_LINE(GPIOA, 15U)
 #define LINE_BR4                       PAL_LINE(GPIOA, 10U)
 #define LINE_CO1                       PAL_LINE(GPIOC, 6U)
 #define LINE_CO2                       PAL_LINE(GPIOC, 7U)
@@ -243,7 +243,7 @@
  * PA12 - USB_DP                       (af0).
  * PA13 - SWDIO                        (af0).
  * PA14 - SWCLK                        (af0 pulldown).
- * PA15 - PIN15                        (unused).
+ * PA15 - BR3                          (output startlow floating).
 */
 #define VAL_GPIOA_MODER                (PIN_MODE_OUTPUT(GPIOA_NCS_2) | \
                                         PIN_MODE_OUTPUT(GPIOA_NRST_2) | \
@@ -260,7 +260,7 @@
                                         PIN_MODE_ALTERNATE(GPIOA_USB_DP) | \
                                         PIN_MODE_ALTERNATE(GPIOA_SWDIO) | \
                                         PIN_MODE_ALTERNATE(GPIOA_SWCLK) | \
-                                        PIN_MODE_INPUT(GPIOA_PIN15))
+                                        PIN_MODE_OUTPUT(GPIOA_BR3))
 
 #define VAL_GPIOA_OTYPER               (PIN_OTYPE_PUSHPULL(GPIOA_NCS_2) | \
                                         PIN_OTYPE_PUSHPULL(GPIOA_NRST_2) | \
@@ -277,7 +277,7 @@
                                         PIN_OTYPE_PUSHPULL(GPIOA_USB_DP) | \
                                         PIN_OTYPE_PUSHPULL(GPIOA_SWDIO) | \
                                         PIN_OTYPE_PUSHPULL(GPIOA_SWCLK) | \
-                                        PIN_OTYPE_PUSHPULL(GPIOA_PIN15))
+                                        PIN_OTYPE_PUSHPULL(GPIOA_BR3))
 
 #define VAL_GPIOA_OSPEEDR              (PIN_OSPEED_HIGH(GPIOA_NCS_2) | \
                                         PIN_OSPEED_HIGH(GPIOA_NRST_2) | \
@@ -294,7 +294,7 @@
                                         PIN_OSPEED_HIGH(GPIOA_USB_DP) | \
                                         PIN_OSPEED_HIGH(GPIOA_SWDIO) | \
                                         PIN_OSPEED_HIGH(GPIOA_SWCLK) | \
-                                        PIN_OSPEED_HIGH(GPIOA_PIN15))
+                                        PIN_OSPEED_HIGH(GPIOA_BR3))
 
 #define VAL_GPIOA_PUPDR                (PIN_PUPD_FLOATING(GPIOA_NCS_2) | \
                                         PIN_PUPD_FLOATING(GPIOA_NRST_2) | \
@@ -311,7 +311,7 @@
                                         PIN_PUPD_PULLUP(GPIOA_USB_DP) | \
                                         PIN_PUPD_PULLUP(GPIOA_SWDIO) | \
                                         PIN_PUPD_PULLDOWN(GPIOA_SWCLK) | \
-                                        PIN_PUPD_PULLUP(GPIOA_PIN15))
+                                        PIN_PUPD_FLOATING(GPIOA_BR3))
 
 #define VAL_GPIOA_ODR                  (PIN_OD_HIGH(GPIOA_NCS_2) | \
                                         PIN_OD_HIGH(GPIOA_NRST_2) | \
@@ -328,7 +328,7 @@
                                         PIN_OD_HIGH(GPIOA_USB_DP) | \
                                         PIN_OD_HIGH(GPIOA_SWDIO) | \
                                         PIN_OD_HIGH(GPIOA_SWCLK) | \
-                                        PIN_OD_HIGH(GPIOA_PIN15))
+                                        PIN_OD_LOW(GPIOA_BR3))
 
 #define VAL_GPIOA_AFRL                 (PIN_AFIO_AF(GPIOA_NCS_2, 0U) | \
                                         PIN_AFIO_AF(GPIOA_NRST_2, 0U) | \
@@ -346,7 +346,7 @@
                                         PIN_AFIO_AF(GPIOA_USB_DP, 0U) | \
                                         PIN_AFIO_AF(GPIOA_SWDIO, 0U) | \
                                         PIN_AFIO_AF(GPIOA_SWCLK, 0U) | \
-                                        PIN_AFIO_AF(GPIOA_PIN15, 0U))
+                                        PIN_AFIO_AF(GPIOA_BR3, 0U))
 
 /*
  *  GPIOB setup:

@@ -238,7 +238,7 @@ void displays_set_prog(uint8_t val)
 void displays_set_line(uint8_t line, int32_t val)
 {
   chDbgAssert(line < 3, "Invalid line number (0-2 required)");
-  chDbgAssert(val < 99999 && val > -99999, "val contains too many digits");
+  chDbgAssert(val <= 99999 && val >= -99999, "val contains too many digits");
   DisplayState plus_minus;
   uint32_t val_abs;
   if(val<0)
@@ -273,12 +273,25 @@ static THD_FUNCTION(displays_thd_func, arg)
       for(uint8_t row = 0; row < DISPLAYS_NUM_ROWS; row++)
       {
         mcp23s08_write_reg(display_spid[row], spi_cfgs[row], spi_addr[row], MCP23S08_OLAT_ADDR, displays_get_state_rc(row, col));
+        chThdYield();
       }
 
-      ioline_t line_col = col_lookup(col);
-      palSetLine(line_col);
-      chThdSleepMicroseconds(1000);
-      palClearLine(line_col);
+      if(col==DISPLAYS_NUM_COLS-1)
+      {
+	    ioline_t line_col = col_lookup(col);
+		palSetLine(line_col);
+		chThdSleepMicroseconds(200);
+		palClearLine(line_col);
+		chThdSleepMicroseconds(800);
+      }
+      else
+      {
+    	ioline_t line_col = col_lookup(col);
+	    palSetLine(line_col);
+	    chThdSleepMicroseconds(1000);
+	    palClearLine(line_col);
+      }
+      chThdYield();
     }
   }
 }
@@ -306,7 +319,7 @@ void displays_test(void)
   }
   displays_set_line(0, 88888);
   displays_set_line(1, -88888);
-  displays_set_line(1, 88888);
+  displays_set_line(2, 88888);
   displays_set_verb(88);
   displays_set_noun(88);
   displays_set_prog(88);
@@ -331,5 +344,5 @@ void displays_init(void)
 
   mcp23s08_init(display_spid, spi_cfgs, spi_addr, 3);
 
-  chThdCreateStatic(waDisplays, sizeof(waDisplays), NORMALPRIO, displays_thd_func, NULL);
+  chThdCreateStatic(waDisplays, sizeof(waDisplays), LOWPRIO, displays_thd_func, NULL);
 }
