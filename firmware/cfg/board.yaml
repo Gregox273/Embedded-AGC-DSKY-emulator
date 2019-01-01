@@ -12,7 +12,7 @@ pins:
     usb_dp : pa12, af0
     swdio  : pa13, af0
     swclk  : pa14, af0, pulldown
-    led_din: pc13, output, floating
+    led_din: pc13, output, startlow, floating
     
     ncs_1: pc0, output, floating
     ncs_2: pa0, output, floating

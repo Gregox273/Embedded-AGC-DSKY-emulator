@@ -54,8 +54,8 @@
 /*
     Other settings.
 */
-#define STM32_LSEDRV                   (3U << 3U)
 #define STM32_HSE_BYPASS               
+#define STM32_LSEDRV                   (3U << 3U)
 
 /*
     IO pins assignments.
@@ -487,7 +487,7 @@
  * PC10 - BR1                          (output startlow floating).
  * PC11 - PIN11                        (unused).
  * PC12 - PIN12                        (unused).
- * PC13 - LED_DIN                      (output floating).
+ * PC13 - LED_DIN                      (output startlow floating).
  * PC14 - CO7                          (output startlow floating).
  * PC15 - CO6                          (output startlow floating).
 */
@@ -572,7 +572,7 @@
                                         PIN_OD_LOW(GPIOC_BR1) | \
                                         PIN_OD_HIGH(GPIOC_PIN11) | \
                                         PIN_OD_HIGH(GPIOC_PIN12) | \
-                                        PIN_OD_HIGH(GPIOC_LED_DIN) | \
+                                        PIN_OD_LOW(GPIOC_LED_DIN) | \
                                         PIN_OD_LOW(GPIOC_CO7) | \
                                         PIN_OD_LOW(GPIOC_CO6))
 
