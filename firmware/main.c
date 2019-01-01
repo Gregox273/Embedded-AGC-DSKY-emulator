@@ -22,7 +22,7 @@
 //#include "agc_engine.h"
 #include "buttons.h"
 #include "displays.h"
-#include "lamps.h"
+//#include "lamps.h"
 
 void test_buttons(mailbox_t *button_mbox)
 {
@@ -70,8 +70,7 @@ int main(void)
    * Setup
    */
   lamps_init();
-  lamps_test();
-  chThdSleepSeconds(3);
+  //lamps_test();
 
   mailbox_t button_mbox;
   msg_t button_mbox_buffer[20];

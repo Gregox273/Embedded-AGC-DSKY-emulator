@@ -1,5 +1,8 @@
 /*
  * Lamp driver
+ * Based on WS28281 DMA driver by Omri Iluz
+ * https://github.com/omriiluz/WS2812B-LED-Driver-ChibiOS
+ * (Accessed 1/1/2019)
  */
 
 #include <string.h>
@@ -15,37 +18,16 @@
  */
 #define MASK 0xFF >> 3 // 0xFF * 2^-3
 
-/*
- * For ws2812b state machine
- */
-#define LAMP_BIT_MASK_RESET    0b10000000
-#define WS2812B_BIT_MASK_RESET 0b01000000
-#define WS2812B_NUM_RESET 20  // = number of reset 'bytes'
-
-typedef enum ws2812b_state
-{
-  WS2812B_RESET = 0,
-  WS2812B_TX_0 = 0b1000000,
-  WS2812B_TX_1 = 0b1111110,
-}WS2812BState;
-
 /* Global state - do not access directly
  * Use getter/setter functions
  */
 static mutex_t lamps_state_mtx;
-static uint8_t lamps_state[NUM_LAMPS * NUM_COLOURS] = {0};
-
-/*
- * WS2812B driver state variables
- */
-static size_t lamp_buf_len;
-static size_t lamp_byte_cursor;
-static uint8_t lamp_bit_mask;
-static uint8_t ws2812b_bit_mask;
-static WS2812BState ws2812b_state;
-
-/* WS2812B timer config */
-static const GPTConfig lamp_gpt_cfg;
+static uint8_t *lamps_state;
+static uint8_t *fb;
+static GPIO_TypeDef *sPort;
+static uint32_t sMask;
+uint8_t* dma_source;
+//static uint8_t lamps_state[NUM_LAMPS * NUM_COLOURS] = {0};
 
 /*
  *
@@ -66,113 +48,46 @@ static void ws2812b_sendarray(size_t datlen)
    */
   chDbgAssert(datlen <= NUM_COLOURS*NUM_LAMPS, "ws2812b array too long");
 
-  /*
-   * Generate raw tx buffer based on timing rules above
-   * Each bit represents pin state for one 208ns cycle
-   */
-//  ws2812b_buf_len = datlen * 6 + 14;  // Allow space for reset at start and end
-//  uint8_t buf[ws2812b_buf_len];
-//  ws2812b_buf_addr = &buf;
-  lamp_buf_len = datlen + WS2812B_NUM_RESET*2;  // Plus reset bytes at start and end
-  lamp_byte_cursor = 0;  // Count up to buf_len-1
-  lamp_bit_mask = LAMP_BIT_MASK_RESET;
-  ws2812b_bit_mask = WS2812B_BIT_MASK_RESET;
-  ws2812b_state = WS2812B_RESET;
-
-  gptStartContinuous(&GPTD3, 5); // Every 416ns
 }
 
-//static uint8_t ws2812b_0_1[] = {0b100000, 0b111110};
-//static uint8_t *ws2812b_cur_byte_addr;
-//static size_t ws2812b_buf_len;
-//static size_t ws2812b_byte_cursor;
-//static uint8_t ws2812b_bit_mask;
-static void lamp_gpt_cb(GPTDriver *gptd)
-{
-//  if(lamp_byte_cursor >= lamp_buf_len)
-//  {
-//    // Finished sending buffer
-//    //gptStopTimerI(gptd);
-//    return;
-//  }
-//  if(!ws2812b_bit_mask)
-//  {
-//    // Finished sending one bit, prepare to send next
-//    ws2812b_bit_mask = WS2812B_BIT_MASK_RESET;
-//    lamp_bit_mask >>=1;
-//    if(!lamp_bit_mask)
-//    {
-//      // Finished sending one byte
-//      lamp_bit_mask = LAMP_BIT_MASK_RESET;
-//      lamp_byte_cursor++;
-//      if(lamp_byte_cursor >= lamp_buf_len)
-//      {
-//	// Finished sending buffer
-//	//gptStopTimerI(gptd);
-//	return;
-//      }
-//    }
-//
-//    if(lamp_byte_cursor < WS2812B_NUM_RESET || lamp_byte_cursor >= lamp_buf_len - WS2812B_NUM_RESET)
-//    {
-//      ws2812b_state = WS2812B_RESET;
-//    }
-//    else if(lamp_bit_mask & lamps_state[lamp_byte_cursor-1])
-//    {
-//      ws2812b_state = WS2812B_TX_1;
-//    }
-//    else
-//    {
-//      ws2812b_state = WS2812B_TX_0;
-//    }
-//  }
-//  if(ws2812b_state & ws2812b_bit_mask)
-//  {
-//    palSetPad(GPIOC, GPIOC_LED_DIN);//pal_lld_setport(GPIOC, 1<<GPIOC_LED_DIN);
-//  }
-//  else
-//  {
-//    palClearPad(GPIOC, GPIOC_LED_DIN);//pal_lld_clearport(GPIOC, 1<<GPIOC_LED_DIN);
-//  }
-//
-//  ws2812b_bit_mask >>= 1;
-  return;
+static void setColor(uint8_t color, uint8_t *buf,uint32_t mask){
+  int i;
+  for (i=0;i<8;i++){
+    buf[i]=((color<<i)&0b10000000?0x0:mask);
+  }
 }
 
 void lamps_set_single(LampId id, uint8_t g, uint8_t r, uint8_t b)
 {
   chDbgAssert(id!=NUM_LAMPS, "Invalid lamp ID");
-  gptStopTimer(&GPTD3);
   chMtxLock(&lamps_state_mtx);
 
-  lamps_state[id * NUM_COLOURS] = g & MASK;
-  lamps_state[id * NUM_COLOURS + 1] = r & MASK;
-  lamps_state[id * NUM_COLOURS + 2] = b & MASK;
-
-  ws2812b_sendarray(NUM_COLOURS*(id+1));
+  setColor(g & MASK, lamps_state + (id * 8 * NUM_COLOURS), sMask);
+  setColor(r & MASK, lamps_state + (id * 8 * NUM_COLOURS) + 8, sMask);
+  setColor(b & MASK, lamps_state + (id * 8 * NUM_COLOURS) + 16, sMask);
 
   chMtxUnlock(&lamps_state_mtx);
 }
 
-void lamps_set_bulk(uint8_t *buf, uint8_t len, uint8_t offset)
-{
-  chDbgAssert(offset + len <= NUM_LAMPS * NUM_COLOURS,
-              "offset + len too large to fit inside lamp state array");
-  gptStopTimer(&GPTD3);
-  chMtxLock(&lamps_state_mtx);
-
-  memcpy(lamps_state + offset, buf, len);
-
-  // Apply mask to limit current per colour channel per lamp
-  for(size_t i = offset; i < offset + len; i++)
-  {
-    lamps_state[i] &= MASK;
-  }
-
-  ws2812b_sendarray(offset + len);
-
-  chMtxUnlock(&lamps_state_mtx);
-}
+//void lamps_set_bulk(uint8_t *buf, uint8_t len, uint8_t offset)
+//{
+//  chDbgAssert(offset + len <= NUM_LAMPS * NUM_COLOURS,
+//              "offset + len too large to fit inside lamp state array");
+//  gptStopTimer(&GPTD3);
+//  chMtxLock(&lamps_state_mtx);
+//
+//  memcpy(lamps_state + offset, buf, len);
+//
+//  // Apply mask to limit current per colour channel per lamp
+//  for(size_t i = offset; i < offset + len; i++)
+//  {
+//    lamps_state[i] &= MASK;
+//  }
+//
+//  ws2812b_sendarray(offset + len);
+//
+//  chMtxUnlock(&lamps_state_mtx);
+//}
 
 void lamps_test(void)
 {
@@ -185,18 +100,109 @@ void lamps_test(void)
 //    lamps_set_single(lamp, 0x00, 0x00, 0x1F);
 //    chThdSleepMilliseconds(500);
 //  }
-  lamps_set_single(LAMP_COMP_ACTY, 0x00, 0x1F, 0x00);
+  lamps_set_single(LAMP_COMP_ACTY, 0x1F, 0x00, 0x00);
   chThdSleepSeconds(3);
 }
 
 void lamps_init(void)
 {
-  static const GPTConfig lamp_gpt_cfg = {
-  .frequency = 750000,
-  .callback = lamp_gpt_cb,
-  };
-
-  gptStart(&GPTD3, &lamp_gpt_cfg);
-
+  /*
+   * Based on WS28281 DMA driver by Omri Iluz
+   * https://github.com/omriiluz/WS2812B-LED-Driver-ChibiOS
+   * (Accessed 1/1/2019)
+   */
   chMtxObjectInit(&lamps_state_mtx);
+  sPort = GPIOC;
+  sMask = 1 << GPIOC_LED_DIN;
+
+  // configure pwm timers -
+  // timer 1 as master, active for data transmission and inactive to disable transmission during reset period (50uS)
+  // timer 3 as slave, during active time creates a 1.25 uS signal, with duty cycle controlled by frame buffer values
+  static PWMConfig pwmc1 = {48000000 / 60, /* 800Khz PWM clock frequency. 1/90 of PWMC3   */
+			    (48000000 / 60) * 0.05, /*Total period is 50ms (20FPS), including sLeds cycles + reset length for ws2812b and FB writes  */
+			    NULL,
+			    { {PWM_OUTPUT_ACTIVE_HIGH, NULL},
+			      {PWM_OUTPUT_DISABLED, NULL},
+			      {PWM_OUTPUT_DISABLED, NULL},
+			      {PWM_OUTPUT_DISABLED, NULL}},
+			      TIM_CR2_MMS_2, /* master mode selection */
+			      0, };
+  /* master mode selection */
+  static PWMConfig pwmc3 = {48000000,/* 48Mhz PWM clock frequency.   */
+			    60, /* 90 cycles period (1.25 uS per period @48Mhz       */
+			    NULL,
+			    { {PWM_OUTPUT_ACTIVE_HIGH, NULL},
+			      {PWM_OUTPUT_ACTIVE_HIGH, NULL},
+			      {PWM_OUTPUT_ACTIVE_HIGH, NULL},
+			      {PWM_OUTPUT_ACTIVE_HIGH, NULL}},
+			      0,
+			      0,
+  };
+  dma_source = chHeapAlloc(NULL, 1);
+  fb = chHeapAlloc(NULL, ((NUM_LAMPS) * 24)+10);
+  lamps_state=fb;
+  for(int j = 0; j < NUM_LAMPS*NUM_COLOURS*8; j++) fb[j] = 0;
+  dma_source[0] = sMask;
+
+  // DMA stream 2, triggered by channel3 pwm signal. if FB indicates, reset output value early to indicate "0" bit to ws2812
+  osalSysLock();
+
+  dmaStreamAllocate(STM32_DMA2_STREAM1, 10, NULL, NULL);
+  dmaStreamSetPeripheral(STM32_DMA2_STREAM1, &(sPort->BRR));
+  dmaStreamSetMemory0(STM32_DMA2_STREAM1, fb);
+  dmaStreamSetTransactionSize(STM32_DMA2_STREAM1, (NUM_LAMPS) * 24);
+  dmaStreamSetMode(
+      STM32_DMA2_STREAM1,
+      STM32_DMA_CR_DIR_M2P | STM32_DMA_CR_MINC | STM32_DMA_CR_PSIZE_BYTE
+      | STM32_DMA_CR_MSIZE_BYTE | STM32_DMA_CR_CIRC | STM32_DMA_CR_PL(2));
+
+  // DMA stream 7, triggered by pwm update event. output high at beginning of signal
+  dmaStreamAllocate(STM32_DMA1_STREAM7, 10, NULL, NULL);
+  dmaStreamSetPeripheral(STM32_DMA1_STREAM7, &(sPort->BSRR));
+  dmaStreamSetMemory0(STM32_DMA1_STREAM7, dma_source);
+  dmaStreamSetTransactionSize(STM32_DMA1_STREAM7, 1);
+  dmaStreamSetMode(
+      STM32_DMA1_STREAM7, STM32_DMA_CR_TEIE |
+      STM32_DMA_CR_DIR_M2P | STM32_DMA_CR_PSIZE_BYTE | STM32_DMA_CR_MSIZE_BYTE
+      | STM32_DMA_CR_CIRC | STM32_DMA_CR_PL(3));
+
+  // DMA stream 6, triggered by channel1 update event. reset output value late to indicate "1" bit to ws2812.
+  // always triggers but no affect if dma stream 2 already change output value to 0
+  dmaStreamAllocate(STM32_DMA1_STREAM6, 10, NULL, NULL);
+  dmaStreamSetPeripheral(STM32_DMA1_STREAM6, &(sPort->BRR));
+  dmaStreamSetMemory0(STM32_DMA1_STREAM6, dma_source);
+  dmaStreamSetTransactionSize(STM32_DMA1_STREAM6, 1);
+  dmaStreamSetMode(
+      STM32_DMA1_STREAM6,
+      STM32_DMA_CR_DIR_M2P | STM32_DMA_CR_PSIZE_BYTE | STM32_DMA_CR_MSIZE_BYTE
+      | STM32_DMA_CR_CIRC | STM32_DMA_CR_PL(3));
+
+  osalSysUnlock();
+
+  pwmStart(&PWMD1, &pwmc1);
+  pwmStart(&PWMD3, &pwmc3);
+  // set pwm3 as slave, triggerd by pwm1 oc1 event. disables pwmd1 for synchronization.
+  PWMD3.tim->SMCR |= TIM_SMCR_SMS_0 | TIM_SMCR_SMS_2 | TIM_SMCR_TS_0;
+  PWMD1.tim->CR1 &= ~TIM_CR1_CEN;
+  // set pwm values.
+  // 28 (duty in ticks) / 90 (period in ticks) * 1.25uS (period in S) = 0.39 uS
+  pwmEnableChannel(&PWMD3, 2, 28);
+  // 58 (duty in ticks) / 90 (period in ticks) * 1.25uS (period in S) = 0.806 uS
+  pwmEnableChannel(&PWMD3, 0, 58);
+  // active during transfer of 90 cycles * sLeds * 24 bytes * 1/90 multiplier
+  pwmEnableChannel(&PWMD1, 0, 90 * NUM_LAMPS * 24 / 90);
+  // stop and reset counters for synchronization
+  PWMD1.tim->CNT = 0;
+  // Slave (TIM3) needs to "update" immediately after master (TIM2) start in order to start in sync.
+  // this initial sync is crucial for the stability of the run
+  PWMD3.tim->CNT = 89;
+  PWMD3.tim->DIER |= TIM_DIER_CC3DE | TIM_DIER_CC1DE | TIM_DIER_UDE;
+
+  dmaStreamEnable(STM32_DMA1_STREAM7);
+  dmaStreamEnable(STM32_DMA1_STREAM6);
+  dmaStreamEnable(STM32_DMA2_STREAM1);
+  // all systems go! both timers and all channels are configured to resonate
+  // in complete sync without any need for CPU cycles (only DMA and timers)
+  // start pwm2 for system to start resonating
+  PWMD1.tim->CR1 |= TIM_CR1_CEN;
 }
