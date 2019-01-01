@@ -22,7 +22,7 @@
 //#include "agc_engine.h"
 #include "buttons.h"
 #include "displays.h"
-//#include "lamps.h"
+#include "lamps.h"
 
 void test_buttons(mailbox_t *button_mbox)
 {
@@ -44,8 +44,9 @@ void test_buttons(mailbox_t *button_mbox)
 void test_hardware(mailbox_t *button_mbox)
 {
   displays_test();
-  //chThdSleepSeconds(3);
-  //lamps_test();
+  chThdSleepSeconds(3);
+//  lamps_test();
+  //displays_test();
   test_buttons(button_mbox);
   // TODO: test mpu9250
 }
@@ -68,13 +69,17 @@ int main(void)
   /*
    * Setup
    */
+  lamps_init();
+  lamps_test();
+  chThdSleepSeconds(3);
+
   mailbox_t button_mbox;
   msg_t button_mbox_buffer[20];
   chMBObjectInit(&button_mbox, button_mbox_buffer, sizeof(button_mbox_buffer)/sizeof(msg_t));
   buttons_init((void *)&button_mbox);
 
   displays_init();
-  //lamps_init();
+
 
   /*
    * Test

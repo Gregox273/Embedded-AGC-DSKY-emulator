@@ -288,7 +288,7 @@ static THD_FUNCTION(displays_thd_func, arg)
       {
     	ioline_t line_col = col_lookup(col);
 	    palSetLine(line_col);
-	    chThdSleepMicroseconds(1000);
+	    chThdSleepMicroseconds(700);
 	    palClearLine(line_col);
       }
       chThdYield();

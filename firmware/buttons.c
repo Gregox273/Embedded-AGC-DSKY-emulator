@@ -6,7 +6,7 @@
 #include "buttons.h"
 
 #define DEBOUNCE_CYCLES 3  // Number of row passes used to debounce button
-#define ROW_PERIOD      20  // ms
+#define ROW_PERIOD      10  // ms
 
 /* Global state - do not access directly
  * Use getter/setter functions

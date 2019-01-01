@@ -126,7 +126,7 @@ CSRC = $(ALLCSRC) \
        lamps.c \
        displays.c \
        mcp23s08.c \
-       ws2812.c \
+       #ws2812.c \
        #agc_engine.c \
 
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global
@@ -199,7 +199,6 @@ flash: build/$(PROJECT).elf
 	arm-none-eabi-gdb --batch \
 		              -ex 'target extended-remote $(GDB_PORT)' \
 					  -ex 'monitor version' \
-					  #-ex 'monitor tpwr enable' \
 					  -ex 'monitor swdp_scan' \
 					  -ex 'attach 1' \
 					  -ex 'load' build/$(PROJECT).elf \
