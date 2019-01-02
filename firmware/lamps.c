@@ -21,52 +21,46 @@
 /* Global state - do not access directly
  * Use getter/setter functions
  */
-static mutex_t lamps_state_mtx;
-static uint8_t *lamps_state;
-static uint8_t *fb;
+static uint32_t *lamps_state;
+static uint32_t *fb;
 static GPIO_TypeDef *sPort;
-static uint32_t sMask;
+static uint32_t sMask0;  // Clear pin C13
+static uint32_t sMask1;  // Set pin C13
 uint8_t* dma_source;
-//static uint8_t lamps_state[NUM_LAMPS * NUM_COLOURS] = {0};
+#define NUM_SUB 3  // Number of time periods per bit
 
-/*
- *
- */
-static void ws2812b_sendarray(size_t datlen)
-{
-  /* Source: https://cpldcpu.wordpress.com/2014/01/14/light_ws2812-library-v2-0-part-i-understanding-the-ws2812/
-   * 		(Accessed 1/1/2019)
-   * 0: |{-- 62.5ns to 563ns --}{-------}|(1063ns<period<9us)
-   * 1: |{--       >625ns       --}{----}|(1063ns<period<9us)
-   * Reset: >9us
-   *
-   * LEDs appear to operate in 208ns timesteps
-   * e.g.
-   * 0: 100000
-   * 1: 111110
-   * Reset: >45 * {0}
-   */
-  chDbgAssert(datlen <= NUM_COLOURS*NUM_LAMPS, "ws2812b array too long");
-
-}
-
-static void setColor(uint8_t color, uint8_t *buf,uint32_t mask){
-  int i;
-  for (i=0;i<8;i++){
-    buf[i]=((color<<i)&0b10000000?0x0:mask);
+static void setColor(uint8_t color, uint32_t *buf){
+//  int i;
+//  for (i=0;i<8;i++){
+//    buf[i]=((color<<i)&0b10000000?0x0:mask);
+//  }
+  for(int i = 0; i < 8; i++)
+  {
+    if((color<<i)&0b10000000)
+    {
+      // Send one
+      buf[NUM_SUB*i] = sMask1;
+      buf[NUM_SUB*i+1] = sMask1;
+      buf[NUM_SUB*i+2] = sMask0;
+    }
+    else
+    {
+      // Send zero
+      buf[NUM_SUB*i] = sMask1;
+      buf[NUM_SUB*i+1] = sMask0;
+      buf[NUM_SUB*i+2] = sMask0;
+    }
   }
 }
 
 void lamps_set_single(LampId id, uint8_t g, uint8_t r, uint8_t b)
 {
   chDbgAssert(id!=NUM_LAMPS, "Invalid lamp ID");
-  chMtxLock(&lamps_state_mtx);
 
-  setColor(g & MASK, lamps_state + (id * 8 * NUM_COLOURS), sMask);
-  setColor(r & MASK, lamps_state + (id * 8 * NUM_COLOURS) + 8, sMask);
-  setColor(b & MASK, lamps_state + (id * 8 * NUM_COLOURS) + 16, sMask);
+  setColor(g & MASK, lamps_state + (id * 8 * NUM_COLOURS));
+  setColor(r & MASK, lamps_state + (id * 8 * NUM_COLOURS) + 8);
+  setColor(b & MASK, lamps_state + (id * 8 * NUM_COLOURS) + 16);
 
-  chMtxUnlock(&lamps_state_mtx);
 }
 
 //void lamps_set_bulk(uint8_t *buf, uint8_t len, uint8_t offset)
@@ -91,118 +85,63 @@ void lamps_set_single(LampId id, uint8_t g, uint8_t r, uint8_t b)
 
 void lamps_test(void)
 {
-//  for(uint8_t lamp = 0; lamp < NUM_LAMPS; lamp++)
-//  {
-//    lamps_set_single(lamp, 0x1F, 0x00, 0x00);
-//    chThdSleepMilliseconds(500);
-//    lamps_set_single(lamp, 0x00, 0x1F, 0x00);
-//    chThdSleepMilliseconds(500);
-//    lamps_set_single(lamp, 0x00, 0x00, 0x1F);
-//    chThdSleepMilliseconds(500);
-//  }
-  lamps_set_single(LAMP_COMP_ACTY, 0x1F, 0x00, 0x00);
-  chThdSleepSeconds(3);
+  for(uint8_t lamp = 0; lamp < NUM_LAMPS; lamp++)
+  {
+    lamps_set_single(lamp, 0x1F, 0x00, 0x00);
+    chThdSleepMilliseconds(500);
+    lamps_set_single(lamp, 0x00, 0x1F, 0x00);
+    chThdSleepMilliseconds(500);
+    lamps_set_single(lamp, 0x00, 0x00, 0x1F);
+    chThdSleepMilliseconds(500);
+  }
 }
 
 void lamps_init(void)
 {
   /*
-   * Based on WS28281 DMA driver by Omri Iluz
-   * https://github.com/omriiluz/WS2812B-LED-Driver-ChibiOS
-   * (Accessed 1/1/2019)
+   * Based on post by Kai
+   * http://www.chibios.com/forum/viewtopic.php?t=2419
+   * Accessed 2/1/2019
    */
-  chMtxObjectInit(&lamps_state_mtx);
   sPort = GPIOC;
-  sMask = 1 << GPIOC_LED_DIN;
+  sMask1 = 1 << GPIOC_LED_DIN;
+  sMask0 = 1 << (GPIOC_LED_DIN + 16);
 
-  // configure pwm timers -
-  // timer 1 as master, active for data transmission and inactive to disable transmission during reset period (50uS)
-  // timer 3 as slave, during active time creates a 1.25 uS signal, with duty cycle controlled by frame buffer values
-  static PWMConfig pwmc1 = {48000000 / 60, /* 800Khz PWM clock frequency. 1/90 of PWMC3   */
-			    (48000000 / 60) * 0.05, /*Total period is 50ms (20FPS), including sLeds cycles + reset length for ws2812b and FB writes  */
-			    NULL,
-			    { {PWM_OUTPUT_ACTIVE_HIGH, NULL},
-			      {PWM_OUTPUT_DISABLED, NULL},
-			      {PWM_OUTPUT_DISABLED, NULL},
-			      {PWM_OUTPUT_DISABLED, NULL}},
-			      TIM_CR2_MMS_2, /* master mode selection */
-			      0, };
-  /* master mode selection */
-  static PWMConfig pwmc3 = {48000000,/* 48Mhz PWM clock frequency.   */
-			    60, /* 90 cycles period (1.25 uS per period @48Mhz       */
-			    NULL,
-			    { {PWM_OUTPUT_ACTIVE_HIGH, NULL},
-			      {PWM_OUTPUT_ACTIVE_HIGH, NULL},
-			      {PWM_OUTPUT_ACTIVE_HIGH, NULL},
-			      {PWM_OUTPUT_ACTIVE_HIGH, NULL}},
-			      0,
-			      0,
-  };
-  dma_source = chHeapAlloc(NULL, 1);
-  fb = chHeapAlloc(NULL, ((NUM_LAMPS) * 24)+10);
+    static PWMConfig pwmc1 = {48000000,
+			      20, /* 417ns period */
+			      NULL,
+			      { {PWM_OUTPUT_ACTIVE_HIGH, NULL},
+				{PWM_OUTPUT_DISABLED, NULL},
+				{PWM_OUTPUT_DISABLED, NULL},
+				{PWM_OUTPUT_DISABLED, NULL}},
+				STM32_TIM_CR2_CCDS,
+				STM32_TIM_DIER_UDE, };
+  dma_source = chHeapAlloc(NULL, 2);
+  size_t num_elem = NUM_SUB*((NUM_LAMPS * NUM_COLOURS * 8)+20);
+  fb = chHeapAlloc(NULL, num_elem);
   lamps_state=fb;
-  for(int j = 0; j < NUM_LAMPS*NUM_COLOURS*8; j++) fb[j] = 0;
-  dma_source[0] = sMask;
-
-  // DMA stream 2, triggered by channel3 pwm signal. if FB indicates, reset output value early to indicate "0" bit to ws2812
-  osalSysLock();
-
-  dmaStreamAllocate(STM32_DMA2_STREAM1, 10, NULL, NULL);
-  dmaStreamSetPeripheral(STM32_DMA2_STREAM1, &(sPort->BRR));
-  dmaStreamSetMemory0(STM32_DMA2_STREAM1, fb);
-  dmaStreamSetTransactionSize(STM32_DMA2_STREAM1, (NUM_LAMPS) * 24);
-  dmaStreamSetMode(
-      STM32_DMA2_STREAM1,
-      STM32_DMA_CR_DIR_M2P | STM32_DMA_CR_MINC | STM32_DMA_CR_PSIZE_BYTE
-      | STM32_DMA_CR_MSIZE_BYTE | STM32_DMA_CR_CIRC | STM32_DMA_CR_PL(2));
-
-  // DMA stream 7, triggered by pwm update event. output high at beginning of signal
-  dmaStreamAllocate(STM32_DMA1_STREAM7, 10, NULL, NULL);
-  dmaStreamSetPeripheral(STM32_DMA1_STREAM7, &(sPort->BSRR));
-  dmaStreamSetMemory0(STM32_DMA1_STREAM7, dma_source);
-  dmaStreamSetTransactionSize(STM32_DMA1_STREAM7, 1);
-  dmaStreamSetMode(
-      STM32_DMA1_STREAM7, STM32_DMA_CR_TEIE |
-      STM32_DMA_CR_DIR_M2P | STM32_DMA_CR_PSIZE_BYTE | STM32_DMA_CR_MSIZE_BYTE
-      | STM32_DMA_CR_CIRC | STM32_DMA_CR_PL(3));
-
-  // DMA stream 6, triggered by channel1 update event. reset output value late to indicate "1" bit to ws2812.
-  // always triggers but no affect if dma stream 2 already change output value to 0
-  dmaStreamAllocate(STM32_DMA1_STREAM6, 10, NULL, NULL);
-  dmaStreamSetPeripheral(STM32_DMA1_STREAM6, &(sPort->BRR));
-  dmaStreamSetMemory0(STM32_DMA1_STREAM6, dma_source);
-  dmaStreamSetTransactionSize(STM32_DMA1_STREAM6, 1);
-  dmaStreamSetMode(
-      STM32_DMA1_STREAM6,
-      STM32_DMA_CR_DIR_M2P | STM32_DMA_CR_PSIZE_BYTE | STM32_DMA_CR_MSIZE_BYTE
-      | STM32_DMA_CR_CIRC | STM32_DMA_CR_PL(3));
-
-  osalSysUnlock();
+  for(size_t j = 0; j < num_elem; j++) fb[j] = 0;
+  dma_source[0] = sMask0;
+  dma_source[1] = sMask1;
 
   pwmStart(&PWMD1, &pwmc1);
-  pwmStart(&PWMD3, &pwmc3);
-  // set pwm3 as slave, triggerd by pwm1 oc1 event. disables pwmd1 for synchronization.
-  PWMD3.tim->SMCR |= TIM_SMCR_SMS_0 | TIM_SMCR_SMS_2 | TIM_SMCR_TS_0;
-  PWMD1.tim->CR1 &= ~TIM_CR1_CEN;
-  // set pwm values.
-  // 28 (duty in ticks) / 90 (period in ticks) * 1.25uS (period in S) = 0.39 uS
-  pwmEnableChannel(&PWMD3, 2, 28);
-  // 58 (duty in ticks) / 90 (period in ticks) * 1.25uS (period in S) = 0.806 uS
-  pwmEnableChannel(&PWMD3, 0, 58);
-  // active during transfer of 90 cycles * sLeds * 24 bytes * 1/90 multiplier
-  pwmEnableChannel(&PWMD1, 0, 90 * NUM_LAMPS * 24 / 90);
-  // stop and reset counters for synchronization
-  PWMD1.tim->CNT = 0;
-  // Slave (TIM3) needs to "update" immediately after master (TIM2) start in order to start in sync.
-  // this initial sync is crucial for the stability of the run
-  PWMD3.tim->CNT = 89;
-  PWMD3.tim->DIER |= TIM_DIER_CC3DE | TIM_DIER_CC1DE | TIM_DIER_UDE;
+  pwmEnableChannel(&PWMD1, 0, 10);
+  PWMD1.tim->CR1 |= STM32_TIM_CR1_CMS(0x01);
+  PWMD1.tim->RCR = 0x01;
+  PWMD1.tim->DIER |= STM32_TIM_DIER_UDE;
 
-  dmaStreamEnable(STM32_DMA1_STREAM7);
+  // DMA stream 6, triggered by channel1 pwm signal. if FB indicates, reset output value early to indicate "0" bit to ws2812
+  osalSysLock();
+  SYSCFG->CFGR1 |= SYSCFG_CFGR1_TIM1_DMA_RMP;
+  dmaStreamAllocate(STM32_DMA1_STREAM6, 0, NULL, NULL);
+  dmaStreamSetPeripheral(STM32_DMA1_STREAM6, &(sPort->BSRR));
+  dmaStreamSetMemory0(STM32_DMA1_STREAM6, fb);
+  dmaStreamSetTransactionSize(STM32_DMA1_STREAM6, num_elem);
+  dmaStreamSetMode(
+      STM32_DMA1_STREAM6,
+      STM32_DMA_CR_DIR_M2P | STM32_DMA_CR_MINC | STM32_DMA_CR_PSIZE_WORD
+      | STM32_DMA_CR_MSIZE_WORD | STM32_DMA_CR_CIRC | STM32_DMA_CR_PL(0));
+  osalSysUnlock();
+
   dmaStreamEnable(STM32_DMA1_STREAM6);
-  dmaStreamEnable(STM32_DMA2_STREAM1);
-  // all systems go! both timers and all channels are configured to resonate
-  // in complete sync without any need for CPU cycles (only DMA and timers)
-  // start pwm2 for system to start resonating
-  PWMD1.tim->CR1 |= TIM_CR1_CEN;
 }

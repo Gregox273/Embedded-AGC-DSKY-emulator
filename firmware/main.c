@@ -44,7 +44,6 @@ void test_buttons(mailbox_t *button_mbox)
 void test_hardware(mailbox_t *button_mbox)
 {
   displays_test();
-  chThdSleepSeconds(3);
 //  lamps_test();
   //displays_test();
   test_buttons(button_mbox);
@@ -70,7 +69,7 @@ int main(void)
    * Setup
    */
   lamps_init();
-  //lamps_test();
+  lamps_test();
 
   mailbox_t button_mbox;
   msg_t button_mbox_buffer[20];
