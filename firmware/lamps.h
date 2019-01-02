@@ -27,21 +27,12 @@ typedef enum lamp_id
 /*
  * Set lamp colour
  *
- * id      -- lamp id
- * g       -- green channel value
- * r       -- red channel value
- * b       -- blue channel value
+ * id  -- lamp id
+ * g   -- green channel value
+ * r   -- red channel value
+ * b   -- blue channel value
  */
 void lamps_set_single(LampId id, uint8_t g, uint8_t r, uint8_t b);
-
-/*
- * Safely buffer into lamp state array, then set lamps
- *
- * buf     -- pointer to bytes buffer
- * len     -- number of bytes in buffer
- * offset  -- position to insert the first byte in lamp state array
- */
-void lamps_set_bulk(uint8_t *buf, uint8_t len, uint8_t offset);
 
 /*
  * Test lamps

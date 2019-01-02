@@ -344,5 +344,5 @@ void displays_init(void)
 
   mcp23s08_init(display_spid, spi_cfgs, spi_addr, 3);
 
-  chThdCreateStatic(waDisplays, sizeof(waDisplays), LOWPRIO, displays_thd_func, NULL);
+  chThdCreateStatic(waDisplays, sizeof(waDisplays), NORMALPRIO, displays_thd_func, NULL);
 }

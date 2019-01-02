@@ -71,7 +71,6 @@ int main(void)
    */
   lamps_init();
   lamps_test();
-  chThdSleepSeconds(3);
 
   mailbox_t button_mbox;
   msg_t button_mbox_buffer[20];
