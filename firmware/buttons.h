@@ -71,11 +71,6 @@ bool buttons_get_state_id(uint8_t id);
  */
 bool buttons_get_state_rc(uint8_t row, uint8_t col);
 
-/*
- * Set up buttons driver
- *
- * button_mbox -- pointer to button state change mailbox
- */
-void buttons_init(void *button_mbox);
+void buttons_state_machine(void);
 
 #endif /* BUTTONS_H_ */

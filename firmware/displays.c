@@ -262,45 +262,74 @@ void displays_set_line(uint8_t line, int32_t val)
   //return true;
 }
 
-static THD_WORKING_AREA(waDisplays, 256);
-static THD_FUNCTION(displays_thd_func, arg)
+void displays_state_machine(void)
 {
-  (void)arg;
-  while(true)
+  // 2 states per column, except plus minus (since they appear brighter)
+  static const int num_repetitions = 2;
+  static uint8_t col_prev = num_repetitions*DISPLAYS_NUM_COLS - 1;  // State
+  uint8_t col = (col_prev + 1) % (num_repetitions*DISPLAYS_NUM_COLS);
+  ioline_t line_col_prev = col_lookup(col_prev/num_repetitions);
+  ioline_t line_col = col_lookup(col/num_repetitions);
+  if(col==num_repetitions*DISPLAYS_NUM_COLS-1)
   {
-    for(uint8_t col = 0; col < DISPLAYS_NUM_COLS; col++)
-    {
-      for(uint8_t row = 0; row < DISPLAYS_NUM_ROWS; row++)
-      {
-        mcp23s08_write_reg(display_spid[row], spi_cfgs[row], spi_addr[row], MCP23S08_OLAT_ADDR, displays_get_state_rc(row, col));
-        chThdYield();
-      }
-
-      if(col==DISPLAYS_NUM_COLS-1)
-      {
-	    ioline_t line_col = col_lookup(col);
-		palSetLine(line_col);
-		chThdSleepMicroseconds(200);
-		palClearLine(line_col);
-		chThdSleepMicroseconds(800);
-      }
-      else
-      {
-    	ioline_t line_col = col_lookup(col);
-	    palSetLine(line_col);
-	    chThdSleepMicroseconds(700);
-	    palClearLine(line_col);
-      }
-      chThdYield();
-    }
+    // Clear plus/minus
+    palClearLine(line_col);
   }
+  else if (col%num_repetitions==0)
+  {
+    palClearLine(line_col_prev);
+    for(uint8_t row = 0; row < DISPLAYS_NUM_ROWS; row++)
+    {
+      mcp23s08_write_reg(display_spid[row], spi_cfgs[row], spi_addr[row], MCP23S08_OLAT_ADDR, displays_get_state_rc(row, col/num_repetitions));
+    }
+    palSetLine(line_col);
+  }
+
+  col_prev = col;
 }
+
+//static THD_WORKING_AREA(waDisplays, 256);
+//static THD_FUNCTION(displays_thd_func, arg)
+//{
+//  (void)arg;
+//  while(true)
+//  {
+//    for(uint8_t col = 0; col < DISPLAYS_NUM_COLS; col++)
+//    {
+//      for(uint8_t row = 0; row < DISPLAYS_NUM_ROWS; row++)
+//      {
+//        mcp23s08_write_reg(display_spid[row], spi_cfgs[row], spi_addr[row], MCP23S08_OLAT_ADDR, displays_get_state_rc(row, col));
+//        //chThdYield();
+//      }
+//
+//      if(col==DISPLAYS_NUM_COLS-1)
+//      {
+//	    ioline_t line_col = col_lookup(col);
+//		palSetLine(line_col);
+//		chThdSleepMicroseconds(200);
+//		palClearLine(line_col);
+//		chThdSleepMicroseconds(800);
+//      }
+//      else
+//      {
+//    	ioline_t line_col = col_lookup(col);
+//    	ioline_t line_col_n = col_lookup((col+1)%DISPLAYS_NUM_COLS);
+//    	palClearLine(line_col);
+//    	palSetLine(line_col_n);
+//	chThdSleepMicroseconds(10);
+//
+//      }
+//
+//    }
+//    //chThdYield();
+//  }
+//}
 
 void displays_test(void)
 {
   displays_set_line(0, 88888);
   displays_set_line(1, -88888);
-  displays_set_line(1, 88888);
+  displays_set_line(2, 88888);
   displays_set_verb(88);
   displays_set_noun(88);
   displays_set_prog(88);
@@ -343,6 +372,4 @@ void displays_init(void)
   spi_addr[2] = 0b11;
 
   mcp23s08_init(display_spid, spi_cfgs, spi_addr, 3);
-
-  chThdCreateStatic(waDisplays, sizeof(waDisplays), NORMALPRIO, displays_thd_func, NULL);
 }

@@ -9,7 +9,6 @@
 #define NUM_COLOURS 3
 #define NUM_LAMPS   13
 
-#define LED_GPTD GPTD3
 #define LED_PORT GPIOC
 #define LED_PAD  13
 
@@ -60,90 +59,89 @@ static void ws2812b_sendarray(size_t datlen)
       {
 	// Send 1
 	palSetPad(LED_PORT, LED_PAD);
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
 	//gptPolledDelay(&LED_GPTD, 20);
-	gptPolledDelay(&LED_GPTD, 2);
+	//gptPolledDelay(&LED_GPTD, 2);
 	palClearPad(LED_PORT, LED_PAD);
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
 	//gptPolledDelay(&LED_GPTD, 10);
       }
       else
       {
 	// Send 0
 	palSetPad(LED_PORT, LED_PAD);
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
 	//gptPolledDelay(&LED_GPTD, 2);
 	palClearPad(LED_PORT, LED_PAD);
 	//gptPolledDelay(&LED_GPTD, 20);
-	gptPolledDelay(&LED_GPTD, 2);
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
-//	__NOP();
+	//gptPolledDelay(&LED_GPTD, 2);
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
+	__NOP();
       }
     }
   }
   chSysUnlock();
-  chThdSleepMicroseconds(50);
+  chThdSleepMicroseconds(500);
 }
 
 void lamps_set_single(LampId id, uint8_t g, uint8_t r, uint8_t b)
 {
   chDbgAssert(id!=NUM_LAMPS, "Invalid lamp ID");
-  gptStopTimer(&LED_GPTD);
   chMtxLock(&lamps_state_mtx);
 
   lamps_state[id * NUM_COLOURS] = g & MASK;
@@ -195,6 +193,7 @@ void lamps_test(void)
     lamps_set_single(lamp, 0x00, 0x00, 0xF);
     chThdSleepMilliseconds(200);
     lamps_set_single(lamp, 0xF, 0x00, 0x00);
+    //chThdSleepMilliseconds(200);
   }
 //  lamps_set_single(LAMP_COMP_ACTY, 0x0F, 0x00, 0x00);
 //  chThdSleepSeconds(3);
@@ -207,13 +206,6 @@ void lamps_test(void)
 
 void lamps_init(void)
 {
-  static const GPTConfig lamp_gpt_cfg = {
-  .frequency = 48000000,
-  .callback = NULL,
-  };
-
-  gptStart(&LED_GPTD, &lamp_gpt_cfg);
-
   chMtxObjectInit(&lamps_state_mtx);
 
   // Clear LEDs

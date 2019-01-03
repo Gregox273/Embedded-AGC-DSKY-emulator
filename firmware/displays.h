@@ -95,6 +95,8 @@ void displays_set_prog(uint8_t val);
  */
 void displays_set_line(uint8_t line, int32_t val);
 
+void displays_state_machine(void);
+
 /*
  * Initialise display driver (including mcp23s08)
  */

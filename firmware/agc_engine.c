@@ -700,7 +700,8 @@ FindMemoryWord (agc_t * State, int Address12)
   else			  // Fixed-fixed (continued).
   AdjustmentFB = 3;
 
-  Addr = (&State->Fixed[AdjustmentFB][Address12 & 01777]);
+  //Addr = (&State->Fixed[AdjustmentFB][Address12 & 01777]);
+  Addr = State_Fixed(AdjustmentFB, Address12 & 01777);
 
   if (State->CheckParity)
     {
@@ -3444,4 +3445,26 @@ agc_engine (agc_t * State)
     }
   return (0);
 }
+
+// This stub-function is here to keep agc_engine from slowing itself down by
+// saving backtrace information, which is useful only for a debugger we're not
+// building into the code anyway.
+void
+BacktraceAdd (agc_t *State, int Cause)
+{
+  (void)State;
+  (void)(Cause);
+  // Keep this empty.
+}
+
+/*
+ * Added by Greg Brooks
+ */
+
+inline int16_t *State_Fixed(uint8_t bank, uint16_t addr)
+{
+  //static const int bank_size = 02000;
+  return &(_binary_Luminary099Transcoded_bin_start[bank * 02000 + addr]);
+}
+
 
