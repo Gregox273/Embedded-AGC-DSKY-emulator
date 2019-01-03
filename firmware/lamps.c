@@ -80,7 +80,8 @@ static void ws2812b_sendarray(size_t datlen)
 //	__NOP();
 //	__NOP();
 //	__NOP();
-	gptPolledDelay(&LED_GPTD, 20);
+	//gptPolledDelay(&LED_GPTD, 20);
+	gptPolledDelay(&LED_GPTD, 2);
 	palClearPad(LED_PORT, LED_PAD);
 //	__NOP();
 //	__NOP();
@@ -92,7 +93,7 @@ static void ws2812b_sendarray(size_t datlen)
 //	__NOP();
 //	__NOP();
 //	__NOP();
-	gptPolledDelay(&LED_GPTD, 10);
+	//gptPolledDelay(&LED_GPTD, 10);
       }
       else
       {
@@ -110,7 +111,8 @@ static void ws2812b_sendarray(size_t datlen)
 //	__NOP();
 	//gptPolledDelay(&LED_GPTD, 2);
 	palClearPad(LED_PORT, LED_PAD);
-	gptPolledDelay(&LED_GPTD, 20);
+	//gptPolledDelay(&LED_GPTD, 20);
+	gptPolledDelay(&LED_GPTD, 2);
 //	__NOP();
 //	__NOP();
 //	__NOP();
@@ -153,16 +155,46 @@ void lamps_set_single(LampId id, uint8_t g, uint8_t r, uint8_t b)
   chMtxUnlock(&lamps_state_mtx);
 }
 
+void lamps_set_bulk(uint8_t *buf, uint8_t len, uint8_t offset)
+{
+  chDbgAssert(offset + len <= NUM_LAMPS * NUM_COLOURS,
+              "offset + len too large to fit inside lamp state array");
+  chMtxLock(&lamps_state_mtx);
+
+  memcpy(lamps_state + offset, buf, len);
+
+  // Apply mask to limit current per colour channel per lamp
+  for(size_t i = offset; i < offset + len; i++)
+  {
+    lamps_state[i] &= MASK;
+  }
+
+  ws2812b_sendarray(offset + len);
+
+  chMtxUnlock(&lamps_state_mtx);
+}
+
+void lamps_clear(void)
+{
+  chMtxLock(&lamps_state_mtx);
+
+  memset(lamps_state, 0, sizeof(lamps_state));
+  ws2812b_sendarray(sizeof(lamps_state));
+
+  chMtxUnlock(&lamps_state_mtx);
+}
+
 void lamps_test(void)
 {
   for(uint8_t lamp = 0; lamp < NUM_LAMPS; lamp++)
   {
-    lamps_set_single(lamp, 0x1F, 0x00, 0x00);
-    chThdSleepMilliseconds(500);
-    lamps_set_single(lamp, 0x00, 0x1F, 0x00);
-    chThdSleepMilliseconds(500);
-    lamps_set_single(lamp, 0x00, 0x00, 0x1F);
-    chThdSleepMilliseconds(500);
+    lamps_set_single(lamp, 0xF, 0x00, 0x00);
+    chThdSleepMilliseconds(200);
+    lamps_set_single(lamp, 0x00, 0xF, 0x00);
+    chThdSleepMilliseconds(200);
+    lamps_set_single(lamp, 0x00, 0x00, 0xF);
+    chThdSleepMilliseconds(200);
+    lamps_set_single(lamp, 0xF, 0x00, 0x00);
   }
 //  lamps_set_single(LAMP_COMP_ACTY, 0x0F, 0x00, 0x00);
 //  chThdSleepSeconds(3);
@@ -170,6 +202,7 @@ void lamps_test(void)
 //  chThdSleepSeconds(3);
 //  lamps_set_single(LAMP_KEY_REL, 0x00, 0x00, 0x0F);
 //  chThdSleepSeconds(3);
+  lamps_clear();
 }
 
 void lamps_init(void)
@@ -182,4 +215,7 @@ void lamps_init(void)
   gptStart(&LED_GPTD, &lamp_gpt_cfg);
 
   chMtxObjectInit(&lamps_state_mtx);
+
+  // Clear LEDs
+  lamps_set_single(NUM_LAMPS-1, 0, 0, 0);
 }

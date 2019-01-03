@@ -152,9 +152,7 @@ typedef unsigned __int64 uint64_t;
 #endif
 #elif defined (__embedded__)
 // Embedded, gcc cross-compiler.
-typedef short int16_t;
-typedef signed char int8_t;
-typedef unsigned short uint16_t;
+#include <stdint.h>
 #elif defined (SDCC)
 // SDCC (8-bit 8051)
 typedef int int16_t;
@@ -347,7 +345,8 @@ typedef struct
   // There are actually only 36 (0-043) fixed banks, but the calculation of bank
   // numbers by the AGC can theoretically go 0-39 (0-047).  Therefore, I
   // provide some extra.
-  int16_t Fixed[40][02000];	// Banks 2,3 are "fixed-fixed".
+  //int16_t Fixed[40][02000];	// Banks 2,3 are "fixed-fixed".
+  int16_t (*Fixed)[40][02000];  // Values stored in flash
   uint32_t Parities[40*(02000/32)];
   // There are also "input/output channels".  Output channels are acted upon
   // immediately, but input channels are buffered from asynchronous data.

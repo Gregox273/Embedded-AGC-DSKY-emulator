@@ -5,7 +5,7 @@
 
 # Compiler options here.
 ifeq ($(USE_OPT),)
-  USE_OPT = -O2 -ggdb -fomit-frame-pointer -falign-functions=16
+  USE_OPT = -D__embedded__ -O2 -ggdb -fomit-frame-pointer -falign-functions=16
 endif
 
 # C specific options here (added to USE_OPT).
@@ -61,7 +61,7 @@ endif
 # Stack size to the allocated to the Cortex-M main/exceptions stack. This
 # stack is used for processing interrupts and exceptions.
 ifeq ($(USE_EXCEPTIONS_STACKSIZE),)
-  USE_EXCEPTIONS_STACKSIZE = 0x200
+  USE_EXCEPTIONS_STACKSIZE = 0x3200
 endif
 
 # Enables the use of FPU (no, softfp, hard).
@@ -126,8 +126,11 @@ CSRC = $(ALLCSRC) \
        lamps.c \
        displays.c \
        mcp23s08.c \
+       agc_engine.c \
+       NullAPI.c \
+       #embedded_agc.c
        #ws2812.c \
-       #agc_engine.c \
+       
 
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global
 # setting.

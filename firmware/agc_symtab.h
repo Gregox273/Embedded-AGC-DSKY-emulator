@@ -36,26 +36,26 @@
 typedef struct {
   // We always want the Invalid bit to come first, for the purpose of easily
   // writing static initializers.
-  unsigned Invalid:1;           // If 1, not yet resolved.
-  unsigned Constant:1;          // If 1, it's a constant, not an address.
-  unsigned Address:1;           // If 1, it really is an address.
-  unsigned SReg:12;         // S-register part of the address.
-  unsigned Erasable:1;          // If 1, it's in erasable memory.
-  unsigned Fixed:1;         // If 1, it's in fixed memory.
+  unsigned Invalid:1;			// If 1, not yet resolved.
+  unsigned Constant:1;			// If 1, it's a constant, not an address.
+  unsigned Address:1;			// If 1, it really is an address.
+  unsigned SReg:12;			// S-register part of the address.
+  unsigned Erasable:1;			// If 1, it's in erasable memory.
+  unsigned Fixed:1;			// If 1, it's in fixed memory.
   // Note that for some address ranges, the following two are not in
   // conflict.  Erasable banks 0-1 overlap unbanked erasable memory,
   // while fixed banks 2-3 overlap unbanked fixed memory.
-  unsigned Unbanked:1;          // If 1, it's in unbanked memory.
-  unsigned Banked:1;            // If 1, it's in banked memory.
+  unsigned Unbanked:1;			// If 1, it's in unbanked memory.
+  unsigned Banked:1;			// If 1, it's in banked memory.
   // If Banked==0, the following bits are assigned to be zero.
-  unsigned EB:3;            // The EB bank bits.
-  unsigned FB:5;            // The FB bank bits.
-  unsigned Super:1;         // The super-bank bit.
+  unsigned EB:3;			// The EB bank bits.
+  unsigned FB:5;			// The FB bank bits.
+  unsigned Super:1;			// The super-bank bit.
   // Status bit.  If set, the address is actually invalid, since
   // by implication it is in the wrong bank.
-  unsigned Overflow:1;          // If 1, last inc. overflowed bank.
+  unsigned Overflow:1;			// If 1, last inc. overflowed bank.
   // Last, but not least, the value itself.
-  int Value;                // Constant or full pseudo-address.
+  int Value;				// Constant or full pseudo-address.
   // The syllable number ... just for Gemini OBC and Apollo LVDC.
   int Syllable;
 } Address_t;
@@ -218,7 +218,7 @@ void DumpFiles (const char *Pattern);
 int LoadSourceLine (char *SourceFile, int LineNumber);
 
 // Form the name of a source file from a directory and filename.
-// The function is actually in NormalizeSourcefile.c, but all of the
+// The function is actually in NormalizeSourcefile.c, but all of the 
 // source files that need it seem to include agc_symtab.h.
 char *NormalizeSourceName (char *Directory, char *Filename);
 

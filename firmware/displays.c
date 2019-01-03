@@ -315,7 +315,7 @@ void displays_test(void)
     displays_set_noun(11*i);
     displays_set_prog(11*i);
     plus = -plus;
-    chThdSleepMilliseconds(500);
+    chThdSleepMilliseconds(300);
   }
   displays_set_line(0, 88888);
   displays_set_line(1, -88888);

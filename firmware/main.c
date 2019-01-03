@@ -19,10 +19,13 @@
 
 #include "ch.h"
 #include "hal.h"
-//#include "agc_engine.h"
 #include "buttons.h"
 #include "displays.h"
 #include "lamps.h"
+
+#include "yaAGC.h"
+#include "agc_engine.h"
+#include "agc_symtab.h"
 
 void test_buttons(mailbox_t *button_mbox)
 {
@@ -44,12 +47,21 @@ void test_buttons(mailbox_t *button_mbox)
 void test_hardware(mailbox_t *button_mbox)
 {
   displays_test();
-  chThdSleepSeconds(3);
 //  lamps_test();
-  //displays_test();
   test_buttons(button_mbox);
   // TODO: test mpu9250
 }
+
+/*
+ * yaAGC
+ */
+#define CORE_SIZE (044 * 02000)
+#ifdef __embedded__
+// Stuff that's missing.  Figure it out later.
+int __errno;
+int atexit(void (*function)(void)) { return (0); };
+#endif
+
 
 /*
  * Application entry point.
@@ -70,7 +82,6 @@ int main(void)
    * Setup
    */
   lamps_init();
-  lamps_test();
 
   mailbox_t button_mbox;
   msg_t button_mbox_buffer[20];
@@ -79,15 +90,22 @@ int main(void)
 
   displays_init();
 
-
   /*
    * Test
    */
-  test_hardware(&button_mbox);
+  //test_hardware(&button_mbox);
+
+  /*
+   * yaAGC init
+   */
+  agc_t *State = chHeapAlloc(NULL, sizeof(agc_t));
+  extern const int16_t *raw_bin_fixed;  // Pointer to binary loaded into memory
 
   /*
    * Main loop
    */
+  test_hardware(&button_mbox);//debug
+
   while (true) {
     chThdSleepSeconds(1);
   }

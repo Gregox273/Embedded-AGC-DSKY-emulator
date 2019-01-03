@@ -35,6 +35,20 @@ typedef enum lamp_id
 void lamps_set_single(LampId id, uint8_t g, uint8_t r, uint8_t b);
 
 /*
+ * Bulk modify the lamps_state array to set multiple lamps at once
+ *
+ * buf    -- pointer to buffer to copy into lamps_state
+ * len    -- length of buffer to copy
+ * offset -- offset of start address (start copying here in lamps_state)
+ */
+void lamps_set_bulk(uint8_t *buf, uint8_t len, uint8_t offset);
+
+/*
+ * Turn off all lamps
+ */
+void lamps_clear(void);
+
+/*
  * Test lamps
  */
 void lamps_test(void);
