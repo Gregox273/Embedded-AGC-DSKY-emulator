@@ -6,6 +6,8 @@
 #include "lamps.h"
 #include "hal.h"
 
+//#define MULTI_THREAD
+
 #define NUM_COLOURS 3
 #define NUM_LAMPS   13
 
@@ -21,7 +23,9 @@
 /* Global state - do not access directly
  * Use getter/setter functions
  */
+#ifdef MULTI_THREAD
 static mutex_t lamps_state_mtx;
+#endif
 static uint8_t lamps_state[NUM_LAMPS * NUM_COLOURS] = {0};
 
 /* WS2812B timer config */
@@ -139,25 +143,47 @@ static void ws2812b_sendarray(size_t datlen)
   chThdSleepMicroseconds(500);
 }
 
-void lamps_set_single(LampId id, uint8_t g, uint8_t r, uint8_t b)
+void lamps_refresh(uint8_t num_bytes)
+{
+  #ifdef MULTI_THREAD
+  chMtxLock(&lamps_state_mtx);
+  #endif
+  chSysLock();
+  ws2812b_sendarray(num_bytes);
+  chSysUnlock();
+  #ifdef MULTI_THREAD
+  chMtxUnlock(&lamps_state_mtx);
+  #endif
+}
+
+uint8_t lamps_set_single(LampId id, uint8_t g, uint8_t r, uint8_t b)
 {
   chDbgAssert(id!=NUM_LAMPS, "Invalid lamp ID");
+  #ifdef MULTI_THREAD
   chMtxLock(&lamps_state_mtx);
+  #endif
 
   lamps_state[id * NUM_COLOURS] = g & MASK;
   lamps_state[id * NUM_COLOURS + 1] = r & MASK;
   lamps_state[id * NUM_COLOURS + 2] = b & MASK;
 
-  ws2812b_sendarray(NUM_COLOURS*(id+1));
+  //ws2812b_sendarray(NUM_COLOURS*(id+1));
 
+  #ifdef MULTI_THREAD
   chMtxUnlock(&lamps_state_mtx);
+  #endif
+
+  return NUM_COLOURS*(id+1);
 }
 
-void lamps_set_bulk(uint8_t *buf, uint8_t len, uint8_t offset)
+uint8_t lamps_set_bulk(uint8_t *buf, uint8_t len, uint8_t offset)
 {
   chDbgAssert(offset + len <= NUM_LAMPS * NUM_COLOURS,
               "offset + len too large to fit inside lamp state array");
+
+  #ifdef MULTI_THREAD
   chMtxLock(&lamps_state_mtx);
+  #endif
 
   memcpy(lamps_state + offset, buf, len);
 
@@ -167,32 +193,42 @@ void lamps_set_bulk(uint8_t *buf, uint8_t len, uint8_t offset)
     lamps_state[i] &= MASK;
   }
 
-  ws2812b_sendarray(offset + len);
+  //ws2812b_sendarray(offset + len);
 
+  #ifdef MULTI_THREAD
   chMtxUnlock(&lamps_state_mtx);
+  #endif
+
+  return offset + len;
 }
 
-void lamps_clear(void)
+uint8_t lamps_clear(void)
 {
+  #ifdef MULTI_THREAD
   chMtxLock(&lamps_state_mtx);
+  #endif
 
   memset(lamps_state, 0, sizeof(lamps_state));
-  ws2812b_sendarray(sizeof(lamps_state));
+  //ws2812b_sendarray(sizeof(lamps_state));
 
+  #ifdef MULTI_THREAD
   chMtxUnlock(&lamps_state_mtx);
+  #endif
+
+  return sizeof(lamps_state);
 }
 
 void lamps_test(void)
 {
   for(uint8_t lamp = 0; lamp < NUM_LAMPS; lamp++)
   {
-    lamps_set_single(lamp, 0xF, 0x00, 0x00);
+    lamps_refresh(lamps_set_single(lamp, 0x0F, 0x00, 0x00));
     chThdSleepMilliseconds(200);
-    lamps_set_single(lamp, 0x00, 0xF, 0x00);
+    lamps_refresh(lamps_set_single(lamp, 0x00, 0x0F, 0x00));
     chThdSleepMilliseconds(200);
-    lamps_set_single(lamp, 0x00, 0x00, 0xF);
+    lamps_refresh(lamps_set_single(lamp, 0x00, 0x00, 0x0F));
     chThdSleepMilliseconds(200);
-    lamps_set_single(lamp, 0xF, 0x00, 0x00);
+    lamps_refresh(lamps_set_single(lamp, 0x0F, 0x00, 0x00));
     //chThdSleepMilliseconds(200);
   }
 //  lamps_set_single(LAMP_COMP_ACTY, 0x0F, 0x00, 0x00);
@@ -201,13 +237,15 @@ void lamps_test(void)
 //  chThdSleepSeconds(3);
 //  lamps_set_single(LAMP_KEY_REL, 0x00, 0x00, 0x0F);
 //  chThdSleepSeconds(3);
-  lamps_clear();
+  lamps_refresh(lamps_clear());
 }
 
 void lamps_init(void)
 {
+  #ifdef MULTI_THREAD
   chMtxObjectInit(&lamps_state_mtx);
+  #endif
 
   // Clear LEDs
-  lamps_set_single(NUM_LAMPS-1, 0, 0, 0);
+  lamps_refresh(lamps_clear());
 }

@@ -27,11 +27,13 @@
 #include "agc_engine.h"
 #include "agc_symtab.h"
 
-static binary_semaphore_t agc_bsem;
+//#define TEST
+
+//static binary_semaphore_t agc_bsem;
 static agc_t *State;
 thread_reference_t main_thread_ref = NULL;
 
-void test_buttons()
+void test_buttons(void)
 {
   uint8_t row, col;
   for(uint8_t i = 0; i < NUM_BUTTONS; i++)
@@ -46,16 +48,29 @@ void test_buttons()
   }
 }
 
-void test_hardware(mailbox_t *button_mbox)
-{
-  displays_test();
-  //lamps_test();
-  //test_buttons(button_mbox);
-  // TODO: test mpu9250
-}
-
 void agc_init(agc_t *State)
 {
+//  // Clear i/o channels.
+//    for (int i = 0; i < NUM_CHANNELS; i++)
+//      State->InputChannel[i] = 0;
+//    State->InputChannel[030] = 037777;
+//    State->InputChannel[031] = 077777;
+//    State->InputChannel[032] = 077777;
+//    State->InputChannel[033] = 077777;
+//
+//    // Clear erasable memory.
+//    for (int Bank = 0; Bank < 8; Bank++)
+//      for (int j = 0; j < 0400; j++)
+//        State->Erasable[Bank][j] = 0;
+//    State->Erasable[0][RegZ] = 04000;	// Initial program counter.
+//
+//    // Set up the CPU state variables that aren't part of normal memory.
+//    State->CycleCounter = 0;
+//    State->ExtraCode = 0;
+//    State->AllowInterrupt = 0;
+//    State->PendFlag = 0;
+//    State->PendDelay = 0;
+//    State->ExtraDelay = 0;
   // Clear i/o channels.
     for (int i = 0; i < NUM_CHANNELS; i++)
       State->InputChannel[i] = 0;
@@ -73,10 +88,56 @@ void agc_init(agc_t *State)
     // Set up the CPU state variables that aren't part of normal memory.
     State->CycleCounter = 0;
     State->ExtraCode = 0;
-    State->AllowInterrupt = 0;
+    State->AllowInterrupt = 1; // The GOJAM sequence enables interrupts
+    State->InterruptRequests[8] = 1;	// DOWNRUPT.
+    //State->RegA16 = 0;
     State->PendFlag = 0;
     State->PendDelay = 0;
     State->ExtraDelay = 0;
+    //State->RegQ16 = 0;
+
+    State->OutputChannel7 = 0;
+    for (int j = 0; j < 16; j++)
+      State->OutputChannel10[j] = 0;
+    State->IndexValue = 0;
+    for (int j = 0; j < 1 + NUM_INTERRUPT_TYPES; j++)
+      State->InterruptRequests[j] = 0;
+    State->InIsr = 0;
+    State->SubstituteInstruction = 0;
+    State->DownruptTimeValid = 1;
+    State->DownruptTime = 0;
+    State->Downlink = 0;
+
+    State->NightWatchman = 0;
+    State->NightWatchmanTripped = 0;
+    State->RuptLock = 0;
+    State->NoRupt = 0;
+    State->TCTrap = 0;
+    State->NoTC = 0;
+    State->ParityFail = 0;
+
+    State->WarningFilter = 0;
+    State->GeneratedWarning = 0;
+
+    State->RestartLight = 0;
+    State->Standby = 0;
+    State->SbyPressed = 0;
+    State->SbyStillPressed = 0;
+
+    State->NextZ = 0;
+    State->ScalerCounter = 0;
+    State->ChannelRoutineCount = 0;
+
+    State->DskyTimer = 0;
+    State->DskyFlash = 0;
+    State->DskyChannel163 = 0;
+
+    State->TookBZF = 0;
+    State->TookBZMF = 0;
+
+    State->Trap31A = 0;
+    State->Trap31B = 0;
+    State->Trap32 = 0;
 }
 
 /*
@@ -91,6 +152,7 @@ int atexit(void (*function)(void)) { return (0); };
 
 static void gpt_cb(GPTDriver *gptd)
 {
+  (void)gptd;
   chSysLockFromISR();
   chThdResumeI(&main_thread_ref, MSG_OK);
   chSysUnlockFromISR();
@@ -133,7 +195,6 @@ int main(void)
   /*
    * Test
    */
-  //test_hardware(&button_mbox);
   displays_set_line(0, 12345);
   displays_set_line(1, -67890);
   displays_set_line(2, 13579);
@@ -145,29 +206,58 @@ int main(void)
   /*
    * Main loop
    */
-  gptStartContinuous(&GPTD3, 562);//4000);//562);  // AGC clock is 1024kHz / 12
+  gptStartContinuous(&GPTD3, 562);  // AGC clock is 1024kHz / 12
 
   uint32_t agc_counter = 0;
 
   while (true)
   {
-   // gptPolledDelay(&GPTD3, 562);
+    // gptPolledDelay(&GPTD3, 562);
     agc_engine(State);
     if(agc_counter%16==0)
     {
+      #ifdef TEST
       displays_set_line(2, (agc_counter/16)%100000);
+      #endif
       displays_state_machine();  // Clock displays state machine every 10 cycles
     }
     if(agc_counter%128==0)
     {
       buttons_state_machine();  // Clock buttons state machine
+      #ifdef TEST
       test_buttons();
+      #endif
+    }
+#ifdef TEST
+    if(agc_counter%8192==0)
+    {
+      //gptStopTimer(&GPTD3);
+      chSysLock();
+      lamps_refresh(lamps_set_single(LAMP_COMP_ACTY, 0x0F, 0x00, 0x00));  // Test lamp
+      chSysUnlock();
+      //gptStartContinuous(&GPTD3, 562);  // AGC clock is 1024kHz / 12
+    }
+    else if(agc_counter%8192==4096)
+    {
+      //gptStopTimer(&GPTD3);
+      chSysLock();
+      lamps_refresh(lamps_set_single(LAMP_COMP_ACTY, 0x00, 0x0F, 0x00));  // Test lamp
+      chSysUnlock();
+      //gptStartContinuous(&GPTD3, 562);  // AGC clock is 1024kHz / 12
+    }
+#endif
+    /*
+     * Timers
+     */
+    if(agc_counter%854==0)  // 10ms
+    {
+      //nullapi_set_timer_flag(TIM1, PINC);
     }
 
     agc_counter++;
 
     chSysLock();
-    msg_t msg = chThdSuspendTimeoutS(&main_thread_ref, TIME_US2I(2000));  // Long timeout so should be visible when something is wrong...
+    chThdSuspendTimeoutS(&main_thread_ref, TIME_US2I(2000));  // Long timeout so should be visible when something is wrong...
     //chSysUnlock();
   }
 

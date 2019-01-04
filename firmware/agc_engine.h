@@ -578,7 +578,11 @@ extern const int16_t _binary_Luminary099Transcoded_bin_start[];  // Core Rope me
  * addr    -- Address within bank
  * returns -- Pointer to desired value
  */
-inline int16_t *State_Fixed(uint8_t bank, uint16_t addr);
+inline int16_t *State_Fixed(uint8_t bank, uint16_t addr)
+{
+  //static const int bank_size = 02000;
+  return &(_binary_Luminary099Transcoded_bin_start[bank * 02000 + addr]);
+}
 
 #endif // AGC_ENGINE_H
 

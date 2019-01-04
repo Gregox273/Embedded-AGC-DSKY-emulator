@@ -25,28 +25,39 @@ typedef enum lamp_id
 }LampId;
 
 /*
+ * Update lamps (blocking, takes max ~500us)
+ *
+ * num_lamps -- number of bytes to send
+ */
+void lamps_refresh(uint8_t num_lamps);
+
+/*
  * Set lamp colour
  *
  * id  -- lamp id
  * g   -- green channel value
  * r   -- red channel value
  * b   -- blue channel value
+ * returns -- number of colours * number of LEDs in the chain to refresh
  */
-void lamps_set_single(LampId id, uint8_t g, uint8_t r, uint8_t b);
+uint8_t lamps_set_single(LampId id, uint8_t g, uint8_t r, uint8_t b);
 
 /*
  * Bulk modify the lamps_state array to set multiple lamps at once
  *
- * buf    -- pointer to buffer to copy into lamps_state
- * len    -- length of buffer to copy
- * offset -- offset of start address (start copying here in lamps_state)
+ * buf     -- pointer to buffer to copy into lamps_state
+ * len     -- length of buffer to copy
+ * offset  -- offset of start address (start copying here in lamps_state)
+ * returns -- number of colours * number of LEDs in the chain to refresh
  */
-void lamps_set_bulk(uint8_t *buf, uint8_t len, uint8_t offset);
+uint8_t lamps_set_bulk(uint8_t *buf, uint8_t len, uint8_t offset);
 
 /*
  * Turn off all lamps
+ * 
+ * returns -- number of colours * number of LEDs in the chain to refresh
  */
-void lamps_clear(void);
+uint8_t lamps_clear(void);
 
 /*
  * Test lamps

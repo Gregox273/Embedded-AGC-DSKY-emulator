@@ -3461,10 +3461,11 @@ BacktraceAdd (agc_t *State, int Cause)
  * Added by Greg Brooks
  */
 
-inline int16_t *State_Fixed(uint8_t bank, uint16_t addr)
-{
-  //static const int bank_size = 02000;
-  return &(_binary_Luminary099Transcoded_bin_start[bank * 02000 + addr]);
-}
+extern inline int16_t *State_Fixed(uint8_t bank, uint16_t addr);
+//inline int16_t *State_Fixed(uint8_t bank, uint16_t addr)
+//{
+//  //static const int bank_size = 02000;
+//  return &(_binary_Luminary099Transcoded_bin_start[bank * 02000 + addr]);
+//}
 
 

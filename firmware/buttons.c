@@ -14,6 +14,11 @@
 static bool buttons_state[BUTTON_NUM_ROWS][BUTTON_NUM_COLS];
 
 /*
+ * Global variable for communicating with yaAGC
+ */
+uint8_t button_pressed = NUM_BUTTONS;  // Button press 'interrupt' for yaAGC
+
+/*
  * Convert row number to row line
  *
  * row -- row number
@@ -151,6 +156,7 @@ void buttons_state_machine(void)
 	// Assume finished bouncing
 	button_count[row][col] = 0;
 	button_set_state_rc(row, col, pinstate);
+	if(pinstate) button_pressed = button_id(row, col);
       }
     }
     else

@@ -36,6 +36,8 @@ typedef enum button_id
   NUM_BUTTONS
 }ButtonId;
 
+extern uint8_t button_pressed;
+
 /*
  * Convert row & column to button ID
  *
@@ -71,6 +73,9 @@ bool buttons_get_state_id(uint8_t id);
  */
 bool buttons_get_state_rc(uint8_t row, uint8_t col);
 
+/*
+ * Buttons state machine (driven by program main loop)
+ */
 void buttons_state_machine(void);
 
 #endif /* BUTTONS_H_ */

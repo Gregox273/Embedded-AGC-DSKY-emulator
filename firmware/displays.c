@@ -6,6 +6,8 @@
 #include "hal.h"
 #include "mcp23s08.h"
 
+//#define MULTI_THREAD
+
 /*
  * Static parameters should only be used by the displays thread
  */
@@ -39,7 +41,10 @@ static uint8_t spi_addr[DISPLAYS_NUM_ROWS];
 /* Global state - do not access directly"
  * Use getter/setter functions
  */
+#ifdef MULTI_THREAD
 static mutex_t displays_state_mtx;
+#endif
+
 static uint8_t displays_state[DISPLAYS_NUM_ROWS][DISPLAYS_NUM_COLS];
 
 /*
@@ -180,9 +185,16 @@ DisplayState displays_get_state_rc(uint8_t row, uint8_t col)
 {
   chDbgAssert(row < DISPLAYS_NUM_ROWS, "Invalid display row number");
   chDbgAssert(col < DISPLAYS_NUM_COLS, "Invalid display column number");
+  #ifdef MULTI_THREAD
   chMtxLock(&displays_state_mtx);
+  #endif
+
   uint8_t ret = displays_state[row][col];
+
+  #ifdef MULTI_THREAD
   chMtxUnlock(&displays_state_mtx);
+  #endif
+
   return ret;
 }
 
@@ -198,9 +210,15 @@ void displays_set_state_rc(uint8_t row, uint8_t col, DisplayState state)
 {
   chDbgAssert(row < DISPLAYS_NUM_ROWS, "Invalid display row number");
   chDbgAssert(col < DISPLAYS_NUM_COLS, "Invalid display column number");
+  #ifdef MULTI_THREAD
   chMtxLock(&displays_state_mtx);
+  #endif
+
   displays_state[row][col] = state;
+
+  #ifdef MULTI_THREAD
   chMtxUnlock(&displays_state_mtx);
+  #endif
 }
 
 void displays_set_state_id(uint8_t id, DisplayState state)
@@ -259,13 +277,12 @@ void displays_set_line(uint8_t line, int32_t val)
   }
 
   displays_set_state_rc(line, 7, plus_minus);
-  //return true;
 }
 
 void displays_state_machine(void)
 {
   // 2 states per column, except plus minus (since they appear brighter)
-  static const int num_repetitions = 2;
+  #define num_repetitions 2
   static uint8_t col_prev = num_repetitions*DISPLAYS_NUM_COLS - 1;  // State
   uint8_t col = (col_prev + 1) % (num_repetitions*DISPLAYS_NUM_COLS);
   ioline_t line_col_prev = col_lookup(col_prev/num_repetitions);
@@ -325,38 +342,40 @@ void displays_state_machine(void)
 //  }
 //}
 
-void displays_test(void)
-{
-  displays_set_line(0, 88888);
-  displays_set_line(1, -88888);
-  displays_set_line(2, 88888);
-  displays_set_verb(88);
-  displays_set_noun(88);
-  displays_set_prog(88);
-  chThdSleepSeconds(2);
-  int8_t plus = 1;
-  for(uint8_t i = 0; i < 10; i++)
-  {
-    displays_set_line(0, plus*11111*i);
-    displays_set_line(1, plus*11111*i);
-    displays_set_line(2, plus*11111*i);
-    displays_set_verb(11*i);
-    displays_set_noun(11*i);
-    displays_set_prog(11*i);
-    plus = -plus;
-    chThdSleepMilliseconds(300);
-  }
-  displays_set_line(0, 88888);
-  displays_set_line(1, -88888);
-  displays_set_line(2, 88888);
-  displays_set_verb(88);
-  displays_set_noun(88);
-  displays_set_prog(88);
-}
+//void displays_test(void)
+//{
+//  displays_set_line(0, 88888);
+//  displays_set_line(1, -88888);
+//  displays_set_line(2, 88888);
+//  displays_set_verb(88);
+//  displays_set_noun(88);
+//  displays_set_prog(88);
+//  chThdSleepSeconds(2);
+//  int8_t plus = 1;
+//  for(uint8_t i = 0; i < 10; i++)
+//  {
+//    displays_set_line(0, plus*11111*i);
+//    displays_set_line(1, plus*11111*i);
+//    displays_set_line(2, plus*11111*i);
+//    displays_set_verb(11*i);
+//    displays_set_noun(11*i);
+//    displays_set_prog(11*i);
+//    plus = -plus;
+//    chThdSleepMilliseconds(300);
+//  }
+//  displays_set_line(0, 88888);
+//  displays_set_line(1, -88888);
+//  displays_set_line(2, 88888);
+//  displays_set_verb(88);
+//  displays_set_noun(88);
+//  displays_set_prog(88);
+//}
 
 void displays_init(void)
 {
+  #ifdef MULTI_THREAD
   chMtxObjectInit(&displays_state_mtx);
+  #endif
 
   display_spid[0] = spid_0_1;
   display_spid[1] = spid_0_1;

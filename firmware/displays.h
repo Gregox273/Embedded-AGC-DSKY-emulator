@@ -55,7 +55,7 @@ DisplayState displays_get_state_id(uint8_t id);
  * state -- desired display state
  *          (set bits correspond to lit segments in order degfcba)
  */
-void displays_set_state_rc(uint8_t line, uint8_t col, DisplayState state);
+void displays_set_state_rc(uint8_t row, uint8_t col, DisplayState state);
 
 /*
  * Set 7 segment display state
@@ -95,6 +95,9 @@ void displays_set_prog(uint8_t val);
  */
 void displays_set_line(uint8_t line, int32_t val);
 
+/*
+ * Displays state machine (driven by program main loop)
+ */
 void displays_state_machine(void);
 
 /*
@@ -102,9 +105,9 @@ void displays_state_machine(void);
  */
 void displays_init(void);
 
-/*
- * Test display hardware & driver e.g. on startup
- */
-void displays_test(void);
+///*
+// * Test display hardware & driver e.g. on startup
+// */
+//void displays_test(void);
 
 #endif /* DISPLAYS_H_ */
