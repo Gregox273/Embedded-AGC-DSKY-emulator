@@ -16,7 +16,7 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 */
-
+#include <string.h>
 #include "ch.h"
 #include "hal.h"
 #include "buttons.h"
@@ -29,7 +29,6 @@
 
 //#define TEST
 
-//static binary_semaphore_t agc_bsem;
 static agc_t *State;
 thread_reference_t main_thread_ref = NULL;
 
@@ -50,97 +49,76 @@ void test_buttons(void)
 
 void agc_init(agc_t *State)
 {
-//  // Clear i/o channels.
-//    for (int i = 0; i < NUM_CHANNELS; i++)
-//      State->InputChannel[i] = 0;
-//    State->InputChannel[030] = 037777;
-//    State->InputChannel[031] = 077777;
-//    State->InputChannel[032] = 077777;
-//    State->InputChannel[033] = 077777;
-//
-//    // Clear erasable memory.
-//    for (int Bank = 0; Bank < 8; Bank++)
-//      for (int j = 0; j < 0400; j++)
-//        State->Erasable[Bank][j] = 0;
-//    State->Erasable[0][RegZ] = 04000;	// Initial program counter.
-//
-//    // Set up the CPU state variables that aren't part of normal memory.
-//    State->CycleCounter = 0;
-//    State->ExtraCode = 0;
-//    State->AllowInterrupt = 0;
-//    State->PendFlag = 0;
-//    State->PendDelay = 0;
-//    State->ExtraDelay = 0;
   State->CheckParity = 0;
   memset(&State->Parities, 0, sizeof(State->Parities));
 
   // Clear i/o channels.
-    for (int i = 0; i < NUM_CHANNELS; i++)
-      State->InputChannel[i] = 0;
-    State->InputChannel[030] = 037777;
-    State->InputChannel[031] = 077777;
-    State->InputChannel[032] = 077777;
-    State->InputChannel[033] = 077777;
+  for (int i = 0; i < NUM_CHANNELS; i++)
+    State->InputChannel[i] = 0;
+  State->InputChannel[030] = 037777;
+  State->InputChannel[031] = 077777;
+  State->InputChannel[032] = 077777;
+  State->InputChannel[033] = 077777;
 
-    // Clear erasable memory.
-    for (int Bank = 0; Bank < 8; Bank++)
-      for (int j = 0; j < 0400; j++)
-        State->Erasable[Bank][j] = 0;
-    State->Erasable[0][RegZ] = 04000;	// Initial program counter.
+  // Clear erasable memory.
+  for (int Bank = 0; Bank < 8; Bank++)
+    for (int j = 0; j < 0400; j++)
+      State->Erasable[Bank][j] = 0;
+  State->Erasable[0][RegZ] = 04000;	// Initial program counter.
 
-    // Set up the CPU state variables that aren't part of normal memory.
-    State->CycleCounter = 0;
-    State->ExtraCode = 0;
-    State->AllowInterrupt = 1; // The GOJAM sequence enables interrupts
-    State->InterruptRequests[8] = 1;	// DOWNRUPT.
-    //State->RegA16 = 0;
-    State->PendFlag = 0;
-    State->PendDelay = 0;
-    State->ExtraDelay = 0;
-    //State->RegQ16 = 0;
+  // Set up the CPU state variables that aren't part of normal memory.
+  State->CycleCounter = 0;
+  State->ExtraCode = 0;
+  State->AllowInterrupt = 1; // The GOJAM sequence enables interrupts
+  State->InterruptRequests[8] = 1;	// DOWNRUPT.
+  //State->RegA16 = 0;
+  State->PendFlag = 0;
+  State->PendDelay = 0;
+  State->ExtraDelay = 0;
+  //State->RegQ16 = 0;
 
-    State->OutputChannel7 = 0;
-    for (int j = 0; j < 16; j++)
-      State->OutputChannel10[j] = 0;
-    State->IndexValue = 0;
-    for (int j = 0; j < 1 + NUM_INTERRUPT_TYPES; j++)
-      State->InterruptRequests[j] = 0;
-    State->InIsr = 0;
-    State->SubstituteInstruction = 0;
-    State->DownruptTimeValid = 1;
-    State->DownruptTime = 0;
-    State->Downlink = 0;
+  State->OutputChannel7 = 0;
+  for (int j = 0; j < 16; j++)
+    State->OutputChannel10[j] = 0;
+  State->IndexValue = 0;
+  for (int j = 0; j < 1 + NUM_INTERRUPT_TYPES; j++)
+    State->InterruptRequests[j] = 0;
+  State->InIsr = 0;
+  State->SubstituteInstruction = 0;
+  State->DownruptTimeValid = 1;
+  State->DownruptTime = 0;
+  State->Downlink = 0;
 
-    State->NightWatchman = 0;
-    State->NightWatchmanTripped = 0;
-    State->RuptLock = 0;
-    State->NoRupt = 0;
-    State->TCTrap = 0;
-    State->NoTC = 0;
-    State->ParityFail = 0;
+  State->NightWatchman = 0;
+  State->NightWatchmanTripped = 0;
+  State->RuptLock = 0;
+  State->NoRupt = 0;
+  State->TCTrap = 0;
+  State->NoTC = 0;
+  State->ParityFail = 0;
 
-    State->WarningFilter = 0;
-    State->GeneratedWarning = 0;
+  State->WarningFilter = 0;
+  State->GeneratedWarning = 0;
 
-    State->RestartLight = 0;
-    State->Standby = 0;
-    State->SbyPressed = 0;
-    State->SbyStillPressed = 0;
+  State->RestartLight = 0;
+  State->Standby = 0;
+  State->SbyPressed = 0;
+  State->SbyStillPressed = 0;
 
-    State->NextZ = 0;
-    State->ScalerCounter = 0;
-    State->ChannelRoutineCount = 0;
+  State->NextZ = 0;
+  State->ScalerCounter = 0;
+  State->ChannelRoutineCount = 0;
 
-    State->DskyTimer = 0;
-    State->DskyFlash = 0;
-    State->DskyChannel163 = 0;
+  State->DskyTimer = 0;
+  State->DskyFlash = 0;
+  State->DskyChannel163 = 0;
 
-    State->TookBZF = 0;
-    State->TookBZMF = 0;
+  State->TookBZF = 0;
+  State->TookBZMF = 0;
 
-    State->Trap31A = 0;
-    State->Trap31B = 0;
-    State->Trap32 = 0;
+  State->Trap31A = 0;
+  State->Trap31B = 0;
+  State->Trap32 = 0;
 }
 
 /*
@@ -223,7 +201,7 @@ int main(void)
       #ifdef TEST
       displays_set_line(2, (agc_counter/16)%100000);
       #endif
-      displays_state_machine();  // Clock displays state machine every 10 cycles
+      displays_state_machine();  // Clock displays state machine every 16 cycles
     }
     if(agc_counter%128==0)
     {

@@ -181,12 +181,12 @@ static void update_channel_0163(int Value)
     if(Value & (1<<(i-1)))
     {
       // If ith bit set
-      lamps_refresh(lamps_set_single(id, g, r, b));
+      lamps_set_single_quick(id, g, r, b);
     }
     else
     {
       // Clear lamp
-      lamps_refresh(lamps_set_single(id, 0, 0, 0));
+      lamps_set_single_quick(id, 0, 0, 0);
     }
   }
 }
@@ -282,7 +282,7 @@ static void update_channel_010(int Value)
 	  uint8_t g = LAMP_DEFAULT_COLOUR;
 	  uint8_t r = LAMP_DEFAULT_COLOUR+3;
 	  uint8_t b = 0;  // Yellow lamp default
-	  //if(i==7) continue;
+
 	  switch(i)
 	  {
 	    case(3):
@@ -311,12 +311,12 @@ static void update_channel_010(int Value)
 	  if(Value & (1<<(i-1)))
 	  {
 	    // If ith bit set
-	    lamps_refresh(lamps_set_single(id, g, r, b));
+	    lamps_set_single_quick(id, g, r, b);
 	  }
 	  else
 	  {
 	    // Clear lamp
-	    lamps_refresh(lamps_set_single(id, 0, 0, 0));
+	    lamps_set_single_quick(id, 0, 0, 0);
 	  }
 	}
 	break;
@@ -381,7 +381,7 @@ ChannelOutput (agc_t * State, int Channel, int Value)
 	  uint8_t g = LAMP_DEFAULT_COLOUR;
 	  uint8_t r = LAMP_DEFAULT_COLOUR+3;
 	  uint8_t b = 0;
-    	  //if(i==7) continue;
+
     	  switch(i)
     	  {
     	    case(2):
@@ -392,16 +392,16 @@ ChannelOutput (agc_t * State, int Channel, int Value)
     		id = LAMP_UPLINK_ACTY;
     		b = LAMP_DEFAULT_COLOUR;  // White lamp
     		break;
-    	    case(4):
-    		id = LAMP_TEMP;
-    	        break;
-    	    case(5):
-    		id = LAMP_KEY_REL;
-    		b = LAMP_DEFAULT_COLOUR;  // White lamp
-    		break;
-    	    case(7):
-		id = LAMP_OPR_ERR;
-    		break;
+//    	    case(4):
+//    		id = LAMP_TEMP;
+//    	        break;
+//    	    case(5):
+//    		id = LAMP_KEY_REL;
+//    		b = LAMP_DEFAULT_COLOUR;  // White lamp
+//    		break;
+//    	    case(7):
+//		id = LAMP_OPR_ERR;
+//    		break;
     	    default:
     		continue;
     	  }
@@ -409,12 +409,12 @@ ChannelOutput (agc_t * State, int Channel, int Value)
     	  if(Value & (1<<(i-1)))
     	  {
     	    // If ith bit set
-    	    lamps_refresh(lamps_set_single(id, g, r, b));
+    	    lamps_set_single_quick(id, g, r, b);
     	  }
     	  else
     	  {
     	    // Clear lamp
-    	    lamps_refresh(lamps_set_single(id, 0, 0, 0));
+    	    lamps_set_single_quick(id, 0, 0, 0);
     	  }
     	}
 
@@ -460,64 +460,6 @@ ChannelOutput (agc_t * State, int Channel, int Value)
 //
 // Note:  You are guaranteed that yaAGC processes at least one instruction
 // between any two calls to ChannelInput.
-
-/*
- * Global flags (set from main loop)
- */
-//bool TIM[5] = {false}  // TIME1 to TIME5 PINC flag
-
-//bool CDUX_PCDU = false;
-//bool CDUX_MCDU = false;
-//bool CDUY_PCDU = false;
-//bool CDUY_MCDU = false;
-//bool CDUZ_PCDU = false;
-//bool CDUZ_MCDU = false;
-//
-//bool OPTX_PCDU = false;
-//bool OPTX_MCDU = false;
-//bool OPTY_PCDU = false;
-//bool OPTY_MCDU = false;
-
-//IncType TIM_FLAG[5] = {NO_FLAG};
-//IncType CDUX_FLAG = NO_FLAG;
-//IncType CDUY_FLAG = NO_FLAG;
-//IncType CDUZ_FLAG = NO_FLAG;
-//IncType OPTX_FLAG = NO_FLAG;
-//IncType OPTY_FLAG = NO_FLAG;
-
-// Global flags, use setter function nullapi_set_timer_flag() to modify
-//static IncTypes TIMER_FLAGS[NUM_TIMERS] = {NO_FLAG};
-
-//typedef enum
-//{
-//  TIM1 = 0,
-//  TIM2,
-//  TIM3,
-//  TIM4,
-//  TIM5,
-//  CDUX,
-//  CDUZ,
-//  OPTX,
-//  OPTY,
-//  NUM_TIMERS
-//}AGCTimerEnum;
-//
-//typedef enum
-//{
-//  PINC,
-//  PCDU,
-//  MINC,
-//  MCDU,
-//  DINC,
-//  SHINC,
-//  SHANC,
-//  NO_FLAG
-//}IncTypeEnum;
-//
-//void nullapi_set_timer_flag(AGCTimer timer, IncTypes flag)
-//{
-//  TIMER_FLAGS[timer] = flag;
-//}
 
 int
 ChannelInput (agc_t *State)
@@ -616,7 +558,7 @@ ChannelInput (agc_t *State)
 	button_pressed = NUM_BUTTONS;  // Reset flag
 	return RetVal;
     }
-    State->InputChannel[015] &= ~(0b11111);
+    State->InputChannel[015] &= ~(0b11111);  // Clear previous keycode
     State->InputChannel[015] |= keycode;
 //    int val = ReadIO(State, 015) | keycode;
 //    WriteIO(State, 015, val);
@@ -624,13 +566,6 @@ ChannelInput (agc_t *State)
 
     button_pressed = NUM_BUTTONS;  // Reset flag
   }
-//  else //if(State->InterruptRequests[5]==0)
-//  {
-//    // Clear key code if interrupt has been processed
-//    uint8_t val = ~(0b11111);
-//    //WriteIO(State, 015, ReadIO(State, 015)&val);
-//    State->InputChannel[015] &= ~(0b11111);
-//  }
 
   /*
    * Channel 032
@@ -669,6 +604,8 @@ ChannelRoutine (agc_t *State)
 void
 ShiftToDeda (agc_t *State, int Data)
 {
+  (void)State;
+  (void)Data;
 }
 
 

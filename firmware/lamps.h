@@ -32,6 +32,16 @@ typedef enum lamp_id
 void lamps_refresh(uint8_t num_lamps);
 
 /*
+ * Set lamp but only refresh if values have changed
+ *
+ * id  -- lamp id
+ * g   -- green channel value
+ * r   -- red channel value
+ * b   -- blue channel value
+ */
+void lamps_set_single_quick(LampId id, uint8_t g, uint8_t r, uint8_t b);
+
+/*
  * Set lamp colour
  *
  * id  -- lamp id

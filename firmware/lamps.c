@@ -156,6 +156,26 @@ void lamps_refresh(uint8_t num_bytes)
   #endif
 }
 
+void lamps_set_single_quick(LampId id, uint8_t g, uint8_t r, uint8_t b)
+{
+  #ifdef MULTI_THREAD
+  chMtxLock(&lamps_state_mtx);
+  #endif
+
+  bool changed = (lamps_state[id * NUM_COLOURS] != (g & MASK)
+    ||lamps_state[id * NUM_COLOURS + 1] != (r & MASK)
+    ||lamps_state[id * NUM_COLOURS + 2] != (b & MASK));  // True if value needs changing
+
+  #ifdef MULTI_THREAD
+  chMtxUnlock(&lamps_state_mtx);
+  #endif
+
+  if(changed)
+  {
+    lamps_refresh(lamps_set_single(id, g, r, b));
+  }
+}
+
 uint8_t lamps_set_single(LampId id, uint8_t g, uint8_t r, uint8_t b)
 {
   chDbgAssert(id!=NUM_LAMPS, "Invalid lamp ID");
