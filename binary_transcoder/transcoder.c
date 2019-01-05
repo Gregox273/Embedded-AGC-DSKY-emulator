@@ -21,6 +21,23 @@ int main(int argc, char **argv)
     exit(EXIT_FAILURE);
   }
   
+  fseek(source_file, 0, SEEK_END);
+  int n = ftell(source_file);
+  if(0 != (n&1))
+  {
+    printf("ROM image file size is odd");
+    exit(EXIT_FAILURE);
+  }
+  
+  n /= 2; // Convert byte-count to word count
+  if (n > 36 * 02000)
+  {
+    printf("ROM image file larger than core memory");
+    exit(EXIT_FAILURE);
+  }
+  
+  fseek(source_file, 0, SEEK_SET);
+  
   FILE *dest_file = fopen(dest,"wb");
   if(!dest_file)
   {
@@ -31,35 +48,57 @@ int main(int argc, char **argv)
   unsigned char CoreRope[CORE_SIZE][2]; // Source buffer
   int16_t Fixed[40][02000];  // Dest buffer
   
-  fread(CoreRope, sizeof(CoreRope), 1, source_file);
-  
   int i, j, Bank;
 
-  Bank = 2;
   for (Bank = 2, j = 0, i = 0; i < CORE_SIZE; i++)
   {
-    // Within the input file, the fixed-memory banks are arranged in the order
-    // 2, 3, 0, 1, 4, 5, 6, 7, ..., 35.  Therefore, we have to take a little care
-    // reordering the banks.
-    Fixed[Bank][j++] = (CoreRope[i][0] * 256 + CoreRope[i][1]) >> 1;
+//    // Within the input file, the fixed-memory banks are arranged in the order
+//    // 2, 3, 0, 1, 4, 5, 6, 7, ..., 35.  Therefore, we have to take a little care
+//    // reordering the banks.
+//    Fixed[Bank][j++] = (CoreRope[i][0] * 256 + CoreRope[i][1]) >> 1;
+//    if (j == 02000)
+//    {
+//      j = 0;
+//      // Bank filled.  Advance to next fixed-memory bank.
+//      if (Bank == 2)
+//        Bank = 3;
+//      else if (Bank == 3)
+//        Bank = 0;
+//      else if (Bank == 0)
+//        Bank = 1;
+//      else if (Bank == 1)
+//        Bank = 4;
+//      else
+//        Bank++;
+//    }
+    unsigned char In[2];
+    uint16_t RawValue;
+    fread(In, 1, 2, source_file);
+    RawValue = In[0] * 256 + In[1];
+    Fixed[Bank][j++] = RawValue >> 1;
+
     if (j == 02000)
     {
       j = 0;
       // Bank filled.  Advance to next fixed-memory bank.
       if (Bank == 2)
-        Bank = 3;
+	Bank = 3;
       else if (Bank == 3)
-        Bank = 0;
+	Bank = 0;
       else if (Bank == 0)
-        Bank = 1;
+	Bank = 1;
       else if (Bank == 1)
-        Bank = 4;
+	Bank = 4;
       else
-        Bank++;
+	Bank++;
     }
+
   }
-  
-  fwrite(Fixed, sizeof(Fixed), 1, dest_file);
+
+  for(int b=0; b < 36; b++)
+  {
+      fwrite(Fixed[b], sizeof(Fixed[b][0]), 02000, dest_file);
+  }
   
   // End
   fclose (source_file);

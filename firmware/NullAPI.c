@@ -125,7 +125,7 @@ static void update_channel_0163(int Value)
   for(uint8_t i = 1; i <= 10; i++)
   {
     uint8_t g = LAMP_DEFAULT_COLOUR;
-    uint8_t r = LAMP_DEFAULT_COLOUR;
+    uint8_t r = LAMP_DEFAULT_COLOUR+3;
     uint8_t b = 0;
     switch(i)
     {
@@ -138,15 +138,19 @@ static void update_channel_0163(int Value)
 	  break;
       case(6):
 	  // Flash VERB/NOUN
-	  if(Value & (1<<i))
+	  if(Value & (1<<(i-1)))
 	  {
 	    displays_set_verb(88);
 	    displays_set_noun(88);
 	  }
 	  else
 	  {
-	    displays_set_verb(0);
-	    displays_set_noun(0);
+	    // Blank VERB
+	    displays_set_state_rc(1,5,N_B);
+	    displays_set_state_rc(1,6,N_B);
+	    // Blank NOUN
+	    displays_set_state_rc(2,5,N_B);
+	    displays_set_state_rc(2,6,N_B);
 	  }
 	  continue;
       case(7):
@@ -162,9 +166,12 @@ static void update_channel_0163(int Value)
 	  break;
       case(10):
 	  //Blank displays
-	  for(int id = 0; id < DISPLAYS_NUM_ROWS * DISPLAYS_NUM_COLS; id++)
+	  if(Value & (1<<(i-1)))
 	  {
-	    displays_set_state_id(id, N_B);
+	    for(int id = 0; id < DISPLAYS_NUM_ROWS * DISPLAYS_NUM_COLS; id++)
+	    {
+	      displays_set_state_id(id, N_B);
+	    }
 	  }
 	  continue;
       default:
@@ -249,8 +256,8 @@ static void update_channel_010(int Value)
     	break;
     case(0b0011):
 	// D25,31
-	displays_set_state_rc(2, 4, convert_to_display_state(C));
-	displays_set_state_rc(3, 0, convert_to_display_state(D));
+	displays_set_state_rc(1, 4, convert_to_display_state(C));
+	displays_set_state_rc(2, 0, convert_to_display_state(D));
 	break;
     case(0b0010):
 	// 3+, D32,33
@@ -273,24 +280,30 @@ static void update_channel_010(int Value)
 	for(uint8_t i = 1; i <= 9; i++)
 	{
 	  uint8_t g = LAMP_DEFAULT_COLOUR;
-	  uint8_t r = LAMP_DEFAULT_COLOUR;
+	  uint8_t r = LAMP_DEFAULT_COLOUR+3;
 	  uint8_t b = 0;  // Yellow lamp default
 	  //if(i==7) continue;
 	  switch(i)
 	  {
 	    case(3):
 		id = LAMP_VEL;  // Yellow lamp
+		break;
 	    case(4):
 		id = LAMP_NO_ATT;
 		b = LAMP_DEFAULT_COLOUR;  // White lamp
+		break;
 	    case(5):
 		id = LAMP_ALT;
+		break;
 	    case(6):
 		id = LAMP_GIMBAL_LOCK;
+		break;
 	    case(8):
 		id = LAMP_TRACKER;
+		break;
 	    case(9):
 		id = LAMP_PROG;
+		break;
 	    default:
 		continue;
 	  }
@@ -341,6 +354,20 @@ ChannelOutput (agc_t * State, int Channel, int Value)
 
   switch(Channel)
   {
+    case(7):
+	// Some output channels have purposes within the CPU, so we have to
+	// account for those separately.
+	State->InputChannel[7] = State->OutputChannel7 = (Value & 0160);
+	return;
+    case(013):
+	// Stick data into the RHCCTR registers, if bits 8,9 of channel 013 are set.
+	if (0600 == (0600 & Value) && !CmOrLm)
+        {
+          State->Erasable[0][042] = LastRhcPitch;
+          State->Erasable[0][043] = LastRhcYaw;
+          State->Erasable[0][044] = LastRhcRoll;
+        }
+	break;
     case(010):
 	// DSKY 7 segment display channel
 	update_channel_010(Value);
@@ -352,7 +379,7 @@ ChannelOutput (agc_t * State, int Channel, int Value)
     	for(uint8_t i = 2; i <= 7; i++)
     	{
 	  uint8_t g = LAMP_DEFAULT_COLOUR;
-	  uint8_t r = LAMP_DEFAULT_COLOUR;
+	  uint8_t r = LAMP_DEFAULT_COLOUR+3;
 	  uint8_t b = 0;
     	  //if(i==7) continue;
     	  switch(i)
@@ -360,16 +387,21 @@ ChannelOutput (agc_t * State, int Channel, int Value)
     	    case(2):
     		id = LAMP_COMP_ACTY;
     		r = 0; // green lamp
+    		break;
     	    case(3):
     		id = LAMP_UPLINK_ACTY;
     		b = LAMP_DEFAULT_COLOUR;  // White lamp
+    		break;
     	    case(4):
     		id = LAMP_TEMP;
+    	        break;
     	    case(5):
     		id = LAMP_KEY_REL;
     		b = LAMP_DEFAULT_COLOUR;  // White lamp
+    		break;
     	    case(7):
 		id = LAMP_OPR_ERR;
+    		break;
     	    default:
     		continue;
     	  }
@@ -385,8 +417,8 @@ ChannelOutput (agc_t * State, int Channel, int Value)
     	    lamps_refresh(lamps_set_single(id, 0, 0, 0));
     	  }
     	}
-    	break;
-    }
+
+    } break;
 
     case(0163):
 	update_channel_0163(Value);
@@ -527,55 +559,78 @@ ChannelInput (agc_t *State)
     {
       case(BUTTON_0):
 	  keycode = 16;
+	  break;
       case(BUTTON_1):
 	  keycode = 1;
+	  break;
       case(BUTTON_2):
 	  keycode = 2;
+	  break;
       case(BUTTON_3):
 	  keycode = 3;
+	  break;
       case(BUTTON_4):
 	  keycode = 4;
+	  break;
       case(BUTTON_5):
 	  keycode = 5;
+	  break;
       case(BUTTON_6):
 	  keycode = 6;
+	  break;
       case(BUTTON_7):
 	  keycode = 7;
+	  break;
       case(BUTTON_8):
 	  keycode = 8;
+	  break;
       case(BUTTON_9):
 	  keycode = 9;
+	  break;
       case(BUTTON_VERB):
 	  keycode = 17;
+	  break;
       case(BUTTON_RSET):
 	  keycode = 18;
+	  break;
       case(BUTTON_KEY_REL):
 	  keycode = 25;
+	  break;
       case(BUTTON_PLUS):
 	  keycode = 26;
+	  break;
       case(BUTTON_MINUS):
 	  keycode = 27;
+	  break;
       case(BUTTON_ENTR):
 	  keycode = 28;
+	  break;
       case(BUTTON_CLR):
 	  keycode = 30;
+	  break;
       case(BUTTON_NOUN):
 	  keycode = 31;
+	  break;
       default:
 	// Invalid value
 	button_pressed = NUM_BUTTONS;  // Reset flag
 	return RetVal;
     }
-    State->InputChannel[015] = keycode;
+    State->InputChannel[015] &= ~(0b11111);
+    State->InputChannel[015] |= keycode;
+//    int val = ReadIO(State, 015) | keycode;
+//    WriteIO(State, 015, val);
     State->InterruptRequests[5] = 1;
 
     button_pressed = NUM_BUTTONS;  // Reset flag
   }
-  else
-  {
-    // Clear key code
-    State->InputChannel[015] = 0;
-  }
+//  else //if(State->InterruptRequests[5]==0)
+//  {
+//    // Clear key code if interrupt has been processed
+//    uint8_t val = ~(0b11111);
+//    //WriteIO(State, 015, ReadIO(State, 015)&val);
+//    State->InputChannel[015] &= ~(0b11111);
+//  }
 
   /*
    * Channel 032

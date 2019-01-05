@@ -71,6 +71,9 @@ void agc_init(agc_t *State)
 //    State->PendFlag = 0;
 //    State->PendDelay = 0;
 //    State->ExtraDelay = 0;
+  State->CheckParity = 0;
+  memset(&State->Parities, 0, sizeof(State->Parities));
+
   // Clear i/o channels.
     for (int i = 0; i < NUM_CHANNELS; i++)
       State->InputChannel[i] = 0;
@@ -195,13 +198,14 @@ int main(void)
   /*
    * Test
    */
-  displays_set_line(0, 12345);
-  displays_set_line(1, -67890);
-  displays_set_line(2, 13579);
-  displays_set_verb(02);
-  displays_set_noun(46);
-  displays_set_prog(80);
-  chThdSleepMilliseconds(500);
+//  displays_set_line(0, 12345);
+//  displays_set_line(1, -67890);
+//  displays_set_line(2, 13579);
+//  displays_set_verb(02);
+//  displays_set_noun(46);
+//  displays_set_prog(80);
+//  chThdSleepMilliseconds(500);
+
 
   /*
    * Main loop
@@ -246,13 +250,6 @@ int main(void)
       //gptStartContinuous(&GPTD3, 562);  // AGC clock is 1024kHz / 12
     }
 #endif
-    /*
-     * Timers
-     */
-    if(agc_counter%854==0)  // 10ms
-    {
-      //nullapi_set_timer_flag(TIM1, PINC);
-    }
 
     agc_counter++;
 
