@@ -30,7 +30,7 @@ typedef enum button_id
   BUTTON_KEY_REL,
   BUTTON_VERB,
   BUTTON_NOUN,
-  BUTTON_INVALID,  // gap in matrix
+  BUTTON_INVALID,  // gap in button matrix
   BUTTON_RSET,
   BUTTON_ENTR,
   NUM_BUTTONS

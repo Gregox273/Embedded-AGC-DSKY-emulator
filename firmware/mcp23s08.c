@@ -35,26 +35,6 @@ void mcp23s08_write_reg(SPIDriver *spidrv, SPIConfig *spicfg, uint8_t device_add
   mcp23s08_send(spidrv, spicfg, buf, buflen);
 }
 
-//void mcp23s08_write_iocon(SPIDriver *spidrv, SPIConfig *spicfg, uint8_t addr,
-//                          IOCONCfg *cfg)
-//{
-//  const uint8_t buflen = 3;
-//  uint8_t buf[buflen];
-//  // Opcode
-//  buf[0] = MCP23S08_FIXED_ADDR | (addr<<1 & 0b110) | MCP23S08_WRITE;
-//  // Register address
-//  buf[1] = IOCON_ADDR;
-//  // Data
-//  buf[2] = 0;
-//  if(cfg->SEQOP) buf[2] |= 1 << 5;
-//  if(cfg->DISSLW) buf[2] |= 1 << 4;
-//  if(cfg->HAEN) buf[2] |= 1 << 3;
-//  if(cfg->ODR) buf[2] |= 1 << 2;
-//  if(cfg->INTPOL) buf[2] |= 1 << 1;
-//
-//  mcp23s08_send(spidrv, spicfg, buf, buflen);
-//}
-
 void mcp23s08_init(SPIDriver **spidrv, SPIConfig **spicfg, uint8_t *addr,
                    uint8_t num_devices)
 {

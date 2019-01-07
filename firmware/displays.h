@@ -69,21 +69,21 @@ void displays_set_state_id(uint8_t id, DisplayState state);
 /*
  * Set VERB display
  *
- * val     -- numerical value to display
+ * val -- numerical value to display
  */
 void displays_set_verb(uint8_t val);
 
 /*
  * Set NOUN display
  *
- * val     -- numerical value to display
+ * val -- numerical value to display
  */
 void displays_set_noun(uint8_t val);
 
 /*
  * Set PROG display
  *
- * val     -- numerical value to display
+ * val -- numerical value to display
  */
 void displays_set_prog(uint8_t val);
 
@@ -104,10 +104,5 @@ void displays_state_machine(void);
  * Initialise display driver (including mcp23s08)
  */
 void displays_init(void);
-
-///*
-// * Test display hardware & driver e.g. on startup
-// */
-//void displays_test(void);
 
 #endif /* DISPLAYS_H_ */

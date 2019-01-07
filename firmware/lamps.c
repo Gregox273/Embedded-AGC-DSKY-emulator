@@ -63,6 +63,8 @@ static void ws2812b_sendarray(size_t datlen)
       {
 	// Send 1
 	palSetPad(LED_PORT, LED_PAD);
+	// Achieve delay by using NOP instructions
+	// 20 NOPs here
 	__NOP();
 	__NOP();
 	__NOP();
@@ -83,9 +85,8 @@ static void ws2812b_sendarray(size_t datlen)
 	__NOP();
 	__NOP();
 	__NOP();
-	//gptPolledDelay(&LED_GPTD, 20);
-	//gptPolledDelay(&LED_GPTD, 2);
 	palClearPad(LED_PORT, LED_PAD);
+	// 10 NOPs
 	__NOP();
 	__NOP();
 	__NOP();
@@ -96,12 +97,12 @@ static void ws2812b_sendarray(size_t datlen)
 	__NOP();
 	__NOP();
 	__NOP();
-	//gptPolledDelay(&LED_GPTD, 10);
       }
       else
       {
 	// Send 0
 	palSetPad(LED_PORT, LED_PAD);
+	// 10 NOPs
 	__NOP();
 	__NOP();
 	__NOP();
@@ -112,10 +113,8 @@ static void ws2812b_sendarray(size_t datlen)
 	__NOP();
 	__NOP();
 	__NOP();
-	//gptPolledDelay(&LED_GPTD, 2);
 	palClearPad(LED_PORT, LED_PAD);
-	//gptPolledDelay(&LED_GPTD, 20);
-	//gptPolledDelay(&LED_GPTD, 2);
+	// 20 NOPs
 	__NOP();
 	__NOP();
 	__NOP();
@@ -187,8 +186,6 @@ uint8_t lamps_set_single(LampId id, uint8_t g, uint8_t r, uint8_t b)
   lamps_state[id * NUM_COLOURS + 1] = r & MASK;
   lamps_state[id * NUM_COLOURS + 2] = b & MASK;
 
-  //ws2812b_sendarray(NUM_COLOURS*(id+1));
-
   #ifdef MULTI_THREAD
   chMtxUnlock(&lamps_state_mtx);
   #endif
@@ -213,8 +210,6 @@ uint8_t lamps_set_bulk(uint8_t *buf, uint8_t len, uint8_t offset)
     lamps_state[i] &= MASK;
   }
 
-  //ws2812b_sendarray(offset + len);
-
   #ifdef MULTI_THREAD
   chMtxUnlock(&lamps_state_mtx);
   #endif
@@ -229,7 +224,6 @@ uint8_t lamps_clear(void)
   #endif
 
   memset(lamps_state, 0, sizeof(lamps_state));
-  //ws2812b_sendarray(sizeof(lamps_state));
 
   #ifdef MULTI_THREAD
   chMtxUnlock(&lamps_state_mtx);
@@ -249,14 +243,8 @@ void lamps_test(void)
     lamps_refresh(lamps_set_single(lamp, 0x00, 0x00, 0x0F));
     chThdSleepMilliseconds(200);
     lamps_refresh(lamps_set_single(lamp, 0x0F, 0x00, 0x00));
-    //chThdSleepMilliseconds(200);
   }
-//  lamps_set_single(LAMP_COMP_ACTY, 0x0F, 0x00, 0x00);
-//  chThdSleepSeconds(3);
-//  lamps_set_single(LAMP_OPR_ERR, 0x00, 0x0F, 0x00);
-//  chThdSleepSeconds(3);
-//  lamps_set_single(LAMP_KEY_REL, 0x00, 0x00, 0x0F);
-//  chThdSleepSeconds(3);
+
   lamps_refresh(lamps_clear());
 }
 

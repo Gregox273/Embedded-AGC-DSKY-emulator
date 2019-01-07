@@ -403,16 +403,6 @@ ChannelOutput (agc_t * State, int Channel, int Value)
     		id = LAMP_UPLINK_ACTY;
     		b = LAMP_DEFAULT_COLOUR;  // White lamp
     		break;
-//    	    case(4):
-//    		id = LAMP_TEMP;
-//    	        break;
-//    	    case(5):
-//    		id = LAMP_KEY_REL;
-//    		b = LAMP_DEFAULT_COLOUR;  // White lamp
-//    		break;
-//    	    case(7):
-//		id = LAMP_OPR_ERR;
-//    		break;
     	    default:
     		continue;
     	  }
@@ -571,8 +561,6 @@ ChannelInput (agc_t *State)
     }
     State->InputChannel[015] &= ~(0b11111);  // Clear previous keycode
     State->InputChannel[015] |= keycode;
-//    int val = ReadIO(State, 015) | keycode;
-//    WriteIO(State, 015, val);
     State->InterruptRequests[5] = 1;
 
     button_pressed = NUM_BUTTONS;  // Reset flag

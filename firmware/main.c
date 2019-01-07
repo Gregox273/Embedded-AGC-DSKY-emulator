@@ -196,12 +196,12 @@ int main(void)
   {
     // gptPolledDelay(&GPTD3, 562);
     agc_engine(State);
-    if(agc_counter%16==0)
+    if(agc_counter%16==0)  // Clock displays state machine every 16 cycles
     {
       #ifdef TEST
       displays_set_line(2, (agc_counter/16)%100000);
       #endif
-      displays_state_machine();  // Clock displays state machine every 16 cycles
+      displays_state_machine();
     }
     if(agc_counter%128==0)
     {
@@ -213,19 +213,15 @@ int main(void)
 #ifdef TEST
     if(agc_counter%8192==0)
     {
-      //gptStopTimer(&GPTD3);
       chSysLock();
       lamps_refresh(lamps_set_single(LAMP_COMP_ACTY, 0x0F, 0x00, 0x00));  // Test lamp
       chSysUnlock();
-      //gptStartContinuous(&GPTD3, 562);  // AGC clock is 1024kHz / 12
     }
     else if(agc_counter%8192==4096)
     {
-      //gptStopTimer(&GPTD3);
       chSysLock();
       lamps_refresh(lamps_set_single(LAMP_COMP_ACTY, 0x00, 0x0F, 0x00));  // Test lamp
       chSysUnlock();
-      //gptStartContinuous(&GPTD3, 562);  // AGC clock is 1024kHz / 12
     }
 #endif
 
@@ -233,7 +229,6 @@ int main(void)
 
     chSysLock();
     chThdSuspendTimeoutS(&main_thread_ref, TIME_US2I(2000));  // Long timeout so should be visible when something is wrong...
-    //chSysUnlock();
   }
 
   return 0;

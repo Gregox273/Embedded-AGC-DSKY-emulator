@@ -18,21 +18,18 @@ static SPIDriver *display_spid[DISPLAYS_NUM_ROWS];
 static SPIConfig d1_spi_cfg = {
   .end_cb = NULL,
   .ssline = LINE_NCS_1,
-  //.cr1    = SPI_CR1_BR_1| SPI_CR1_BR_0 | SPI_CR1_CPOL | SPI_CR1_CPHA
   .cr1    = SPI_CR1_BR_2
 };
 
 static SPIConfig d2_spi_cfg = {
   .end_cb = NULL,
   .ssline = LINE_NCS_2,
-  //.cr1    = SPI_CR1_BR_1| SPI_CR1_BR_0 | SPI_CR1_CPOL | SPI_CR1_CPHA
   .cr1    = SPI_CR1_BR_2
 };
 
 static SPIConfig d3_spi_cfg = {
   .end_cb = NULL,
   .ssline = LINE_NCS_3,
-  //.cr1    = SPI_CR1_BR_1| SPI_CR1_BR_0 | SPI_CR1_CPOL | SPI_CR1_CPHA
   .cr1    = SPI_CR1_BR_2
 };
 static SPIConfig *spi_cfgs[DISPLAYS_NUM_ROWS];
@@ -304,72 +301,6 @@ void displays_state_machine(void)
 
   col_prev = col;
 }
-
-//static THD_WORKING_AREA(waDisplays, 256);
-//static THD_FUNCTION(displays_thd_func, arg)
-//{
-//  (void)arg;
-//  while(true)
-//  {
-//    for(uint8_t col = 0; col < DISPLAYS_NUM_COLS; col++)
-//    {
-//      for(uint8_t row = 0; row < DISPLAYS_NUM_ROWS; row++)
-//      {
-//        mcp23s08_write_reg(display_spid[row], spi_cfgs[row], spi_addr[row], MCP23S08_OLAT_ADDR, displays_get_state_rc(row, col));
-//        //chThdYield();
-//      }
-//
-//      if(col==DISPLAYS_NUM_COLS-1)
-//      {
-//	    ioline_t line_col = col_lookup(col);
-//		palSetLine(line_col);
-//		chThdSleepMicroseconds(200);
-//		palClearLine(line_col);
-//		chThdSleepMicroseconds(800);
-//      }
-//      else
-//      {
-//    	ioline_t line_col = col_lookup(col);
-//    	ioline_t line_col_n = col_lookup((col+1)%DISPLAYS_NUM_COLS);
-//    	palClearLine(line_col);
-//    	palSetLine(line_col_n);
-//	chThdSleepMicroseconds(10);
-//
-//      }
-//
-//    }
-//    //chThdYield();
-//  }
-//}
-
-//void displays_test(void)
-//{
-//  displays_set_line(0, 88888);
-//  displays_set_line(1, -88888);
-//  displays_set_line(2, 88888);
-//  displays_set_verb(88);
-//  displays_set_noun(88);
-//  displays_set_prog(88);
-//  chThdSleepSeconds(2);
-//  int8_t plus = 1;
-//  for(uint8_t i = 0; i < 10; i++)
-//  {
-//    displays_set_line(0, plus*11111*i);
-//    displays_set_line(1, plus*11111*i);
-//    displays_set_line(2, plus*11111*i);
-//    displays_set_verb(11*i);
-//    displays_set_noun(11*i);
-//    displays_set_prog(11*i);
-//    plus = -plus;
-//    chThdSleepMilliseconds(300);
-//  }
-//  displays_set_line(0, 88888);
-//  displays_set_line(1, -88888);
-//  displays_set_line(2, 88888);
-//  displays_set_verb(88);
-//  displays_set_noun(88);
-//  displays_set_prog(88);
-//}
 
 void displays_init(void)
 {

@@ -17,15 +17,6 @@ typedef enum mcp23s08_regaddr
   MCP23S08_OLAT_ADDR = 0x0A
 }MCP23S08RegAddr;
 
-//typedef struct iocon_cfg
-//{
-//  bool SEQOP;
-//  bool DISSLW;
-//  bool HAEN;
-//  bool ODR;
-//  bool INTPOL;
-//}IOCONCfg;
-
 /*
  * Send bytes to mcp23s08
  *
