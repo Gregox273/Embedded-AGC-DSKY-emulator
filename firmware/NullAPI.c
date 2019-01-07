@@ -119,6 +119,9 @@ static DisplayState convert_pm(uint8_t pm_state)
   }
 }
 
+static DisplayState prev_verb_state[2] = {N_8, N_8};
+static DisplayState prev_noun_state[2] = {N_8, N_8};
+
 static void update_channel_0163(int Value)
 {
   LampId id;
@@ -140,8 +143,12 @@ static void update_channel_0163(int Value)
 	  // Flash VERB/NOUN
 	  if(Value & (1<<(i-1)))
 	  {
-	    displays_set_verb(88);
-	    displays_set_noun(88);
+	    // Replace VERB
+	    displays_set_state_rc(1,5,prev_verb_state[0]);
+	    displays_set_state_rc(1,6,prev_verb_state[1]);
+	    // Replace NOUN
+	    displays_set_state_rc(2,5,prev_noun_state[0]);
+	    displays_set_state_rc(2,6,prev_noun_state[1]);
 	  }
 	  else
 	  {
@@ -214,13 +221,17 @@ static void update_channel_010(int Value)
 	break;
     case(0b1010):
 	// Verb
-	displays_set_state_rc(1, 5, convert_to_display_state(C));
-	displays_set_state_rc(1, 6, convert_to_display_state(D));
+	prev_verb_state[0] = convert_to_display_state(C);
+	prev_verb_state[1] = convert_to_display_state(D);
+	displays_set_state_rc(1, 5, prev_verb_state[0]);
+	displays_set_state_rc(1, 6, prev_verb_state[1]);
 	break;
     case(0b1001):
 	// Noun
-	displays_set_state_rc(2, 5, convert_to_display_state(C));
-	displays_set_state_rc(2, 6, convert_to_display_state(D));
+	prev_noun_state[0] = convert_to_display_state(C);
+	prev_noun_state[1] = convert_to_display_state(D);
+	displays_set_state_rc(2, 5, prev_noun_state[0]);
+	displays_set_state_rc(2, 6, prev_noun_state[1]);
 	break;
     case(0b1000):
 	// Digit 11
