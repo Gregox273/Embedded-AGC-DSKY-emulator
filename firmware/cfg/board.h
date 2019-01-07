@@ -363,7 +363,7 @@
  * PB9  - PIN9                         (unused).
  * PB10 - NRST_3                       (output floating).
  * PB11 - CO8                          (output startlow floating).
- * PB12 - NCS_MPU                      (af0 floating).
+ * PB12 - NCS_MPU                      (output floating).
  * PB13 - SPI2_SCK                     (af0 floating).
  * PB14 - SPI2_MISO                    (af0 floating).
  * PB15 - SPI2_MOSI                    (af0 floating).
@@ -380,7 +380,7 @@
                                         PIN_MODE_INPUT(GPIOB_PIN9) | \
                                         PIN_MODE_OUTPUT(GPIOB_NRST_3) | \
                                         PIN_MODE_OUTPUT(GPIOB_CO8) | \
-                                        PIN_MODE_ALTERNATE(GPIOB_NCS_MPU) | \
+                                        PIN_MODE_OUTPUT(GPIOB_NCS_MPU) | \
                                         PIN_MODE_ALTERNATE(GPIOB_SPI2_SCK) | \
                                         PIN_MODE_ALTERNATE(GPIOB_SPI2_MISO) | \
                                         PIN_MODE_ALTERNATE(GPIOB_SPI2_MOSI))

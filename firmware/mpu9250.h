@@ -14,9 +14,7 @@ typedef struct mpu9250_data_t {
     int16_t magno[3];
 } mpu9250_data_t;
 
-void mpu9250_thread(void *arg);
-
-/* Interrupt callbacks for EXTI. */
-void mpu9250_wakeup(void);//EXTDriver *extp, expchannel_t channel);
+void mpu9250_init(void);
+void mpu9250_read(mpu9250_data_t *data);
 
 #endif /* __MPU9250_H__ */

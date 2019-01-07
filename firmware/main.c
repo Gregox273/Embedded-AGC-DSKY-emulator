@@ -22,12 +22,13 @@
 #include "buttons.h"
 #include "displays.h"
 #include "lamps.h"
+#include "mpu9250.h"
 
 #include "yaAGC.h"
 #include "agc_engine.h"
 #include "agc_symtab.h"
 
-//#define TEST
+#define TEST
 
 static agc_t *State;
 thread_reference_t main_thread_ref = NULL;
@@ -40,8 +41,8 @@ void test_buttons(void)
     if(buttons_get_state_id(i))
     {
       button_row_col(i, &row, &col);
-      displays_set_line(0, row);
-      displays_set_line(1, col);
+      displays_set_verb(row);
+      displays_set_noun(col);
       return; // Only show first pressed button
     }
   }
@@ -159,6 +160,9 @@ int main(void)
    */
   lamps_init();
   displays_init();
+#ifdef TEST
+  mpu9250_init();
+#endif
 
   /*
    * yaAGC init
@@ -195,11 +199,13 @@ int main(void)
   while (true)
   {
     // gptPolledDelay(&GPTD3, 562);
+    #ifndef TEST
     agc_engine(State);
+    #endif
     if(agc_counter%16==0)
     {
       #ifdef TEST
-      displays_set_line(2, (agc_counter/16)%100000);
+      displays_set_prog((agc_counter/16000)%100);
       #endif
       displays_state_machine();  // Clock displays state machine every 16 cycles
     }
@@ -211,15 +217,20 @@ int main(void)
       #endif
     }
 #ifdef TEST
-    if(agc_counter%8192==0)
+    if(agc_counter%16384==0)
     {
       //gptStopTimer(&GPTD3);
       chSysLock();
       lamps_refresh(lamps_set_single(LAMP_COMP_ACTY, 0x0F, 0x00, 0x00));  // Test lamp
       chSysUnlock();
+      mpu9250_data_t data;
+      mpu9250_read(&data);
+      displays_set_line(0, data.accel[0]%99999);
+      displays_set_line(1, data.accel[1]%99999);
+      displays_set_line(2, data.accel[2]%99999);
       //gptStartContinuous(&GPTD3, 562);  // AGC clock is 1024kHz / 12
     }
-    else if(agc_counter%8192==4096)
+    else if(agc_counter%16384==8192)
     {
       //gptStopTimer(&GPTD3);
       chSysLock();

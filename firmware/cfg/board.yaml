@@ -28,7 +28,7 @@ pins:
     spi1_sck : pa5, af0, floating
     spi1_miso: pa6, af0, floating
     spi1_mosi: pa7, af0, floating
-    ncs_mpu  : pb12, af0, floating
+    ncs_mpu  : pb12, output, floating
     spi2_sck : pb13, af0, floating
     spi2_miso: pb14, af0, floating
     spi2_mosi: pb15, af0, floating
