@@ -48,6 +48,15 @@ void test_buttons(void)
   }
 }
 
+void test_mpu(void)
+{
+    mpu9250_data_t data;
+    mpu9250_read(&data);
+    displays_set_line(0, data.accel[0]%99999);
+    displays_set_line(1, data.accel[1]%99999);
+    displays_set_line(2, data.accel[2]%99999);
+}
+
 void agc_init(agc_t *State)
 {
   State->CheckParity = 0;
@@ -217,20 +226,19 @@ int main(void)
       #endif
     }
 #ifdef TEST
-    if(agc_counter%16384==0)
+    if(agc_counter%8192==0)
+    {
+        test_mpu();
+    }
+    if(agc_counter%65536==0)
     {
       //gptStopTimer(&GPTD3);
       chSysLock();
       lamps_refresh(lamps_set_single(LAMP_COMP_ACTY, 0x0F, 0x00, 0x00));  // Test lamp
       chSysUnlock();
-      mpu9250_data_t data;
-      mpu9250_read(&data);
-      displays_set_line(0, data.accel[0]%99999);
-      displays_set_line(1, data.accel[1]%99999);
-      displays_set_line(2, data.accel[2]%99999);
       //gptStartContinuous(&GPTD3, 562);  // AGC clock is 1024kHz / 12
     }
-    else if(agc_counter%16384==8192)
+    else if(agc_counter%65538==32768)
     {
       //gptStopTimer(&GPTD3);
       chSysLock();
